@@ -37,3 +37,17 @@ Snapshot coletado em 26/09/2026:
 - acesso ao PDF oficial na revelação.
 
 Veja [docs/methodology.md](docs/methodology.md) para a metodologia completa.
+
+## Publicação
+
+A aplicação é estática e foi construída para servir diretamente da raiz do repositório no GitHub Pages, sem etapa de build. O arquivo `.nojekyll` evita processamento desnecessário.
+
+No estado atual, o repositório é privado. A tentativa de habilitar GitHub Pages em 26/09/2026 retornou que o plano atual da conta não oferece Pages para este repositório privado. Nenhuma mudança de visibilidade foi feita. Se o repositório for tornado público posteriormente (ou o plano passar a aceitar Pages privados), basta configurar Pages para publicar a branch `main` a partir de `/`.
+
+### Verificação local
+
+```bash
+python3 -m http.server 8765
+```
+
+Abra `http://127.0.0.1:8765`.
