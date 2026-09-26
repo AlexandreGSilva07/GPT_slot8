@@ -1,0 +1,128 @@
+50: 1. Economia, Trabalho e Responsabilidade Fiscal
+51: * Aumento de 100% no Salário Mínimo e Reajuste: página 8 e 9
+52: * Controle Popular e Planificação Democrática da Economia: página 7 , 9 e 56
+53: * Fim da Escala 6x1 e Implementação da Escala 4x3 (Jornada de 30h/36h): página 7 , 9 e 10
+54: * Frentes Emergenciais de Trabalho e Emprego Público: página 10 , 11 e 12
+55: * Nacionalização dos Bancos e Estatização do Sistema Financeiro: página 17 e 18
+56: * Regulamentação do Trabalho em Aplicativos e Fim do Domínio Estrangeiro: página 11 e 13
+57: * Reindustrialização Nacional e Cadeias Produtivas Completas: página 7 , 11 , 56 e 63
+58: * Revogação do Arcabouço Fiscal, da Reforma Trabalhista e da Previdenciária: página 9 , 12 e 13
+59: * Suspensão Imediata e Auditoria Cidadã da Dívida Pública: página 14 , 15 e 16
+60: * Tributação Progressiva, Imposto sobre Grandes Fortunas e Isenção para Baixa Renda: página 16 e 17
+61: 2. Saúde Pública e Assistência
+62: * Combate e Fim da Exploração dos Planos de Saúde Privados: página 19 e 20
+63: * Fim das Organizações Sociais de Saúde (OSS) e Gestão 100% Estatal: página 20
+64: * Obrigatoriedade de Uso do SUS por Agentes Políticos: página 13
+65: * Saúde Indígena Pública e Respeito às Práticas Tradicionais: página 36
+66: * Soberania Farmacêutica e Produção Nacional de Remédios e Vacinas: página 20
+67: * Valorização dos Trabalhadores da Saúde e Pisos Salariais: página 20
+68: 3. Segurança Pública e Justiça
+70: * Assembleias Populares de Segurança (Substituição dos Conselhos Comunitários): página 49
+71: * Combate ao Genocídio da Juventude Negra e Periférica: página 30 , 32 e 48
+72: * Desmilitarização das Polícias e Unificação sob Estrutura Civil: página 48
+73: * Fim da Política de "Guerra às Drogas" e Foco na Saúde Pública: página 48
+74: * Reformulação do Sistema Prisional (Unidades de Reeducação): página 49 e 50
+75: 4. Educação, Ciência e Meio Ambiente
+76: * Abolição do Vestibular e Livre Acesso ao Ensino Técnico e Superior: página 21
+77: * Anistia das Dívidas do FIES e Estatização de Conglomerados Educacionais: página 22
+78: * Destinação de no Mínimo 10% do PIB para a Educação Pública: página 22
+79: * Erradicação do Analfabetismo: página 22
+80: * Investimento em Ciência, Tecnologia e Soberania Nacional: página 7 e 23
+81: * Revogação do Novo Ensino Médio e das Reformas Empresariais: página 22
+82: 5. Política Externa e Inserção Global
+83: * Anti-imperialismo e Defesa da Autodeterminação dos Povos: página 4 , 5 , 64 e 65
+84: * Proibição da Remessa de Recursos Financeiros ao Exterior Sem Autorização Estatal: página 57
+85: * Rompimento de Relações com o Estado de Israel (Causa Palestina): página 65
+86: * Rompimento de Tratados de Submissão com EUA, OTAN ou China: página 65
+87: * Solidariedade Internacionalista com Cuba, Venezuela, Irã, Iêmen e Saara Ocidental: página 5 e 65
+88: 6. Direitos Humanos, Equidade e Inclusão Social
+89: * Combate ao Machismo, Violência de Gênero e Descriminalização do Aborto: página 26 , 27 e 28
+90: * Combate ao Racismo, Reparação Histórica e Cumprimento das Leis 10.639 e 11.645: página 31 e 32
+91: * Enfrentamento à LGBTfobia e Criação de Casas de Acolhimento: página 32 e 33
+92: * Garantia de Direitos das Pessoas com Deficiência e Luta Anticapacitista: página 34 e 35
+93: * Rede Pública de Cuidados (Creches, Lavanderias e Restaurantes Populares): página 28
+94: 7. Questão Agrária, Propriedade e Direito à Cidade
+95: * Combate ao Desmatamento, Garimpo Ilegal e Agrotóxicos Banidos: página 35 , 62 e 63
+96: * Demarcação Imediata e Proteção de Terras Indígenas e Quilombolas: página 32 , 35 , 36 , 61 e 63
+97: * Estatização e Passe Livre no Transporte Público (Tarifa Zero): página 30 , 51 e 52
+98: * Expropriação de Terras com Trabalho Escravo ou Cultivo Ilegal: página 44
+99: * Fim da Especulação Imobiliária e Desapropriação de Imóveis Ociosos: página 45 e 46
+100: * Reforma Agrária Popular e Limitação do Monopólio da Terra: página 43 , 44 e 45
+101: * Reforma Urbana e Produção Pública de Moradias: página 45 e 46
+102: 8. Governança, Transparência e Reformas de Estado
+103: * Combate Radical à Corrupção e Confisco de Bens de Corruptos e Sonegadores: página 24 e 25
+104: * Conselhos Populares com Poder Orçamentário e Democracia Direta: página 37
+105: * Democratização e Socialização dos Meios de Comunicação (TV, Rádios e Sites): página 37 e 38
+106: * Eleição Direta para Juízes e Tribunais Superiores: página 49
+107: * Fim das Doações Empresariais e do Lobby Corporativo em Campanhas: página 25 e 36
+108: * Fim dos Altos Salários e Privilégios no Setor Público (Políticos e Juízes): página 13 e 49
+109: * Reestatização de Estatais Privatizadas (Eletrobras, Petrobras, Vale, etc.): página 58 , 59 e 60
+110: * Revisão da Lei da Anistia e Punição a Torturadores e Golpistas: página 53 e 54
+120: Serviços eleitorais
+122: * Autoatendimento eleitoral
+123: * Certidões
+124: * Desincompatibilização e afastamentos
+125: * Eleitorado no Exterior
+126: * Justificativa eleitoral
+127: * Local de votação/zonas eleitorais
+128: * Quitação de multas
+129: * Título Eleitoral - FAQ
+131: Eleições
+132: * Biometria
+133: * Calendário eleitoral
+134: * Contas eleitorais
+135: * Eleições 2026
+136: * Eleições, plebiscitos e referendos
+137: * Estatísticas
+138: * Memória
+139: * Resultados das eleições
+140: * Urna eletrônica†www.justicaeleitoral.jus.br
+142: Partidos
+144: * Contas partidárias
+145: * Criação de partido político
+146: * Federações partidárias
+147: * Filiação partidária
+148: * Partidos registrados no TSE
+149: * Propaganda partidária
+151: Comunicação
+152: * Comunicação
+154: Jurisprudência
+156: * Informativo de Jurisprudência (Infojur TSE)
+157: * Julgados históricos
+158: * Jurisprudência da Justiça Eleitoral
+159: * Jurisprudência por assunto
+160: * Perguntas frequentes sobre alguns serviços de jurisprudência
+161: * Pesquisa de Jurisprudência
+162: * Revista de Jurisprudência do TSE
+163: * Súmulas
+165: Legislação
+166: * Código Eleitoral Anotado e Legislação Complementar
+167: * Legislação compilada
+168: * Matérias de interesse da JE (SinTSE)
+169: * Pesquisa por e-mail
+170: * Regimento Interno
+171: * Sistematização das Normas Eleitorais
+173: Serviços judiciais
+175: * Audiências
+176: * Certidões judiciais
+177: * Consultas Públicas
+178: * Processos
+179: * Publicações oficiais
+180: * Sessão plenária
+182: TSE
+183: * Biblioteca
+184: * Catálogo de publicações
+185: * Corregedoria-Geral Eleitoral
+186: * Escola Judiciária Eleitoral
+187: * Gestão documental
+188: * Ministros
+189: * Museu do Voto
+190: * Organograma
+191: * Sobre o TSE
+193: Justiça Eleitoral
+195: * História
+196: * Ordem do Mérito do Tribunal Superior Eleitoral - Assis Brasil
+197: * Prêmio Justiça Eleitoral e Selo Qualidade Eleitoral
+198: * TREs
+201: Caso necessite de informações institucionais acesse Ouvidoria.
+229: [Button: Aceitar todos os cookies] [Button: Rejeitar cookies não necessários] Gerenciar preferências

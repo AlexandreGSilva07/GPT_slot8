@@ -78,3 +78,21 @@ main{min-height:calc(100vh - 150px)}.screen{display:none;animation:screenIn .5s 
  .candidate-expand{width:100%;font-size:10px}.candidate-detail{grid-template-columns:1fr;padding:11px}
  .detail-foot a{min-height:44px}.library-grid{grid-template-columns:1fr}
 }
+
+/* Questionnaire and five-axis radar v4 */
+.none-option{margin-top:8px;border-style:dashed;opacity:.82}.none-option .option-copy span{color:var(--faint)}
+.rank-list{gap:8px}.rank-card{display:grid;grid-template-columns:45px minmax(0,1fr) auto;gap:13px;align-items:center;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.022);padding:13px 14px}
+.rank-position{font:500 16px DM Mono,monospace;color:var(--accent)}.rank-copy strong{font-size:13px;line-height:1.4;display:block}.rank-copy span{font-size:11px;color:var(--muted);display:block;margin-top:4px}
+.rank-actions{display:flex;gap:5px}.rank-actions button{width:40px;height:40px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.03);cursor:pointer}.rank-actions button:disabled{opacity:.25;cursor:default}
+.rank-confirm{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:7px}.rank-confirm .option-card{margin:0}.rank-confirm-btn.is-confirmed{border-color:var(--accent);color:var(--accent)}
+.profile-strip{grid-template-columns:repeat(5,minmax(0,1fr))}
+.matrix-row-main{grid-template-columns:245px 136px minmax(310px,1fr) 116px}
+.radar-wrap{width:min(310px,100%);aspect-ratio:320/300}.compatibility-radar{overflow:visible}.radar-labels text{font:600 9px Manrope,sans-serif;fill:#c9d6e2;text-anchor:middle}.radar-area{fill:rgba(168,245,207,.16);stroke:var(--accent);stroke-width:2;stroke-linejoin:round}.radar-values circle{fill:var(--accent);stroke:#f0fff7;stroke-width:1.2}
+.is-featured .matrix-row-main{grid-template-columns:300px 170px minmax(390px,1fr) 132px}.is-featured .radar-wrap{width:min(440px,100%)}.is-featured .radar-labels text{font-size:10px;font-weight:700}
+.status-icon{width:38px;height:32px;font:600 10px DM Mono,monospace}.status-detail.partial .status-icon{color:#eecb83;border-color:rgba(238,203,131,.4)}
+@media(max-width:1050px){.matrix-row-main,.is-featured .matrix-row-main{grid-template-columns:230px 125px minmax(300px,1fr);grid-template-areas:"person score radar" "person action radar"}.candidate-expand{grid-area:action}.radar-wrap{grid-area:radar}.matrix-person{grid-area:person}.compatibility-score{grid-area:score}}
+@media(max-width:800px){
+ .rank-card{grid-template-columns:38px minmax(0,1fr);padding:13px 11px}.rank-actions{grid-column:2}.rank-confirm{grid-template-columns:1fr}.rank-confirm .option-card{padding:14px 13px}
+ .matrix-row-main,.is-featured .matrix-row-main{grid-template-columns:1fr;grid-template-areas:"person" "score" "radar" "action"}
+ .radar-wrap,.is-featured .radar-wrap{width:min(350px,96vw)}.radar-labels text,.is-featured .radar-labels text{font-size:9px}
+}

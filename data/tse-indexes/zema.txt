@@ -1,0 +1,115 @@
+50: 1. Economia, Trabalho e Responsabilidade Fiscal
+51: * Choque fiscal e estabilização da relação dívida/PIB: página 14 e 18
+52: * Privatização de todas as empresas estatais: página 15
+53: * Redução gradual do Imposto de Renda das empresas (IRPJ): página 19
+54: * Reforma Administrativa para enxugamento de ministérios e cargos: página 15
+55: * Reforma da Previdência (inclusão de estados, municípios e previdência rural/militar): página 14
+56: * Redução de encargos na folha de pagamento e alternativa flexível à CLT: página 23 e 24
+57: 2. Saúde Pública e Assistência
+59: * Telemedicina, prontuário eletrônico e registro nacional de saúde: página 57 e 58
+60: * Parcerias público-privadas e uso da capacidade ociosa do setor privado para reduzir filas no SUS: página 60
+61: * Programa Casas da Cidadania (superação da pobreza vinculada ao trabalho): página 63
+62: * Combate a fraudes no CadÚnico e unificação de programas sociais: página 63 e 64
+64: 3. Segurança Pública e Justiça
+65: * Classificação de facções criminosas como organizações terroristas: página 5
+66: * Construção de presídios de segurança máxima em regiões remotas: página 6
+67: * Redução da maioridade penal para 16 anos ou menos: página 6
+68: * Fim do "prende e solta" e prisão preventiva obrigatória para reincidentes: página 6
+69: * Expansão das Patrulhas Maria da Penha e Salas Lilás: página 7
+71: 4. Educação, Ciência e Meio Ambiente
+72: * Transferência do ensino superior do MEC para o Ministério de Ciência e Tecnologia: página 52 e 54
+73: * Foco na primeira infância e ampliação de vagas em creches via parcerias privadas: página 50
+74: * Revisão e aprimoramento da Base Nacional Comum Curricular (BNCC): página 51
+75: * Recuperação da alfabetização, recomposição da aprendizagem e formação deprofessores e diretores escolares: página 51 e 52
+76: * Vinculação do programa Pé-de-Meia ao aprendizado e à frequência escolar: página 53
+77: * Liberdade de escolha educacional (escolas cívico-militares e homeschooling): página 53
+78: 5. Política Externa e Inserção Global
+80: * Saída diplomática do BRICS: página 37
+81: * Adesão do Brasil à OCDE através de reformas institucionais: página 37
+82: * Transformação do Mercosul em zona de livre comércio: página 38
+83: * Cooperação internacional para combate ao crime organizado transnacional: página 38
+85: 6. Direitos Humanos, Equidade e Inclusão Social
+86: * Apoio a instituições de longa permanência para idosos (ILPIs): página 65
+87: * Fortalecimento de redes de acolhimento a vítimas de violência doméstica: página 66
+88: * Acessibilidade e inclusão para pessoas com deficiência e TEA: página 53 e 61
+89: * Criação de indicadores e capacitação para a rede de saúde mental (CAPS/CRAS): página 59
+91: 7. Questão Agrária, Propriedade e Direito à Cidade
+92: * Facilitação da produção nacional e da compra de fertilizantes e defensivos agrícolas: página 43
+93: * Melhoria da logística de transporte de cargas e do ambiente de negócios parainovação no agro: página 43 e 44
+94: * Garantia do direito de autodefesa e porte de armas em toda a extensão da propriedade rural: página 45
+95: * Aceleração da emissão de títulos de propriedade rural e combate à grilagem: página 46
+96: * Implementação da Nova Lei Geral do Licenciamento Ambiental: página 47
+97: * Atração de investimentos para o mercado voluntário de créditos de carbono: página 48
+98: 8. Governança, Transparência e Reformas de Estado
+100: * Fim do sigilo de 100 anos e ampliação da transparência ativa: página 10
+101: * Fim do Fundo Partidário e do Fundo Eleitoral: página 75
+102: * Adoção do sistema distrital misto para eleições legislativas: página 75
+103: * Fim da reeleição e imposição de requisitos mais rigorosos para ministros do STF: página 11
+114: Serviços eleitorais
+116: * Autoatendimento eleitoral
+117: * Certidões
+118: * Desincompatibilização e afastamentos
+119: * Eleitorado no Exterior
+120: * Justificativa eleitoral
+121: * Local de votação/zonas eleitorais
+122: * Quitação de multas
+123: * Título Eleitoral - FAQ
+125: Eleições
+126: * Biometria
+127: * Calendário eleitoral
+128: * Contas eleitorais
+129: * Eleições 2026
+130: * Eleições, plebiscitos e referendos
+131: * Estatísticas
+132: * Memória
+133: * Resultados das eleições
+134: * Urna eletrônica†www.justicaeleitoral.jus.br
+136: Partidos
+138: * Contas partidárias
+139: * Criação de partido político
+140: * Federações partidárias
+141: * Filiação partidária
+142: * Partidos registrados no TSE
+143: * Propaganda partidária
+145: Comunicação
+146: * Comunicação
+148: Jurisprudência
+150: * Informativo de Jurisprudência (Infojur TSE)
+151: * Julgados históricos
+152: * Jurisprudência da Justiça Eleitoral
+153: * Jurisprudência por assunto
+154: * Perguntas frequentes sobre alguns serviços de jurisprudência
+155: * Pesquisa de Jurisprudência
+156: * Revista de Jurisprudência do TSE
+157: * Súmulas
+159: Legislação
+160: * Código Eleitoral Anotado e Legislação Complementar
+161: * Legislação compilada
+162: * Matérias de interesse da JE (SinTSE)
+163: * Pesquisa por e-mail
+164: * Regimento Interno
+165: * Sistematização das Normas Eleitorais
+167: Serviços judiciais
+169: * Audiências
+170: * Certidões judiciais
+171: * Consultas Públicas
+172: * Processos
+173: * Publicações oficiais
+174: * Sessão plenária
+176: TSE
+177: * Biblioteca
+178: * Catálogo de publicações
+179: * Corregedoria-Geral Eleitoral
+180: * Escola Judiciária Eleitoral
+181: * Gestão documental
+182: * Ministros
+183: * Museu do Voto
+184: * Organograma
+185: * Sobre o TSE
+187: Justiça Eleitoral
+189: * História
+190: * Ordem do Mérito do Tribunal Superior Eleitoral - Assis Brasil
+191: * Prêmio Justiça Eleitoral e Selo Qualidade Eleitoral
+192: * TREs
+195: Caso necessite de informações institucionais acesse Ouvidoria.
+223: [Button: Aceitar todos os cookies] [Button: Rejeitar cookies não necessários] Gerenciar preferências

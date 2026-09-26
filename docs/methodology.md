@@ -15,17 +15,17 @@ Fonte primária: página oficial do TSE e os PDFs nela vinculados.
 5. Diferenças de implementação serão preservadas. Duas candidaturas podem concordar no objetivo e divergir no instrumento.
 6. O quiz não utiliza partido, personalidade, histórico, entrevistas, redes sociais ou declarações externas ao plano para determinar a correspondência.
 7. Durante o quiz, nomes e siglas das candidaturas permanecem ocultos.
-8. O resultado ordena as candidaturas por uma porcentagem de compatibilidade documental: temas que coincidem divididos pelos temas respondidos em que o plano apresenta posição comparável. Ausência de posição não entra no denominador. A porcentagem não é recomendação de voto.
-9. A ordem das candidaturas na revelação é neutra e não depende das respostas.
+8. As 15 perguntas são distribuídas igualmente em cinco macrotemas. Cada macrotema recebe a média de suas perguntas comparáveis; a porcentagem geral é a média dos macrotemas comparáveis, todos com o mesmo peso. Ausência de posição não vira zero e não entra na média.
+9. Escolha única vale 100% para a alternativa documentada e 0% para outra direção documentada. Múltipla escolha usa a fração de escolhas compatíveis. Ordenação usa pesos de 100%, 67%, 33% e 0%.
 10. O usuário pode abrir o plano oficial integral de cada candidatura diretamente a partir do resultado.
 
 ## Pipeline
 
-`PDF oficial → hash → extração integral → indexação por página → fichas temáticas → cruzamento → perguntas/opções → matriz de evidências → interface`
+`PDF oficial → hash → extração integral → índice temático oficial do TSE → conferência por página → perguntas/opções → matriz de evidências → interface`
 
 ## Reprodutibilidade
 
-Os PDFs originais são preservados em `data/raw-pdfs/`. A extração textual fica em `data/text/`; os hashes SHA-256 em `data/SHA256SUMS`. As fichas analíticas e as evidências usadas pelo quiz ficam versionadas em `docs/analysis/` e `src/data/`.
+Os PDFs originais são preservados em `data/raw-pdfs/`. A extração textual fica em `data/text/`; os hashes SHA-256 em `data/SHA256SUMS`; os índices oficiais capturados ficam em `data/tse-indexes/`. A matriz completa do questionário está em `docs/analysis/questionnaire-v4.md` e sua fonte executável em `src/data/questionnaire-v4.js`.
 
 ## Limitação metodológica
 

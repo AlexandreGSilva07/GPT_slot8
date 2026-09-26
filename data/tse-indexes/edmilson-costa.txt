@@ -1,0 +1,111 @@
+50: 1. Economia, Trabalho e Responsabilidade Fiscal
+51: * Impulsionar a jornada de 30 horas semanais sem redução salarial e fim da escala 6x1: página 2 , 5 e 14
+52: * Revogação do arcabouço fiscal, Lei de Responsabilidade Fiscal e leis neoliberais: página 2 , 4 e 13
+53: * Nacionalização e estatização do sistema monetário, financeiro e bancário (criação do Banco dos Trabalhadores): página 4
+54: * Reestruturação e auditoria da dívida pública com suspensão de juros: página 4
+55: * Reforma tributária progressiva, com isenção do IR para quem ganha até um salário-mínimo do DIEESE: página 4 e 14
+56: * Petrobras 100% estatal e fim do Preço de Paridade de Importação (PPI): página 5 , 14 e 15
+57: 2. Saúde Pública e Assistência
+58: * Saúde 100% pública, gratuita e universal, com estatização do setor privado de saúde e fim das OSs: página 2 , 6 e 10
+59: * Investimento de 10% do PIB na saúde pública e fortalecimento da atenção básica: página 6 e 10
+60: * Ampliação e consolidação do Complexo Econômico-Industrial da Saúde (CEIS): página 6 e 10
+61: * Criação dos Conselhos Populares de Saúde em todos os níveis: página 6 e 10
+62: * Fortalecimento do SUS na perspectiva da luta antimanicomial e proibição de comunidades terapêuticas: página 6 e 10
+63: 3. Segurança Pública e Justiça
+64: * Completa desmilitarização da segurança pública, unificação das polícias e instituição do ciclo completo: página 6 e 12
+65: * Fim da política de "guerra às drogas" e descriminalização do uso (legalização da maconha a curto prazo): página 6 e 12
+66: * Revogação da Lei Antiterrorismo (12.850/2013) e da Lei Antidrogas: página 6 e 12
+67: * Ocupação de territórios dominados pelo crime organizado com serviços públicos (cultura, saúde e educação): página 12 e 13
+68: 4. Educação, Ciência e Meio Ambiente
+69: * Ensino 100% público e gratuito, das creches à pós-graduação, com estatização do ensino privado: página 2 , 7 e 10
+70: * Fim do vestibular nas universidades federais e universalização de cotas (54% para negros e ampla inclusão trans): página 2 , 7 , 10 e 12
+71: * Implementação do Piso Salarial Profissional Nacional para a educação básica: página 7 e 10
+72: * Ampliação dos Institutos Federais, Escolas Técnicas e valorização dos profissionais da educação: página 7 e 10
+73: 5. Política Externa e Inserção Global
+75: * Combate e denúncia ao imperialismo (OTAN, OEA e Cúpula das Américas): página 2 , 8 , 15 e 16
+76: * Solidariedade ativa a Cuba, Palestina, Venezuela, Irã, Saara Ocidental e povos em luta: página 2 , 8 , 15 e 16
+77: * Rompimento imediato de relações diplomáticas e econômicas com o Estado de Israel: página 15 e 16
+78: * Fortalecimento de blocos de integração regional soberanos, como ALBA e UNASUL: página 8 e 15
+79: 6. Direitos Humanos, Equidade e Inclusão Social
+80: * Combate radical ao machismo, racismo, LGBTfobia, capacitismo e misoginia: página 2 , 6 e 11
+81: * Legalização do aborto e garantia de atendimento na rede pública de saúde: página 11
+82: * Políticas públicas direcionadas à garantia de direitos e emprego para a população Trans e Travesti: página 11 e 12
+83: * Garantia de acessibilidade universal, tecnologia assistiva e combate ao capacitismo para pessoas com deficiência: página 12
+84: 7. Questão Agrária, Propriedade e Direito à Cidade
+85: * Reforma agrária popular com expropriação de latifúndios improdutivos e do agronegócio: página 2 , 6 e 9
+86: * Combate rigoroso ao desmatamento, garimpo ilegal e proteção de biomas (Amazônia, Cerrado, Pantanal): página 8 , 9 e 11
+87: * Demarcação integral e titulação de terras indígenas e quilombolas (fim do Marco Temporal): página 11 e 12
+88: * Incentivo à produção agroecológica e fortalecimento da agricultura familiar: página 6 e 9
+89: 8. Governança, Transparência e Reformas de Estado
+90: * Convocação de uma Assembleia Constituinte de Novo Tipo e criação de Conselhos Populares deliberativos: página 3 , 4 e 9
+91: * Instituição de Orçamento Popular 100% deliberativo e revogabilidade de mandatos: página 3 e 4
+92: * Democratização radical dos meios de comunicação e regulação das Big Techs: página 4 e 13
+93: * Reforma estrutural do Judiciário com mandatos fixos e revogáveis para tribunais superiores: página 4 e 13
+103: Serviços eleitorais
+105: * Autoatendimento eleitoral
+106: * Certidões
+107: * Desincompatibilização e afastamentos
+108: * Eleitorado no Exterior
+109: * Justificativa eleitoral
+110: * Local de votação/zonas eleitorais
+111: * Quitação de multas
+112: * Título Eleitoral - FAQ
+114: Eleições
+115: * Biometria
+116: * Calendário eleitoral
+117: * Contas eleitorais
+118: * Eleições 2026
+119: * Eleições, plebiscitos e referendos
+120: * Estatísticas
+121: * Memória
+122: * Resultados das eleições
+123: * Urna eletrônica†www.justicaeleitoral.jus.br
+125: Partidos
+127: * Contas partidárias
+128: * Criação de partido político
+129: * Federações partidárias
+130: * Filiação partidária
+131: * Partidos registrados no TSE
+132: * Propaganda partidária
+134: Comunicação
+135: * Comunicação
+137: Jurisprudência
+139: * Informativo de Jurisprudência (Infojur TSE)
+140: * Julgados históricos
+141: * Jurisprudência da Justiça Eleitoral
+142: * Jurisprudência por assunto
+143: * Perguntas frequentes sobre alguns serviços de jurisprudência
+144: * Pesquisa de Jurisprudência
+145: * Revista de Jurisprudência do TSE
+146: * Súmulas
+148: Legislação
+149: * Código Eleitoral Anotado e Legislação Complementar
+150: * Legislação compilada
+151: * Matérias de interesse da JE (SinTSE)
+152: * Pesquisa por e-mail
+153: * Regimento Interno
+154: * Sistematização das Normas Eleitorais
+156: Serviços judiciais
+158: * Audiências
+159: * Certidões judiciais
+160: * Consultas Públicas
+161: * Processos
+162: * Publicações oficiais
+163: * Sessão plenária
+165: TSE
+166: * Biblioteca
+167: * Catálogo de publicações
+168: * Corregedoria-Geral Eleitoral
+169: * Escola Judiciária Eleitoral
+170: * Gestão documental
+171: * Ministros
+172: * Museu do Voto
+173: * Organograma
+174: * Sobre o TSE
+176: Justiça Eleitoral
+178: * História
+179: * Ordem do Mérito do Tribunal Superior Eleitoral - Assis Brasil
+180: * Prêmio Justiça Eleitoral e Selo Qualidade Eleitoral
+181: * TREs
+184: Caso necessite de informações institucionais acesse Ouvidoria.
+212: [Button: Aceitar todos os cookies] [Button: Rejeitar cookies não necessários] Gerenciar preferências

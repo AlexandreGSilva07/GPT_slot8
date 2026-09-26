@@ -1,0 +1,120 @@
+50: 1. Economia, Trabalho e Responsabilidade Fiscal
+51: * Abertura, alteração e baixa de empresa (ambiente único digital): página 20
+52: * Contribuição patronal sobre a folha (extinção): página 8 , 13 , 14 e 19
+53: * Custo de conformidade tributária e obrigações acessórias: página 5 , 8 , 13 , 14 , 15 , 16 e 18
+54: * Desoneração da folha de pagamento: página 13 , 14 , 15 , 19 e 20
+55: * Imposto de Renda da Pessoa Física (isenção até 5 salários mínimos): página 8 e 9
+56: * Imposto Único Federal (IUF sobre movimentação financeira): página 8 , 9 e 10
+57: * Microempreendedor individual (MEI) e pequeno negócio: página 20
+58: * Qualificação profissional com destino (demanda regional): página 20
+59: 2. Saúde Pública e Assistência
+61: * Atenção primária como prioridade orçamentária: página 34 e 35
+62: * Fila cirúrgica e diagnóstica (fila única e pública): página 34
+63: * Medicamentos e insumos estratégicos (produção nacional): página 34
+64: * Prontuário eletrônico integrado entre os níveis de atenção: página 34
+65: * Saúde Única (integração entre saúde humana, animal e ambiental): página 26 , 27 e 28
+66: * Zoonoses (programa nacional de vigilância): página 26
+67: 3. Segurança Pública e Justiça
+69: * Asfixia financeira do crime organizado (investigação patrimonial): página 21
+70: * Fronteiras (vigilância eletrônica, portos e aeroportos): página 22 e 50
+71: * Isolamento de comando em presídios federais de segurança máxima: página 21
+72: * Plebiscito sobre o modelo penitenciário de segurança máxima: página 23
+73: * Sistema Único de Segurança Pública (Sinesp e PEC nº 18/2025): página 22
+75: 4. Educação, Ciência e Meio Ambiente
+76: * Alfabetização na idade certa (com condicionalidade): página 36
+77: * Educação física escolar (padrão mínimo e jogos): página 38
+78: * Ensino médio e formação técnica: página 36
+79: * PEC da Pesquisa (transformação de bolsistas em servidores públicos): página 36
+81: 5. Política Externa e Inserção Global
+82: * Adaptação climática e defesa civil: página 47 e 48
+83: * Desmatamento ilegal (combate por inteligência e rastreabilidade): página 47 e 48
+84: * Licenciamento ambiental (prazo definido e painel público): página 47 e 48
+85: * Mineração em terra indígena (regime legal e Convenção nº 169 da OIT): página 47 e 48
+86: * Previsibilidade Regulatória e redução de encargos setoriais (Energia): página 47
+87: * Programa Brasil nos Trilhos (corredores ferroviários de carga): página 46
+88: * Saneamento (cobrança de metas do marco legal de 2020): página 46
+89: 6. Direitos Humanos, Equidade e Inclusão Social
+90: * Assistência técnica gratuita para reforma e ampliação de habitação (Lei nº 11.888/2008): página 42
+91: * Bolsa Atleta (inscrição individual direta e contrato com a União): página 38 e 39
+92: * Cadastro Nacional de Animais Domésticos (SinPatinhas). Financiamento, integração e ampliação da cobertura: página 27 e 28
+93: * Portabilidade do aluguel para financiamento habitacional: página 41
+94: * Regularização fundiária e titulação em massa: página 42
+95: 7. Questão Agrária, Propriedade e Direito à Cidade
+97: * Bem-estar animal na cadeia produtiva: página 33
+98: * Defesa sanitária (recomposição do serviço veterinário oficial): página 32
+99: * Diplomacia sanitária ativa: página 33 e 52
+100: * Rastreabilidade individual de bovinos e búfalos (antecipação): página 32 e 33
+102: 8. Governança, Transparência e Reformas de Estado
+103: * Interoperabilidade obrigatória com o uso do CPF (Lei nº 14.534/2023): página 44
+104: * Método D35 (desburocratizar, desonerar, digitalizar, democratizar e desenvolver): página 7
+105: * Pacto institucional e relação com o Congresso e federados: página 53
+106: * Painel público de acompanhamento dos primeiros cem dias e de metas: página 18 , 45 e 54
+107: * Proteção de dados (Lei nº 13.709/2018): página 44
+117: Serviços eleitorais
+119: * Autoatendimento eleitoral
+120: * Certidões
+121: * Desincompatibilização e afastamentos
+122: * Eleitorado no Exterior
+123: * Justificativa eleitoral
+124: * Local de votação/zonas eleitorais
+125: * Quitação de multas
+126: * Título Eleitoral - FAQ
+128: Eleições
+129: * Biometria
+130: * Calendário eleitoral
+131: * Contas eleitorais
+132: * Eleições 2026
+133: * Eleições, plebiscitos e referendos
+134: * Estatísticas
+135: * Memória
+136: * Resultados das eleições
+137: * Urna eletrônica†www.justicaeleitoral.jus.br
+139: Partidos
+141: * Contas partidárias
+142: * Criação de partido político
+143: * Federações partidárias
+144: * Filiação partidária
+145: * Partidos registrados no TSE
+146: * Propaganda partidária
+148: Comunicação
+149: * Comunicação
+151: Jurisprudência
+153: * Informativo de Jurisprudência (Infojur TSE)
+154: * Julgados históricos
+155: * Jurisprudência da Justiça Eleitoral
+156: * Jurisprudência por assunto
+157: * Perguntas frequentes sobre alguns serviços de jurisprudência
+158: * Pesquisa de Jurisprudência
+159: * Revista de Jurisprudência do TSE
+160: * Súmulas
+162: Legislação
+163: * Código Eleitoral Anotado e Legislação Complementar
+164: * Legislação compilada
+165: * Matérias de interesse da JE (SinTSE)
+166: * Pesquisa por e-mail
+167: * Regimento Interno
+168: * Sistematização das Normas Eleitorais
+170: Serviços judiciais
+172: * Audiências
+173: * Certidões judiciais
+174: * Consultas Públicas
+175: * Processos
+176: * Publicações oficiais
+177: * Sessão plenária
+179: TSE
+180: * Biblioteca
+181: * Catálogo de publicações
+182: * Corregedoria-Geral Eleitoral
+183: * Escola Judiciária Eleitoral
+184: * Gestão documental
+185: * Ministros
+186: * Museu do Voto
+187: * Organograma
+188: * Sobre o TSE
+190: Justiça Eleitoral
+192: * História
+193: * Ordem do Mérito do Tribunal Superior Eleitoral - Assis Brasil
+194: * Prêmio Justiça Eleitoral e Selo Qualidade Eleitoral
+195: * TREs
+198: Caso necessite de informações institucionais acesse Ouvidoria.
+226: [Button: Aceitar todos os cookies] [Button: Rejeitar cookies não necessários] Gerenciar preferências

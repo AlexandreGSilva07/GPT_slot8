@@ -1,0 +1,128 @@
+50: 1. Economia, Trabalho e Responsabilidade Fiscal
+51: * Banco do Empreendedor e Crédito Produtivo: página 39 , 98 , 107 e 108
+52: * Carga Tributária e Simplificação: página 37 , 38 e 42
+53: * Controle Rigoroso e Eficiência de Gastos Públicos: página 36 e 38
+54: * Déficit Público Próximo de Zero: página 36
+55: * Desenvolvimento de 10 Milhões de Novos Empreendedores: página 39 , 40 e 95
+56: * Prevenção ao Desemprego Estrutural (Era da Inteligência Artificial): página 95 , 96 , 121 e 122
+57: * Redução Gradual e Sustentável da Dívida Pública: página 36
+58: * Regularização Fundiária e Patrimonial: página 40 , 105 e 106
+59: * Segurança Jurídica e Estabilidade Regulatória: página 37
+60: * Zonas de Processamento de Exportação (ZPEs) e Corredores Estratégicos: página 41 e 42
+61: 2. Saúde Pública e Assistência
+63: * Atenção Primária e Saúde Preventiva: página 44 e 161
+64: * Modernização e Gestão do SUS: página 44 e 161
+65: * Prevenção e Detecção Precoce do Câncer (Projeto SEA): página 166
+66: * Programa Nacional de Saúde Mental e Apoio Emocional: página 44 , 45 e 163
+67: * Tele Saúde Brasil (Telemedicina em Massa para Desafogar o SUS): página 44 , 161 e 164
+69: 3. Segurança Pública e Justiça
+70: * Combate Estruturado às Facções Criminosas e Lavagem de Dinheiro: página 45 , 46 e 189
+71: * Cooperação Internacional e Controle de Fronteiras: página 46 e 190
+72: * Criação da Polícia FOCO (Força de Combate Preventivo Municipal): página 45 e 187
+73: * Programa FATO (Força Alerta Total): página 46 e 186
+74: * Recriação do Ministério da Segurança Pública: página 45
+75: * Sistema Penitenciário e Foco em Ressocialização: página 47
+76: * Tecnologia e Inteligência Artificial aplicadas à Segurança: página 46 e 189
+77: 4. Educação, Ciência e Meio Ambiente
+78: * Escolas de Empreendedorismo (Rede Nacional): página 39 , 75 , 106 e 107
+79: * Gestão da Emoção nas Escolas (Saúde Emocional): página 44 , 68 e 83
+80: * Novo Ensino Médio Conectado ao Futuro e ao Trabalho: página 43 e 75
+81: * Prioridade Absoluta para a Educação Básica e Alfabetização: página 43 e 68
+82: * Universidades Conectadas à Inovação e Produção de Riqueza: página 43 e 78
+83: * Valorização, Formação e Papel Transformador dos Professores: página 43 e 68
+84: 5. Política Externa e Inserção Global
+86: * Diplomacia Climática e Ambiental: página 59
+87: * Embaixadas Empreendedoras (Modelo 4.0): página 59 e 146
+88: * Integração Econômica e Comercial Regional e Global: página 59 e 140
+89: * Plano de Combate Mundial da Fome (Make Humanity Great Again): página 157
+90: * Proteção de Interesses Estratégicos Nacionais: página 60
+92: 6. Direitos Humanos, Equidade e Inclusão Social
+93: * Autonomia Econômica Feminina e Igualdade Salarial: página 53 , 54 e 88
+94: * Brasil Neuroinclusivo (Autismo, TDAH, Dislexia e Altas Habilidades): página 81 , 83 e 84
+95: * Combate à Tirania da Beleza e à Síndrome Comparativa nas Redes: página 54 , 86 e 90
+96: * Indicação de Mulheres para o Supremo Tribunal Federal (STF): página 56 e 92
+97: * Programa Mulheres Vivas (Prevenção e Combate ao Feminicídio): página 53 e 86
+98: * Proteção Psicológica e Digital de Crianças e Jovens: página 57 e 91
+99: 7. Questão Agrária, Propriedade e Direito à Cidade
+100: * Agricultura 4.0 (Inovação, Drones e Irrigação de Precisão): página 47 , 48 e 115
+101: * Agroindústria Brasil (Do Grão à Proteína - 10 Mil Agroindústrias): página 40 e 126
+102: * BCOO (Brasil Cooperativismo - Dobrar Cooperados): página 48 e 131
+103: * Desenvolvimento do Semiárido (Projeto Brasil Oásis): página 61 e 114
+104: * Economia Verde, Hidrogênio Verde e Mercado de Carbono: página 51 e 175
+105: * Floresta Viva - BR (Combate a Incêndios com IA e Drones / Amazônia Viva): página 182
+106: * PETRA-BR (Terras Raras e Minerais Estratégicos): página 41 e 178
+107: 8. Governança, Transparência e Reformas de Estado
+108: * Avaliação Permanente de Políticas Públicas e Metas Ministeriais: página 38 e 39
+109: * Combate à Corrupção com Inteligência Artificial e Controle Social (Projeto SEO): página 39 e 52
+110: * Governo Totalmente Digital e Desburocratização: página 38 e 40
+111: * Implantação do Regime Semipresidencialismo: página 60 e 63
+112: * Reforma Administrativa e Moderna Gestão Pública: página 36 e 37
+113: * Reforma do Supremo Tribunal Federal (Mandatos de 8 anos e 9 ministros): página 60 e 64
+123: Serviços eleitorais
+125: * Autoatendimento eleitoral
+126: * Certidões
+127: * Desincompatibilização e afastamentos
+128: * Eleitorado no Exterior
+129: * Justificativa eleitoral
+130: * Local de votação/zonas eleitorais
+131: * Quitação de multas
+132: * Título Eleitoral - FAQ
+134: Eleições
+135: * Biometria
+136: * Calendário eleitoral
+137: * Contas eleitorais
+138: * Eleições 2026
+139: * Eleições, plebiscitos e referendos
+140: * Estatísticas
+141: * Memória
+142: * Resultados das eleições
+143: * Urna eletrônica†www.justicaeleitoral.jus.br
+145: Partidos
+147: * Contas partidárias
+148: * Criação de partido político
+149: * Federações partidárias
+150: * Filiação partidária
+151: * Partidos registrados no TSE
+152: * Propaganda partidária
+154: Comunicação
+155: * Comunicação
+157: Jurisprudência
+159: * Informativo de Jurisprudência (Infojur TSE)
+160: * Julgados históricos
+161: * Jurisprudência da Justiça Eleitoral
+162: * Jurisprudência por assunto
+163: * Perguntas frequentes sobre alguns serviços de jurisprudência
+164: * Pesquisa de Jurisprudência
+165: * Revista de Jurisprudência do TSE
+166: * Súmulas
+168: Legislação
+169: * Código Eleitoral Anotado e Legislação Complementar
+170: * Legislação compilada
+171: * Matérias de interesse da JE (SinTSE)
+172: * Pesquisa por e-mail
+173: * Regimento Interno
+174: * Sistematização das Normas Eleitorais
+176: Serviços judiciais
+178: * Audiências
+179: * Certidões judiciais
+180: * Consultas Públicas
+181: * Processos
+182: * Publicações oficiais
+183: * Sessão plenária
+185: TSE
+186: * Biblioteca
+187: * Catálogo de publicações
+188: * Corregedoria-Geral Eleitoral
+189: * Escola Judiciária Eleitoral
+190: * Gestão documental
+191: * Ministros
+192: * Museu do Voto
+193: * Organograma
+194: * Sobre o TSE
+196: Justiça Eleitoral
+198: * História
+199: * Ordem do Mérito do Tribunal Superior Eleitoral - Assis Brasil
+200: * Prêmio Justiça Eleitoral e Selo Qualidade Eleitoral
+201: * TREs
+204: Caso necessite de informações institucionais acesse Ouvidoria.
+232: [Button: Aceitar todos os cookies] [Button: Rejeitar cookies não necessários] Gerenciar preferências

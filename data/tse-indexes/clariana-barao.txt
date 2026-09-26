@@ -1,0 +1,109 @@
+50: 1. Economia, Trabalho e Responsabilidade Fiscal
+51: * Ambiente de negócios simples, previsível e digitalização: página 5
+52: * Crédito produtivo, garantias e capacitação para pequenos negócios: página 5
+53: * Infraestrutura, logística, rodovias, ferrovias e hidrovias (Concessões e PPPs): página 5
+54: * Responsabilidade fiscal focada em resultados, revisão de gastos e subsídios: página 5 e 6
+55: * Segurança energética, conectividade e economia digital: página 5
+57: 2. Saúde Pública e Assistência
+58: * Atenção primária resolutiva e coordenação do cuidado: página 11
+59: * Esporte e atividade física como vetor de saúde: página 11
+60: * Inovação, pesquisa clínica e avaliação transparente de terapias no SUS: página 11
+61: * Prevenção, diagnóstico precoce, vacinação e saúde materno-infantil: página 11
+62: * Saúde digital, telemedicina e regulação inteligente de filas: página 11 e 12
+64: 3. Segurança Pública e Justiça
+65: * Combate ao narcotráfico e ao tráfico de armas (Inteligência e cooperação): página 9
+66: * Fronteiras inteligentes, integradas e monitoradas por tecnologia: página 9
+67: * Segurança urbana orientada por dados e policiamento baseado em evidências: página 9
+68: * Sistema prisional, trabalho, educação e controle de comunicações ilícitas: página 9 e 10
+69: * Sufocamento financeiro das facções e rastreamento de ativos: página 9
+71: 4. Educação, Ciência e Meio Ambiente
+72: * Alfabetização na idade adequada e recomposição de aprendizagem: página 7
+73: * Ensino médio, técnico e transição para o trabalho: página 7 e 8
+74: * Escola para o século XXI (Tecnologia, IA e pensamento crítico): página 7
+75: * Primeira infância e prontidão para aprender: página 7
+76: * Valorização e apoio aos professores (Formação e carreira): página 7
+78: 5. Política Externa e Inserção Global
+79: * Cooperação internacional para o combate ao narcotráfico e ao tráfico de armas – página 9
+81: 6. Direitos Humanos, Equidade e Inclusão Social
+82: * Autonomia econômica das mulheres (Qualificação e crédito): página 3
+83: * Governança transversal de proteção (Orçamento e painéis públicos): página 3 e 4
+84: * Primeira infância como prioridade nacional (Saúde e creches): página 3
+85: * Proteção de crianças e adolescentes (Ambiente digital seguro e busca ativa): página 3 e 4
+86: * Rede nacional de proteção e resposta à violência integrada: página 3
+88: 7. Questão Agrária, Propriedade e Direito à Cidade
+89: * Infraestrutura e logística para escoamento agrícola (Rodovias, ferrovias e hidrovias) — página 5
+90: * Segurança energética e confiabilidade para a produção — página 5
+92: 8. Governança, Transparência e Reformas de Estado
+93: * Federalismo de resultados (Pactos com estados e municípios): página 13 e 14
+94: * Gestão por metas, evidências e avaliação de programas: página 13
+95: * Governo digital, simples e integrado (Princípio de dado único): página 13
+96: * Integridade, transparência e compras públicas rastreáveis: página 13
+97: * Serviço público orientado à entrega (Liderança e equipes de missão): página 13
+107: Serviços eleitorais
+109: * Autoatendimento eleitoral
+110: * Certidões
+111: * Desincompatibilização e afastamentos
+112: * Eleitorado no Exterior
+113: * Justificativa eleitoral
+114: * Local de votação/zonas eleitorais
+115: * Quitação de multas
+116: * Título Eleitoral - FAQ
+118: Eleições
+119: * Biometria
+120: * Calendário eleitoral
+121: * Contas eleitorais
+122: * Eleições 2026
+123: * Eleições, plebiscitos e referendos
+124: * Estatísticas
+125: * Memória
+126: * Resultados das eleições
+127: * Urna eletrônica†www.justicaeleitoral.jus.br
+129: Partidos
+131: * Contas partidárias
+132: * Criação de partido político
+133: * Federações partidárias
+134: * Filiação partidária
+135: * Partidos registrados no TSE
+136: * Propaganda partidária
+138: Comunicação
+139: * Comunicação
+141: Jurisprudência
+143: * Informativo de Jurisprudência (Infojur TSE)
+144: * Julgados históricos
+145: * Jurisprudência da Justiça Eleitoral
+146: * Jurisprudência por assunto
+147: * Perguntas frequentes sobre alguns serviços de jurisprudência
+148: * Pesquisa de Jurisprudência
+149: * Revista de Jurisprudência do TSE
+150: * Súmulas
+152: Legislação
+153: * Código Eleitoral Anotado e Legislação Complementar
+154: * Legislação compilada
+155: * Matérias de interesse da JE (SinTSE)
+156: * Pesquisa por e-mail
+157: * Regimento Interno
+158: * Sistematização das Normas Eleitorais
+160: Serviços judiciais
+162: * Audiências
+163: * Certidões judiciais
+164: * Consultas Públicas
+165: * Processos
+166: * Publicações oficiais
+167: * Sessão plenária
+169: TSE
+170: * Biblioteca
+171: * Catálogo de publicações
+172: * Corregedoria-Geral Eleitoral
+173: * Escola Judiciária Eleitoral
+174: * Gestão documental
+175: * Ministros
+176: * Museu do Voto
+177: * Organograma
+178: * Sobre o TSE
+180: Justiça Eleitoral
+182: * História
+183: * Ordem do Mérito do Tribunal Superior Eleitoral - Assis Brasil
+184: * Prêmio Justiça Eleitoral e Selo Qualidade Eleitoral
+185: * TREs
+188: Caso necessite de informações institucionais acesse Ouvidoria.
+216: [Button: Aceitar todos os cookies] [Button: Rejeitar cookies não necessários] Gerenciar preferências

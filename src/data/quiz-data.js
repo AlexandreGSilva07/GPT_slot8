@@ -5,7 +5,7 @@ window.QUIZ_DATA = {
     "sourceName": "Tribunal Superior Eleitoral (TSE)",
     "retrieved": "2026-09-26",
     "methodology": "Comparação exclusivamente pelos planos de governo oficiais. A porcentagem usa temas respondidos com posição comparável no plano e não constitui recomendação de voto.",
-    "questionCount": 10,
+    "questionCount": 15,
     "candidateCount": 13
   },
   "candidates": [

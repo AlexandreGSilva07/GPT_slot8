@@ -7,7 +7,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%2307101d%22/%3E%3Cpath d=%22M7 10h18M7 16h12M7 22h18%22 stroke=%22%23a8f5cf%22 stroke-width=%222%22 stroke-linecap=%22round%22/%3E%3C/svg%3E">
   <meta name="description" content="Comparador cego e auditável dos planos de governo presidenciais de 2026, baseado exclusivamente nos documentos oficiais do TSE.">
   <title>Plano Aberto 2026 — comparador cego de propostas</title>
-  <link rel="stylesheet" href="styles.css?v=20260926-radar-2">
+  <link rel="stylesheet" href="styles.css?v=20260926-v4">
 </head>
 <body>
   <div class="ambient ambient-a" aria-hidden="true"></div>
@@ -28,7 +28,7 @@
       <div class="hero-wrap">
         <div class="eyebrow-pill"><span class="live-dot"></span> Eleições 2026 · fonte oficial TSE</div>
         <h1>Escolha as ideias.<br><span>Os nomes vêm depois.</span></h1>
-        <p class="hero-copy">Um teste cego com 10 decisões de política pública. Você responde sem ver candidatos; no final, cada escolha é comparada com o que está escrito nos planos oficiais.</p>
+        <p class="hero-copy">Um teste cego com 15 decisões rápidas: escolha única, até duas medidas e ordem de prioridade. No final, cada resposta é comparada com o que está escrito nos planos oficiais.</p>
         <div class="hero-actions">
           <button class="primary-btn" data-action="start">
             Começar teste
@@ -44,7 +44,7 @@
       </div>
       <aside class="hero-card" aria-label="Como o teste funciona">
         <div class="card-topline">
-          <span>TESTE CEGO</span><span>10 TEMAS</span>
+          <span>TESTE CEGO</span><span>15 DECISÕES</span>
         </div>
         <div class="mini-question">
           <span class="mini-number">04</span>
@@ -70,7 +70,7 @@
             <svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
           </button>
           <div class="progress-wrap">
-            <div class="progress-label"><span id="progressTheme">Tema</span><strong id="progressCount">1 / 10</strong></div>
+            <div class="progress-label"><span id="progressTheme">Tema</span><strong id="progressCount">1 / 15</strong></div>
             <div class="progress-track"><i id="progressBar"></i></div>
           </div>
         </div>
@@ -107,7 +107,7 @@
           </div>
           <div class="result-explainer">
             <strong>Ordenado pela compatibilidade documentada.</strong>
-            <p>A porcentagem considera apenas os temas respondidos em que o plano registra uma direção comparável. O radar mostra o resultado em cada tópico.</p>
+            <p>Cada um dos cinco macrotemas tem o mesmo peso. O radar mostra a compatibilidade percentual por macrotema e as evidências apontam as páginas do plano.</p>
           </div>
         </div>
         <div class="result-summary" id="resultSummary"></div>
@@ -125,8 +125,8 @@
           <div class="section-head matrix-head">
             <div><p class="section-kicker">DEMAIS CANDIDATURAS</p><h3>Radar por tópico</h3></div>
             <div class="matrix-meta">
-              <div class="matrix-legend"><span><i class="status-dot match"></i> 100% coincide</span><span><i class="status-dot other"></i> 0% outra direção</span><span><i class="status-dot unknown"></i> — sem posição identificada</span></div>
-              <details class="topic-guide"><summary>Ver os 10 tópicos do radar</summary><ol id="topicGuide"></ol></details>
+              <div class="matrix-legend"><span><i class="status-dot match"></i> maior compatibilidade</span><span><i class="status-dot other"></i> compatibilidade parcial</span><span><i class="status-dot unknown"></i> — sem posição identificada</span></div>
+              <details class="topic-guide"><summary>Ver os 5 macrotemas do radar</summary><ol id="topicGuide"></ol></details>
             </div>
           </div>
           <div class="candidate-matrix" id="candidateMatrix"></div>
@@ -158,7 +158,7 @@
         <div class="principles">
           <article><span>01</span><h3>Documento integral</h3><p>Os 13 PDFs foram preservados, extraídos e indexados página a página. O resumo do TSE não substitui o texto original.</p></article>
           <article><span>02</span><h3>Correspondência conservadora</h3><p>Uma candidatura só aparece numa alternativa quando o plano sustenta claramente aquela direção. Silêncio não vira oposição.</p></article>
-          <article><span>03</span><h3>Percentual documentado</h3><p>A porcentagem resume apenas os temas com posição comparável no plano. Ela não é recomendação de voto.</p></article>
+          <article><span>03</span><h3>Peso igual por macrotema</h3><p>As três perguntas formam a nota de cada macrotema. A média geral dá o mesmo peso aos cinco macrotemas comparáveis.</p></article>
           <article><span>04</span><h3>Auditável</h3><p>Cada correspondência mostra páginas e uma paráfrase verificável. O botão abre o plano oficial completo no TSE.</p></article>
         </div>
         <div class="source-panel">
@@ -178,7 +178,8 @@
     <span>Fonte: Tribunal Superior Eleitoral · Eleições 2026</span>
   </footer>
 
-  <script src="src/data/quiz-data.js?v=20260926-radar-2"></script>
-  <script src="app.js?v=20260926-radar-2"></script>
+  <script src="src/data/quiz-data.js?v=20260926-v4"></script>
+  <script src="src/data/questionnaire-v4.js?v=20260926-v4"></script>
+  <script src="app.js?v=20260926-v4"></script>
 </body>
 </html>

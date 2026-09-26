@@ -1,194 +1,75 @@
 (()=>{
 'use strict';
-const D=window.QUIZ_DATA;
-const $=(s,p=document)=>p.querySelector(s), $$=(s,p=document)=>[...p.querySelectorAll(s)];
-const state={screen:'home',index:0,answers:{},order:{},infoFrom:'home'};
-
-function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a}
-function initOrder(){D.questions.forEach(q=>state.order[q.id]=shuffle(q.options.map(o=>o.id)))}
-function show(name){
-  $$('.screen').forEach(x=>x.classList.toggle('is-active',x.dataset.screen===name));
-  state.screen=name;
-  window.scrollTo({top:0,behavior:'auto'});
-  requestAnimationFrame(()=>$('#app').focus({preventScroll:true}));
-}
-function start(){state.index=0;state.answers={};state.order={};initOrder();show('quiz');renderQuestion()}
+const BASE=window.QUIZ_DATA,V4=window.QUIZ_V4,D={candidates:BASE.candidates,questions:V4.questions,macros:V4.macros};
+const $=(s,p=document)=>p.querySelector(s),$$=(s,p=document)=>[...p.querySelectorAll(s)];
+const state={screen:'home',index:0,answers:{},rankOrders:{},infoFrom:'home'};
+const esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function show(name){$$('.screen').forEach(n=>n.classList.toggle('is-active',n.dataset.screen===name));state.screen=name;scrollTo({top:0,behavior:'auto'});requestAnimationFrame(()=>$('#app').focus({preventScroll:true}))}
+function start(){state.index=0;state.answers={};state.rankOrders={};D.questions.forEach(q=>{if(q.mode==='rank')state.rankOrders[q.id]=q.options.map(o=>o.id)});show('quiz');renderQuestion()}
 function current(){return D.questions[state.index]}
-function choiceFor(q){return state.answers[q.id]}
-
+function answered(q){const v=state.answers[q.id];return q.mode==='multi'?Array.isArray(v)&&v.length>0:q.mode==='rank'?v==='confirmed'||v==='__none':Boolean(v)}
+function noneButton(q,active){const b=document.createElement('button');b.type='button';b.className='option-card none-option'+(active?' is-selected':'');b.setAttribute('aria-pressed',String(active));b.innerHTML='<span class="radio-ui" aria-hidden="true"></span><span class="option-copy"><strong>Nenhuma destas medidas</strong><span>O tema fica sem pontuação para todas as candidaturas.</span></span>';b.onclick=()=>{state.answers[q.id]='__none';renderQuestion()};return b}
 function renderQuestion(){
-  const q=current(), chosen=choiceFor(q), order=state.order[q.id]||q.options.map(o=>o.id);
-  $('#progressTheme').textContent=q.theme;
-  $('#progressCount').textContent=(state.index+1)+' / '+D.questions.length;
-  $('#progressBar').style.width=((state.index+1)/D.questions.length*100)+'%';
-  $('#questionIndex').textContent=String(state.index+1).padStart(2,'0');
-  $('#questionEyebrow').textContent=q.eyebrow;
-  $('#questionPrompt').textContent=q.prompt;
-  $('#questionContext').textContent=q.context;
-  const list=$('#optionsList');list.innerHTML='';
-  for(const id of order){
-    const o=q.options.find(x=>x.id===id);
-    list.append(optionButton(o.id,o.label,o.detail,chosen===o.id));
-  }
-  list.append(optionButton('__skip','Prefiro não responder','Esta questão ficará sem correspondência no resultado.',chosen==='__skip',true));
-  $('#prevBtn').disabled=state.index===0;
-  $('#nextBtn').disabled=!chosen;
-  $('#nextBtn').childNodes[0].nodeValue=state.index===D.questions.length-1?'Ver resultado ':'Próxima ';
-  const card=$('#questionCard');card.classList.remove('swap');void card.offsetWidth;card.classList.add('swap');
+ const q=current();$('#progressTheme').textContent=q.macro;$('#progressCount').textContent=`${state.index+1} / 15`;$('#progressBar').style.width=`${(state.index+1)/15*100}%`;$('#questionIndex').textContent=String(state.index+1).padStart(2,'0');
+ $('#questionEyebrow').textContent=q.mode==='rank'?'ORDEM DE PRIORIDADE':q.mode==='multi'?'ATÉ DUAS ESCOLHAS':'UMA ESCOLHA';$('#questionPrompt').textContent=q.prompt;$('#questionContext').textContent=q.context;
+ const list=$('#optionsList');list.innerHTML='';list.className='options-list';list.removeAttribute('role');q.mode==='rank'?renderRank(q,list):renderChoices(q,list);
+ $('#prevBtn').disabled=state.index===0;$('#nextBtn').disabled=!answered(q);$('#nextBtn').childNodes[0].nodeValue=state.index===14?'Ver resultado ':'Próxima ';
+ const card=$('#questionCard');card.classList.remove('swap');void card.offsetWidth;card.classList.add('swap');
 }
-function optionButton(id,label,detail,selected,skip=false){
-  const b=document.createElement('button');b.type='button';b.className='option-card'+(selected?' is-selected':'')+(skip?' skip':'');
-  b.setAttribute('role','radio');b.setAttribute('aria-checked',selected?'true':'false');b.dataset.option=id;
-  b.innerHTML='<span class="radio-ui" aria-hidden="true"></span><span class="option-copy"><strong></strong><span></span></span>';
-  $('strong',b).textContent=label;$('span span',b).textContent=detail;
-  b.addEventListener('click',()=>{state.answers[current().id]=id;renderQuestion()});
-  return b;
+function renderChoices(q,list){
+ const value=state.answers[q.id],selected=Array.isArray(value)?value:[value];list.setAttribute('role',q.mode==='multi'?'group':'radiogroup');
+ q.options.forEach(o=>{const active=selected.includes(o.id),b=document.createElement('button');b.type='button';b.className='option-card'+(active?' is-selected':'');b.setAttribute('role',q.mode==='multi'?'checkbox':'radio');b.setAttribute('aria-checked',String(active));b.innerHTML=`<span class="radio-ui" aria-hidden="true"></span><span class="option-copy"><strong>${esc(o.label)}</strong><span>${esc(o.detail)}</span></span>`;
+ b.onclick=()=>{if(q.mode==='single')state.answers[q.id]=o.id;else{const old=Array.isArray(state.answers[q.id])?state.answers[q.id]:[];state.answers[q.id]=old.includes(o.id)?old.filter(id=>id!==o.id):old.length<2?[...old,o.id]:[old[1],o.id]}renderQuestion()};list.append(b)});list.append(noneButton(q,value==='__none'));
 }
-function next(){if(!choiceFor(current()))return;if(state.index<D.questions.length-1){state.index++;renderQuestion();window.scrollTo({top:0,behavior:'auto'})}else renderResults()}
-function previous(){if(state.index>0){state.index--;renderQuestion();window.scrollTo({top:0,behavior:'auto'})}}
-
-function candidateStatus(q,candidateSlug){
-  const ans=state.answers[q.id];
-  if(!ans||ans==='__skip') return {kind:'skipped',label:'Não respondido'};
-  const selected=q.options.find(o=>o.id===ans);
-  const direct=selected&&selected.matches.find(m=>m.candidate===candidateSlug);
-  if(direct) return {kind:'match',label:'Coincide',choice:selected.label,evidence:direct.evidence,pages:direct.pages};
-  for(const opt of q.options){
-    const other=opt.matches.find(m=>m.candidate===candidateSlug);
-    if(other) return {kind:'other',label:'Outra direção',choice:opt.label,evidence:other.evidence,pages:other.pages};
-  }
-  return {kind:'unknown',label:'Não identificado'};
+function renderRank(q,list){
+ list.classList.add('rank-list');const order=state.rankOrders[q.id],confirmed=state.answers[q.id]==='confirmed';
+ order.forEach((id,i)=>{const o=q.options.find(x=>x.id===id),row=document.createElement('div');row.className='rank-card';row.innerHTML=`<span class="rank-position">${i+1}º</span><div class="rank-copy"><strong>${esc(o.label)}</strong><span>${esc(o.detail)}</span></div><div class="rank-actions"><button type="button" aria-label="Subir">↑</button><button type="button" aria-label="Descer">↓</button></div>`;const bs=$$('button',row);bs[0].disabled=i===0;bs[1].disabled=i===order.length-1;bs[0].onclick=()=>moveRank(q,i,-1);bs[1].onclick=()=>moveRank(q,i,1);list.append(row)});
+ const controls=document.createElement('div');controls.className='rank-confirm';const confirm=document.createElement('button');confirm.type='button';confirm.className='ghost-btn rank-confirm-btn'+(confirmed?' is-confirmed':'');confirm.textContent=confirmed?'Ordem confirmada ✓':'Confirmar esta ordem';confirm.onclick=()=>{state.answers[q.id]='confirmed';renderQuestion()};controls.append(confirm,noneButton(q,state.answers[q.id]==='__none'));list.append(controls);
 }
-function statusGlyph(kind){return kind==='match'?'✓':kind==='other'?'↔':kind==='skipped'?'–':'·'}
-function percentage(value,total){return total?Math.round(value/total*100):null}
-function candidateCompatibility(candidate){
-  const statuses=D.questions.map(q=>candidateStatus(q,candidate.slug));
-  const comparable=statuses.filter(s=>s.kind==='match'||s.kind==='other');
-  const matches=comparable.filter(s=>s.kind==='match').length;
-  return {statuses,matches,comparable:comparable.length,answered:Object.values(state.answers).filter(a=>a&&a!=='__skip').length,score:percentage(matches,comparable.length)};
+function moveRank(q,i,d){const o=state.rankOrders[q.id],j=i+d;if(j<0||j>=o.length)return;[o[i],o[j]]=[o[j],o[i]];state.answers[q.id]=null;renderQuestion()}
+function next(){if(!answered(current()))return;if(state.index<14){state.index++;renderQuestion();scrollTo(0,0)}else renderResults()}
+function previous(){if(state.index){state.index--;renderQuestion();scrollTo(0,0)}}
+function questionScore(q,slug){
+ const answer=state.answers[q.id];if(answer==='__none'||!answer)return{kind:'skipped',score:null};const documented=q.options.filter(o=>o.positions.some(p=>p.candidate===slug));if(!documented.length)return{kind:'unknown',score:null};
+ let score=0;if(q.mode==='single'){const selected=q.options.find(o=>o.id===answer);score=selected.positions.some(p=>p.candidate===slug)?1:0}
+ else if(q.mode==='multi'){const selected=q.options.filter(o=>answer.includes(o.id));score=selected.filter(o=>o.positions.some(p=>p.candidate===slug)).length/selected.length}
+ else{const weights=[1,.67,.33,0],order=state.rankOrders[q.id];score=Math.max(...documented.map(o=>weights[order.indexOf(o.id)]??0))}
+ const positions=documented.flatMap(o=>o.positions.filter(p=>p.candidate===slug).map(p=>({...p,choice:o.label})));return{kind:score===1?'match':score===0?'other':'partial',score,positions};
 }
-
+function compatibility(c){const statuses=D.questions.map(q=>questionScore(q,c.slug));const macroScores=D.macros.map(m=>{const values=statuses.filter((_,i)=>D.questions[i].macro===m).map(s=>s.score).filter(Number.isFinite);return values.length?values.reduce((a,b)=>a+b,0)/values.length:null});const values=macroScores.filter(Number.isFinite);return{statuses,macroScores,score:values.length?values.reduce((a,b)=>a+b,0)/values.length:null,coverage:values.length}}
+function answerSummary(q){const a=state.answers[q.id];if(a==='__none')return'Nenhuma destas medidas';if(q.mode==='single')return q.options.find(o=>o.id===a).label;if(q.mode==='multi')return q.options.filter(o=>a.includes(o.id)).map(o=>o.label).join(' + ');return state.rankOrders[q.id].map((id,i)=>`${i+1}º ${q.options.find(o=>o.id===id).label}`).join(' · ')}
 function renderResults(){
-  show('result');
-  const answered=Object.values(state.answers).filter(x=>x!=='__skip').length;
-  const skipped=D.questions.length-answered;
-  $('#resultSummary').innerHTML='<span class="summary-pill"><strong>'+answered+'</strong> temas respondidos</span>'+(skipped?'<span class="summary-pill"><strong>'+skipped+'</strong> sem resposta</span>':'')+'<span class="summary-pill"><strong>13</strong> candidaturas ordenadas por compatibilidade</span><span class="summary-pill">Base: planos oficiais · TSE</span>';
-
-  const strip=$('#profileStrip');strip.innerHTML='';
-  D.questions.forEach((q,i)=>{
-    const ans=state.answers[q.id],opt=q.options.find(o=>o.id===ans),item=document.createElement('article');
-    item.className='profile-item';
-    item.innerHTML='<span class="profile-num"></span><div><small></small><strong></strong></div>';
-    $('.profile-num',item).textContent=String(i+1).padStart(2,'0');
-    $('small',item).textContent=q.theme;
-    $('strong',item).textContent=!ans||ans==='__skip'?'Não respondido':opt.label;
-    strip.append(item);
-  });
-  const topicGuide=$('#topicGuide');topicGuide.innerHTML='';
-  D.questions.forEach((q,i)=>{const item=document.createElement('li');item.textContent=String(i+1).padStart(2,'0')+' · '+q.theme;topicGuide.append(item)});
-
-  const ranked=D.candidates.map(candidate=>({candidate,compatibility:candidateCompatibility(candidate)}))
-    .sort((a,b)=>(b.compatibility.score??-1)-(a.compatibility.score??-1)||b.compatibility.comparable-a.compatibility.comparable||a.candidate.name.localeCompare(b.candidate.name,'pt-BR'))
-  const featured=$('#featuredCandidate');featured.innerHTML='';
-  if(ranked.length) featured.append(renderCandidateRow(ranked[0].candidate,ranked[0].compatibility,0,true));
-  const matrix=$('#candidateMatrix');matrix.innerHTML='';
-  ranked.slice(1).forEach(({candidate,compatibility},index)=>matrix.append(renderCandidateRow(candidate,compatibility,index+1)));
-
-  const lib=$('#libraryGrid');lib.innerHTML='';
-  D.candidates.slice().sort((a,b)=>a.name.localeCompare(b.name,'pt-BR')).forEach(c=>{
-    const a=document.createElement('a');a.className='library-card';a.href=c.planUrl;a.target='_blank';a.rel='noopener noreferrer';
-    a.innerHTML='<div class="lib-person"><img alt=""><div><strong></strong><span></span></div></div><b aria-hidden="true">↗</b>';
-    $('img',a).src='assets/candidates/'+c.slug+'.jpg';$('img',a).alt='Foto oficial de '+c.name;
-    $('strong',a).textContent=c.name;$('span',a).textContent=c.party+' · nº '+c.number+' · '+c.pages+' páginas';lib.append(a);
-  });
+ show('result');$('#resultSummary').innerHTML='<span class="summary-pill"><strong>15</strong> decisões respondidas</span><span class="summary-pill"><strong>5</strong> macrotemas com o mesmo peso</span><span class="summary-pill"><strong>13</strong> planos comparados</span><span class="summary-pill">Fonte: planos oficiais · TSE</span>';
+ const strip=$('#profileStrip');strip.innerHTML='';D.macros.forEach((m,i)=>{const item=document.createElement('article');item.className='profile-item';item.innerHTML=`<span class="profile-num">0${i+1}</span><div><small>MACROTEMA</small><strong>${esc(m)}</strong></div>`;strip.append(item)});
+ const guide=$('#topicGuide');guide.innerHTML='';D.macros.forEach((m,i)=>{const li=document.createElement('li');li.textContent=`${i+1}. ${m}`;guide.append(li)});
+ const ranked=D.candidates.map(candidate=>({candidate,comp:compatibility(candidate)})).sort((a,b)=>(b.comp.score??-1)-(a.comp.score??-1)||b.comp.coverage-a.comp.coverage||a.candidate.name.localeCompare(b.candidate.name,'pt-BR'));
+ $('#featuredCandidate').replaceChildren(candidateRow(ranked[0],0,true));const matrix=$('#candidateMatrix');matrix.innerHTML='';ranked.slice(1).forEach((e,i)=>matrix.append(candidateRow(e,i+1,false)));
+ const lib=$('#libraryGrid');lib.innerHTML='';[...D.candidates].sort((a,b)=>a.name.localeCompare(b.name,'pt-BR')).forEach(c=>{const a=document.createElement('a');a.className='library-card';a.href=c.planUrl;a.target='_blank';a.rel='noopener noreferrer';a.innerHTML=`<div class="lib-person"><img src="assets/candidates/${esc(c.slug)}.jpg" alt="Foto oficial de ${esc(c.name)}"><div><strong>${esc(c.name)}</strong><span>${esc(c.party)} · nº ${c.number} · ${c.pages} páginas</span></div></div><b aria-hidden="true">↗</b>`;lib.append(a)});
 }
-function radarPoint(index,radius,count){
-  const angle=-Math.PI/2+(Math.PI*2*index/count);
-  return [100+Math.cos(angle)*radius,100+Math.sin(angle)*radius];
+function point(i,r){const a=-Math.PI/2+Math.PI*2*i/5;return[160+Math.cos(a)*r,150+Math.sin(a)*r]}
+function labelLines(m){const out=[],words=m.split(' ');let line='';for(const w of words){if((line+' '+w).trim().length>18){out.push(line);line=w}else line=(line+' '+w).trim()}if(line)out.push(line);return out}
+function radar(scores,name,featured){
+ const radius=featured?82:70,poly=r=>D.macros.map((_,i)=>point(i,r).join(',')).join(' '),rings=[.25,.5,.75,1].map(n=>`<polygon points="${poly(radius*n)}"/>`).join(''),axes=D.macros.map((_,i)=>{const[x,y]=point(i,radius);return`<line x1="160" y1="150" x2="${x}" y2="${y}"/>`}).join('');
+ const area=scores.map((v,i)=>point(i,Number.isFinite(v)?Math.max(5,v*radius):0).join(',')).join(' '),dots=scores.map((v,i)=>{if(!Number.isFinite(v))return'';const[x,y]=point(i,Math.max(5,v*radius));return`<circle cx="${x}" cy="${y}" r="3"><title>${esc(D.macros[i])}: ${Math.round(v*100)}%</title></circle>`}).join('');
+ const labels=D.macros.map((m,i)=>{const[x,y]=point(i,radius+38),lines=labelLines(m);return`<text x="${x}" y="${y-lines.length*5}">${lines.map((l,j)=>`<tspan x="${x}" dy="${j?11:0}">${esc(l)}</tspan>`).join('')}</text>`}).join('');
+ const wrap=document.createElement('div');wrap.className='radar-wrap';wrap.setAttribute('role','img');wrap.setAttribute('aria-label',`Radar de cinco macrotemas de ${name}`);wrap.innerHTML=`<svg class="compatibility-radar" viewBox="0 0 320 300" aria-hidden="true"><g class="radar-grid">${rings}${axes}</g><polygon class="radar-area" points="${area}"/><g class="radar-values">${dots}</g><g class="radar-labels">${labels}</g></svg>`;return wrap;
 }
-function renderRadar(statuses,name){
-  const count=statuses.length, levels=[28,52,76];
-  const polygon=radius=>Array.from({length:count},(_,i)=>radarPoint(i,radius,count).join(',')).join(' ');
-  const axes=Array.from({length:count},(_,i)=>{const [x,y]=radarPoint(i,76,count);return '<line x1="100" y1="100" x2="'+x.toFixed(1)+'" y2="'+y.toFixed(1)+'" />'}).join('');
-  const rings=levels.map(r=>'<polygon points="'+polygon(r)+'" />').join('');
-  const dots=statuses.map((st,i)=>{const radius=st.kind==='match'?76:st.kind==='other'?8:42;const [x,y]=radarPoint(i,radius,count);const value=st.kind==='match'?'100%':st.kind==='other'?'0%':'sem posição identificada';return '<circle class="radar-dot '+st.kind+'" cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="4"><title>'+D.questions[i].theme+': '+value+'</title></circle>'}).join('');
-  const labels=statuses.map((_,i)=>{const [x,y]=radarPoint(i,92,count);return '<text x="'+x.toFixed(1)+'" y="'+(y+3).toFixed(1)+'">'+String(i+1).padStart(2,'0')+'</text>'}).join('');
-  const wrapper=document.createElement('div');wrapper.className='radar-wrap';wrapper.setAttribute('role','img');wrapper.setAttribute('aria-label','Radar de compatibilidade por tópico de '+name+'. Os tópicos estão identificados na legenda.');
-  wrapper.innerHTML='<svg class="compatibility-radar" viewBox="0 0 200 200" aria-hidden="true"><g class="radar-grid">'+rings+axes+'</g><g class="radar-labels">'+labels+'</g><g>'+dots+'</g></svg>';
-  return wrapper;
+function candidateRow(entry,rank,featured){
+ const c=entry.candidate,comp=entry.comp,el=document.createElement('article');el.className='matrix-candidate'+(featured?' is-featured':'');
+ const person=document.createElement('div');person.className='matrix-person';person.innerHTML=`<span class="candidate-rank">${String(rank+1).padStart(2,'0')}</span><img class="candidate-photo" src="assets/candidates/${esc(c.slug)}.jpg" alt="Foto oficial de ${esc(c.name)}"><div class="candidate-id"><strong>${esc(c.name)}</strong><span>${esc(c.party)} · nº ${c.number}</span><a href="${esc(c.planUrl)}" target="_blank" rel="noopener noreferrer">Plano oficial ↗</a></div>`;
+ const score=document.createElement('div');score.className='compatibility-score';score.innerHTML=`<strong>${comp.score===null?'—':Math.round(comp.score*100)+'%'}</strong><span>compatibilidade geral</span><small>${comp.coverage} de 5 macrotemas comparáveis</small>`;
+ const detail=document.createElement('div');detail.className='candidate-detail';detail.hidden=true;const trigger=document.createElement('button');trigger.type='button';trigger.className='candidate-expand';trigger.textContent='Ver evidências';trigger.onclick=()=>{detail.hidden=!detail.hidden;trigger.textContent=detail.hidden?'Ver evidências':'Fechar evidências';if(!detail.hidden&&!detail.childElementCount)D.questions.forEach((q,i)=>detail.append(detailCard(q,comp.statuses[i],c)))};
+ const main=document.createElement('div');main.className='matrix-row-main';main.append(person,score,radar(comp.macroScores,c.name,featured),trigger);el.append(main,detail);return el;
 }
-function renderCandidateRow(c,compatibility,rank,featured=false){
-  const {statuses,matches,comparable,answered,score}=compatibility;
-  const el=document.createElement('article');el.className='matrix-candidate'+(featured?' is-featured':'');
-
-  const person=document.createElement('div');person.className='matrix-person';
-  person.innerHTML='<span class="candidate-rank" aria-label="Posição no resultado"></span><img class="candidate-photo" alt=""><div class="candidate-id"><strong></strong><span></span><a target="_blank" rel="noopener noreferrer">Plano oficial ↗</a></div>';
-  $('.candidate-photo',person).src='assets/candidates/'+c.slug+'.jpg';
-  $('.candidate-photo',person).alt='Foto oficial de '+c.name;
-  $('.candidate-id strong',person).textContent=c.name;
-  $('.candidate-id span',person).textContent=c.party+' · nº '+c.number;
-  $('.candidate-id a',person).href=c.planUrl;
-  $('.candidate-rank',person).textContent=String(rank+1).padStart(2,'0');
-
-  const scoreCard=document.createElement('div');scoreCard.className='compatibility-score';
-  scoreCard.innerHTML='<strong></strong><span></span><small></small>';
-  $('strong',scoreCard).textContent=score===null?'—':score+'%';
-  $('span',scoreCard).textContent='compatibilidade';
-  $('small',scoreCard).textContent=comparable?matches+' de '+comparable+' tópicos comparáveis'+(answered!==D.questions.length?' · '+answered+' respondidos':''):'Sem posição comparável';
-
-  const radar=renderRadar(statuses,c.name);
-  const detail=document.createElement('div');detail.className='candidate-detail';detail.hidden=true;
-  const toggleDetail=(focusIndex)=>{
-    const opening=detail.hidden;
-    detail.hidden=!opening;
-    el.classList.toggle('is-open',opening);
-    if(opening){
-      detail.innerHTML='';
-      statuses.forEach((st,i)=>detail.append(renderStatusDetail(st,D.questions[i],c,i===focusIndex)));
-      if(Number.isInteger(focusIndex)){
-        requestAnimationFrame(()=>{
-          const focus=$('.status-detail.is-focus',detail);
-          if(focus) focus.scrollIntoView({block:'nearest',behavior:'smooth'});
-        });
-      }
-    }
-  };
-
-  const trigger=document.createElement('button');trigger.type='button';trigger.className='candidate-expand';
-  trigger.textContent='Ver evidências';
-  trigger.addEventListener('click',()=>toggleDetail());
-
-  const top=document.createElement('div');top.className='matrix-row-main';top.append(person,scoreCard,radar,trigger);
-  el.append(top,detail);
-  return el;
+function detailCard(q,s,c){
+ const el=document.createElement('section');
+ const pages=[...new Set(s.positions?.flatMap(p=>p.pages)||[])].sort((a,b)=>a-b);
+ const documented=s.positions?.map(p=>p.choice).filter((v,i,a)=>a.indexOf(v)===i).join(' · ')||'O plano não traz posição comparável nesta pergunta.';
+ el.className='status-detail '+s.kind;
+ el.innerHTML=`<div class="detail-status"><span class="status-icon">${s.score===null?'—':Math.round(s.score*100)+'%'}</span><div><small>${esc(q.macro)}</small><strong>${esc(q.prompt)}</strong></div></div><p class="detail-choice"><b>Sua resposta:</b> ${esc(answerSummary(q))}</p><p class="detail-evidence"><b>No plano:</b> ${esc(documented)}</p><div class="detail-foot"><span>${pages.length?pages.map(p=>'p.'+p).join(' · '):'sem cobertura identificada'}</span><a href="${esc(c.planUrl)}" target="_blank" rel="noopener noreferrer">Conferir no plano ↗</a></div>`;
+ return el;
 }
-function renderStatusDetail(st,q,c,focus){
-  const item=document.createElement('section');item.className='status-detail '+st.kind+(focus?' is-focus':'');
-  item.innerHTML='<div class="detail-status"><span class="status-icon"></span><div><small></small><strong></strong></div></div><p class="detail-choice"></p><p class="detail-evidence"></p><div class="detail-foot"><span></span><a target="_blank" rel="noopener noreferrer">Abrir plano oficial ↗</a></div>';
-  $('.status-icon',item).textContent=statusGlyph(st.kind);
-  $('small',item).textContent=q.theme;
-  $('.detail-status strong',item).textContent=st.label;
-  $('.detail-choice',item).textContent=st.kind==='match'?'Compatibilidade: 100% · Sua escolha: '+st.choice:st.kind==='other'?'Compatibilidade: 0% · Direção registrada no plano: '+st.choice:st.kind==='skipped'?'Você não respondeu este tema.':'Sem percentual: não foi identificada, no mapeamento atual, uma posição comparável para este plano.';
-  $('.detail-evidence',item).textContent=st.evidence||'';
-  $('.detail-foot span',item).textContent=st.pages?st.pages.map(p=>'p.'+p).join(' · '):'—';
-  $('.detail-foot a',item).href=c.planUrl;
-  if(!st.evidence) $('.detail-evidence',item).remove();
-  return item;
-}
-
-function info(){state.infoFrom=state.screen;show('info')}
-function backInfo(){if(state.infoFrom==='quiz'){show('quiz');renderQuestion()}else show(state.infoFrom==='result'?'result':'home')}
-document.addEventListener('click',e=>{
-  const b=e.target.closest('[data-action]');if(!b)return;
-  const a=b.dataset.action;
-  if(a==='start')start();else if(a==='next')next();else if(a==='previous')previous();else if(a==='restart')start();
-  else if(a==='methodology'||a==='how')info();else if(a==='back-info')backInfo();
-  else if(a==='exit'||a==='home')show('home');
-});
-document.addEventListener('keydown',e=>{
-  if(state.screen!=='quiz')return;
-  if(e.key==='ArrowLeft')previous();
-  if(e.key==='ArrowRight'&&!$('#nextBtn').disabled)next();
-});
-initOrder();
+function info(){state.infoFrom=state.screen;show('info')}function backInfo(){if(state.infoFrom==='quiz'){show('quiz');renderQuestion()}else show(state.infoFrom==='result'?'result':'home')}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-action]');if(!b)return;const a=b.dataset.action;if(a==='start'||a==='restart')start();else if(a==='next')next();else if(a==='previous')previous();else if(a==='methodology'||a==='how')info();else if(a==='back-info')backInfo();else if(a==='exit'||a==='home')show('home')});
+document.addEventListener('keydown',e=>{if(state.screen!=='quiz')return;if(e.altKey&&e.key==='ArrowLeft')previous();if(e.altKey&&e.key==='ArrowRight'&&!$('#nextBtn').disabled)next()});
 })();

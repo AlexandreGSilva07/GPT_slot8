@@ -1,0 +1,176 @@
+50: 1. Economia, Trabalho e Responsabilidade Fiscal
+51: * Abertura de empresa: página 27
+52: * Banco nacional de vagas de emprego: página 44
+53: * CAIXA - banco da prosperidade: página 46
+54: * Crédito para empreender: página 45 e 46
+55: * Dívida Pública: página 29 , 33 e 7
+56: * Equilíbrio fiscal: página 71
+57: * Inflação no centro da meta: página 33
+58: * Minerais críticos: página 55 , 56 e 63
+59: * Negociado sobre o legislado: página 44 e 45
+60: * Primeira empresa: página 45
+61: * Primeiro emprego: página 43
+62: * Redução de impostos: página 30 , 53 , 71 e 72
+63: * Redução do custo do trabalho: página 43 e 44
+64: * Reforma Tributária: página 30 , 71 e 72
+65: * Reformulação das regras fiscais: página 70 e 71
+66: * Resistir à República Sindical: página 44 e 45
+67: * Trabalhador acima de 50 anos: página 43 e 44
+68: 2. Saúde Pública e Assistência
+69: * Agendamento ágil por inteligência artificial: página 25 e 26
+70: * Apostas com recurso de programas sociais: página 32 e 33
+71: * Apostas conscientização: página 32 e 33
+72: * Casa Verde e Amarela: página 47 e 48
+73: * Digitalização do SUS: página 25 e 26
+74: * Exames preventivos: página 37 e 38
+75: * Horários ociosos da rede privada: página 37 e 38
+76: * Hospitais universitários federais - modernização: página 37 e 38
+77: * Idosos - Casa segura para envelhecer: página 38 e 39
+78: * Idosos - Instituições de longa permanência: página 38 e 39
+79: * Imunização: página 37 e 38
+80: * INSS sem fila: página 26 e 73
+81: * Pacote antifraude: página 72 e 73
+82: * Prevenção: página 37 e 38
+83: * Programa de atendimento aos idosos: página 37 e 38
+84: * Programas sociais - manutenção: página 42 e 43
+85: * Prontuário eletrônico único: página 25 e 26
+86: * Rede Nacional de Cuidado: página 21 , 38 e 39
+87: * Remédio à domicílio: página 37 e 38
+88: * Retorno sem fila pós seguro desemprego: página 42 e 43
+89: * Saúde da família: página 37 e 38
+90: * Saúde mental: página 38 e 39
+91: * Tabela SUS - Correção: página 37 e 38
+92: * Telessaúde: página 37 e 38
+93: 3. Segurança Pública
+94: * Auxílio às famílias das vítimas: página 15
+95: * Castração química para estupradores: página 14
+96: * Facções e crime organizado: página 13
+97: * Feminicídio - Canais de denúncia: página 18 e 19
+98: * Feminicídio - tolerância zero: página 14
+99: * Fronteiras: página 13 e 14
+100: * Investimento em segurança pública: página 15
+101: * Maioridade penal: página 13
+102: * Presídios: página 14
+103: * Progressão de pena zero para crimes hediondos: página 15 e 16
+104: * Reconhecimento facial: página 15
+105: * Retomar áreas sob domínio de facções: página 47 e 48
+106: * Roubo de celular: página 16
+107: * Tráfico e cocaína nos portos: página 13 , 14 e 15
+108: 4. Educação
+109: * Alfabetização (método fônico): página 34 e 35
+110: * Altas habilidades: página 35 e 36
+111: * Capacitação contínua de professores: página 34 e 35
+112: * Conectividade nas escolas: página 24
+113: * Creche - ampliação de vagas: página 21
+114: * Economia digital no currículo escolar: página 34 , 35 e 36
+115: * Ensino superior e inovação: página 36 e 37
+116: * Ensino técnico: página 36 e 37
+117: * Escola em tempo integral: página 34 , 35 e 36
+118: * Escola nas férias: página 34 , 35 e 36
+119: * Escola sem doutrinação: página 34 , 35 e 36
+120: * Escolas cívico-militares: página 34 , 35 e 36
+121: * Esporte na escola: página 40 e 41
+122: * Financiamento estudantil: página 36 e 37
+123: * Gestão escolar por resultados: página 34 , 35 e 36
+124: * Política Nacional de Formação de Talentos: página 34 , 35 e 36
+125: * Reforço escolar - Programa Acolher: página 34 , 35 e 36
+126: * Voucher educacional em falta de vagas: página 34 , 35 e 36
+127: * Voucher-creche: página 21
+128: 5. Política Externa e Inserção Global
+130: * Abertura comercial: página 62 e 63
+131: * Adesão à OCDE: página 63
+132: * Cadeias globais de valor: página 62 e 63
+133: * Competitividade doméstica: página 64
+134: * Defesa nacional: página 62 e 63
+135: * Fortalecimento de multinacionais brasileiras: página 62 e 63
+136: * Soberania: página 61 e 62
+137: * Transição energética: página 62 e 63
+139: 6. Direitos Humanos, Equidade e Inclusão Social
+140: * Bônus de internet: página 18
+141: * Canais de denúncia: página 18 e 19
+142: * Capacitação feminina: página 20
+143: * Central da Mulher: página 17 e 18
+144: * ClarIA (assistente virtual): página 18 e 19
+145: * Doenças Raras: página 38 e 39
+146: * Escritura da casa própria: página 20
+147: * Espaços de acolhimento: página 20
+148: * Esporte feminino: página 40 e 41
+149: * Ganha, Ganha: página 19 , 20 e 46
+150: * Independência financeira: página 19
+151: * Orientação financeira: página 19 e 33
+152: * Paradesporto: página 40 e 41
+153: * Pessoas com deficiência: página 38 e 39
+154: * Saúde para Elas: página 21 e 22
+155: * Trabalho para elas: página 20
+156: * Transtorno do Espectro Autista: página 38 e 39
+157: 7. Questão Agrária e Meio Ambiente
+158: * Amazônia: página 58 e 59
+159: * Armazenamento de safras: página 31 , 32 , 53 , 54 e 55
+160: * Bioeconomia: página 57 , 58 , 59 , 60 e 61
+161: * Cadastro ambiental rural: página 54 e 55
+162: * Cadastro fundiário e ambiental: página 27 e 28
+163: * Combustíveis sustentáveis de aviação: página 53 , 54 e 55
+164: * Conectividade nas áreas rurais: página 24
+165: * Desenvolvimento sustentável: página 55 , 56 , 57 , 58 e 59
+166: * Direito de propriedade: página 53 , 54 e 55
+167: * Fiscalização ambiental: página 57 , 58 e 59
+168: * Floresta preservada: página 57 , 58 e 59
+169: * Irrigação: página 27 , 28 , 53 , 54 e 55
+170: * Lixão zero: página 47 e 48
+171: * Mercado de carbono: página 57 , 58 e 59
+172: * O povo da floresta não é inimigo: página 57 , 58 e 59
+173: * Outorgas de irrigação: página 27 e 28
+174: * Pagamento por serviços ambientais: página 53 , 54 , 55 , 57 , 58 e 59
+175: * Rastreabilidade de cadeias produtivas: página 27 e 28
+176: * Redução de queimadas / desmatamento: página 57 , 58 e 59
+177: * Saneamento básico: página 47 , 48 , 57 , 58 e 59
+178: * Saneamento rural: página 47 e 48
+179: * Segurança alimentar: página 31 , 32 , 52 , 53 , 54 e 55
+180: * Seguro rural: página 31 , 32 , 53 , 54 e 55
+181: * Títulos rurais: página 27 , 28 , 53 , 54 e 55
+182: * Transparência de financiadores: página 57 , 58 e 59
+183: 8. Governança, Transparência e Reformas de Estado
+184: * 100% dos serviços públicos digitalizados: página 24 e 25
+185: * Agências reguladoras: página 69 e 70
+186: * Avaliação de políticas públicas: página 70 e 71
+187: * Combate à corrupção: página 10 , 11 , 12 e 70
+188: * Corte de Ministérios: página 69 , 70 e 71
+189: * Fim da reeleição: página 66
+190: * Identidade digital única: página 24 e 25
+191: * Judiciário - fim das decisões monocráticas: página 65 e 66
+192: * Processo orçamentário: página 68 , 69 , 70 e 71
+193: * Profissionalização da gestão pública: página 69 e 70
+194: * Programa Nacional de Desestatização: página 69 e 70
+195: * Reforma Administrativa: página 69 e 70
+196: * Reforma do judiciário: página 65 e 66
+197: * Reforma política: página 66
+198: * Revisão normativa infralegal: página 69 e 70
+199: * Revogaço regulatório: página 27 , 69 e 70
+200: * Tesouraço: página 68
+201: * Transparência: página 68 , 69 , 70 , 71 , 72 e 73
+211: Serviços eleitorais
+213: * Autoatendimento eleitoral
+214: * Certidões
+215: * Desincompatibilização e afastamentos
+216: * Eleitorado no Exterior
+217: * Justificativa eleitoral
+218: * Local de votação/zonas eleitorais
+219: * Quitação de multas
+220: * Título Eleitoral - FAQ
+222: Eleições
+223: * Biometria
+224: * Calendário eleitoral
+225: * Contas eleitorais
+226: * Eleições 2026
+227: * Eleições, plebiscitos e referendos
+228: * Estatísticas
+229: * Memória
+230: * Resultados das eleições
+231: * Urna eletrônica†www.justicaeleitoral.jus.br
+233: Partidos
+235: * Contas partidárias
+236: * Criação de partido político
+237: * Federações partidárias
+238: * Filiação partidária
+239: * Partidos registrados no TSE
+240: * Propaganda partidária

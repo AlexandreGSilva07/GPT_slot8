@@ -1,0 +1,114 @@
+50: 1. Economia, Trabalho e Responsabilidade Fiscal
+51: * Fim da escala 6x1 sem redução de salários e direitos: página 7 e 8
+52: * Redução da jornada de trabalho para 36 horas semanais (rumo ao pleno emprego): página 8
+53: * Aumento de 100% no salário mínimo rumo ao piso do DIEESE: página 8
+54: * Revogação da reforma trabalhista e da lei das terceirizações: página 8
+55: * Expropriação de grandes empresas estratégicas (Petrobras, Vale, siderurgia e agronegócio exportador): página 6 e 26
+56: * Controle do sistema financeiro, suspensão do pagamento da dívida pública e auditoria: página 6 , 27 e 28
+57: 2. Saúde Pública e Assistência
+59: * Defesa do SUS público, universal, gratuito e 100% estatal: página 11 e 26
+60: * Fim das privatizações, Organizações Sociais (OSs) e Fundações na saúde: página 11
+61: * Proibição de investimentos públicos em Comunidades Terapêuticas e expansão dos CAPS: página 11
+62: * Produção pública de medicamentos e insumos estratégicos: página 11
+63: * Bolsa de um salário mínimo para desempregados enquanto não houver pleno emprego: página 8
+64: 3. Segurança Pública e Justiça
+65: * Desmilitarização da Polícia Militar e unificação das polícias em uma única instituição civil: página 19
+66: * Fim da Justiça Militar e punição exemplar para crimes praticados por agentes do Estado: página 19
+67: * Descriminalização das drogas e revogação da Lei Antidrogas: página 19
+68: * Implantação de câmeras corporais com armazenamento sob controle de órgãos civis: página 19
+69: * Combate ao crime organizado atingindo seu patrimônio, bancos e redes financeiras: página 19
+70: 4. Educação, Ciência e Meio Ambiente
+71: * Educação 100% pública, laica, gratuita e de qualidade para toda a população: página 11 e 12
+72: * Nenhuma verba pública para empresários da educação (fim de PPPs e terceirizações): página 12
+73: * Revogação da BNCC, do Novo Ensino Médio e combate à militarização das escolas: página 12
+74: * Valorização profissional, carreira e salários dignos para os profissionais da educação: página 12
+75: * Garantia de permanência estudantil (transporte, alimentação e bolsas): página 12
+76: 5. Política Externa e Inserção Global
+78: * Ruptura com o imperialismo e recusa a acordos de submissão (EUA, Europa e China): página 3 e 4
+79: * Defesa da soberania nacional sobre recursos estratégicos e recusa ao tarifaço externo: página 3 e 4
+80: * Oposição a tratados que transformam o Brasil em exportador exclusivo de commodities: página 4
+82: 6. Direitos Humanos, Equidade e Inclusão Social
+83: * Criminalização da LGBTfobia, da misoginia e do racismo: página 19 , 21 e 23
+84: * Legalização do aborto e garantia de atendimento seguro pelo SUS: página 22
+85: * Cotas trans nas universidades e concursos públicos, combatendo o apartheid trans: página 23 e 24
+86: * Combate ao capacitismo e garantia de acessibilidade universal e intérprete de Libras: página 24
+87: * Fim da violência contra a mulher, criação de casas-abrigo e delegacias 24h: página 21
+88: 7. Questão Agrária, Propriedade e Direito à Cidade
+89: * Reforma agrária com expropriação dos grandes latifúndios e do agronegócio sem indenização: página 15 e 17
+90: * Demarcação imediata de terras indígenas e titulação de territórios quilombolas: página 14 e 15
+91: * Fim dos subsídios públicos e créditos ao grande agronegócio predatório: página 14 e 17
+92: * Proibição da exploração de petróleo na Margem Equatorial e defesa rigorosa dos biomas: página 14 e 15
+93: * Apoio à agroecologia e fortalecimento da soberania alimentar: página 16
+94: 8. Governança, Transparência e Reformas de Estado
+95: * Construção de um governo socialista da classe trabalhadora sem capitalistas: página 28 , 29 e 30
+96: * Estabelecimento de um Estado operário revolucionário baseado na democracia operária: página 31
+97: * Organização de conselhos populares e comitês de base nos locais de trabalho, estudo e moradia: página 30 e 31
+98: * Soberania digital com proibição de hospedagem de dados governamentais em nuvens estrangeiras: página 8 e 27
+108: Serviços eleitorais
+110: * Autoatendimento eleitoral
+111: * Certidões
+112: * Desincompatibilização e afastamentos
+113: * Eleitorado no Exterior
+114: * Justificativa eleitoral
+115: * Local de votação/zonas eleitorais
+116: * Quitação de multas
+117: * Título Eleitoral - FAQ
+119: Eleições
+120: * Biometria
+121: * Calendário eleitoral
+122: * Contas eleitorais
+123: * Eleições 2026
+124: * Eleições, plebiscitos e referendos
+125: * Estatísticas
+126: * Memória
+127: * Resultados das eleições
+128: * Urna eletrônica†www.justicaeleitoral.jus.br
+130: Partidos
+132: * Contas partidárias
+133: * Criação de partido político
+134: * Federações partidárias
+135: * Filiação partidária
+136: * Partidos registrados no TSE
+137: * Propaganda partidária
+139: Comunicação
+140: * Comunicação
+142: Jurisprudência
+144: * Informativo de Jurisprudência (Infojur TSE)
+145: * Julgados históricos
+146: * Jurisprudência da Justiça Eleitoral
+147: * Jurisprudência por assunto
+148: * Perguntas frequentes sobre alguns serviços de jurisprudência
+149: * Pesquisa de Jurisprudência
+150: * Revista de Jurisprudência do TSE
+151: * Súmulas
+153: Legislação
+154: * Código Eleitoral Anotado e Legislação Complementar
+155: * Legislação compilada
+156: * Matérias de interesse da JE (SinTSE)
+157: * Pesquisa por e-mail
+158: * Regimento Interno
+159: * Sistematização das Normas Eleitorais
+161: Serviços judiciais
+163: * Audiências
+164: * Certidões judiciais
+165: * Consultas Públicas
+166: * Processos
+167: * Publicações oficiais
+168: * Sessão plenária
+170: TSE
+171: * Biblioteca
+172: * Catálogo de publicações
+173: * Corregedoria-Geral Eleitoral
+174: * Escola Judiciária Eleitoral
+175: * Gestão documental
+176: * Ministros
+177: * Museu do Voto
+178: * Organograma
+179: * Sobre o TSE
+181: Justiça Eleitoral
+183: * História
+184: * Ordem do Mérito do Tribunal Superior Eleitoral - Assis Brasil
+185: * Prêmio Justiça Eleitoral e Selo Qualidade Eleitoral
+186: * TREs
+189: Caso necessite de informações institucionais acesse Ouvidoria.
+217: [Button: Aceitar todos os cookies] [Button: Rejeitar cookies não necessários] Gerenciar preferências

@@ -1,0 +1,163 @@
+50: 1. Economia, Trabalho e Responsabilidade Fiscal
+51: * Agenda nacional de produtividade: página 14
+52: * Crescimento (Estratégia Brasil 2040): página 14
+53: * Despesas obrigatórias (controle): página 12
+54: * Estabilização fiscal: página 12
+55: * Indústria (reindustrialização e transição): página 42 e 43
+56: * Infraestrutura e logística: página 46
+57: * Investimento público e privado: página 13 e 14
+58: * Mercado de trabalho (modernização): página 15
+59: * Micro e pequenas empresas (fortalecimento): página 15
+60: * Mineração estratégica: página 53
+61: * Orçamento da Verdade: página 12
+62: * Revisão de subsídios e benefícios tributários: página 12
+63: 2. Saúde Pública e Assistência
+64: * Assistência social e Sistema Único de Assistência Social (SUAS): página 61 e 63
+65: * Atenção Primária: página 78
+66: * Câncer (Rede contra o câncer): página 80
+67: * Crianças e Adolescentes (Prioridade Absoluta): página 62
+68: * Doenças raras: página 93
+69: * Fila transparente e regulação inteligente: página 77
+70: * Hospital inteligente (SUS digital): página 89
+71: * Infância (Saúde da): página 82
+72: * Longevidade e idosos: página 83
+73: * Política e proteção social: página 61
+74: * Saúde mental: página 84
+75: * Transferência de renda: página 61
+76: * Vacinas, vigilância e resposta a emergências: página 88
+77: 3. Segurança Pública e Justiça
+78: * Asfixia financeira do crime organizado: página 17
+79: * Combate à corrupção: página 20
+80: * Controle do sistema penitenciário (REDAD): página 18
+81: * Cooperação sul-americana (SULPOL): página 18
+82: * Defesa Nacional e Soberania: página 30
+83: * Enriquecimento ilícito (Lei do): página 20
+84: * Fronteiras, portos e aeroportos: página 18
+85: * Inteligência criminal (Sistema Nacional): página 17
+86: * Jogos e apostas on-line (regulamentação): página 19
+87: * Maioridade penal (redução): página 20
+88: * Ministério da Segurança Pública: página 16
+89: * Terrorismo doméstico (Lei do): página 17
+90: * Violência contra mulheres e crianças: página 19
+91: 4. Educação, Ciência e Meio Ambiente
+92: * Alfabetização na idade certa (Pacto Nacional): página 32
+93: * Ciência, Tecnologia e Inovação: página 25
+94: * Conectividade significativa: página 26
+95: * Ensino médio com flexibilidade: página 33
+96: * Ensino superior e inovação: página 33
+97: * Escola em tempo integral: página 33
+98: * Inteligência artificial (desenvolvimento e uso): página 26
+99: * Primeira infância (creches): página 32
+100: * Professores e liderança escolar: página 33
+101: * Recomposição de aprendizagens: página 32
+102: 5. Política Externa e Inserção Global
+104: * Acordos comerciais (Mercosul-União Europeia): página 73
+105: * Ásia, África e Indo-Pacífico (mercados): página 73
+106: * Diplomacia ambiental: página 51
+107: * Diplomacia de Defesa: página 74
+108: * Diplomacia econômica e atração de investimentos: página 74
+109: * Integração sul-americana: página 74
+110: * Multilateralismo (ONU, OMC, G20, BRICS, OCDE): página 74
+111: * Relações exteriores (Estratégia de Inserção): página 72
+112: 6. Direitos Humanos, Equidade e Inclusão Social
+113: * Combate ao Racismo (metas de equidade): página 67
+114: * Comunidades quilombolas: página 68
+115: * Cultura (acesso e financiamento): página 28
+116: * Esporte e paradesporto (inclusão): página 39 e 40
+117: * Igualdade salarial e proteção no trabalho: página 59
+118: * Liberdade religiosa: página 68
+119: * Mulheres (proteção, saúde e igualdade): página 58
+120: * Pessoas com deficiência (inclusão): página 62
+121: * População em situação de rua: página 62
+122: * Povos indígenas (direitos e saúde): página 68 e 86
+123: 7. Questão Agrária, Propriedade e Direito à Cidade
+124: * Agricultura de baixo carbono e bioinsumos: página 22 e 23
+125: * Agronegócio (financiamento e sustentabilidade): página 22
+126: * Biocompetitividade: página 22
+127: * Código Florestal e regularização (CAR): página 23 e 51
+128: * Combate a incêndios, grilagem e desmatamento: página 51
+129: * Energia (transição, biocombustíveis e fontes limpas): página 35 e 37
+130: * Licenciamento ambiental (previsibilidade): página 47 e 50
+131: * Meio ambiente (Pacto Nacional): página 50
+132: * Mercado de carbono: página 51
+133: * Nordeste (segurança hídrica e desenvolvimento): página 64
+134: * Pagamento por Serviços Ambientais: página 51
+135: * Região Amazônica (governança, bioeconomia e proteção): página 69
+136: 8. Governança, Transparência e Reformas de Estado
+137: * Centro de Governo (coordenação): página 9 e 100
+138: * Emendas parlamentares (transparência e reordenação): página 9 , 11 e 13
+139: * Estado digital e serviços integrados: página 6 e 27
+140: * Fim da reeleição no Poder Executivo: página 8
+141: * Maioria de programa (Pacto Nacional): página 8 e 9
+142: * Padrões de integridade e transparência: página 11 e 20
+143: * Plano Plurianual (PPA) orientado a missões: página 100
+144: * Profissionalização da alta administração: página 9
+145: * Reforma do sistema político e partidário: página 10
+146: * Rastreabilidade do financiamento político: página 10
+156: Serviços eleitorais
+158: * Autoatendimento eleitoral
+159: * Certidões
+160: * Desincompatibilização e afastamentos
+161: * Eleitorado no Exterior
+162: * Justificativa eleitoral
+163: * Local de votação/zonas eleitorais
+164: * Quitação de multas
+165: * Título Eleitoral - FAQ
+167: Eleições
+168: * Biometria
+169: * Calendário eleitoral
+170: * Contas eleitorais
+171: * Eleições 2026
+172: * Eleições, plebiscitos e referendos
+173: * Estatísticas
+174: * Memória
+175: * Resultados das eleições
+176: * Urna eletrônica†www.justicaeleitoral.jus.br
+178: Partidos
+180: * Contas partidárias
+181: * Criação de partido político
+182: * Federações partidárias
+183: * Filiação partidária
+184: * Partidos registrados no TSE
+185: * Propaganda partidária
+187: Comunicação
+188: * Comunicação
+190: Jurisprudência
+192: * Informativo de Jurisprudência (Infojur TSE)
+193: * Julgados históricos
+194: * Jurisprudência da Justiça Eleitoral
+195: * Jurisprudência por assunto
+196: * Perguntas frequentes sobre alguns serviços de jurisprudência
+197: * Pesquisa de Jurisprudência
+198: * Revista de Jurisprudência do TSE
+199: * Súmulas
+201: Legislação
+202: * Código Eleitoral Anotado e Legislação Complementar
+203: * Legislação compilada
+204: * Matérias de interesse da JE (SinTSE)
+205: * Pesquisa por e-mail
+206: * Regimento Interno
+207: * Sistematização das Normas Eleitorais
+209: Serviços judiciais
+211: * Audiências
+212: * Certidões judiciais
+213: * Consultas Públicas
+214: * Processos
+215: * Publicações oficiais
+216: * Sessão plenária
+218: TSE
+219: * Biblioteca
+220: * Catálogo de publicações
+221: * Corregedoria-Geral Eleitoral
+222: * Escola Judiciária Eleitoral
+223: * Gestão documental
+224: * Ministros
+225: * Museu do Voto
+226: * Organograma
+227: * Sobre o TSE
+229: Justiça Eleitoral
+231: * História
+232: * Ordem do Mérito do Tribunal Superior Eleitoral - Assis Brasil
+233: * Prêmio Justiça Eleitoral e Selo Qualidade Eleitoral
+234: * TREs
+237: Caso necessite de informações institucionais acesse Ouvidoria.

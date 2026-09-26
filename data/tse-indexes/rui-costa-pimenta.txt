@@ -1,0 +1,127 @@
+50: 1. Economia, Trabalho e Responsabilidade Fiscal
+51: * Aumento emergencial de 50% nos salários e reposição integral de 100% das perdas: página 2
+52: * Auxílio-desemprego igual ao último salário recebido: página 2
+53: * Bolsa Família de pelo menos um salário mínimo: página 2
+54: * Anulação de todas as dívidas dos trabalhadores com o sistema financeiro: página 2
+55: * Escala móvel dos salários (reajuste automático a cada 3% de inflação): página 2
+56: * Fim da "independência" do Banco Central e cancelamento das dívidas externa e interna: página 6
+57: * Fim dos impostos sobre o consumo e os salários (tributação restrita a lucros e grandes fortunas): página 6
+58: * Nacionalização do petróleo e Petrobrás 100% estatal sob o controle dos trabalhadores: página 3
+59: * Reajuste das aposentadorias e pensões e fim dos privilégios de oficiais militares e juízes: página 3
+60: * Redução da jornada de trabalho para no máximo 7 horas diárias e 35 horas semanais: página 2
+61: * Redução imediata de 50% no preço dos combustíveis e fim da paridade com o dólar: página 3
+62: * Reestatização de empresas privatizadas (Eletrobrás, Vale, bancos, telefonia): página 3
+63: * Restabelecimento integral da CLT, fim da terceirização e proibição de demissões: página 2 e 3
+64: * Salário mínimo vital correspondente às necessidades básicas (mínimo de R$ 7.500): página 2
+65: * Estatização do sistema financeiro (criação de um banco estatal único): página 6
+66: 2. Saúde Pública e Assistência
+67: * Abertura imediata de centenas de cursos de medicina e enfermagem sem vestibular nas universidades públicas: página 5
+68: * Fim do teto de gastos, da Lei de Responsabilidade Fiscal e do congelamento de gastos públicos: página 4
+69: * Mais verbas para a saúde pública sem limite de gastos para salvar vidas: página 5
+70: * Plano de emergência para construção de hospitais e postos de saúde em todo o país: página 5
+71: * Piso salarial de R$ 8 mil para os profissionais da saúde: página 5
+72: * Proibição de despejos e de cortes de serviços essenciais (água, luz e gás) para desempregados: página 2
+73: * Volta do programa Mais Médicos e validação imediata de diplomas de médicos brasileiros e estrangeiros: página 5
+74: 3. Segurança Pública e Justiça
+76: * Direito de autodefesa para os trabalhadores da cidade, do campo e dos povos indígenas: página 5 e 6
+77: * Dissolução da Polícia Militar e de todo o aparato repressivo do Estado: página 5
+78: * Formação de comitês de autodefesa dos trabalhadores nas cidades, campos e comunidades de índios: página 5
+80: 4. Educação, Ciência e Meio Ambiente
+81: * Abaixo a censura e fim da proibição do uso de celulares nas escolas: página 5
+82: * Eleição direta de diretores e de todos os postos de gestão escolar e universitária: página 4
+83: * Estatização de todo o ensino privado (ensino pago): página 5
+84: * Fim dos vestibulares e garantia de livre ingresso nas universidades públicas: página 5
+85: * Governo tripartite (estudantes, professores e funcionários) nas Universidades: página 5
+86: * Jornada de trabalho máxima de 30 horas semanais para os professores: página 5
+87: * Mais verbas para a educação, destinando recursos públicos exclusivamente para o ensino público: página 5
+88: * Piso salarial nacional dos professores de pelo menos R$ 8,5 mil: página 5
+89: * Revogação de todas as "reformas" contra a educação e o ensino público: página 5
+90: 5. Política Externa e Inserção Global
+92: * Defesa dos povos que se levantam contra o imperialismo (Palestina, Irã, Rússia, Cuba, Nicarágua, Venezuela): página 7
+93: * Fora o imperialismo da Amazônia e de toda a América Latina: página 7
+94: * Luta contra a ingerência dos Estados Unidos e da OEA na região: página 7
+96: 6. Direitos Humanos, Equidade e Inclusão Social
+97: * Combate à especulação imobiliária, proibição de despejos e desocupações: página 4
+98: * Passe livre nos transportes para desempregados e trabalhadores da economia informal: página 2
+100: 7. Questão Agrária, Propriedade e Direito à Cidade
+101: * Assentamento imediato dos milhões de trabalhadores sem-terra acampados no país: página 4
+102: * Demarcação e posse de terras para os povos indígenas, com expulsão de latifundiários invasores: página 4
+103: * Punição dos latifundiários e responsáveis por assassinatos de trabalhadores e lideranças rurais: página 4
+105: 8. Governança, Transparência e Reformas de Estado
+106: * Fim da ditadura do Judiciário e extinção do Supremo Tribunal Federal (STF): página 6
+107: * Cancelamento da concessão da Rede Globo e dos grandes meios de comunicação (fim do "PIG"): página 6
+108: * Cancelamento de leis restritivas à organização política, como a "ficha limpa" e a "cláusula de barreira": página 6
+109: * Eleição de todos os juízes e procuradores pelo voto popular com mandatos revogáveis: página 6
+110: * Governo das organizações operárias e camponesas, sem patrões e sem golpistas: página 7
+111: * Fim de privilégios de oficiais militares, juízes e de seus familiares: página 3
+112: * Internet gratuita para toda a população: página 6
+113: * Liberdade irrestrita de expressão na imprensa, na internet e nas ruas (abaixo a censura e a "Lei Felca"): página 6
+114: * Revogação imediata de todas as "reformas" antipopulares contra os trabalhadores da ativa e aposentados: página 3
+124: Serviços eleitorais
+126: * Autoatendimento eleitoral
+127: * Certidões
+128: * Desincompatibilização e afastamentos
+129: * Eleitorado no Exterior
+130: * Justificativa eleitoral
+131: * Local de votação/zonas eleitorais
+132: * Quitação de multas
+133: * Título Eleitoral - FAQ
+135: Eleições
+136: * Biometria
+137: * Calendário eleitoral
+138: * Contas eleitorais
+139: * Eleições 2026
+140: * Eleições, plebiscitos e referendos
+141: * Estatísticas
+142: * Memória
+143: * Resultados das eleições
+144: * Urna eletrônica†www.justicaeleitoral.jus.br
+146: Partidos
+148: * Contas partidárias
+149: * Criação de partido político
+150: * Federações partidárias
+151: * Filiação partidária
+152: * Partidos registrados no TSE
+153: * Propaganda partidária
+155: Comunicação
+156: * Comunicação
+158: Jurisprudência
+160: * Informativo de Jurisprudência (Infojur TSE)
+161: * Julgados históricos
+162: * Jurisprudência da Justiça Eleitoral
+163: * Jurisprudência por assunto
+164: * Perguntas frequentes sobre alguns serviços de jurisprudência
+165: * Pesquisa de Jurisprudência
+166: * Revista de Jurisprudência do TSE
+167: * Súmulas
+169: Legislação
+170: * Código Eleitoral Anotado e Legislação Complementar
+171: * Legislação compilada
+172: * Matérias de interesse da JE (SinTSE)
+173: * Pesquisa por e-mail
+174: * Regimento Interno
+175: * Sistematização das Normas Eleitorais
+177: Serviços judiciais
+179: * Audiências
+180: * Certidões judiciais
+181: * Consultas Públicas
+182: * Processos
+183: * Publicações oficiais
+184: * Sessão plenária
+186: TSE
+187: * Biblioteca
+188: * Catálogo de publicações
+189: * Corregedoria-Geral Eleitoral
+190: * Escola Judiciária Eleitoral
+191: * Gestão documental
+192: * Ministros
+193: * Museu do Voto
+194: * Organograma
+195: * Sobre o TSE
+197: Justiça Eleitoral
+199: * História
+200: * Ordem do Mérito do Tribunal Superior Eleitoral - Assis Brasil
+201: * Prêmio Justiça Eleitoral e Selo Qualidade Eleitoral
+202: * TREs
+205: Caso necessite de informações institucionais acesse Ouvidoria.
+233: [Button: Aceitar todos os cookies] [Button: Rejeitar cookies não necessários] Gerenciar preferências

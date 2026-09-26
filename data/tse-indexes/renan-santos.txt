@@ -1,0 +1,114 @@
+50: 1. Economia, Trabalho e Responsabilidade Fiscal
+51: * Ajuste fiscal e desindexação de despesas (PEC de Transição / PEC do Equilíbrio Fiscal): página 9 e 10
+52: * Desvinculação de pisos de saúde, educação e Fundeb: página 10
+53: * Frentes Cidadãs (substituição do Bolsa Família por trabalho remunerado em prol da comunidade): página 20 , 21 e 22
+54: * Reforma do funcionalismo público e combate a supersalários: página 9 e 10
+55: * Reformas microeconômicas, justiça tributária, regulação financeira e legislação trabalhista: página 20 , 21 e 22
+56: * Revisão de renúncias fiscais (gastos tributários) e abono salarial: página 10
+57: 2. Saúde Pública e Assistência
+58: * Escala Nacional de Estratificação de Risco (ENER / Sistema de fila viva focada em prioridade de gravidade): página 25 e 26
+59: * Fundo Nacional de Modernização do Acesso (FNMA) com repasses condicionados: página 26
+60: * Integração do Projeto Genomas Brasil ao Prontuário Eletrônico: página 26
+61: * Modelo Hub-and-Spoke para centralização de demandas complexas em centros regionais: página 26
+62: * Prontuário Eletrônico Nacional Interoperável (PRONTO) e telessaúde com inteligência artificial (modelo DoctorSV): página 25 e 26
+63: 3. Segurança Pública e Justiça
+64: * Direito Penal do Inimigo (DPI) como framework jurídico e decretação da Guerra ao Crime: página 11 , 12 e 13
+65: * Inversão do ônus da prova e confisco de bens de faccionados (presunção de ilicitude): página 12
+66: * Superpresídios de segurança máxima em regiões remotas (modelo CECOT): página 11 e 13
+67: * Tecnologia urbana preditiva (drones, reconhecimento facial e totens de denúncia): página 13
+68: * Uso de Garantia da Lei e da Ordem (GLO) e Estado de Defesa para retomada territorial: página 12 e 13
+69: 4. Educação, Ciência e Meio Ambiente
+71: * Alfabetização universal com base no método fônico: página 30 , 31 e 32
+72: * Código de conduta disciplinar estudantil com punições objetivas e ranking de disciplina: página 31 e 32
+73: * Escolas civis-militares em áreas de alta criminalidade: página 31 e 32
+74: * Reforma do ensino superior (Foco em STEM e substituição de cotas por bolsas de mérito): página 21 , 30 , 31 e 32
+75: 5. Política Externa e Inserção Global
+76: * Atuação como Árbitro do Sul Global (diplomacia ativa na África, Ásia e América Latina): página 44 , 45 e 46
+77: * Autonomia completa do ciclo de combustível nuclear e reprocessamento (Ativo de dissuasão): página 46
+78: * Pacto Interamericano contra o narcotráfico transnacional: página 44 , 45 e 46
+79: * Pragmatismo institucional em política externa (Distanciamento de alinhamentos puramente ideológicos): página 45 e 46
+80: * Segurança de fronteiras e expansão tecnológica do SISFRON: página 46
+81: 6. Direitos Humanos, Equidade e Inclusão Social
+82: * A Batalha do Brasil (Plano de desfavelização integral em 10 anos): página 48 , 49 e 50
+83: * Cadastro Fundiário Unificado Nacional e Título de desfavelização (mortgage social): página 49
+84: * Código unificado de imprensa e defesa firme da liberdade de expressão: página 29 e 30
+85: * Revisão do fomento à cultura (Teto progressivo na Lei Rouanet e incentivo a novos talentos): página 27 , 28 e 29
+86: * Reunificação do Ministério da Cultura com o Ministério da Educação: página 27 , 28 e 29
+87: 7. Questão Agrária, Propriedade e Direito à Cidade
+88: * AgroBrasil 2030 (Segurança jurídica e fim das invasões de propriedade rural): página 41 , 42 e 43
+89: * Auditoria de produtividade nos assentamentos de reforma agrária (condicionante para destinação): página 41 e 42
+90: * Soberania em fertilizantes e licenciamento acelerado para minerais estratégicos (Plano Nacional de Fertilizantes): página 41 e 42
+91: * Zonas Econômicas Especiais (ZEEs) para terras raras, transição verde, semicondutores e defesa: página 34 , 35 , 36 , 37 , 38 , 39 e 40
+92: 8. Governança, Transparência e Reformas de Estado
+93: * Cláusula Antimáfia (Dissolução judicial de administrações locais infiltradas por facções): página 17 e 18
+94: * Comissariado Federal de Gestão Pública e fiscalização em tempo real (pari passu): página 17 e 18
+95: * Grande Consolidação Municipal (Fusão de municípios fiscalmente inviáveis): página 14 , 15 e 16
+96: * Lei de Responsabilidade Gerencial (Metas de desempenho atreladas ao financiamento partidário): página 17 e 18
+106: Serviços eleitorais
+108: * Autoatendimento eleitoral
+109: * Certidões
+110: * Desincompatibilização e afastamentos
+111: * Eleitorado no Exterior
+112: * Justificativa eleitoral
+113: * Local de votação/zonas eleitorais
+114: * Quitação de multas
+115: * Título Eleitoral - FAQ
+117: Eleições
+118: * Biometria
+119: * Calendário eleitoral
+120: * Contas eleitorais
+121: * Eleições 2026
+122: * Eleições, plebiscitos e referendos
+123: * Estatísticas
+124: * Memória
+125: * Resultados das eleições
+126: * Urna eletrônica†www.justicaeleitoral.jus.br
+128: Partidos
+130: * Contas partidárias
+131: * Criação de partido político
+132: * Federações partidárias
+133: * Filiação partidária
+134: * Partidos registrados no TSE
+135: * Propaganda partidária
+137: Comunicação
+138: * Comunicação
+140: Jurisprudência
+142: * Informativo de Jurisprudência (Infojur TSE)
+143: * Julgados históricos
+144: * Jurisprudência da Justiça Eleitoral
+145: * Jurisprudência por assunto
+146: * Perguntas frequentes sobre alguns serviços de jurisprudência
+147: * Pesquisa de Jurisprudência
+148: * Revista de Jurisprudência do TSE
+149: * Súmulas
+151: Legislação
+152: * Código Eleitoral Anotado e Legislação Complementar
+153: * Legislação compilada
+154: * Matérias de interesse da JE (SinTSE)
+155: * Pesquisa por e-mail
+156: * Regimento Interno
+157: * Sistematização das Normas Eleitorais
+159: Serviços judiciais
+161: * Audiências
+162: * Certidões judiciais
+163: * Consultas Públicas
+164: * Processos
+165: * Publicações oficiais
+166: * Sessão plenária
+168: TSE
+169: * Biblioteca
+170: * Catálogo de publicações
+171: * Corregedoria-Geral Eleitoral
+172: * Escola Judiciária Eleitoral
+173: * Gestão documental
+174: * Ministros
+175: * Museu do Voto
+176: * Organograma
+177: * Sobre o TSE
+179: Justiça Eleitoral
+181: * História
+182: * Ordem do Mérito do Tribunal Superior Eleitoral - Assis Brasil
+183: * Prêmio Justiça Eleitoral e Selo Qualidade Eleitoral
+184: * TREs
+187: Caso necessite de informações institucionais acesse Ouvidoria.
+215: [Button: Aceitar todos os cookies] [Button: Rejeitar cookies não necessários] Gerenciar preferências

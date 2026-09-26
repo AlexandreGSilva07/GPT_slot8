@@ -1,0 +1,121 @@
+50: 1. Economia, Trabalho e Responsabilidade Fiscal
+51: * Substituição de múltiplos tributos por um Imposto Único de 3,5% sobre tudo: página 4 , 5 e 6
+52: * Financiamento de veículos sem imposto e redução de taxas para motoristas de aplicativo: página 11 e 12
+53: * IPVA fixo de R$ 50 mensais para carros de passeio e isenção total para caminhoneiros: página 18
+54: * Desoneração fiscal para reindustrializar o país e processar minerais estratégicos: página 21 e 22
+55: * Programa "Crédito Raiz" com linhas específicas por porte para produtores rurais: página 24 e 25
+56: * Plano de investimentos em infraestrutura para ferrovias e hidrovias: página 26 e 27
+57: * Desoneração para a produção nacional de veículos e carros elétricos: página 30 e 31
+58: * Programa "Meu Primeiro Emprego" com complemento do custo salarial pelo governo: página 42
+59: 2. Saúde Pública e Assistência
+60: * Mutirões e parcerias com hospitais privados para zerar a fila do SUS: página 9 e 10
+61: * Uso de inteligência artificial para monitorar o estoque de remédios em tempo real: página 9
+62: * Atenção especializada à saúde da mulher (climatério e menopausa) e ampliação de geriatras: página 9
+63: * Criação de plano de saúde exclusivo para motoristas de aplicativo: página 12
+64: * Rede "Respira", com centros de saúde mental exclusivos e acolhedores para a juventude: página 43
+65: * Universalização da água tratada e coleta de esgoto como prevenção de doenças: página 45 e 46
+66: 3. Segurança Pública e Justiça
+67: * Criação do Sistema Único Nacional de Segurança integrando bases policiais e antecedentes: página 13
+68: * Integração de câmeras e reconhecimento facial para combate a roubos: página 13
+69: * Endurecimento de penas e isolamento total de líderes de facções em presídios: página 13 e 14
+70: * Aumento real do orçamento de defesa e modernização das Forças Armadas: página 28 e 29
+71: * Aumento de penas e identificação técnica automática contra a exploração sexual infantil: página 39 , 40 e 41
+72: 4. Educação, Ciência e Meio Ambiente
+73: * Qualificação em empreendedorismo digital com distribuição de iPhones e internet: página 7
+74: * Ensino tecnológico, IA e educação financeira integrados nas escolas públicas: página 15
+75: * Fluência em inglês via imersão e tecnologia celular, além de foco em inteligência emocional: página 16
+76: * Recomposição de orçamento para Capes/CNPq e foco em um polo tecnológico mundial: página 19
+77: * Regulamentação e fiscalização do ensino domiciliar (homeschooling): página 16 e 42
+78: * "Crédito Nacional de Qualificação" para educação contínua de jovens adultos: página 44
+79: 5. Política Externa e Inserção Global
+81: * Atração de capital e fábricas estrangeiras através de uma carga tributária competitiva: página 6
+82: * Desenvolvimento de vacinas e biotecnologia nacional para exportação: página 19 e 20
+83: * Proteção para resguardar riquezas estratégicas e a "Amazônia Azul" perante o mundo: página 28 e 29
+84: * Atração de montadoras globais para produção e nacionalização de veículos elétricos: página 30 e 31
+85: 6. Direitos Humanos, Equidade e Inclusão Social
+86: * Inclusão digital via ferramenta de trabalho sem corte de benefício social: página 7
+87: * Rede "Abraço Azul" com creches especializadas, apoio jurídico e psicológico (mães atípicas): página 34 e 35
+88: * Expansão de casas de abrigo, combate ao feminicídio e proteção patrimonial a idosos: página 36 e 37
+89: * Lei nacional para criação de vagões exclusivos para mulheres no transporte público urbano: página 37
+90: * Restrição da categoria feminina em competições esportivas via critério biológico/genético: página 37
+91: * Programa "Nunca Mais Sozinha" de acompanhamento contínuo a crianças vítimas de abuso: página 40 e 41
+92: 7. Questão Agrária, Propriedade e Direito à Cidade
+94: * Investimento pesado em fábricas nacionais de fertilizantes (potássio, fósforo): página 24
+95: * Vigilância integral da Amazônia por drones contra desmatamento, garimpo ilegal e poluição: página 28
+96: * Regularização de saneamento em áreas de ocupação com reassentamento seguro: página 45 e 46
+97: * Modernização da coleta seletiva, incineração sustentável de lixo e valorização de catadores: página 45 , 46 e 47
+98: 8. Governança, Transparência e Reformas de Estado
+99: * Combate à corrupção e desvios de recursos através de auditoria e gestão tecnológica no SUS: página 10
+100: * Redução da lentidão do Judiciário com mutirões e garantias de estabilidade contratual: página 32 e 33
+101: * Criação de órgão externo independente para fiscalizar casos de assédio em empresas: página 37 e 38
+102: * Banimento de plataformas que não bloquearem ativamente conteúdos ilícitos e abuso infantil: página 39 e 40
+103: * Obrigatoriedade de transparência algorítmica para redes sociais (menores de 14 anos): página 43
+104: * Capacitação técnica do governo federal a pequenos municípios para obras de saneamento: página 45
+114: Serviços eleitorais
+116: * Autoatendimento eleitoral
+117: * Certidões
+118: * Desincompatibilização e afastamentos
+119: * Eleitorado no Exterior
+120: * Justificativa eleitoral
+121: * Local de votação/zonas eleitorais
+122: * Quitação de multas
+123: * Título Eleitoral - FAQ
+125: Eleições
+126: * Biometria
+127: * Calendário eleitoral
+128: * Contas eleitorais
+129: * Eleições 2026
+130: * Eleições, plebiscitos e referendos
+131: * Estatísticas
+132: * Memória
+133: * Resultados das eleições
+134: * Urna eletrônica†www.justicaeleitoral.jus.br
+136: Partidos
+138: * Contas partidárias
+139: * Criação de partido político
+140: * Federações partidárias
+141: * Filiação partidária
+142: * Partidos registrados no TSE
+143: * Propaganda partidária
+145: Comunicação
+146: * Comunicação
+148: Jurisprudência
+150: * Informativo de Jurisprudência (Infojur TSE)
+151: * Julgados históricos
+152: * Jurisprudência da Justiça Eleitoral
+153: * Jurisprudência por assunto
+154: * Perguntas frequentes sobre alguns serviços de jurisprudência
+155: * Pesquisa de Jurisprudência
+156: * Revista de Jurisprudência do TSE
+157: * Súmulas
+159: Legislação
+160: * Código Eleitoral Anotado e Legislação Complementar
+161: * Legislação compilada
+162: * Matérias de interesse da JE (SinTSE)
+163: * Pesquisa por e-mail
+164: * Regimento Interno
+165: * Sistematização das Normas Eleitorais
+167: Serviços judiciais
+169: * Audiências
+170: * Certidões judiciais
+171: * Consultas Públicas
+172: * Processos
+173: * Publicações oficiais
+174: * Sessão plenária
+176: TSE
+177: * Biblioteca
+178: * Catálogo de publicações
+179: * Corregedoria-Geral Eleitoral
+180: * Escola Judiciária Eleitoral
+181: * Gestão documental
+182: * Ministros
+183: * Museu do Voto
+184: * Organograma
+185: * Sobre o TSE
+187: Justiça Eleitoral
+189: * História
+190: * Ordem do Mérito do Tribunal Superior Eleitoral - Assis Brasil
+191: * Prêmio Justiça Eleitoral e Selo Qualidade Eleitoral
+192: * TREs
+195: Caso necessite de informações institucionais acesse Ouvidoria.
+223: [Button: Aceitar todos os cookies] [Button: Rejeitar cookies não necessários] Gerenciar preferências
