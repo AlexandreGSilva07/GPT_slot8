@@ -9,7 +9,7 @@ function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Mat
 function initOrder(){D.questions.forEach(q=>state.order[q.id]=shuffle(q.options.map(o=>o.id)))}
 function show(name){
   $$('.screen').forEach(x=>x.classList.toggle('is-active',x.dataset.screen===name));
-  state.screen=name; window.scrollTo({top:0,behavior:'smooth'});
+  state.screen=name; window.scrollTo({top:0,behavior:'auto'});
   requestAnimationFrame(()=>$('#app').focus({preventScroll:true}));
 }
 function start(){
