@@ -39,7 +39,7 @@
         <div class="trust-row" aria-label="Características">
           <div><strong>13</strong><span>planos oficiais</span></div>
           <div><strong>836</strong><span>páginas analisadas</span></div>
-          <div><strong>0</strong><span>ranking ou indicação</span></div>
+          <div><strong>100%</strong><span>comparação por tema</span></div>
         </div>
       </div>
       <aside class="hero-card" aria-label="Como o teste funciona">
@@ -102,21 +102,32 @@
       <div class="result-shell">
         <div class="result-hero dashboard-hero">
           <div>
-            <p class="section-kicker">MATRIZ DOCUMENTAL</p>
-            <h2>Suas escolhas ×<br>13 planos oficiais</h2>
+            <p class="section-kicker">RADAR DOCUMENTAL</p>
+            <h2>Compatibilidade com<br>13 planos oficiais</h2>
           </div>
           <div class="result-explainer">
-            <strong>Compare tema por tema.</strong>
-            <p>Cada célula mostra se a direção escolhida por você aparece no plano, se o plano registra outra direção naquele tema ou se não foi identificada uma posição comparável.</p>
+            <strong>Ordenado pela compatibilidade documentada.</strong>
+            <p>A porcentagem considera apenas os temas respondidos em que o plano registra uma direção comparável. O radar mostra o resultado em cada tópico.</p>
           </div>
         </div>
         <div class="result-summary" id="resultSummary"></div>
         <section class="profile-strip" id="profileStrip" aria-label="Suas escolhas por tema"></section>
 
+        <section class="featured-section" aria-labelledby="featuredHeading">
+          <div class="section-head featured-head">
+            <div><p class="section-kicker">MAIOR COMPATIBILIDADE</p><h3 id="featuredHeading">Destaque do seu resultado</h3></div>
+            <p>Primeira candidatura na ordenação documental.</p>
+          </div>
+          <div id="featuredCandidate"></div>
+        </section>
+
         <section class="matrix-section">
           <div class="section-head matrix-head">
-            <div><p class="section-kicker">TODAS AS CANDIDATURAS</p><h3>Matriz por tema</h3></div>
-            <div class="matrix-legend"><span><i class="status-dot match"></i> coincide</span><span><i class="status-dot other"></i> outra direção</span><span><i class="status-dot unknown"></i> não identificado</span></div>
+            <div><p class="section-kicker">DEMAIS CANDIDATURAS</p><h3>Radar por tópico</h3></div>
+            <div class="matrix-meta">
+              <div class="matrix-legend"><span><i class="status-dot match"></i> 100% coincide</span><span><i class="status-dot other"></i> 0% outra direção</span><span><i class="status-dot unknown"></i> — sem posição identificada</span></div>
+              <details class="topic-guide"><summary>Ver os 10 tópicos do radar</summary><ol id="topicGuide"></ol></details>
+            </div>
           </div>
           <div class="candidate-matrix" id="candidateMatrix"></div>
         </section>
@@ -147,7 +158,7 @@
         <div class="principles">
           <article><span>01</span><h3>Documento integral</h3><p>Os 13 PDFs foram preservados, extraídos e indexados página a página. O resumo do TSE não substitui o texto original.</p></article>
           <article><span>02</span><h3>Correspondência conservadora</h3><p>Uma candidatura só aparece numa alternativa quando o plano sustenta claramente aquela direção. Silêncio não vira oposição.</p></article>
-          <article><span>03</span><h3>Sem pontuação política</h3><p>Não existe vencedor, percentual global nem recomendação. A comparação acontece separadamente em cada tema.</p></article>
+          <article><span>03</span><h3>Percentual documentado</h3><p>A porcentagem resume apenas os temas com posição comparável no plano. Ela não é recomendação de voto.</p></article>
           <article><span>04</span><h3>Auditável</h3><p>Cada correspondência mostra páginas e uma paráfrase verificável. O botão abre o plano oficial completo no TSE.</p></article>
         </div>
         <div class="source-panel">

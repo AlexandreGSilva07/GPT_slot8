@@ -2,7 +2,7 @@
 
 Aplicação estática, mobile-first, para comparar respostas do eleitor com propostas **formalmente registradas no TSE** pelas candidaturas à Presidência da República nas Eleições 2026.
 
-O projeto não recomenda voto, não produz ranking e não calcula um “candidato mais compatível”. O quiz permanece cego até a conclusão e o resultado mostra, questão por questão, quais planos contêm posições compatíveis com a opção escolhida, com evidência e acesso ao documento integral.
+O projeto não recomenda voto. O quiz permanece cego até a conclusão e o resultado ordena as candidaturas pela compatibilidade documentada, calculada apenas nos temas respondidos em que o plano apresenta uma posição comparável. A matriz mostra a correspondência por tema, com evidência e acesso ao documento integral.
 
 ## Fonte primária
 

@@ -60,12 +60,19 @@ function candidateStatus(q,candidateSlug){
   return {kind:'unknown',label:'Não identificado'};
 }
 function statusGlyph(kind){return kind==='match'?'✓':kind==='other'?'↔':kind==='skipped'?'–':'·'}
+function percentage(value,total){return total?Math.round(value/total*100):null}
+function candidateCompatibility(candidate){
+  const statuses=D.questions.map(q=>candidateStatus(q,candidate.slug));
+  const comparable=statuses.filter(s=>s.kind==='match'||s.kind==='other');
+  const matches=comparable.filter(s=>s.kind==='match').length;
+  return {statuses,matches,comparable:comparable.length,answered:Object.values(state.answers).filter(a=>a&&a!=='__skip').length,score:percentage(matches,comparable.length)};
+}
 
 function renderResults(){
   show('result');
   const answered=Object.values(state.answers).filter(x=>x!=='__skip').length;
   const skipped=D.questions.length-answered;
-  $('#resultSummary').innerHTML='<span class="summary-pill"><strong>'+answered+'</strong> temas respondidos</span>'+(skipped?'<span class="summary-pill"><strong>'+skipped+'</strong> sem resposta</span>':'')+'<span class="summary-pill"><strong>13</strong> candidaturas comparadas</span><span class="summary-pill">Fotos oficiais · TSE</span>';
+  $('#resultSummary').innerHTML='<span class="summary-pill"><strong>'+answered+'</strong> temas respondidos</span>'+(skipped?'<span class="summary-pill"><strong>'+skipped+'</strong> sem resposta</span>':'')+'<span class="summary-pill"><strong>13</strong> candidaturas ordenadas por compatibilidade</span><span class="summary-pill">Base: planos oficiais · TSE</span>';
 
   const strip=$('#profileStrip');strip.innerHTML='';
   D.questions.forEach((q,i)=>{
@@ -77,9 +84,15 @@ function renderResults(){
     $('strong',item).textContent=!ans||ans==='__skip'?'Não respondido':opt.label;
     strip.append(item);
   });
+  const topicGuide=$('#topicGuide');topicGuide.innerHTML='';
+  D.questions.forEach((q,i)=>{const item=document.createElement('li');item.textContent=String(i+1).padStart(2,'0')+' · '+q.theme;topicGuide.append(item)});
 
+  const ranked=D.candidates.map(candidate=>({candidate,compatibility:candidateCompatibility(candidate)}))
+    .sort((a,b)=>(b.compatibility.score??-1)-(a.compatibility.score??-1)||b.compatibility.comparable-a.compatibility.comparable||a.candidate.name.localeCompare(b.candidate.name,'pt-BR'))
+  const featured=$('#featuredCandidate');featured.innerHTML='';
+  if(ranked.length) featured.append(renderCandidateRow(ranked[0].candidate,ranked[0].compatibility,0,true));
   const matrix=$('#candidateMatrix');matrix.innerHTML='';
-  D.candidates.slice().sort((a,b)=>a.name.localeCompare(b.name,'pt-BR')).forEach(c=>matrix.append(renderCandidateRow(c)));
+  ranked.slice(1).forEach(({candidate,compatibility},index)=>matrix.append(renderCandidateRow(candidate,compatibility,index+1)));
 
   const lib=$('#libraryGrid');lib.innerHTML='';
   D.candidates.slice().sort((a,b)=>a.name.localeCompare(b.name,'pt-BR')).forEach(c=>{
@@ -89,19 +102,41 @@ function renderResults(){
     $('strong',a).textContent=c.name;$('span',a).textContent=c.party+' · nº '+c.number+' · '+c.pages+' páginas';lib.append(a);
   });
 }
-function renderCandidateRow(c){
-  const statuses=D.questions.map(q=>candidateStatus(q,c.slug));
-  const el=document.createElement('article');el.className='matrix-candidate';
+function radarPoint(index,radius,count){
+  const angle=-Math.PI/2+(Math.PI*2*index/count);
+  return [100+Math.cos(angle)*radius,100+Math.sin(angle)*radius];
+}
+function renderRadar(statuses,name){
+  const count=statuses.length, levels=[28,52,76];
+  const polygon=radius=>Array.from({length:count},(_,i)=>radarPoint(i,radius,count).join(',')).join(' ');
+  const axes=Array.from({length:count},(_,i)=>{const [x,y]=radarPoint(i,76,count);return '<line x1="100" y1="100" x2="'+x.toFixed(1)+'" y2="'+y.toFixed(1)+'" />'}).join('');
+  const rings=levels.map(r=>'<polygon points="'+polygon(r)+'" />').join('');
+  const dots=statuses.map((st,i)=>{const radius=st.kind==='match'?76:st.kind==='other'?8:42;const [x,y]=radarPoint(i,radius,count);const value=st.kind==='match'?'100%':st.kind==='other'?'0%':'sem posição identificada';return '<circle class="radar-dot '+st.kind+'" cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="4"><title>'+D.questions[i].theme+': '+value+'</title></circle>'}).join('');
+  const labels=statuses.map((_,i)=>{const [x,y]=radarPoint(i,92,count);return '<text x="'+x.toFixed(1)+'" y="'+(y+3).toFixed(1)+'">'+String(i+1).padStart(2,'0')+'</text>'}).join('');
+  const wrapper=document.createElement('div');wrapper.className='radar-wrap';wrapper.setAttribute('role','img');wrapper.setAttribute('aria-label','Radar de compatibilidade por tópico de '+name+'. Os tópicos estão identificados na legenda.');
+  wrapper.innerHTML='<svg class="compatibility-radar" viewBox="0 0 200 200" aria-hidden="true"><g class="radar-grid">'+rings+axes+'</g><g class="radar-labels">'+labels+'</g><g>'+dots+'</g></svg>';
+  return wrapper;
+}
+function renderCandidateRow(c,compatibility,rank,featured=false){
+  const {statuses,matches,comparable,answered,score}=compatibility;
+  const el=document.createElement('article');el.className='matrix-candidate'+(featured?' is-featured':'');
 
   const person=document.createElement('div');person.className='matrix-person';
-  person.innerHTML='<img class="candidate-photo" alt=""><div class="candidate-id"><strong></strong><span></span><a target="_blank" rel="noopener noreferrer">Plano oficial ↗</a></div>';
+  person.innerHTML='<span class="candidate-rank" aria-label="Posição no resultado"></span><img class="candidate-photo" alt=""><div class="candidate-id"><strong></strong><span></span><a target="_blank" rel="noopener noreferrer">Plano oficial ↗</a></div>';
   $('.candidate-photo',person).src='assets/candidates/'+c.slug+'.jpg';
   $('.candidate-photo',person).alt='Foto oficial de '+c.name;
   $('.candidate-id strong',person).textContent=c.name;
   $('.candidate-id span',person).textContent=c.party+' · nº '+c.number;
   $('.candidate-id a',person).href=c.planUrl;
+  $('.candidate-rank',person).textContent=String(rank+1).padStart(2,'0');
 
-  const grid=document.createElement('div');grid.className='theme-matrix';
+  const scoreCard=document.createElement('div');scoreCard.className='compatibility-score';
+  scoreCard.innerHTML='<strong></strong><span></span><small></small>';
+  $('strong',scoreCard).textContent=score===null?'—':score+'%';
+  $('span',scoreCard).textContent='compatibilidade';
+  $('small',scoreCard).textContent=comparable?matches+' de '+comparable+' tópicos comparáveis'+(answered!==D.questions.length?' · '+answered+' respondidos':''):'Sem posição comparável';
+
+  const radar=renderRadar(statuses,c.name);
   const detail=document.createElement('div');detail.className='candidate-detail';detail.hidden=true;
   const toggleDetail=(focusIndex)=>{
     const opening=detail.hidden;
@@ -119,22 +154,11 @@ function renderCandidateRow(c){
     }
   };
 
-  statuses.forEach((st,i)=>{
-    const cell=document.createElement('button');cell.type='button';cell.className='theme-cell '+st.kind;
-    cell.setAttribute('aria-label',D.questions[i].theme+': '+st.label);
-    cell.title=D.questions[i].theme+' · '+st.label;
-    cell.innerHTML='<span class="cell-short"></span><b></b>';
-    $('.cell-short',cell).textContent=String(i+1).padStart(2,'0');
-    $('b',cell).textContent=statusGlyph(st.kind);
-    cell.addEventListener('click',()=>toggleDetail(i));
-    grid.append(cell);
-  });
-
   const trigger=document.createElement('button');trigger.type='button';trigger.className='candidate-expand';
-  trigger.textContent='Ver os 10 temas';
+  trigger.textContent='Ver evidências';
   trigger.addEventListener('click',()=>toggleDetail());
 
-  const top=document.createElement('div');top.className='matrix-row-main';top.append(person,grid,trigger);
+  const top=document.createElement('div');top.className='matrix-row-main';top.append(person,scoreCard,radar,trigger);
   el.append(top,detail);
   return el;
 }
@@ -144,7 +168,7 @@ function renderStatusDetail(st,q,c,focus){
   $('.status-icon',item).textContent=statusGlyph(st.kind);
   $('small',item).textContent=q.theme;
   $('.detail-status strong',item).textContent=st.label;
-  $('.detail-choice',item).textContent=st.kind==='match'?'Sua escolha: '+st.choice:st.kind==='other'?'Direção registrada no plano: '+st.choice:st.kind==='skipped'?'Você não respondeu este tema.':'Não foi identificada, no mapeamento atual, uma posição comparável para este plano.';
+  $('.detail-choice',item).textContent=st.kind==='match'?'Compatibilidade: 100% · Sua escolha: '+st.choice:st.kind==='other'?'Compatibilidade: 0% · Direção registrada no plano: '+st.choice:st.kind==='skipped'?'Você não respondeu este tema.':'Sem percentual: não foi identificada, no mapeamento atual, uma posição comparável para este plano.';
   $('.detail-evidence',item).textContent=st.evidence||'';
   $('.detail-foot span',item).textContent=st.pages?st.pages.map(p=>'p.'+p).join(' · '):'—';
   $('.detail-foot a',item).href=c.planUrl;

@@ -15,7 +15,7 @@ Fonte primária: página oficial do TSE e os PDFs nela vinculados.
 5. Diferenças de implementação serão preservadas. Duas candidaturas podem concordar no objetivo e divergir no instrumento.
 6. O quiz não utiliza partido, personalidade, histórico, entrevistas, redes sociais ou declarações externas ao plano para determinar a correspondência.
 7. Durante o quiz, nomes e siglas das candidaturas permanecem ocultos.
-8. O resultado não produz ranking, nota, porcentagem global, “vencedor” nem recomendação de voto. Ele revela uma matriz factual, questão por questão.
+8. O resultado ordena as candidaturas por uma porcentagem de compatibilidade documental: temas que coincidem divididos pelos temas respondidos em que o plano apresenta posição comparável. Ausência de posição não entra no denominador. A porcentagem não é recomendação de voto.
 9. A ordem das candidaturas na revelação é neutra e não depende das respostas.
 10. O usuário pode abrir o plano oficial integral de cada candidatura diretamente a partir do resultado.
 

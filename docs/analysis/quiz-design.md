@@ -7,14 +7,14 @@ Apresentar escolhas de política pública sem revelar candidaturas durante as re
 ## O resultado não faz
 
 - não soma pontos por candidatura;
-- não calcula porcentagem global de afinidade;
+- não transforma a porcentagem de compatibilidade documental em recomendação de voto;
 - não escolhe um “mais compatível”;
 - não recomenda voto;
 - não infere posição por partido, histórico, entrevista ou rede social.
 
 ## O resultado faz
 
-Para cada uma das 10 perguntas, mostra a alternativa escolhida e os planos oficiais que contêm uma direção materialmente compatível, com página, paráfrase e link para o documento integral no TSE.
+Para cada uma das 10 perguntas, mostra a alternativa escolhida e os planos oficiais que contêm uma direção materialmente compatível, com página, paráfrase e link para o documento integral no TSE. A listagem é ordenada pela porcentagem de compatibilidade entre os temas respondidos que têm posição comparável no plano.
 
 ## Proteções contra falso alinhamento
 
