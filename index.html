@@ -100,18 +100,26 @@
 
     <section class="screen result-screen" id="resultScreen" data-screen="result">
       <div class="result-shell">
-        <div class="result-hero">
+        <div class="result-hero dashboard-hero">
           <div>
-            <p class="section-kicker">RESULTADO DOCUMENTAL</p>
-            <h2>Suas escolhas ×<br>planos oficiais</h2>
+            <p class="section-kicker">MATRIZ DOCUMENTAL</p>
+            <h2>Suas escolhas ×<br>13 planos oficiais</h2>
           </div>
           <div class="result-explainer">
-            <strong>Sem placar geral.</strong>
-            <p>Abaixo você vê, tema por tema, quais planos contêm uma direção compatível com a opção marcada. Isso não significa que as candidaturas sejam iguais — veja a evidência e leia o plano integral.</p>
+            <strong>Compare tema por tema.</strong>
+            <p>Cada célula mostra se a direção escolhida por você aparece no plano, se o plano registra outra direção naquele tema ou se não foi identificada uma posição comparável.</p>
           </div>
         </div>
         <div class="result-summary" id="resultSummary"></div>
-        <div class="result-list" id="resultList"></div>
+        <section class="profile-strip" id="profileStrip" aria-label="Suas escolhas por tema"></section>
+
+        <section class="matrix-section">
+          <div class="section-head matrix-head">
+            <div><p class="section-kicker">TODAS AS CANDIDATURAS</p><h3>Matriz por tema</h3></div>
+            <div class="matrix-legend"><span><i class="status-dot match"></i> coincide</span><span><i class="status-dot other"></i> outra direção</span><span><i class="status-dot unknown"></i> não identificado</span></div>
+          </div>
+          <div class="candidate-matrix" id="candidateMatrix"></div>
+        </section>
 
         <section class="library-section" id="library">
           <div class="section-head">

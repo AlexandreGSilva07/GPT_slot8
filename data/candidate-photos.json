@@ -1,0 +1,93 @@
+{
+  "clariana-barao": {
+    "candidate_id": 280002552484,
+    "photo_source": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/img/20322002026/280002552484/BR",
+    "local_photo": "assets/candidates/clariana-barao.jpg",
+    "official_name": "CLARIANA BARAO",
+    "party": "DC"
+  },
+  "edmilson-costa": {
+    "candidate_id": 280002551975,
+    "photo_source": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/img/20322002026/280002551975/BR",
+    "local_photo": "assets/candidates/edmilson-costa.jpg",
+    "official_name": "EDMILSON COSTA",
+    "party": "PCB"
+  },
+  "augusto-cury": {
+    "candidate_id": 280002551547,
+    "photo_source": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/img/20322002026/280002551547/BR",
+    "local_photo": "assets/candidates/augusto-cury.jpg",
+    "official_name": "ESCRITOR AUGUSTO CURY",
+    "party": "AVANTE"
+  },
+  "flavio-bolsonaro": {
+    "candidate_id": 280002551544,
+    "photo_source": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/img/20322002026/280002551544/BR",
+    "local_photo": "assets/candidates/flavio-bolsonaro.jpg",
+    "official_name": "FLAVIO BOLSONARO",
+    "party": "PL"
+  },
+  "hertz-dias": {
+    "candidate_id": 280002541457,
+    "photo_source": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/img/20322002026/280002541457/BR",
+    "local_photo": "assets/candidates/hertz-dias.jpg",
+    "official_name": "HERTZ DIAS",
+    "party": "PSTU"
+  },
+  "leonardo-avalanche": {
+    "candidate_id": 280002554479,
+    "photo_source": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/img/20322002026/280002554479/BR",
+    "local_photo": "assets/candidates/leonardo-avalanche.jpg",
+    "official_name": "LEONARDO AVALANCHE",
+    "party": "PRTB"
+  },
+  "lula": {
+    "candidate_id": 280002542548,
+    "photo_source": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/img/20322002026/280002542548/BR",
+    "local_photo": "assets/candidates/lula.jpg",
+    "official_name": "LULA",
+    "party": "PT"
+  },
+  "renan-santos": {
+    "candidate_id": 280002540694,
+    "photo_source": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/img/20322002026/280002540694/BR",
+    "local_photo": "assets/candidates/renan-santos.jpg",
+    "official_name": "RENAN SANTOS",
+    "party": "MISSÃO"
+  },
+  "ronaldo-caiado": {
+    "candidate_id": 280002551932,
+    "photo_source": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/img/20322002026/280002551932/BR",
+    "local_photo": "assets/candidates/ronaldo-caiado.jpg",
+    "official_name": "RONALDO CAIADO",
+    "party": "PSD"
+  },
+  "rui-costa-pimenta": {
+    "candidate_id": 280002552487,
+    "photo_source": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/img/20322002026/280002552487/BR",
+    "local_photo": "assets/candidates/rui-costa-pimenta.jpg",
+    "official_name": "RUI COSTA PIMENTA",
+    "party": "PCO"
+  },
+  "samara": {
+    "candidate_id": 280002538811,
+    "photo_source": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/img/20322002026/280002538811/BR",
+    "local_photo": "assets/candidates/samara.jpg",
+    "official_name": "SAMARA",
+    "party": "UP"
+  },
+  "wilson-grassi": {
+    "candidate_id": 280002548139,
+    "photo_source": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/img/20322002026/280002548139/BR",
+    "local_photo": "assets/candidates/wilson-grassi.jpg",
+    "official_name": "VETERINÁRIO WILSON GRASSI",
+    "party": "DEMOCRATA"
+  },
+  "zema": {
+    "candidate_id": 280002539826,
+    "photo_source": "https://divulgacandcontas.tse.jus.br/divulga/rest/arquivo/img/20322002026/280002539826/BR",
+    "local_photo": "assets/candidates/zema.jpg",
+    "official_name": "ZEMA",
+    "party": "NOVO"
+  }
+}
