@@ -1,0 +1,163 @@
+{
+  "source_page": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/planos-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026",
+  "retrieved": "2026-09-26",
+  "count": 13,
+  "plans": [
+    {
+      "slug": "clariana-barao",
+      "name_on_ballot": "CLARIANA BARAO",
+      "number": 27,
+      "party": "DC",
+      "party_or_coalition": "DEMOCRACIA CRISTÃ",
+      "official_pdf_url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/plano-de-governo-1",
+      "local_pdf": "data/raw-pdfs/clariana-barao.pdf",
+      "extracted_text": "data/text/clariana-barao.txt",
+      "pages": 15,
+      "sha256": "6390152c66285558ecd5459f4f73f3f65650beb77022b14e7750190b1b536d68"
+    },
+    {
+      "slug": "edmilson-costa",
+      "name_on_ballot": "EDMILSON COSTA",
+      "number": 21,
+      "party": "PCB",
+      "party_or_coalition": "PARTIDO COMUNISTA BRASILEIRO",
+      "official_pdf_url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pcb",
+      "local_pdf": "data/raw-pdfs/edmilson-costa.pdf",
+      "extracted_text": "data/text/edmilson-costa.txt",
+      "pages": 16,
+      "sha256": "52f765533f93409a595d780e9ad8634de72db8f05794a2e70e808913c2ed4dff"
+    },
+    {
+      "slug": "augusto-cury",
+      "name_on_ballot": "ESCRITOR AUGUSTO CURY",
+      "number": 70,
+      "party": "AVANTE",
+      "party_or_coalition": "BRASIL DOS NOSSOS SONHOS",
+      "official_pdf_url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-avante",
+      "local_pdf": "data/raw-pdfs/augusto-cury.pdf",
+      "extracted_text": "data/text/augusto-cury.txt",
+      "pages": 200,
+      "sha256": "49430ae90d9a443d6e5b2a88d826ef012c94f6773229863ff04f412915207605"
+    },
+    {
+      "slug": "flavio-bolsonaro",
+      "name_on_ballot": "FLAVIO BOLSONARO",
+      "number": 22,
+      "party": "PL",
+      "party_or_coalition": "PARTIDO LIBERAL",
+      "official_pdf_url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pl",
+      "local_pdf": "data/raw-pdfs/flavio-bolsonaro.pdf",
+      "extracted_text": "data/text/flavio-bolsonaro.txt",
+      "pages": 76,
+      "sha256": "7d1d95075e11e3c4113e8dcd502438049a34f5147a84cb0f746bf59046e477a4"
+    },
+    {
+      "slug": "hertz-dias",
+      "name_on_ballot": "HERTZ DIAS",
+      "number": 16,
+      "party": "PSTU",
+      "party_or_coalition": "PARTIDO SOCIALISTA DOS TRABALHADORES UNIFICADO",
+      "official_pdf_url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pstu",
+      "local_pdf": "data/raw-pdfs/hertz-dias.pdf",
+      "extracted_text": "data/text/hertz-dias.txt",
+      "pages": 33,
+      "sha256": "1868565fb0d5de77d40a982a1be07dc7f44f7af7565ee3b40d93b31407d31468"
+    },
+    {
+      "slug": "leonardo-avalanche",
+      "name_on_ballot": "LEONARDO AVALANCHE",
+      "number": 28,
+      "party": "PRTB",
+      "party_or_coalition": "PARTIDO RENOVADOR TRABALHISTA BRASILEIRO",
+      "official_pdf_url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-prtb",
+      "local_pdf": "data/raw-pdfs/leonardo-avalanche.pdf",
+      "extracted_text": "data/text/leonardo-avalanche.txt",
+      "pages": 48,
+      "sha256": "684eb008fb5b1065043755c22d2193ce9e22d6f3d249e66464c34161d4c53ec5"
+    },
+    {
+      "slug": "lula",
+      "name_on_ballot": "LULA",
+      "number": 13,
+      "party": "PT",
+      "party_or_coalition": "BRASIL PRONTO PRA MAIS",
+      "official_pdf_url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-pt",
+      "local_pdf": "data/raw-pdfs/lula.pdf",
+      "extracted_text": "data/text/lula.txt",
+      "pages": 84,
+      "sha256": "e1c162c20c81dafadf69b10bab230b5a6dc48f6b6c27c2cfce853b131a8bcc36"
+    },
+    {
+      "slug": "renan-santos",
+      "name_on_ballot": "RENAN SANTOS",
+      "number": 14,
+      "party": "MISSÃO",
+      "party_or_coalition": "PARTIDO MISSÃO",
+      "official_pdf_url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-missao",
+      "local_pdf": "data/raw-pdfs/renan-santos.pdf",
+      "extracted_text": "data/text/renan-santos.txt",
+      "pages": 51,
+      "sha256": "cdece60b71117c7820dbf90a7d795f76f3b1d1aaa5ebb8ce11f47e9ca6227b5a"
+    },
+    {
+      "slug": "ronaldo-caiado",
+      "name_on_ballot": "RONALDO CAIADO",
+      "number": 55,
+      "party": "PSD",
+      "party_or_coalition": "PARTIDO SOCIAL DEMOCRÁTICO",
+      "official_pdf_url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-psd",
+      "local_pdf": "data/raw-pdfs/ronaldo-caiado.pdf",
+      "extracted_text": "data/text/ronaldo-caiado.txt",
+      "pages": 100,
+      "sha256": "b0ba46eb58d1827c99167a0df60e539b6bfa8a70fa247e4653ba2fcca8ade415"
+    },
+    {
+      "slug": "rui-costa-pimenta",
+      "name_on_ballot": "RUI COSTA PIMENTA",
+      "number": 29,
+      "party": "PCO",
+      "party_or_coalition": "PARTIDO DA CAUSA OPERÁRIA",
+      "official_pdf_url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/pcoprogramadegoverno2026-1",
+      "local_pdf": "data/raw-pdfs/rui-costa-pimenta.pdf",
+      "extracted_text": "data/text/rui-costa-pimenta.txt",
+      "pages": 7,
+      "sha256": "ed380b23d6e033e8616ce71efcf66eb42d2baee2b58f1c9ae80690009c20dfe9"
+    },
+    {
+      "slug": "samara",
+      "name_on_ballot": "SAMARA",
+      "number": 80,
+      "party": "UP",
+      "party_or_coalition": "UNIDADE POPULAR",
+      "official_pdf_url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-up",
+      "local_pdf": "data/raw-pdfs/samara.pdf",
+      "extracted_text": "data/text/samara.txt",
+      "pages": 67,
+      "sha256": "23c510d5b06bb149bb9390bbc144dcda9cfd2b6a677a854b3d993b16ed7a94e6"
+    },
+    {
+      "slug": "wilson-grassi",
+      "name_on_ballot": "VETERINÁRIO WILSON GRASSI",
+      "number": 35,
+      "party": "DEMOCRATA",
+      "party_or_coalition": "DEMOCRATA",
+      "official_pdf_url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-democrata",
+      "local_pdf": "data/raw-pdfs/wilson-grassi.pdf",
+      "extracted_text": "data/text/wilson-grassi.txt",
+      "pages": 58,
+      "sha256": "df2acdb7a6d8b080d6d8a235b8fe8f0d987bf0f24be4f4aa9abc80e4ebb24904"
+    },
+    {
+      "slug": "zema",
+      "name_on_ballot": "ZEMA",
+      "number": 30,
+      "party": "NOVO",
+      "party_or_coalition": "PARTIDO NOVO",
+      "official_pdf_url": "https://www.tse.jus.br/eleicoes/eleicoes-2026-content/arquivos/proposta-novo",
+      "local_pdf": "data/raw-pdfs/zema.pdf",
+      "extracted_text": "data/text/zema.txt",
+      "pages": 81,
+      "sha256": "5a5804622017a8e9c123fb64540a5ee3d06009de681026b505bc2a152d5e646e"
+    }
+  ]
+}
