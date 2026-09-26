@@ -2,10 +2,11 @@
 'use strict';
 const BASE=window.QUIZ_DATA,V4=window.QUIZ_V4,D={candidates:BASE.candidates,questions:V4.questions,macros:V4.macros};
 const $=(s,p=document)=>p.querySelector(s),$$=(s,p=document)=>[...p.querySelectorAll(s)];
-const state={screen:'home',index:0,answers:{},rankOrders:{},rankEnabled:{},infoFrom:'home'};
+const state={screen:'home',index:0,answers:{},optionOrders:{},rankOrders:{},rankEnabled:{},infoFrom:'home'};
 const esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function shuffle(values){const copy=[...values];for(let i=copy.length-1;i>0;i--){const random=new Uint32Array(1);crypto.getRandomValues(random);const j=random[0]%(i+1);[copy[i],copy[j]]=[copy[j],copy[i]]}return copy}
 function show(name){$$('.screen').forEach(n=>n.classList.toggle('is-active',n.dataset.screen===name));state.screen=name;scrollTo({top:0,behavior:'auto'});requestAnimationFrame(()=>$('#app').focus({preventScroll:true}))}
-function start(){state.index=0;state.answers={};state.rankOrders={};state.rankEnabled={};D.questions.forEach(q=>{if(q.mode==='rank'){state.rankOrders[q.id]=q.options.map(o=>o.id);state.rankEnabled[q.id]=new Set(q.options.map(o=>o.id))}});show('quiz');renderQuestion()}
+function start(){state.index=0;state.answers={};state.optionOrders={};state.rankOrders={};state.rankEnabled={};D.questions.forEach(q=>{const order=shuffle(q.options.map(o=>o.id));state.optionOrders[q.id]=order;if(q.mode==='rank'){state.rankOrders[q.id]=order;state.rankEnabled[q.id]=new Set(order)}});show('quiz');renderQuestion()}
 function current(){return D.questions[state.index]}
 function answered(q){const v=state.answers[q.id];return q.mode==='multi'?Array.isArray(v)&&v.length>0:q.mode==='rank'?v==='confirmed'||v==='__none':Boolean(v)}
 function noneButton(q,active){const b=document.createElement('button');b.type='button';b.className='option-card none-option'+(active?' is-selected':'');b.setAttribute('aria-pressed',String(active));b.innerHTML='<span class="radio-ui" aria-hidden="true"></span><span class="option-copy"><strong>Nenhuma destas medidas</strong><span>O tema fica sem pontuação para todas as candidaturas.</span></span>';b.onclick=()=>{state.answers[q.id]='__none';renderQuestion()};return b}
@@ -18,7 +19,7 @@ function renderQuestion(){
 }
 function renderChoices(q,list){
  const value=state.answers[q.id],selected=Array.isArray(value)?value:[value];list.setAttribute('role',q.mode==='multi'?'group':'radiogroup');
- q.options.forEach(o=>{const active=selected.includes(o.id),b=document.createElement('button');b.type='button';b.className='option-card'+(active?' is-selected':'');b.setAttribute('role',q.mode==='multi'?'checkbox':'radio');b.setAttribute('aria-checked',String(active));b.innerHTML=`<span class="radio-ui" aria-hidden="true"></span><span class="option-copy"><strong>${esc(o.label)}</strong></span>`;
+ state.optionOrders[q.id].map(id=>q.options.find(o=>o.id===id)).forEach(o=>{const active=selected.includes(o.id),b=document.createElement('button');b.type='button';b.className='option-card'+(active?' is-selected':'');b.setAttribute('role',q.mode==='multi'?'checkbox':'radio');b.setAttribute('aria-checked',String(active));b.innerHTML=`<span class="radio-ui" aria-hidden="true"></span><span class="option-copy"><strong>${esc(o.label)}</strong></span>`;
  b.onclick=()=>{if(q.mode==='single')state.answers[q.id]=o.id;else{const old=Array.isArray(state.answers[q.id])?state.answers[q.id]:[];state.answers[q.id]=old.includes(o.id)?old.filter(id=>id!==o.id):old.length<2?[...old,o.id]:[old[1],o.id]}renderQuestion()};list.append(b)});list.append(noneButton(q,value==='__none'));
 }
 function renderRank(q,list){

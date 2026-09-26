@@ -15,9 +15,10 @@ Fonte primária: página oficial do TSE e os PDFs nela vinculados.
 5. Diferenças de implementação serão preservadas. Duas candidaturas podem concordar no objetivo e divergir no instrumento.
 6. O quiz não utiliza partido, personalidade, histórico, entrevistas, redes sociais ou declarações externas ao plano para determinar a correspondência.
 7. Durante o quiz, nomes e siglas das candidaturas permanecem ocultos.
-8. As 15 perguntas são distribuídas igualmente em cinco macrotemas. Cada macrotema recebe a média das perguntas respondidas; a porcentagem geral é a média dos cinco macrotemas, todos com o mesmo peso.
-9. Escolha única vale 100% para a alternativa documentada e 0% nas demais. Múltipla escolha usa a interseção dividida pela união entre escolhas do usuário e posições do plano. Na ordenação, a sobreposição ponderada pela prioridade também é reduzida quando o plano registra alternativas que o usuário não selecionou.
-10. O usuário pode abrir o plano oficial integral de cada candidatura diretamente a partir do resultado.
+8. As alternativas são embaralhadas a cada novo teste e mantêm a mesma ordem quando o usuário volta à pergunta. “Nenhuma destas medidas” permanece por último.
+9. As 15 perguntas são distribuídas igualmente em cinco macrotemas. Cada macrotema recebe a média das perguntas respondidas; a porcentagem geral é a média dos cinco macrotemas, todos com o mesmo peso.
+10. Escolha única vale 100% para a alternativa documentada e 0% nas demais. Múltipla escolha usa a interseção dividida pela união entre escolhas do usuário e posições do plano. Na ordenação, a sobreposição ponderada pela prioridade também é reduzida quando o plano registra alternativas que o usuário não selecionou.
+11. O usuário pode abrir o plano oficial integral de cada candidatura diretamente a partir do resultado.
 
 ## Pipeline
 
