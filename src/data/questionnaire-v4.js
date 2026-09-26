@@ -8,7 +8,7 @@ const S={cb:'clariana-barao',ec:'edmilson-costa',ac:'augusto-cury',fb:'flavio-bo
 const option=(label,records)=>({label,positions:Object.entries(records).map(([code,pages])=>({candidate:S[code],pages,evidence:`O plano registra: ${label.toLocaleLowerCase('pt-BR')}.`}))});
 const question=(id,macro,mode,prompt,options)=>({id,macro,theme:macro,mode,prompt,
   context:mode==='rank'?'Ordene da maior para a menor prioridade.':mode==='multi'?'Marque no máximo duas alternativas.':'Escolha uma alternativa.',
-  options:options.map((item,index)=>({id:`${id}-${index}`,detail:'Correspondência baseada no índice do TSE e conferida no PDF.',...item}))
+  options:options.map((item,index)=>({id:`${id}-${index}`,detail:'',...item}))
 });
 const questions=[
 question('economia',M[0],'single','Qual mudança nos impostos deve vir primeiro?',[

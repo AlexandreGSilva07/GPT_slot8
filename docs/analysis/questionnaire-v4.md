@@ -5,11 +5,11 @@ Base fechada em 26 de setembro de 2026. As 15 perguntas abaixo são as perguntas
 ## Regras de pontuação
 
 - Cinco macrotemas, cada um com exatamente três perguntas e o mesmo peso na nota geral.
-- Escolha única: 100% na alternativa documentada e 0% em outra direção documentada.
-- Até duas escolhas: fração das escolhas do usuário também documentadas no plano.
-- Ordenação: 100%, 67%, 33% e 0% conforme a posição mais alta entre as prioridades documentadas no plano.
+- Escolha única: 100% na alternativa documentada e 0% nas demais.
+- Até duas escolhas: interseção dividida pela união entre escolhas do usuário e posições do plano.
+- Ordenação: sobreposição ponderada pela prioridade, com penalidade por alternativas documentadas que o usuário desconsiderou.
 - “Nenhuma destas medidas” retira a pergunta do cálculo de todas as candidaturas.
-- Ausência documental não recebe zero e não entra na média.
+- Ausência documental recebe zero na aderência, mas permanece identificada como ausência e não como oposição expressa.
 
 # Trabalho, renda e economia
 
