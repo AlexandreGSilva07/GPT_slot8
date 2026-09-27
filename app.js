@@ -13,7 +13,7 @@
   const $ = (selector, parent = document) => parent.querySelector(selector);
   const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector)];
   const candidateBySlug = new Map(DATA.candidates.map((candidate) => [candidate.slug, candidate]));
-  const state = { screen: 'home', index: -1, answers: {}, weights: {}, optionOrders: {}, infoFrom: 'home' };
+  const state = { screen: 'home', index: -1, answers: {}, weights: {}, optionOrders: {}, tournaments: {}, infoFrom: 'home' };
 
   function escapeHtml(value) {
     return String(value).replace(/[&<>"']/g, (character) => ({
@@ -32,6 +32,12 @@
     return copy;
   }
 
+  function randomSide() {
+    const random = new Uint32Array(1);
+    crypto.getRandomValues(random);
+    return random[0] % 2 === 0;
+  }
+
   function show(screen) {
     $$('.screen').forEach((node) => node.classList.toggle('is-active', node.dataset.screen === screen));
     state.screen = screen;
@@ -44,9 +50,14 @@
     state.answers = {};
     state.weights = {};
     state.optionOrders = {};
+    state.tournaments = {};
     DATA.questions.forEach((question) => {
       state.weights[question.id] = 1;
       state.optionOrders[question.id] = shuffle(question.options.map((option) => option.id));
+      state.tournaments[question.id] = {
+        championId: state.optionOrders[question.id][0], nextIndex: 1,
+        challengerOnLeft: randomSide(), history: [], complete: false,
+      };
     });
     show('quiz');
     renderStep();
@@ -117,43 +128,127 @@
     setQuizStatus(total === 0 ? 'Defina peso positivo para pelo menos um macrotema.' : '');
   }
 
-  function renderOption(question, option) {
-    const article = document.createElement('article');
-    const selected = state.answers[question.id] === option.id;
-    const letter = optionLetter(question, option.id);
-    article.className = `proposal-card${selected ? ' is-selected' : ''}`;
-    article.dataset.option = option.id;
-    article.innerHTML = `
-      <button type="button" class="proposal-choice" role="radio" aria-checked="${selected}">
-        <span class="proposal-letter" aria-hidden="true">${letter}</span>
-        <span class="proposal-title">Proposta ${letter}</span>
-        <span class="proposal-check">${selected ? 'Selecionada' : 'Selecionar'}</span>
-      </button>
-      <ul class="proposal-topics">
-        ${option.topics.map((topic) => `<li>${escapeHtml(topic)}</li>`).join('')}
-      </ul>`;
-    $('.proposal-choice', article).addEventListener('click', () => {
-      state.answers[question.id] = option.id;
-      updateQuestionState(question);
-    });
-    return article;
+  function optionById(question, optionId) {
+    return question.options.find((option) => option.id === optionId);
   }
 
-  function updateQuestionState(question) {
-    const weight = state.weights[question.id];
-    const answer = state.answers[question.id];
-    $$('.proposal-card', $('#optionsList')).forEach((card) => {
-      const selected = card.dataset.option === answer;
-      card.classList.toggle('is-selected', selected);
-      $('.proposal-choice', card).setAttribute('aria-checked', String(selected));
-      $('.proposal-check', card).textContent = selected ? 'Selecionada' : 'Selecionar';
+  function renderDuelOption(question, option, side) {
+    const button = document.createElement('button');
+    const letter = optionLetter(question, option.id);
+    button.type = 'button';
+    button.className = 'duel-option proposal-card';
+    button.dataset.option = option.id;
+    button.setAttribute('aria-label', `Escolher proposta ${letter} neste duelo`);
+    button.innerHTML = `
+      <span class="proposal-choice">
+        <span class="proposal-letter" aria-hidden="true">${letter}</span>
+        <span class="proposal-title">Proposta ${letter}</span>
+        <span class="proposal-check">Escolher esta</span>
+      </span>
+      <span class="proposal-topics">
+        ${option.topics.map((topic) => `<span>${escapeHtml(topic)}</span>`).join('')}
+      </span>`;
+    button.addEventListener('click', () => {
+      chooseDuelWinner(question, option.id, side);
     });
+    return button;
+  }
+
+  function chooseDuelWinner(question, winnerId) {
+    const tournament = state.tournaments[question.id];
+    tournament.history.push({
+      championId: tournament.championId,
+      nextIndex: tournament.nextIndex,
+      challengerOnLeft: tournament.challengerOnLeft,
+    });
+    tournament.championId = winnerId;
+    tournament.nextIndex += 1;
+    tournament.challengerOnLeft = randomSide();
+    if (tournament.nextIndex >= state.optionOrders[question.id].length) {
+      tournament.complete = true;
+      state.answers[question.id] = winnerId;
+    }
+    renderTournament(question);
+  }
+
+  function undoDuel(question) {
+    const tournament = state.tournaments[question.id];
+    const previousState = tournament.history.pop();
+    if (!previousState) return;
+    Object.assign(tournament, previousState, { complete: false });
+    delete state.answers[question.id];
+    renderTournament(question);
+  }
+
+  function restartTournament(question) {
+    state.optionOrders[question.id] = shuffle(question.options.map((option) => option.id));
+    state.tournaments[question.id] = {
+      championId: state.optionOrders[question.id][0], nextIndex: 1,
+      challengerOnLeft: randomSide(), history: [], complete: false,
+    };
+    delete state.answers[question.id];
+    renderTournament(question);
+  }
+
+  function renderTournament(question) {
+    const list = $('#optionsList');
+    const weight = state.weights[question.id];
+    const tournament = state.tournaments[question.id];
+    const totalDuels = state.optionOrders[question.id].length - 1;
     $('#questionCard').classList.toggle('is-zero-weight', weight === 0);
-    $('#nextBtn').disabled = !isAnswered(question);
-    $('#questionContext').textContent = weight === 0
-      ? 'Você definiu peso 0: esta pergunta não entra no cálculo. Pode escolher uma proposta ou seguir.'
-      : `Peso ${weight}. Escolha um dos 13 conjuntos. Todas as propostas aparecem abaixo; os nomes só aparecem no resultado.`;
-    setQuizStatus('');
+    list.innerHTML = '';
+    list.className = 'options-list tournament-stage';
+    list.removeAttribute('role');
+    list.removeAttribute('tabindex');
+    if (weight === 0) {
+      $('#questionContext').textContent = 'Você definiu peso 0: este macrotema e seus duelos não entram no cálculo.';
+      list.innerHTML = '<div class="tournament-skipped"><strong>Macrotema anulado</strong><span>Não é necessário comparar as 13 propostas. Você pode seguir para o próximo tema.</span></div>';
+      $('#nextBtn').disabled = false;
+      return;
+    }
+    if (tournament.complete) {
+      const champion = optionById(question, tournament.championId);
+      const letter = optionLetter(question, champion.id);
+      $('#questionContext').textContent = `Torneio concluído em ${totalDuels} duelos. A proposta campeã receberá o peso ${weight}.`;
+      const result = document.createElement('div');
+      result.className = 'tournament-result';
+      result.innerHTML = `<div class="tournament-result-head"><span>CAMPEÃ DO MACROTEMA</span><strong>Proposta ${letter}</strong></div>
+        <div class="proposal-topics">${champion.topics.map((topic) => `<span>${escapeHtml(topic)}</span>`).join('')}</div>
+        <div class="tournament-actions"><button type="button" data-undo-duel>Desfazer último duelo</button><button type="button" data-restart-duel>Refazer torneio</button></div>`;
+      list.append(result);
+      $('[data-undo-duel]', result).addEventListener('click', () => undoDuel(question));
+      $('[data-restart-duel]', result).addEventListener('click', () => restartTournament(question));
+      $('#nextBtn').disabled = false;
+      return;
+    }
+    const challengerId = state.optionOrders[question.id][tournament.nextIndex];
+    const champion = optionById(question, tournament.championId);
+    const challenger = optionById(question, challengerId);
+    const choices = tournament.challengerOnLeft ? [challenger, champion] : [champion, challenger];
+    const header = document.createElement('div');
+    header.className = 'duel-progress';
+    header.innerHTML = `<div><span>DUELO ${tournament.nextIndex} DE ${totalDuels}</span><strong>Qual proposta avança?</strong></div>
+      <div class="duel-progress-track"><i style="width:${(tournament.nextIndex / totalDuels) * 100}%"></i></div>`;
+    const arena = document.createElement('div');
+    arena.className = 'duel-arena';
+    arena.setAttribute('role', 'group');
+    arena.setAttribute('aria-label', `Duelo ${tournament.nextIndex} de ${totalDuels}`);
+    arena.append(renderDuelOption(question, choices[0], 'left'));
+    const versus = document.createElement('span');
+    versus.className = 'duel-versus';
+    versus.textContent = 'VS';
+    arena.append(versus, renderDuelOption(question, choices[1], 'right'));
+    list.append(header, arena);
+    if (tournament.history.length) {
+      const undo = document.createElement('button');
+      undo.type = 'button';
+      undo.className = 'duel-undo';
+      undo.textContent = '↶ Desfazer último duelo';
+      undo.addEventListener('click', () => undoDuel(question));
+      list.append(undo);
+    }
+    $('#questionContext').textContent = `Peso ${weight}. Compare apenas estas duas propostas e toque na que deve avançar.`;
+    $('#nextBtn').disabled = true;
   }
 
   function renderQuestion() {
@@ -163,23 +258,16 @@
     $('#progressCount').textContent = `${state.index + 1} / ${total}`;
     $('#progressBar').style.width = `${((state.index + 1) / total) * 100}%`;
     $('#questionIndex').textContent = String(state.index + 1).padStart(2, '0');
-    $('#questionEyebrow').textContent = '13 PROPOSTAS DOCUMENTAIS · 1 ESCOLHA';
+    $('#questionEyebrow').textContent = 'TORNEIO CEGO · 13 PROPOSTAS';
     $('#questionPrompt').textContent = question.prompt;
-    $('#sourceNote').innerHTML = 'As alternativas reproduzem os tópicos publicados nas páginas individuais do TSE. A ordem é embaralhada e os nomes só aparecem no resultado.';
+    $('#sourceNote').innerHTML = 'As 13 propostas foram embaralhadas. Em cada duelo, escolha a que mais representa você; a vencedora enfrenta a próxima até restar uma campeã.';
     $('#prevBtn').disabled = false;
     $('#nextBtn').childNodes[0].nodeValue = state.index === total - 1 ? 'Ver resultado ' : 'Próxima ';
     setQuizStatus('');
     $('#weightControl').hidden = true;
     const list = $('#optionsList');
     list.hidden = false;
-    list.innerHTML = '';
-    list.setAttribute('role', 'radiogroup');
-    list.setAttribute('aria-label', question.prompt);
-    list.setAttribute('tabindex', '0');
-    state.optionOrders[question.id]
-      .map((id) => question.options.find((option) => option.id === id))
-      .forEach((option) => list.append(renderOption(question, option)));
-    updateQuestionState(question);
+    renderTournament(question);
     const card = $('#questionCard');
     card.classList.remove('swap');
     void card.offsetWidth;
