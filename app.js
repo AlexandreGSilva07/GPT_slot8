@@ -4,12 +4,7 @@
   const BASE = window.QUIZ_DATA;
   const SOURCE = window.QUESTIONNAIRE_8X13;
   const DATA = { candidates: BASE.candidates, questions: SOURCE.questions, macros: SOURCE.macros };
-  const WEIGHTS = [
-    { value: 0, label: 'Não considerar' },
-    { value: 1, label: 'Importante' },
-    { value: 2, label: 'Muito importante' },
-    { value: 3, label: 'Essencial' },
-  ];
+  const MAX_TOTAL_WEIGHT = 8;
   const RADAR_LABELS = [
     'Economia e trabalho', 'Saúde e assistência', 'Segurança e justiça',
     'Educação e ambiente', 'Política externa', 'Direitos humanos',
@@ -18,7 +13,7 @@
   const $ = (selector, parent = document) => parent.querySelector(selector);
   const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector)];
   const candidateBySlug = new Map(DATA.candidates.map((candidate) => [candidate.slug, candidate]));
-  const state = { screen: 'home', index: 0, answers: {}, weights: {}, optionOrders: {}, infoFrom: 'home' };
+  const state = { screen: 'home', index: -1, answers: {}, weights: {}, optionOrders: {}, infoFrom: 'home' };
 
   function escapeHtml(value) {
     return String(value).replace(/[&<>"']/g, (character) => ({
@@ -45,7 +40,7 @@
   }
 
   function start() {
-    state.index = 0;
+    state.index = -1;
     state.answers = {};
     state.weights = {};
     state.optionOrders = {};
@@ -54,7 +49,7 @@
       state.optionOrders[question.id] = shuffle(question.options.map((option) => option.id));
     });
     show('quiz');
-    renderQuestion();
+    renderStep();
   }
 
   function currentQuestion() { return DATA.questions[state.index]; }
@@ -68,32 +63,64 @@
     status.hidden = !message;
   }
 
-  function renderWeightControl(question) {
-    const selectedWeight = state.weights[question.id];
+  function totalAssignedWeight() {
+    return DATA.questions.reduce((sum, question) => sum + state.weights[question.id], 0);
+  }
+
+  function renderWeightSetup() {
+    const total = totalAssignedWeight();
     const control = $('#weightControl');
+    $('#progressTheme').textContent = 'Prioridade dos macrotemas';
+    $('#progressCount').textContent = 'Configuração inicial';
+    $('#progressBar').style.width = '0%';
+    $('#questionIndex').textContent = '00';
+    $('#questionEyebrow').textContent = 'DISTRIBUA NO MÁXIMO 8 PONTOS';
+    $('#questionPrompt').textContent = 'Quanto cada macrotema pesa para você?';
+    $('#questionContext').textContent = 'Todos começam com peso 1. Para aumentar um tema, primeiro reduza outro.';
+    $('#sourceNote').innerHTML = '<strong>Como os pesos funcionam:</strong> peso 0 anula a pergunta daquele macrotema e a retira completamente do cálculo. Aumentar um peso faz a proposta escolhida naquele tema influenciar mais o resultado final.';
+    $('#prevBtn').disabled = true;
+    $('#nextBtn').childNodes[0].nodeValue = 'Ver propostas ';
+    $('#nextBtn').disabled = total === 0;
+    $('#optionsList').hidden = true;
+    control.hidden = false;
     control.innerHTML = `
-      <div class="weight-copy"><strong>Quanto este tema pesa para você?</strong>
-        <span>O peso pertence ao tema. Zero remove esta decisão do resultado.</span></div>
-      <div class="weight-options" role="group" aria-label="Importância deste tema">
-        ${WEIGHTS.map((weight) => `
-          <button type="button" class="weight-button${selectedWeight === weight.value ? ' is-selected' : ''}"
-            data-weight="${weight.value}" aria-pressed="${selectedWeight === weight.value}">
-            <b>${weight.value}</b><span>${weight.label}</span>
-          </button>`).join('')}
+      <div class="weight-budget"><div><strong>${total} de ${MAX_TOTAL_WEIGHT} pontos usados</strong>
+        <span>${total === MAX_TOTAL_WEIGHT ? 'Para aumentar um tema, reduza outro.' : `${MAX_TOTAL_WEIGHT - total} ponto${MAX_TOTAL_WEIGHT - total === 1 ? '' : 's'} disponível${MAX_TOTAL_WEIGHT - total === 1 ? '' : 'is'}.`}</span></div>
+        <button type="button" class="weight-reset" data-reset-weights>Restaurar 1 por tema</button></div>
+      <div class="weight-grid">
+        ${DATA.questions.map((question, index) => {
+          const weight = state.weights[question.id];
+          return `<article class="weight-row${weight === 0 ? ' is-zero' : ''}">
+            <div><small>0${index + 1}</small><strong>${escapeHtml(question.macro)}</strong></div>
+            <div class="weight-stepper" aria-label="Peso de ${escapeHtml(question.macro)}">
+              <button type="button" data-weight-change="-1" data-question-id="${question.id}" ${weight === 0 ? 'disabled' : ''} aria-label="Diminuir peso de ${escapeHtml(question.macro)}">−</button>
+              <output aria-label="Peso atual">${weight}</output>
+              <button type="button" data-weight-change="1" data-question-id="${question.id}" ${total >= MAX_TOTAL_WEIGHT ? 'disabled' : ''} aria-label="Aumentar peso de ${escapeHtml(question.macro)}">+</button>
+            </div>
+          </article>`;
+        }).join('')}
       </div>`;
-    $$('[data-weight]', control).forEach((button) => {
+    $$('[data-weight-change]', control).forEach((button) => {
       button.addEventListener('click', () => {
-        state.weights[question.id] = Number(button.dataset.weight);
-        updateQuestionState(question);
+        const change = Number(button.dataset.weightChange);
+        const questionId = button.dataset.questionId;
+        const nextWeight = state.weights[questionId] + change;
+        if (nextWeight < 0 || (change > 0 && totalAssignedWeight() >= MAX_TOTAL_WEIGHT)) return;
+        state.weights[questionId] = nextWeight;
+        renderWeightSetup();
       });
     });
+    $('[data-reset-weights]', control).addEventListener('click', () => {
+      DATA.questions.forEach((question) => { state.weights[question.id] = 1; });
+      renderWeightSetup();
+    });
+    setQuizStatus(total === 0 ? 'Defina peso positivo para pelo menos um macrotema.' : '');
   }
 
   function renderOption(question, option) {
     const article = document.createElement('article');
     const selected = state.answers[question.id] === option.id;
     const letter = optionLetter(question, option.id);
-    const previewCount = Math.min(3, option.topics.length);
     article.className = `proposal-card${selected ? ' is-selected' : ''}`;
     article.dataset.option = option.id;
     article.innerHTML = `
@@ -102,13 +129,9 @@
         <span class="proposal-title">Proposta ${letter}</span>
         <span class="proposal-check">${selected ? 'Selecionada' : 'Selecionar'}</span>
       </button>
-      <ul class="proposal-preview">
-        ${option.topics.slice(0, previewCount).map((topic) => `<li>${escapeHtml(topic)}</li>`).join('')}
-      </ul>
-      ${option.topics.length > previewCount ? `
-        <details class="proposal-details"><summary>Ver mais ${option.topics.length - previewCount} pontos desta proposta</summary>
-          <ul>${option.topics.slice(previewCount).map((topic) => `<li>${escapeHtml(topic)}</li>`).join('')}</ul>
-        </details>` : ''}`;
+      <ul class="proposal-topics">
+        ${option.topics.map((topic) => `<li>${escapeHtml(topic)}</li>`).join('')}
+      </ul>`;
     $('.proposal-choice', article).addEventListener('click', () => {
       state.answers[question.id] = option.id;
       updateQuestionState(question);
@@ -119,11 +142,6 @@
   function updateQuestionState(question) {
     const weight = state.weights[question.id];
     const answer = state.answers[question.id];
-    $$('.weight-button', $('#weightControl')).forEach((button) => {
-      const selected = Number(button.dataset.weight) === weight;
-      button.classList.toggle('is-selected', selected);
-      button.setAttribute('aria-pressed', String(selected));
-    });
     $$('.proposal-card', $('#optionsList')).forEach((card) => {
       const selected = card.dataset.option === answer;
       card.classList.toggle('is-selected', selected);
@@ -133,8 +151,8 @@
     $('#questionCard').classList.toggle('is-zero-weight', weight === 0);
     $('#nextBtn').disabled = !isAnswered(question);
     $('#questionContext').textContent = weight === 0
-      ? 'Este macrotema será ignorado no cálculo. Você pode escolher uma proposta mesmo assim ou seguir.'
-      : 'Escolha um dos 13 conjuntos. Os nomes das candidaturas só aparecem no resultado.';
+      ? 'Você definiu peso 0: esta pergunta não entra no cálculo. Pode escolher uma proposta ou seguir.'
+      : `Peso ${weight}. Escolha um dos 13 conjuntos. Deslize os cards para o lado; os nomes só aparecem no resultado.`;
     setQuizStatus('');
   }
 
@@ -147,14 +165,17 @@
     $('#questionIndex').textContent = String(state.index + 1).padStart(2, '0');
     $('#questionEyebrow').textContent = '13 PROPOSTAS DOCUMENTAIS · 1 ESCOLHA';
     $('#questionPrompt').textContent = question.prompt;
-    $('#prevBtn').disabled = state.index === 0;
+    $('#sourceNote').innerHTML = 'As alternativas reproduzem os tópicos publicados nas páginas individuais do TSE. A ordem é embaralhada e os nomes só aparecem no resultado.';
+    $('#prevBtn').disabled = false;
     $('#nextBtn').childNodes[0].nodeValue = state.index === total - 1 ? 'Ver resultado ' : 'Próxima ';
     setQuizStatus('');
-    renderWeightControl(question);
+    $('#weightControl').hidden = true;
     const list = $('#optionsList');
+    list.hidden = false;
     list.innerHTML = '';
     list.setAttribute('role', 'radiogroup');
     list.setAttribute('aria-label', question.prompt);
+    list.setAttribute('tabindex', '0');
     state.optionOrders[question.id]
       .map((id) => question.options.find((option) => option.id === id))
       .forEach((option) => list.append(renderOption(question, option)));
@@ -165,7 +186,19 @@
     card.classList.add('swap');
   }
 
+  function renderStep() {
+    if (state.index === -1) renderWeightSetup();
+    else renderQuestion();
+  }
+
   function next() {
+    if (state.index === -1) {
+      if (totalAssignedWeight() === 0) return;
+      state.index = 0;
+      renderQuestion();
+      window.scrollTo(0, 0);
+      return;
+    }
     const question = currentQuestion();
     if (!isAnswered(question)) return;
     if (state.index < DATA.questions.length - 1) {
@@ -184,7 +217,13 @@
   }
 
   function previous() {
-    if (state.index === 0) return;
+    if (state.index === -1) return;
+    if (state.index === 0) {
+      state.index = -1;
+      renderWeightSetup();
+      window.scrollTo(0, 0);
+      return;
+    }
     state.index -= 1;
     renderQuestion();
     window.scrollTo(0, 0);
@@ -382,7 +421,7 @@
 
   function info() { state.infoFrom = state.screen; show('info'); }
   function backInfo() {
-    if (state.infoFrom === 'quiz') { show('quiz'); renderQuestion(); }
+    if (state.infoFrom === 'quiz') { show('quiz'); renderStep(); }
     else show(state.infoFrom === 'result' ? 'result' : 'home');
   }
 

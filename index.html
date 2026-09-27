@@ -7,7 +7,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%2307101d%22/%3E%3Cpath d=%22M7 10h18M7 16h12M7 22h18%22 stroke=%22%23a8f5cf%22 stroke-width=%222%22 stroke-linecap=%22round%22/%3E%3C/svg%3E">
   <meta name="description" content="Comparador cego e auditável dos planos de governo presidenciais de 2026, baseado exclusivamente nos documentos oficiais do TSE.">
   <title>Plano Aberto 2026 — comparador cego de propostas</title>
-  <link rel="stylesheet" href="styles.css?v=20260927-v8">
+  <link rel="stylesheet" href="styles.css?v=20260927-v9">
 </head>
 <body>
   <div class="ambient ambient-a" aria-hidden="true"></div>
@@ -28,7 +28,7 @@
       <div class="hero-wrap">
         <div class="eyebrow-pill"><span class="live-dot"></span> Eleições 2026 · fonte oficial TSE</div>
         <h1>Escolha as ideias.<br><span>Os nomes vêm depois.</span></h1>
-        <p class="hero-copy">Oito decisões, uma por macrotema oficial. Em cada uma, escolha entre 13 conjuntos de propostas sem saber a candidatura e defina quanto aquele tema pesa para você.</p>
+        <p class="hero-copy">Primeiro, distribua até oito pontos entre os macrotemas. Depois, faça oito escolhas entre 13 conjuntos de propostas sem saber a candidatura.</p>
         <div class="hero-actions">
           <button class="primary-btn" data-action="start">
             Começar teste
@@ -84,7 +84,7 @@
         </div>
 
         <article class="question-card" id="questionCard">
-          <p class="source-note">As alternativas reproduzem os tópicos publicados nas páginas individuais do TSE. A ordem é embaralhada e os nomes só aparecem no resultado.</p>
+          <p class="source-note" id="sourceNote">As alternativas reproduzem os tópicos publicados nas páginas individuais do TSE. A ordem é embaralhada e os nomes só aparecem no resultado.</p>
           <div class="question-heading">
             <span class="question-index" id="questionIndex">01</span>
             <div>
@@ -162,7 +162,7 @@
         <div class="principles">
           <article><span>01</span><h3>Oito decisões independentes</h3><p>Cada pergunta cobre um dos oito macrotemas usados pelo TSE e oferece exatamente uma proposta por candidatura.</p></article>
           <article><span>02</span><h3>Comparação cega</h3><p>Os nomes ficam ocultos durante o questionário e as 13 alternativas são embaralhadas a cada novo teste.</p></article>
-          <article><span>03</span><h3>Peso escolhido pelo usuário</h3><p>O peso de 0 a 3 pertence ao macrotema. Peso zero remove a decisão; um peso positivo vai integralmente para a proposta escolhida.</p></article>
+          <article><span>03</span><h3>Oito pontos de prioridade</h3><p>Antes das propostas, você distribui no máximo oito pontos entre os temas. Peso zero anula a pergunta; aumentar um peso amplia sua influência no resultado.</p></article>
           <article><span>04</span><h3>Distribuição transparente</h3><p>A pontuação de cada candidatura é dividida pela soma de todos os pesos ativos. Não há bônus, penalidade ou correção específica por candidatura.</p></article>
         </div>
         <div class="source-panel">
@@ -184,6 +184,6 @@
 
   <script src="src/data/quiz-data.js?v=20260926-v4"></script>
   <script src="src/data/questionnaire-8x13.js?v=20260927-v1"></script>
-  <script src="app.js?v=20260927-v8"></script>
+  <script src="app.js?v=20260927-v9"></script>
 </body>
 </html>

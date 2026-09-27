@@ -13,13 +13,14 @@ O corpus possui:
 
 ## Estrutura do questionário
 
-1. Existem oito perguntas independentes, uma para cada macrotema do TSE.
-2. Cada pergunta apresenta exatamente 13 alternativas: uma por candidatura.
-3. Cada alternativa preserva os tópicos da candidatura naquele macrotema. Somente as citações de página foram retiradas da tela.
-4. Os nomes e partidos ficam ocultos durante o questionário.
-5. As alternativas são embaralhadas a cada novo teste e preservam a ordem sorteada quando o usuário retorna à pergunta.
-6. O usuário escolhe no máximo uma alternativa por macrotema.
-7. O usuário atribui ao macrotema um peso de 0 a 3.
+1. Antes das propostas, o usuário distribui no máximo oito pontos entre os oito macrotemas. Todos começam com peso 1.
+2. Existem oito perguntas independentes, uma para cada macrotema do TSE.
+3. Cada pergunta apresenta exatamente 13 alternativas: uma por candidatura.
+4. Cada alternativa preserva os tópicos da candidatura naquele macrotema. Somente as citações de página foram retiradas da tela.
+5. Os nomes e partidos ficam ocultos durante o questionário.
+6. As alternativas são embaralhadas a cada novo teste e preservam a ordem sorteada quando o usuário retorna à pergunta.
+7. O usuário escolhe no máximo uma alternativa por macrotema.
+8. Um macrotema pode receber peso zero ou vários pontos, desde que a soma de todos os pesos não ultrapasse oito.
 
 ## Cálculo
 
