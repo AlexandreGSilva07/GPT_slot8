@@ -152,7 +152,7 @@
     $('#nextBtn').disabled = !isAnswered(question);
     $('#questionContext').textContent = weight === 0
       ? 'Você definiu peso 0: esta pergunta não entra no cálculo. Pode escolher uma proposta ou seguir.'
-      : `Peso ${weight}. Escolha um dos 13 conjuntos. Deslize os cards para o lado; os nomes só aparecem no resultado.`;
+      : `Peso ${weight}. Escolha um dos 13 conjuntos. Todas as propostas aparecem abaixo; os nomes só aparecem no resultado.`;
     setQuizStatus('');
   }
 
