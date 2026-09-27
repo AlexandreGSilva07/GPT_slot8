@@ -1,0 +1,1079 @@
+# Questionário documental — 8 perguntas × 13 alternativas
+
+Fonte: páginas individuais das candidaturas à Presidência no portal do Tribunal Superior Eleitoral (TSE).
+
+## Regras editoriais deste arquivo
+
+- Cada pergunta corresponde a um dos oito macrotemas do TSE.
+- Cada pergunta contém exatamente uma alternativa por candidatura.
+- Os tópicos estão na ordem e com a redação publicada pelo TSE.
+- Foram removidas somente as citações de página ao final de cada tópico.
+- O nome e o partido identificam a correspondência para auditoria; devem ficar ocultos durante o quiz.
+- A ordem das alternativas deve ser embaralhada na interface.
+
+## Pergunta 1 — Economia, Trabalho e Responsabilidade Fiscal
+
+**Pergunta:** Qual conjunto de propostas para economia, trabalho e responsabilidade fiscal mais representa suas prioridades?
+
+### Alternativa 01 — CLARIANA BARAO (DC)
+
+- Ambiente de negócios simples, previsível e digitalização
+- Crédito produtivo, garantias e capacitação para pequenos negócios
+- Infraestrutura, logística, rodovias, ferrovias e hidrovias (Concessões e PPPs)
+- Responsabilidade fiscal focada em resultados, revisão de gastos e subsídios
+- Segurança energética, conectividade e economia digital
+
+### Alternativa 02 — EDMILSON COSTA (PCB)
+
+- Impulsionar a jornada de 30 horas semanais sem redução salarial e fim da escala 6x1
+- Revogação do arcabouço fiscal, Lei de Responsabilidade Fiscal e leis neoliberais
+- Nacionalização e estatização do sistema monetário, financeiro e bancário (criação do Banco dos Trabalhadores)
+- Reestruturação e auditoria da dívida pública com suspensão de juros
+- Reforma tributária progressiva, com isenção do IR para quem ganha até um salário-mínimo do DIEESE
+- Petrobras 100% estatal e fim do Preço de Paridade de Importação (PPI)
+
+### Alternativa 03 — ESCRITOR AUGUSTO CURY (AVANTE)
+
+- Banco do Empreendedor e Crédito Produtivo
+- Carga Tributária e Simplificação
+- Controle Rigoroso e Eficiência de Gastos Públicos
+- Déficit Público Próximo de Zero
+- Desenvolvimento de 10 Milhões de Novos Empreendedores
+- Prevenção ao Desemprego Estrutural (Era da Inteligência Artificial)
+- Redução Gradual e Sustentável da Dívida Pública
+- Regularização Fundiária e Patrimonial
+- Segurança Jurídica e Estabilidade Regulatória
+- Zonas de Processamento de Exportação (ZPEs) e Corredores Estratégicos
+
+### Alternativa 04 — FLAVIO BOLSONARO (PL)
+
+- Abertura de empresa
+- Banco nacional de vagas de emprego
+- CAIXA - banco da prosperidade
+- Crédito para empreender
+- Dívida Pública
+- Equilíbrio fiscal
+- Inflação no centro da meta
+- Minerais críticos
+- Negociado sobre o legislado
+- Primeira empresa
+- Primeiro emprego
+- Redução de impostos
+- Redução do custo do trabalho
+- Reforma Tributária
+- Reformulação das regras fiscais
+- Resistir à República Sindical
+- Trabalhador acima de 50 anos
+
+### Alternativa 05 — HERTZ DIAS (PSTU)
+
+- Fim da escala 6x1 sem redução de salários e direitos
+- Redução da jornada de trabalho para 36 horas semanais (rumo ao pleno emprego)
+- Aumento de 100% no salário mínimo rumo ao piso do DIEESE
+- Revogação da reforma trabalhista e da lei das terceirizações
+- Expropriação de grandes empresas estratégicas (Petrobras, Vale, siderurgia e agronegócio exportador)
+- Controle do sistema financeiro, suspensão do pagamento da dívida pública e auditoria
+
+### Alternativa 06 — LEONARDO AVALANCHE (PRTB)
+
+- Substituição de múltiplos tributos por um Imposto Único de 3,5% sobre tudo
+- Financiamento de veículos sem imposto e redução de taxas para motoristas de aplicativo
+- IPVA fixo de R$ 50 mensais para carros de passeio e isenção total para caminhoneiros
+- Desoneração fiscal para reindustrializar o país e processar minerais estratégicos
+- Programa "Crédito Raiz" com linhas específicas por porte para produtores rurais
+- Plano de investimentos em infraestrutura para ferrovias e hidrovias
+- Desoneração para a produção nacional de veículos e carros elétricos
+- Programa "Meu Primeiro Emprego" com complemento do custo salarial pelo governo
+
+### Alternativa 07 — LULA (PT)
+
+- Arcabouço fiscal e responsabilidade fiscal
+- Desenrola Brasil e renegociação de dívidas
+- Economia popular e solidária (Lei Paul Singer)
+- Fim da escala 6x1 e redução da jornada (40h)
+- Infraestrutura e logística (Novo PAC)
+- Micro, pequenas e médias empresas (fomento e crédito)
+- Nova Indústria Brasil (NIB) e neoindustrialização
+- Plano de Transformação Ecológica (PTE)
+- Reforma tributária
+- Trabalho por aplicativos e economia digital
+- Valorização do salário-mínimo
+
+### Alternativa 08 — RENAN SANTOS (MISSÃO)
+
+- Ajuste fiscal e desindexação de despesas (PEC de Transição / PEC do Equilíbrio Fiscal)
+- Desvinculação de pisos de saúde, educação e Fundeb
+- Frentes Cidadãs (substituição do Bolsa Família por trabalho remunerado em prol da comunidade)
+- Reforma do funcionalismo público e combate a supersalários
+- Reformas microeconômicas, justiça tributária, regulação financeira e legislação trabalhista
+- Revisão de renúncias fiscais (gastos tributários) e abono salarial
+
+### Alternativa 09 — RONALDO CAIADO (PSD)
+
+- Agenda nacional de produtividade
+- Crescimento (Estratégia Brasil 2040)
+- Despesas obrigatórias (controle)
+- Estabilização fiscal
+- Indústria (reindustrialização e transição)
+- Infraestrutura e logística
+- Investimento público e privado
+- Mercado de trabalho (modernização)
+- Micro e pequenas empresas (fortalecimento)
+- Mineração estratégica
+- Orçamento da Verdade
+- Revisão de subsídios e benefícios tributários
+
+### Alternativa 10 — RUI COSTA PIMENTA (PCO)
+
+- Aumento emergencial de 50% nos salários e reposição integral de 100% das perdas
+- Auxílio-desemprego igual ao último salário recebido
+- Bolsa Família de pelo menos um salário mínimo
+- Anulação de todas as dívidas dos trabalhadores com o sistema financeiro
+- Escala móvel dos salários (reajuste automático a cada 3% de inflação)
+- Fim da "independência" do Banco Central e cancelamento das dívidas externa e interna
+- Fim dos impostos sobre o consumo e os salários (tributação restrita a lucros e grandes fortunas)
+- Nacionalização do petróleo e Petrobrás 100% estatal sob o controle dos trabalhadores
+- Reajuste das aposentadorias e pensões e fim dos privilégios de oficiais militares e juízes
+- Redução da jornada de trabalho para no máximo 7 horas diárias e 35 horas semanais
+- Redução imediata de 50% no preço dos combustíveis e fim da paridade com o dólar
+- Reestatização de empresas privatizadas (Eletrobrás, Vale, bancos, telefonia)
+- Restabelecimento integral da CLT, fim da terceirização e proibição de demissões
+- Salário mínimo vital correspondente às necessidades básicas (mínimo de R$ 7.500)
+- Estatização do sistema financeiro (criação de um banco estatal único)
+
+### Alternativa 11 — SAMARA (UP)
+
+- Aumento de 100% no Salário Mínimo e Reajuste
+- Controle Popular e Planificação Democrática da Economia
+- Fim da Escala 6x1 e Implementação da Escala 4x3 (Jornada de 30h/36h)
+- Frentes Emergenciais de Trabalho e Emprego Público
+- Nacionalização dos Bancos e Estatização do Sistema Financeiro
+- Regulamentação do Trabalho em Aplicativos e Fim do Domínio Estrangeiro
+- Reindustrialização Nacional e Cadeias Produtivas Completas
+- Revogação do Arcabouço Fiscal, da Reforma Trabalhista e da Previdenciária
+- Suspensão Imediata e Auditoria Cidadã da Dívida Pública
+- Tributação Progressiva, Imposto sobre Grandes Fortunas e Isenção para Baixa Renda
+
+### Alternativa 12 — VETERINÁRIO WILSON GRASSI (DEMOCRATA)
+
+- Abertura, alteração e baixa de empresa (ambiente único digital)
+- Contribuição patronal sobre a folha (extinção)
+- Custo de conformidade tributária e obrigações acessórias
+- Desoneração da folha de pagamento
+- Imposto de Renda da Pessoa Física (isenção até 5 salários mínimos)
+- Imposto Único Federal (IUF sobre movimentação financeira)
+- Microempreendedor individual (MEI) e pequeno negócio
+- Qualificação profissional com destino (demanda regional)
+
+### Alternativa 13 — ZEMA (NOVO)
+
+- Choque fiscal e estabilização da relação dívida/PIB
+- Privatização de todas as empresas estatais
+- Redução gradual do Imposto de Renda das empresas (IRPJ)
+- Reforma Administrativa para enxugamento de ministérios e cargos
+- Reforma da Previdência (inclusão de estados, municípios e previdência rural/militar)
+- Redução de encargos na folha de pagamento e alternativa flexível à CLT
+
+## Pergunta 2 — Saúde Pública e Assistência
+
+**Pergunta:** Qual conjunto de propostas para saúde pública e assistência mais representa suas prioridades?
+
+### Alternativa 01 — CLARIANA BARAO (DC)
+
+- Atenção primária resolutiva e coordenação do cuidado
+- Esporte e atividade física como vetor de saúde
+- Inovação, pesquisa clínica e avaliação transparente de terapias no SUS
+- Prevenção, diagnóstico precoce, vacinação e saúde materno-infantil
+- Saúde digital, telemedicina e regulação inteligente de filas
+
+### Alternativa 02 — EDMILSON COSTA (PCB)
+
+- Saúde 100% pública, gratuita e universal, com estatização do setor privado de saúde e fim das OSs
+- Investimento de 10% do PIB na saúde pública e fortalecimento da atenção básica
+- Ampliação e consolidação do Complexo Econômico-Industrial da Saúde (CEIS)
+- Criação dos Conselhos Populares de Saúde em todos os níveis
+- Fortalecimento do SUS na perspectiva da luta antimanicomial e proibição de comunidades terapêuticas
+
+### Alternativa 03 — ESCRITOR AUGUSTO CURY (AVANTE)
+
+- Atenção Primária e Saúde Preventiva
+- Modernização e Gestão do SUS
+- Prevenção e Detecção Precoce do Câncer (Projeto SEA)
+- Programa Nacional de Saúde Mental e Apoio Emocional
+- Tele Saúde Brasil (Telemedicina em Massa para Desafogar o SUS)
+
+### Alternativa 04 — FLAVIO BOLSONARO (PL)
+
+- Agendamento ágil por inteligência artificial
+- Apostas com recurso de programas sociais
+- Apostas conscientização
+- Casa Verde e Amarela
+- Digitalização do SUS
+- Exames preventivos
+- Horários ociosos da rede privada
+- Hospitais universitários federais - modernização
+- Idosos - Casa segura para envelhecer
+- Idosos - Instituições de longa permanência
+- Imunização
+- INSS sem fila
+- Pacote antifraude
+- Prevenção
+- Programa de atendimento aos idosos
+- Programas sociais - manutenção
+- Prontuário eletrônico único
+- Rede Nacional de Cuidado
+- Remédio à domicílio
+- Retorno sem fila pós seguro desemprego
+- Saúde da família
+- Saúde mental
+- Tabela SUS - Correção
+- Telessaúde
+
+### Alternativa 05 — HERTZ DIAS (PSTU)
+
+- Defesa do SUS público, universal, gratuito e 100% estatal
+- Fim das privatizações, Organizações Sociais (OSs) e Fundações na saúde
+- Proibição de investimentos públicos em Comunidades Terapêuticas e expansão dos CAPS
+- Produção pública de medicamentos e insumos estratégicos
+- Bolsa de um salário mínimo para desempregados enquanto não houver pleno emprego
+
+### Alternativa 06 — LEONARDO AVALANCHE (PRTB)
+
+- Mutirões e parcerias com hospitais privados para zerar a fila do SUS
+- Uso de inteligência artificial para monitorar o estoque de remédios em tempo real
+- Atenção especializada à saúde da mulher (climatério e menopausa) e ampliação de geriatras
+- Criação de plano de saúde exclusivo para motoristas de aplicativo
+- Rede "Respira", com centros de saúde mental exclusivos e acolhedores para a juventude
+- Universalização da água tratada e coleta de esgoto como prevenção de doenças
+
+### Alternativa 07 — LULA (PT)
+
+- Atenção especializada e redução de filas (Agora tem Especialistas)
+- Complexo Econômico e Industrial da Saúde (CEIS)
+- Cuidados e corresponsabilização (Política Nacional de Cuidados)
+- Farmácia Popular e distribuição de medicamentos
+- Mais Médicos e fixação de profissionais
+- Saúde da mulher e dignidade menstrual
+- Saúde mental (CAPS)
+- Saúde bucal (Brasil Sorridente)
+- Sistema Único de Assistência Social (SUAS)
+- Vacinação (recuperação das coberturas vacinais)
+
+### Alternativa 08 — RENAN SANTOS (MISSÃO)
+
+- Escala Nacional de Estratificação de Risco (ENER / Sistema de fila viva focada em prioridade de gravidade)
+- Fundo Nacional de Modernização do Acesso (FNMA) com repasses condicionados
+- Integração do Projeto Genomas Brasil ao Prontuário Eletrônico
+- Modelo Hub-and-Spoke para centralização de demandas complexas em centros regionais
+- Prontuário Eletrônico Nacional Interoperável (PRONTO) e telessaúde com inteligência artificial (modelo DoctorSV)
+
+### Alternativa 09 — RONALDO CAIADO (PSD)
+
+- Assistência social e Sistema Único de Assistência Social (SUAS)
+- Atenção Primária
+- Câncer (Rede contra o câncer)
+- Crianças e Adolescentes (Prioridade Absoluta)
+- Doenças raras
+- Fila transparente e regulação inteligente
+- Hospital inteligente (SUS digital)
+- Infância (Saúde da)
+- Longevidade e idosos
+- Política e proteção social
+- Saúde mental
+- Transferência de renda
+- Vacinas, vigilância e resposta a emergências
+
+### Alternativa 10 — RUI COSTA PIMENTA (PCO)
+
+- Abertura imediata de centenas de cursos de medicina e enfermagem sem vestibular nas universidades públicas
+- Fim do teto de gastos, da Lei de Responsabilidade Fiscal e do congelamento de gastos públicos
+- Mais verbas para a saúde pública sem limite de gastos para salvar vidas
+- Plano de emergência para construção de hospitais e postos de saúde em todo o país
+- Piso salarial de R$ 8 mil para os profissionais da saúde
+- Proibição de despejos e de cortes de serviços essenciais (água, luz e gás) para desempregados
+- Volta do programa Mais Médicos e validação imediata de diplomas de médicos brasileiros e estrangeiros
+
+### Alternativa 11 — SAMARA (UP)
+
+- Combate e Fim da Exploração dos Planos de Saúde Privados
+- Fim das Organizações Sociais de Saúde (OSS) e Gestão 100% Estatal
+- Obrigatoriedade de Uso do SUS por Agentes Políticos
+- Saúde Indígena Pública e Respeito às Práticas Tradicionais
+- Soberania Farmacêutica e Produção Nacional de Remédios e Vacinas
+- Valorização dos Trabalhadores da Saúde e Pisos Salariais
+
+### Alternativa 12 — VETERINÁRIO WILSON GRASSI (DEMOCRATA)
+
+- Atenção primária como prioridade orçamentária
+- Fila cirúrgica e diagnóstica (fila única e pública)
+- Medicamentos e insumos estratégicos (produção nacional)
+- Prontuário eletrônico integrado entre os níveis de atenção
+- Saúde Única (integração entre saúde humana, animal e ambiental)
+- Zoonoses (programa nacional de vigilância)
+
+### Alternativa 13 — ZEMA (NOVO)
+
+- Telemedicina, prontuário eletrônico e registro nacional de saúde
+- Parcerias público-privadas e uso da capacidade ociosa do setor privado para reduzir filas no SUS
+- Programa Casas da Cidadania (superação da pobreza vinculada ao trabalho)
+- Combate a fraudes no CadÚnico e unificação de programas sociais
+
+## Pergunta 3 — Segurança Pública e Justiça
+
+**Pergunta:** Qual conjunto de propostas para segurança pública e justiça mais representa suas prioridades?
+
+### Alternativa 01 — CLARIANA BARAO (DC)
+
+- Combate ao narcotráfico e ao tráfico de armas (Inteligência e cooperação)
+- Fronteiras inteligentes, integradas e monitoradas por tecnologia
+- Segurança urbana orientada por dados e policiamento baseado em evidências
+- Sistema prisional, trabalho, educação e controle de comunicações ilícitas
+- Sufocamento financeiro das facções e rastreamento de ativos
+
+### Alternativa 02 — EDMILSON COSTA (PCB)
+
+- Completa desmilitarização da segurança pública, unificação das polícias e instituição do ciclo completo
+- Fim da política de "guerra às drogas" e descriminalização do uso (legalização da maconha a curto prazo)
+- Revogação da Lei Antiterrorismo (12.850/2013) e da Lei Antidrogas
+- Ocupação de territórios dominados pelo crime organizado com serviços públicos (cultura, saúde e educação)
+
+### Alternativa 03 — ESCRITOR AUGUSTO CURY (AVANTE)
+
+- Combate Estruturado às Facções Criminosas e Lavagem de Dinheiro
+- Cooperação Internacional e Controle de Fronteiras
+- Criação da Polícia FOCO (Força de Combate Preventivo Municipal)
+- Programa FATO (Força Alerta Total)
+- Recriação do Ministério da Segurança Pública
+- Sistema Penitenciário e Foco em Ressocialização
+- Tecnologia e Inteligência Artificial aplicadas à Segurança
+
+### Alternativa 04 — FLAVIO BOLSONARO (PL)
+
+- Auxílio às famílias das vítimas
+- Castração química para estupradores
+- Facções e crime organizado
+- Feminicídio - Canais de denúncia
+- Feminicídio - tolerância zero
+- Fronteiras
+- Investimento em segurança pública
+- Maioridade penal
+- Presídios
+- Progressão de pena zero para crimes hediondos
+- Reconhecimento facial
+- Retomar áreas sob domínio de facções
+- Roubo de celular
+- Tráfico e cocaína nos portos
+
+### Alternativa 05 — HERTZ DIAS (PSTU)
+
+- Desmilitarização da Polícia Militar e unificação das polícias em uma única instituição civil
+- Fim da Justiça Militar e punição exemplar para crimes praticados por agentes do Estado
+- Descriminalização das drogas e revogação da Lei Antidrogas
+- Implantação de câmeras corporais com armazenamento sob controle de órgãos civis
+- Combate ao crime organizado atingindo seu patrimônio, bancos e redes financeiras
+
+### Alternativa 06 — LEONARDO AVALANCHE (PRTB)
+
+- Criação do Sistema Único Nacional de Segurança integrando bases policiais e antecedentes
+- Integração de câmeras e reconhecimento facial para combate a roubos
+- Endurecimento de penas e isolamento total de líderes de facções em presídios
+- Aumento real do orçamento de defesa e modernização das Forças Armadas
+- Aumento de penas e identificação técnica automática contra a exploração sexual infantil
+
+### Alternativa 07 — LULA (PT)
+
+- Asfixia financeira do crime organizado
+- Controle de armas de fogo
+- Crimes financeiros, cibernéticos e Celular Seguro
+- Enfrentamento da violência contra a mulher
+- Fronteiras e segurança na Amazônia
+- Ministério da Segurança Pública
+- Sistema prisional e penitenciário (Plano Pena Justa)
+- Sistema Único de Segurança Pública (SUSP) e inteligência
+
+### Alternativa 08 — RENAN SANTOS (MISSÃO)
+
+- Direito Penal do Inimigo (DPI) como framework jurídico e decretação da Guerra ao Crime
+- Inversão do ônus da prova e confisco de bens de faccionados (presunção de ilicitude)
+- Superpresídios de segurança máxima em regiões remotas (modelo CECOT)
+- Tecnologia urbana preditiva (drones, reconhecimento facial e totens de denúncia)
+- Uso de Garantia da Lei e da Ordem (GLO) e Estado de Defesa para retomada territorial
+
+### Alternativa 09 — RONALDO CAIADO (PSD)
+
+- Asfixia financeira do crime organizado
+- Combate à corrupção
+- Controle do sistema penitenciário (REDAD)
+- Cooperação sul-americana (SULPOL)
+- Defesa Nacional e Soberania
+- Enriquecimento ilícito (Lei do)
+- Fronteiras, portos e aeroportos
+- Inteligência criminal (Sistema Nacional)
+- Jogos e apostas on-line (regulamentação)
+- Maioridade penal (redução)
+- Ministério da Segurança Pública
+- Terrorismo doméstico (Lei do)
+- Violência contra mulheres e crianças
+
+### Alternativa 10 — RUI COSTA PIMENTA (PCO)
+
+- Direito de autodefesa para os trabalhadores da cidade, do campo e dos povos indígenas
+- Dissolução da Polícia Militar e de todo o aparato repressivo do Estado
+- Formação de comitês de autodefesa dos trabalhadores nas cidades, campos e comunidades de índios
+
+### Alternativa 11 — SAMARA (UP)
+
+- Assembleias Populares de Segurança (Substituição dos Conselhos Comunitários)
+- Combate ao Genocídio da Juventude Negra e Periférica
+- Desmilitarização das Polícias e Unificação sob Estrutura Civil
+- Fim da Política de "Guerra às Drogas" e Foco na Saúde Pública
+- Reformulação do Sistema Prisional (Unidades de Reeducação)
+
+### Alternativa 12 — VETERINÁRIO WILSON GRASSI (DEMOCRATA)
+
+- Asfixia financeira do crime organizado (investigação patrimonial)
+- Fronteiras (vigilância eletrônica, portos e aeroportos)
+- Isolamento de comando em presídios federais de segurança máxima
+- Plebiscito sobre o modelo penitenciário de segurança máxima
+- Sistema Único de Segurança Pública (Sinesp e PEC nº 18/2025)
+
+### Alternativa 13 — ZEMA (NOVO)
+
+- Classificação de facções criminosas como organizações terroristas
+- Construção de presídios de segurança máxima em regiões remotas
+- Redução da maioridade penal para 16 anos ou menos
+- Fim do "prende e solta" e prisão preventiva obrigatória para reincidentes
+- Expansão das Patrulhas Maria da Penha e Salas Lilás
+
+## Pergunta 4 — Educação, Ciência e Meio Ambiente
+
+**Pergunta:** Qual conjunto de propostas para educação, ciência e meio ambiente mais representa suas prioridades?
+
+### Alternativa 01 — CLARIANA BARAO (DC)
+
+- Alfabetização na idade adequada e recomposição de aprendizagem
+- Ensino médio, técnico e transição para o trabalho
+- Escola para o século XXI (Tecnologia, IA e pensamento crítico)
+- Primeira infância e prontidão para aprender
+- Valorização e apoio aos professores (Formação e carreira)
+
+### Alternativa 02 — EDMILSON COSTA (PCB)
+
+- Ensino 100% público e gratuito, das creches à pós-graduação, com estatização do ensino privado
+- Fim do vestibular nas universidades federais e universalização de cotas (54% para negros e ampla inclusão trans)
+- Implementação do Piso Salarial Profissional Nacional para a educação básica
+- Ampliação dos Institutos Federais, Escolas Técnicas e valorização dos profissionais da educação
+
+### Alternativa 03 — ESCRITOR AUGUSTO CURY (AVANTE)
+
+- Escolas de Empreendedorismo (Rede Nacional)
+- Gestão da Emoção nas Escolas (Saúde Emocional)
+- Novo Ensino Médio Conectado ao Futuro e ao Trabalho
+- Prioridade Absoluta para a Educação Básica e Alfabetização
+- Universidades Conectadas à Inovação e Produção de Riqueza
+- Valorização, Formação e Papel Transformador dos Professores
+
+### Alternativa 04 — FLAVIO BOLSONARO (PL)
+
+- Alfabetização (método fônico)
+- Altas habilidades
+- Capacitação contínua de professores
+- Conectividade nas escolas
+- Creche - ampliação de vagas
+- Economia digital no currículo escolar
+- Ensino superior e inovação
+- Ensino técnico
+- Escola em tempo integral
+- Escola nas férias
+- Escola sem doutrinação
+- Escolas cívico-militares
+- Esporte na escola
+- Financiamento estudantil
+- Gestão escolar por resultados
+- Política Nacional de Formação de Talentos
+- Reforço escolar - Programa Acolher
+- Voucher educacional em falta de vagas
+- Voucher-creche
+
+### Alternativa 05 — HERTZ DIAS (PSTU)
+
+- Educação 100% pública, laica, gratuita e de qualidade para toda a população
+- Nenhuma verba pública para empresários da educação (fim de PPPs e terceirizações)
+- Revogação da BNCC, do Novo Ensino Médio e combate à militarização das escolas
+- Valorização profissional, carreira e salários dignos para os profissionais da educação
+- Garantia de permanência estudantil (transporte, alimentação e bolsas)
+
+### Alternativa 06 — LEONARDO AVALANCHE (PRTB)
+
+- Qualificação em empreendedorismo digital com distribuição de iPhones e internet
+- Ensino tecnológico, IA e educação financeira integrados nas escolas públicas
+- Fluência em inglês via imersão e tecnologia celular, além de foco em inteligência emocional
+- Recomposição de orçamento para Capes/CNPq e foco em um polo tecnológico mundial
+- Regulamentação e fiscalização do ensino domiciliar (homeschooling)
+- "Crédito Nacional de Qualificação" para educação contínua de jovens adultos
+
+### Alternativa 07 — LULA (PT)
+
+- Alfabetização (Compromisso Nacional Criança Alfabetizada)
+- Ciência, Tecnologia e Inovação
+- Creches e educação infantil
+- Ensino médio (Pé-de-Meia)
+- Ensino técnico e Institutos Federais
+- Ensino superior (expansão, ProUni, FIES, hospitais universitários)
+- Escola em tempo integral
+- Professores (valorização e formação)
+
+### Alternativa 08 — RENAN SANTOS (MISSÃO)
+
+- Alfabetização universal com base no método fônico
+- Código de conduta disciplinar estudantil com punições objetivas e ranking de disciplina
+- Escolas civis-militares em áreas de alta criminalidade
+- Reforma do ensino superior (Foco em STEM e substituição de cotas por bolsas de mérito)
+
+### Alternativa 09 — RONALDO CAIADO (PSD)
+
+- Alfabetização na idade certa (Pacto Nacional)
+- Ciência, Tecnologia e Inovação
+- Conectividade significativa
+- Ensino médio com flexibilidade
+- Ensino superior e inovação
+- Escola em tempo integral
+- Inteligência artificial (desenvolvimento e uso)
+- Primeira infância (creches)
+- Professores e liderança escolar
+- Recomposição de aprendizagens
+
+### Alternativa 10 — RUI COSTA PIMENTA (PCO)
+
+- Abaixo a censura e fim da proibição do uso de celulares nas escolas
+- Eleição direta de diretores e de todos os postos de gestão escolar e universitária
+- Estatização de todo o ensino privado (ensino pago)
+- Fim dos vestibulares e garantia de livre ingresso nas universidades públicas
+- Governo tripartite (estudantes, professores e funcionários) nas Universidades
+- Jornada de trabalho máxima de 30 horas semanais para os professores
+- Mais verbas para a educação, destinando recursos públicos exclusivamente para o ensino público
+- Piso salarial nacional dos professores de pelo menos R$ 8,5 mil
+- Revogação de todas as "reformas" contra a educação e o ensino público
+
+### Alternativa 11 — SAMARA (UP)
+
+- Abolição do Vestibular e Livre Acesso ao Ensino Técnico e Superior
+- Anistia das Dívidas do FIES e Estatização de Conglomerados Educacionais
+- Destinação de no Mínimo 10% do PIB para a Educação Pública
+- Erradicação do Analfabetismo
+- Investimento em Ciência, Tecnologia e Soberania Nacional
+- Revogação do Novo Ensino Médio e das Reformas Empresariais
+
+### Alternativa 12 — VETERINÁRIO WILSON GRASSI (DEMOCRATA)
+
+- Alfabetização na idade certa (com condicionalidade)
+- Educação física escolar (padrão mínimo e jogos)
+- Ensino médio e formação técnica
+- PEC da Pesquisa (transformação de bolsistas em servidores públicos)
+
+### Alternativa 13 — ZEMA (NOVO)
+
+- Transferência do ensino superior do MEC para o Ministério de Ciência e Tecnologia
+- Foco na primeira infância e ampliação de vagas em creches via parcerias privadas
+- Revisão e aprimoramento da Base Nacional Comum Curricular (BNCC)
+- Recuperação da alfabetização, recomposição da aprendizagem e formação deprofessores e diretores escolares
+- Vinculação do programa Pé-de-Meia ao aprendizado e à frequência escolar
+- Liberdade de escolha educacional (escolas cívico-militares e homeschooling)
+
+## Pergunta 5 — Política Externa e Inserção Global
+
+**Pergunta:** Qual conjunto de propostas para política externa e inserção global mais representa suas prioridades?
+
+### Alternativa 01 — CLARIANA BARAO (DC)
+
+- Cooperação internacional para o combate ao narcotráfico e ao tráfico de armas
+
+### Alternativa 02 — EDMILSON COSTA (PCB)
+
+- Combate e denúncia ao imperialismo (OTAN, OEA e Cúpula das Américas)
+- Solidariedade ativa a Cuba, Palestina, Venezuela, Irã, Saara Ocidental e povos em luta
+- Rompimento imediato de relações diplomáticas e econômicas com o Estado de Israel
+- Fortalecimento de blocos de integração regional soberanos, como ALBA e UNASUL
+
+### Alternativa 03 — ESCRITOR AUGUSTO CURY (AVANTE)
+
+- Diplomacia Climática e Ambiental
+- Embaixadas Empreendedoras (Modelo 4.0)
+- Integração Econômica e Comercial Regional e Global
+- Plano de Combate Mundial da Fome (Make Humanity Great Again)
+- Proteção de Interesses Estratégicos Nacionais
+
+### Alternativa 04 — FLAVIO BOLSONARO (PL)
+
+- Abertura comercial
+- Adesão à OCDE
+- Cadeias globais de valor
+- Competitividade doméstica
+- Defesa nacional
+- Fortalecimento de multinacionais brasileiras
+- Soberania
+- Transição energética
+
+### Alternativa 05 — HERTZ DIAS (PSTU)
+
+- Ruptura com o imperialismo e recusa a acordos de submissão (EUA, Europa e China)
+- Defesa da soberania nacional sobre recursos estratégicos e recusa ao tarifaço externo
+- Oposição a tratados que transformam o Brasil em exportador exclusivo de commodities
+
+### Alternativa 06 — LEONARDO AVALANCHE (PRTB)
+
+- Atração de capital e fábricas estrangeiras através de uma carga tributária competitiva
+- Desenvolvimento de vacinas e biotecnologia nacional para exportação
+- Proteção para resguardar riquezas estratégicas e a "Amazônia Azul" perante o mundo
+- Atração de montadoras globais para produção e nacionalização de veículos elétricos
+
+### Alternativa 07 — LULA (PT)
+
+- Aliança Global contra a Fome e a Pobreza
+- COP30, Fundo Florestas Tropicais e diplomacia climática
+- Defesa Nacional e Base Industrial de Defesa
+- Integração sul-americana (Mercosul, OTCA, UNASUL)
+- Multilateralismo (ONU, OMC, FMI) e BRICS
+- Relações com África, Ásia, Oriente Médio e Sul Global
+
+### Alternativa 08 — RENAN SANTOS (MISSÃO)
+
+- Atuação como Árbitro do Sul Global (diplomacia ativa na África, Ásia e América Latina)
+- Autonomia completa do ciclo de combustível nuclear e reprocessamento (Ativo de dissuasão)
+- Pacto Interamericano contra o narcotráfico transnacional
+- Pragmatismo institucional em política externa (Distanciamento de alinhamentos puramente ideológicos)
+- Segurança de fronteiras e expansão tecnológica do SISFRON
+
+### Alternativa 09 — RONALDO CAIADO (PSD)
+
+- Acordos comerciais (Mercosul-União Europeia)
+- Ásia, África e Indo-Pacífico (mercados)
+- Diplomacia ambiental
+- Diplomacia de Defesa
+- Diplomacia econômica e atração de investimentos
+- Integração sul-americana
+- Multilateralismo (ONU, OMC, G20, BRICS, OCDE)
+- Relações exteriores (Estratégia de Inserção)
+
+### Alternativa 10 — RUI COSTA PIMENTA (PCO)
+
+- Defesa dos povos que se levantam contra o imperialismo (Palestina, Irã, Rússia, Cuba, Nicarágua, Venezuela)
+- Fora o imperialismo da Amazônia e de toda a América Latina
+- Luta contra a ingerência dos Estados Unidos e da OEA na região
+
+### Alternativa 11 — SAMARA (UP)
+
+- Anti-imperialismo e Defesa da Autodeterminação dos Povos
+- Proibição da Remessa de Recursos Financeiros ao Exterior Sem Autorização Estatal
+- Rompimento de Relações com o Estado de Israel (Causa Palestina)
+- Rompimento de Tratados de Submissão com EUA, OTAN ou China
+- Solidariedade Internacionalista com Cuba, Venezuela, Irã, Iêmen e Saara Ocidental
+
+### Alternativa 12 — VETERINÁRIO WILSON GRASSI (DEMOCRATA)
+
+- Adaptação climática e defesa civil
+- Desmatamento ilegal (combate por inteligência e rastreabilidade)
+- Licenciamento ambiental (prazo definido e painel público)
+- Mineração em terra indígena (regime legal e Convenção nº 169 da OIT)
+- Previsibilidade Regulatória e redução de encargos setoriais (Energia)
+- Programa Brasil nos Trilhos (corredores ferroviários de carga)
+- Saneamento (cobrança de metas do marco legal de 2020)
+
+### Alternativa 13 — ZEMA (NOVO)
+
+- Saída diplomática do BRICS
+- Adesão do Brasil à OCDE através de reformas institucionais
+- Transformação do Mercosul em zona de livre comércio
+- Cooperação internacional para combate ao crime organizado transnacional
+
+## Pergunta 6 — Direitos Humanos, Equidade e Inclusão Social
+
+**Pergunta:** Qual conjunto de propostas para direitos humanos, equidade e inclusão social mais representa suas prioridades?
+
+### Alternativa 01 — CLARIANA BARAO (DC)
+
+- Autonomia econômica das mulheres (Qualificação e crédito)
+- Governança transversal de proteção (Orçamento e painéis públicos)
+- Primeira infância como prioridade nacional (Saúde e creches)
+- Proteção de crianças e adolescentes (Ambiente digital seguro e busca ativa)
+- Rede nacional de proteção e resposta à violência integrada
+
+### Alternativa 02 — EDMILSON COSTA (PCB)
+
+- Combate radical ao machismo, racismo, LGBTfobia, capacitismo e misoginia
+- Legalização do aborto e garantia de atendimento na rede pública de saúde
+- Políticas públicas direcionadas à garantia de direitos e emprego para a população Trans e Travesti
+- Garantia de acessibilidade universal, tecnologia assistiva e combate ao capacitismo para pessoas com deficiência
+
+### Alternativa 03 — ESCRITOR AUGUSTO CURY (AVANTE)
+
+- Autonomia Econômica Feminina e Igualdade Salarial
+- Brasil Neuroinclusivo (Autismo, TDAH, Dislexia e Altas Habilidades)
+- Combate à Tirania da Beleza e à Síndrome Comparativa nas Redes
+- Indicação de Mulheres para o Supremo Tribunal Federal (STF)
+- Programa Mulheres Vivas (Prevenção e Combate ao Feminicídio)
+- Proteção Psicológica e Digital de Crianças e Jovens
+
+### Alternativa 04 — FLAVIO BOLSONARO (PL)
+
+- Bônus de internet
+- Canais de denúncia
+- Capacitação feminina
+- Central da Mulher
+- ClarIA (assistente virtual)
+- Doenças Raras
+- Escritura da casa própria
+- Espaços de acolhimento
+- Esporte feminino
+- Ganha, Ganha
+- Independência financeira
+- Orientação financeira
+- Paradesporto
+- Pessoas com deficiência
+- Saúde para Elas
+- Trabalho para elas
+- Transtorno do Espectro Autista
+
+### Alternativa 05 — HERTZ DIAS (PSTU)
+
+- Criminalização da LGBTfobia, da misoginia e do racismo
+- Legalização do aborto e garantia de atendimento seguro pelo SUS
+- Cotas trans nas universidades e concursos públicos, combatendo o apartheid trans
+- Combate ao capacitismo e garantia de acessibilidade universal e intérprete de Libras
+- Fim da violência contra a mulher, criação de casas-abrigo e delegacias 24h
+
+### Alternativa 06 — LEONARDO AVALANCHE (PRTB)
+
+- Inclusão digital via ferramenta de trabalho sem corte de benefício social
+- Rede "Abraço Azul" com creches especializadas, apoio jurídico e psicológico (mães atípicas)
+- Expansão de casas de abrigo, combate ao feminicídio e proteção patrimonial a idosos
+- Lei nacional para criação de vagões exclusivos para mulheres no transporte público urbano
+- Restrição da categoria feminina em competições esportivas via critério biológico/genético
+- Programa "Nunca Mais Sozinha" de acompanhamento contínuo a crianças vítimas de abuso
+
+### Alternativa 07 — LULA (PT)
+
+- Combate ao racismo e cotas raciais
+- Cultura (Fomento, Lei Rouanet, Aldir Blanc, Cultura Viva)
+- Esporte (Bolsa Atleta, Arenas Brasil)
+- Mulheres (autonomia, combate ao machismo e igualdade salarial)
+- Pessoas com deficiência (Viver sem Limites, educação inclusiva)
+- Pessoas idosas (Atenção domiciliar, envelhecimento ativo)
+- População LGBTQIAP+
+- Povos indígenas e quilombolas (direitos e demarcação)
+
+### Alternativa 08 — RENAN SANTOS (MISSÃO)
+
+- A Batalha do Brasil (Plano de desfavelização integral em 10 anos)
+- Cadastro Fundiário Unificado Nacional e Título de desfavelização (mortgage social)
+- Código unificado de imprensa e defesa firme da liberdade de expressão
+- Revisão do fomento à cultura (Teto progressivo na Lei Rouanet e incentivo a novos talentos)
+- Reunificação do Ministério da Cultura com o Ministério da Educação
+
+### Alternativa 09 — RONALDO CAIADO (PSD)
+
+- Combate ao Racismo (metas de equidade)
+- Comunidades quilombolas
+- Cultura (acesso e financiamento)
+- Esporte e paradesporto (inclusão)
+- Igualdade salarial e proteção no trabalho
+- Liberdade religiosa
+- Mulheres (proteção, saúde e igualdade)
+- Pessoas com deficiência (inclusão)
+- População em situação de rua
+- Povos indígenas (direitos e saúde)
+
+### Alternativa 10 — RUI COSTA PIMENTA (PCO)
+
+- Combate à especulação imobiliária, proibição de despejos e desocupações
+- Passe livre nos transportes para desempregados e trabalhadores da economia informal
+
+### Alternativa 11 — SAMARA (UP)
+
+- Combate ao Machismo, Violência de Gênero e Descriminalização do Aborto
+- Combate ao Racismo, Reparação Histórica e Cumprimento das Leis 10.639 e 11.645
+- Enfrentamento à LGBTfobia e Criação de Casas de Acolhimento
+- Garantia de Direitos das Pessoas com Deficiência e Luta Anticapacitista
+- Rede Pública de Cuidados (Creches, Lavanderias e Restaurantes Populares)
+
+### Alternativa 12 — VETERINÁRIO WILSON GRASSI (DEMOCRATA)
+
+- Assistência técnica gratuita para reforma e ampliação de habitação (Lei nº 11.888/2008)
+- Bolsa Atleta (inscrição individual direta e contrato com a União)
+- Cadastro Nacional de Animais Domésticos (SinPatinhas). Financiamento, integração e ampliação da cobertura
+- Portabilidade do aluguel para financiamento habitacional
+- Regularização fundiária e titulação em massa
+
+### Alternativa 13 — ZEMA (NOVO)
+
+- Apoio a instituições de longa permanência para idosos (ILPIs)
+- Fortalecimento de redes de acolhimento a vítimas de violência doméstica
+- Acessibilidade e inclusão para pessoas com deficiência e TEA
+- Criação de indicadores e capacitação para a rede de saúde mental (CAPS/CRAS)
+
+## Pergunta 7 — Questão Agrária, Propriedade e Direito à Cidade
+
+**Pergunta:** Qual conjunto de propostas para questão agrária, propriedade e direito à cidade mais representa suas prioridades?
+
+### Alternativa 01 — CLARIANA BARAO (DC)
+
+- Infraestrutura e logística para escoamento agrícola (Rodovias, ferrovias e hidrovias)
+- Segurança energética e confiabilidade para a produção
+
+### Alternativa 02 — EDMILSON COSTA (PCB)
+
+- Reforma agrária popular com expropriação de latifúndios improdutivos e do agronegócio
+- Combate rigoroso ao desmatamento, garimpo ilegal e proteção de biomas (Amazônia, Cerrado, Pantanal)
+- Demarcação integral e titulação de terras indígenas e quilombolas (fim do Marco Temporal)
+- Incentivo à produção agroecológica e fortalecimento da agricultura familiar
+
+### Alternativa 03 — ESCRITOR AUGUSTO CURY (AVANTE)
+
+- Agricultura 4.0 (Inovação, Drones e Irrigação de Precisão)
+- Agroindústria Brasil (Do Grão à Proteína - 10 Mil Agroindústrias)
+- BCOO (Brasil Cooperativismo - Dobrar Cooperados)
+- Desenvolvimento do Semiárido (Projeto Brasil Oásis)
+- Economia Verde, Hidrogênio Verde e Mercado de Carbono
+- Floresta Viva - BR (Combate a Incêndios com IA e Drones / Amazônia Viva)
+- PETRA-BR (Terras Raras e Minerais Estratégicos)
+
+### Alternativa 04 — FLAVIO BOLSONARO (PL)
+
+- Amazônia
+- Armazenamento de safras
+- Bioeconomia
+- Cadastro ambiental rural
+- Cadastro fundiário e ambiental
+- Combustíveis sustentáveis de aviação
+- Conectividade nas áreas rurais
+- Desenvolvimento sustentável
+- Direito de propriedade
+- Fiscalização ambiental
+- Floresta preservada
+- Irrigação
+- Lixão zero
+- Mercado de carbono
+- O povo da floresta não é inimigo
+- Outorgas de irrigação
+- Pagamento por serviços ambientais
+- Rastreabilidade de cadeias produtivas
+- Redução de queimadas / desmatamento
+- Saneamento básico
+- Saneamento rural
+- Segurança alimentar
+- Seguro rural
+- Títulos rurais
+- Transparência de financiadores
+
+### Alternativa 05 — HERTZ DIAS (PSTU)
+
+- Reforma agrária com expropriação dos grandes latifúndios e do agronegócio sem indenização
+- Demarcação imediata de terras indígenas e titulação de territórios quilombolas
+- Fim dos subsídios públicos e créditos ao grande agronegócio predatório
+- Proibição da exploração de petróleo na Margem Equatorial e defesa rigorosa dos biomas
+- Apoio à agroecologia e fortalecimento da soberania alimentar
+
+### Alternativa 06 — LEONARDO AVALANCHE (PRTB)
+
+- Investimento pesado em fábricas nacionais de fertilizantes (potássio, fósforo)
+- Vigilância integral da Amazônia por drones contra desmatamento, garimpo ilegal e poluição
+- Regularização de saneamento em áreas de ocupação com reassentamento seguro
+- Modernização da coleta seletiva, incineração sustentável de lixo e valorização de catadores
+
+### Alternativa 07 — LULA (PT)
+
+- Agricultura familiar (Plano Safra, Pronaf)
+- Agronegócio (financiamento e sustentabilidade)
+- Biocombustíveis (Combustível do Futuro)
+- Desmatamento líquido zero e combate a incêndios
+- Fundo Amazônia e Fundo Clima
+- Mercado de carbono e Sistema Brasileiro de Comércio de Emissões
+- Reforma agrária e regularização fundiária
+- Transição energética e energias renováveis (eólica, solar, hidrogênio)
+
+### Alternativa 08 — RENAN SANTOS (MISSÃO)
+
+- AgroBrasil 2030 (Segurança jurídica e fim das invasões de propriedade rural)
+- Auditoria de produtividade nos assentamentos de reforma agrária (condicionante para destinação)
+- Soberania em fertilizantes e licenciamento acelerado para minerais estratégicos (Plano Nacional de Fertilizantes)
+- Zonas Econômicas Especiais (ZEEs) para terras raras, transição verde, semicondutores e defesa
+
+### Alternativa 09 — RONALDO CAIADO (PSD)
+
+- Agricultura de baixo carbono e bioinsumos
+- Agronegócio (financiamento e sustentabilidade)
+- Biocompetitividade
+- Código Florestal e regularização (CAR)
+- Combate a incêndios, grilagem e desmatamento
+- Energia (transição, biocombustíveis e fontes limpas)
+- Licenciamento ambiental (previsibilidade)
+- Meio ambiente (Pacto Nacional)
+- Mercado de carbono
+- Nordeste (segurança hídrica e desenvolvimento)
+- Pagamento por Serviços Ambientais
+- Região Amazônica (governança, bioeconomia e proteção)
+
+### Alternativa 10 — RUI COSTA PIMENTA (PCO)
+
+- Assentamento imediato dos milhões de trabalhadores sem-terra acampados no país
+- Demarcação e posse de terras para os povos indígenas, com expulsão de latifundiários invasores
+- Punição dos latifundiários e responsáveis por assassinatos de trabalhadores e lideranças rurais
+
+### Alternativa 11 — SAMARA (UP)
+
+- Combate ao Desmatamento, Garimpo Ilegal e Agrotóxicos Banidos
+- Demarcação Imediata e Proteção de Terras Indígenas e Quilombolas
+- Estatização e Passe Livre no Transporte Público (Tarifa Zero)
+- Expropriação de Terras com Trabalho Escravo ou Cultivo Ilegal
+- Fim da Especulação Imobiliária e Desapropriação de Imóveis Ociosos
+- Reforma Agrária Popular e Limitação do Monopólio da Terra
+- Reforma Urbana e Produção Pública de Moradias
+
+### Alternativa 12 — VETERINÁRIO WILSON GRASSI (DEMOCRATA)
+
+- Bem-estar animal na cadeia produtiva
+- Defesa sanitária (recomposição do serviço veterinário oficial)
+- Diplomacia sanitária ativa
+- Rastreabilidade individual de bovinos e búfalos (antecipação)
+
+### Alternativa 13 — ZEMA (NOVO)
+
+- Facilitação da produção nacional e da compra de fertilizantes e defensivos agrícolas
+- Melhoria da logística de transporte de cargas e do ambiente de negócios parainovação no agro
+- Garantia do direito de autodefesa e porte de armas em toda a extensão da propriedade rural
+- Aceleração da emissão de títulos de propriedade rural e combate à grilagem
+- Implementação da Nova Lei Geral do Licenciamento Ambiental
+- Atração de investimentos para o mercado voluntário de créditos de carbono
+
+## Pergunta 8 — Governança, Transparência e Reformas de Estado
+
+**Pergunta:** Qual conjunto de propostas para governança, transparência e reformas de Estado mais representa suas prioridades?
+
+### Alternativa 01 — CLARIANA BARAO (DC)
+
+- Federalismo de resultados (Pactos com estados e municípios)
+- Gestão por metas, evidências e avaliação de programas
+- Governo digital, simples e integrado (Princípio de dado único)
+- Integridade, transparência e compras públicas rastreáveis
+- Serviço público orientado à entrega (Liderança e equipes de missão)
+
+### Alternativa 02 — EDMILSON COSTA (PCB)
+
+- Convocação de uma Assembleia Constituinte de Novo Tipo e criação de Conselhos Populares deliberativos
+- Instituição de Orçamento Popular 100% deliberativo e revogabilidade de mandatos
+- Democratização radical dos meios de comunicação e regulação das Big Techs
+- Reforma estrutural do Judiciário com mandatos fixos e revogáveis para tribunais superiores
+
+### Alternativa 03 — ESCRITOR AUGUSTO CURY (AVANTE)
+
+- Avaliação Permanente de Políticas Públicas e Metas Ministeriais
+- Combate à Corrupção com Inteligência Artificial e Controle Social (Projeto SEO)
+- Governo Totalmente Digital e Desburocratização
+- Implantação do Regime Semipresidencialismo
+- Reforma Administrativa e Moderna Gestão Pública
+- Reforma do Supremo Tribunal Federal (Mandatos de 8 anos e 9 ministros)
+
+### Alternativa 04 — FLAVIO BOLSONARO (PL)
+
+- 100% dos serviços públicos digitalizados
+- Agências reguladoras
+- Avaliação de políticas públicas
+- Combate à corrupção
+- Corte de Ministérios
+- Fim da reeleição
+- Identidade digital única
+- Judiciário - fim das decisões monocráticas
+- Processo orçamentário
+- Profissionalização da gestão pública
+- Programa Nacional de Desestatização
+- Reforma Administrativa
+- Reforma do judiciário
+- Reforma política
+- Revisão normativa infralegal
+- Revogaço regulatório
+- Tesouraço
+- Transparência
+
+### Alternativa 05 — HERTZ DIAS (PSTU)
+
+- Construção de um governo socialista da classe trabalhadora sem capitalistas
+- Estabelecimento de um Estado operário revolucionário baseado na democracia operária
+- Organização de conselhos populares e comitês de base nos locais de trabalho, estudo e moradia
+- Soberania digital com proibição de hospedagem de dados governamentais em nuvens estrangeiras
+
+### Alternativa 06 — LEONARDO AVALANCHE (PRTB)
+
+- Combate à corrupção e desvios de recursos através de auditoria e gestão tecnológica no SUS
+- Redução da lentidão do Judiciário com mutirões e garantias de estabilidade contratual
+- Criação de órgão externo independente para fiscalizar casos de assédio em empresas
+- Banimento de plataformas que não bloquearem ativamente conteúdos ilícitos e abuso infantil
+- Obrigatoriedade de transparência algorítmica para redes sociais (menores de 14 anos)
+- Capacitação técnica do governo federal a pequenos municípios para obras de saneamento
+
+### Alternativa 07 — LULA (PT)
+
+- Compras públicas (poder de compra do Estado)
+- Controle, integridade e combate à corrupção
+- Emendas parlamentares (transparência e debate)
+- Estado digital, infraestrutura de dados e serviços integrados
+- Participação social (Conferências, Conselhos, PPA)
+- Portal da Transparência
+- Regulação de redes sociais e plataformas digitais
+
+### Alternativa 08 — RENAN SANTOS (MISSÃO)
+
+- Cláusula Antimáfia (Dissolução judicial de administrações locais infiltradas por facções)
+- Comissariado Federal de Gestão Pública e fiscalização em tempo real (pari passu)
+- Grande Consolidação Municipal (Fusão de municípios fiscalmente inviáveis)
+- Lei de Responsabilidade Gerencial (Metas de desempenho atreladas ao financiamento partidário)
+
+### Alternativa 09 — RONALDO CAIADO (PSD)
+
+- Centro de Governo (coordenação)
+- Emendas parlamentares (transparência e reordenação)
+- Estado digital e serviços integrados
+- Fim da reeleição no Poder Executivo
+- Maioria de programa (Pacto Nacional)
+- Padrões de integridade e transparência
+- Plano Plurianual (PPA) orientado a missões
+- Profissionalização da alta administração
+- Reforma do sistema político e partidário
+- Rastreabilidade do financiamento político
+
+### Alternativa 10 — RUI COSTA PIMENTA (PCO)
+
+- Fim da ditadura do Judiciário e extinção do Supremo Tribunal Federal (STF)
+- Cancelamento da concessão da Rede Globo e dos grandes meios de comunicação (fim do "PIG")
+- Cancelamento de leis restritivas à organização política, como a "ficha limpa" e a "cláusula de barreira"
+- Eleição de todos os juízes e procuradores pelo voto popular com mandatos revogáveis
+- Governo das organizações operárias e camponesas, sem patrões e sem golpistas
+- Fim de privilégios de oficiais militares, juízes e de seus familiares
+- Internet gratuita para toda a população
+- Liberdade irrestrita de expressão na imprensa, na internet e nas ruas (abaixo a censura e a "Lei Felca")
+- Revogação imediata de todas as "reformas" antipopulares contra os trabalhadores da ativa e aposentados
+
+### Alternativa 11 — SAMARA (UP)
+
+- Combate Radical à Corrupção e Confisco de Bens de Corruptos e Sonegadores
+- Conselhos Populares com Poder Orçamentário e Democracia Direta
+- Democratização e Socialização dos Meios de Comunicação (TV, Rádios e Sites)
+- Eleição Direta para Juízes e Tribunais Superiores
+- Fim das Doações Empresariais e do Lobby Corporativo em Campanhas
+- Fim dos Altos Salários e Privilégios no Setor Público (Políticos e Juízes)
+- Reestatização de Estatais Privatizadas (Eletrobras, Petrobras, Vale, etc.)
+- Revisão da Lei da Anistia e Punição a Torturadores e Golpistas
+
+### Alternativa 12 — VETERINÁRIO WILSON GRASSI (DEMOCRATA)
+
+- Interoperabilidade obrigatória com o uso do CPF (Lei nº 14.534/2023)
+- Método D35 (desburocratizar, desonerar, digitalizar, democratizar e desenvolver)
+- Pacto institucional e relação com o Congresso e federados
+- Painel público de acompanhamento dos primeiros cem dias e de metas
+- Proteção de dados (Lei nº 13.709/2018)
+
+### Alternativa 13 — ZEMA (NOVO)
+
+- Fim do sigilo de 100 anos e ampliação da transparência ativa
+- Fim do Fundo Partidário e do Fundo Eleitoral
+- Adoção do sistema distrital misto para eleições legislativas
+- Fim da reeleição e imposição de requisitos mais rigorosos para ministros do STF
