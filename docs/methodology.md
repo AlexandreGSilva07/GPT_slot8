@@ -18,7 +18,7 @@ O corpus possui:
 3. Cada torneio contém exatamente 13 alternativas: uma por candidatura. Duas aparecem por vez em 12 duelos sucessivos; a vencedora enfrenta a proposta seguinte até restar uma campeã.
 4. Cada alternativa preserva os tópicos da candidatura naquele macrotema. Somente as citações de página foram retiradas da tela.
 5. Os nomes e partidos ficam ocultos durante o questionário.
-6. As alternativas são embaralhadas no início de cada torneio, os lados dos duelos variam aleatoriamente e o estado é preservado quando o usuário retorna ao tema.
+6. As alternativas são embaralhadas no início de cada torneio. O lado inicial é sorteado; depois, a vencedora permanece na mesma posição enquanto o card derrotado é substituído pela próxima proposta. O estado é preservado quando o usuário retorna ao tema.
 7. A campeã do torneio constitui a única alternativa escolhida naquele macrotema.
 8. Um macrotema pode receber peso zero ou vários pontos, desde que a soma de todos os pesos não ultrapasse oito.
 

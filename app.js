@@ -56,7 +56,7 @@
       state.optionOrders[question.id] = shuffle(question.options.map((option) => option.id));
       state.tournaments[question.id] = {
         championId: state.optionOrders[question.id][0], nextIndex: 1,
-        challengerOnLeft: randomSide(), history: [], complete: false,
+        championSide: randomSide() ? 'left' : 'right', history: [], complete: false,
       };
     });
     show('quiz');
@@ -154,16 +154,16 @@
     return button;
   }
 
-  function chooseDuelWinner(question, winnerId) {
+  function chooseDuelWinner(question, winnerId, winnerSide) {
     const tournament = state.tournaments[question.id];
     tournament.history.push({
       championId: tournament.championId,
       nextIndex: tournament.nextIndex,
-      challengerOnLeft: tournament.challengerOnLeft,
+      championSide: tournament.championSide,
     });
     tournament.championId = winnerId;
+    tournament.championSide = winnerSide;
     tournament.nextIndex += 1;
-    tournament.challengerOnLeft = randomSide();
     if (tournament.nextIndex >= state.optionOrders[question.id].length) {
       tournament.complete = true;
       state.answers[question.id] = winnerId;
@@ -184,7 +184,7 @@
     state.optionOrders[question.id] = shuffle(question.options.map((option) => option.id));
     state.tournaments[question.id] = {
       championId: state.optionOrders[question.id][0], nextIndex: 1,
-      challengerOnLeft: randomSide(), history: [], complete: false,
+      championSide: randomSide() ? 'left' : 'right', history: [], complete: false,
     };
     delete state.answers[question.id];
     renderTournament(question);
@@ -224,7 +224,7 @@
     const challengerId = state.optionOrders[question.id][tournament.nextIndex];
     const champion = optionById(question, tournament.championId);
     const challenger = optionById(question, challengerId);
-    const choices = tournament.challengerOnLeft ? [challenger, champion] : [champion, challenger];
+    const choices = tournament.championSide === 'left' ? [champion, challenger] : [challenger, champion];
     const header = document.createElement('div');
     header.className = 'duel-progress';
     header.innerHTML = `<div><span>DUELO ${tournament.nextIndex} DE ${totalDuels}</span><strong>Qual proposta avança?</strong></div>
