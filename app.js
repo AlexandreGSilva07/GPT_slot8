@@ -8,7 +8,7 @@ function shuffle(values){const copy=[...values];for(let i=copy.length-1;i>0;i--)
 function show(name){$$('.screen').forEach(n=>n.classList.toggle('is-active',n.dataset.screen===name));state.screen=name;scrollTo({top:0,behavior:'auto'});requestAnimationFrame(()=>$('#app').focus({preventScroll:true}))}
 function start(){state.index=0;state.answers={};state.optionOrders={};state.rankOrders={};state.rankEnabled={};D.questions.forEach(q=>{const order=shuffle(q.options.map(o=>o.id));state.optionOrders[q.id]=order;if(q.mode==='rank'){state.rankOrders[q.id]=order;state.rankEnabled[q.id]=new Set(order)}});show('quiz');renderQuestion()}
 function current(){return D.questions[state.index]}
-function answered(q){const v=state.answers[q.id];return q.mode==='multi'?Array.isArray(v)&&v.length>0:q.mode==='rank'?v==='confirmed'||v==='__none':Boolean(v)}
+function answered(q){const v=state.answers[q.id];return q.mode==='multi'?Array.isArray(v)&&v.length>0:q.mode==='rank'?v==='__none'||state.rankEnabled[q.id].size>0:Boolean(v)}
 function noneButton(q,active){const b=document.createElement('button');b.type='button';b.className='option-card none-option'+(active?' is-selected':'');b.setAttribute('aria-pressed',String(active));b.innerHTML='<span class="radio-ui" aria-hidden="true"></span><span class="option-copy"><strong>Nenhuma destas medidas</strong><span>O tema fica sem pontuação para todas as candidaturas.</span></span>';b.onclick=()=>{state.answers[q.id]='__none';renderQuestion()};return b}
 function renderQuestion(){
  const q=current();$('#progressTheme').textContent=q.macro;$('#progressCount').textContent=`${state.index+1} / 15`;$('#progressBar').style.width=`${(state.index+1)/15*100}%`;$('#questionIndex').textContent=String(state.index+1).padStart(2,'0');
@@ -23,13 +23,13 @@ function renderChoices(q,list){
  b.onclick=()=>{if(q.mode==='single')state.answers[q.id]=o.id;else{const old=Array.isArray(state.answers[q.id])?state.answers[q.id]:[];state.answers[q.id]=old.includes(o.id)?old.filter(id=>id!==o.id):old.length<2?[...old,o.id]:[old[1],o.id]}renderQuestion()};list.append(b)});list.append(noneButton(q,value==='__none'));
 }
 function renderRank(q,list){
- list.classList.add('rank-list');const order=state.rankOrders[q.id],enabled=state.rankEnabled[q.id],confirmed=state.answers[q.id]==='confirmed',activeOrder=order.filter(id=>enabled.has(id));
+ list.classList.add('rank-list');const order=state.rankOrders[q.id],enabled=state.rankEnabled[q.id],activeOrder=order.filter(id=>enabled.has(id));
  order.forEach(id=>{const o=q.options.find(x=>x.id===id),active=enabled.has(id),i=activeOrder.indexOf(id),row=document.createElement('div');row.className='rank-card'+(active?'':' is-excluded');row.innerHTML=`<span class="rank-position">${active?(i+1)+'º':'—'}</span><div class="rank-copy"><strong>${esc(o.label)}</strong><span>${active?'Incluída na sua ordem':'Desconsiderada'}</span></div><div class="rank-actions"><button type="button" aria-label="Subir">↑</button><button type="button" aria-label="Descer">↓</button><button type="button" class="rank-toggle">${active?'Desconsiderar':'Incluir'}</button></div>`;const bs=$$('button',row);bs[0].disabled=!active||i===0;bs[1].disabled=!active||i===activeOrder.length-1;bs[0].onclick=()=>moveRank(q,id,-1);bs[1].onclick=()=>moveRank(q,id,1);bs[2].onclick=()=>toggleRank(q,id);list.append(row)});
- const controls=document.createElement('div');controls.className='rank-confirm';const confirm=document.createElement('button');confirm.type='button';confirm.disabled=!activeOrder.length;confirm.className='ghost-btn rank-confirm-btn'+(confirmed?' is-confirmed':'');confirm.textContent=confirmed?'Ordem confirmada ✓':'Confirmar esta ordem';confirm.onclick=()=>{state.answers[q.id]='confirmed';renderQuestion()};controls.append(confirm,noneButton(q,state.answers[q.id]==='__none'));list.append(controls);
+ list.append(noneButton(q,state.answers[q.id]==='__none'));
 }
 function moveRank(q,id,d){const order=state.rankOrders[q.id],active=order.filter(x=>state.rankEnabled[q.id].has(x)),i=active.indexOf(id),other=active[i+d];if(!other)return;const a=order.indexOf(id),b=order.indexOf(other);[order[a],order[b]]=[order[b],order[a]];state.answers[q.id]=null;renderQuestion()}
 function toggleRank(q,id){const enabled=state.rankEnabled[q.id];enabled.has(id)?enabled.delete(id):enabled.add(id);state.answers[q.id]=null;renderQuestion()}
-function next(){if(!answered(current()))return;if(state.index<14){state.index++;renderQuestion();scrollTo(0,0)}else renderResults()}
+function next(){const q=current();if(!answered(q))return;if(q.mode==='rank'&&state.answers[q.id]!=='__none')state.answers[q.id]='confirmed';if(state.index<14){state.index++;renderQuestion();scrollTo(0,0)}else renderResults()}
 function previous(){if(state.index){state.index--;renderQuestion();scrollTo(0,0)}}
 function questionScore(q,slug){
  const answer=state.answers[q.id];if(answer==='__none'||!answer)return{kind:'skipped',score:null,documented:false};const documented=q.options.filter(o=>o.positions.some(p=>p.candidate===slug));if(!documented.length)return{kind:'unknown',score:0,documented:false};
