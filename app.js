@@ -1,77 +1,405 @@
-(()=>{
-'use strict';
-const BASE=window.QUIZ_DATA,V4=window.QUIZ_V4,D={candidates:BASE.candidates,questions:V4.questions,macros:V4.macros};
-const $=(s,p=document)=>p.querySelector(s),$$=(s,p=document)=>[...p.querySelectorAll(s)];
-const state={screen:'home',index:0,answers:{},optionOrders:{},rankOrders:{},rankEnabled:{},infoFrom:'home'};
-const esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function shuffle(values){const copy=[...values];for(let i=copy.length-1;i>0;i--){const random=new Uint32Array(1);crypto.getRandomValues(random);const j=random[0]%(i+1);[copy[i],copy[j]]=[copy[j],copy[i]]}return copy}
-function show(name){$$('.screen').forEach(n=>n.classList.toggle('is-active',n.dataset.screen===name));state.screen=name;scrollTo({top:0,behavior:'auto'});requestAnimationFrame(()=>$('#app').focus({preventScroll:true}))}
-function start(){state.index=0;state.answers={};state.optionOrders={};state.rankOrders={};state.rankEnabled={};D.questions.forEach(q=>{const order=shuffle(q.options.map(o=>o.id));state.optionOrders[q.id]=order;if(q.mode==='rank'){state.rankOrders[q.id]=order;state.rankEnabled[q.id]=new Set(order)}});show('quiz');renderQuestion()}
-function current(){return D.questions[state.index]}
-function answered(q){const v=state.answers[q.id];return q.mode==='multi'?Array.isArray(v)&&v.length>0:q.mode==='rank'?v==='__none'||state.rankEnabled[q.id].size>0:Boolean(v)}
-function noneButton(q,active){const b=document.createElement('button');b.type='button';b.className='option-card none-option'+(active?' is-selected':'');b.setAttribute('aria-pressed',String(active));b.innerHTML='<span class="radio-ui" aria-hidden="true"></span><span class="option-copy"><strong>Nenhuma destas medidas</strong><span>O tema fica sem pontuação para todas as candidaturas.</span></span>';b.onclick=()=>{state.answers[q.id]='__none';renderQuestion()};return b}
-function renderQuestion(){
- const q=current();$('#progressTheme').textContent=q.macro;$('#progressCount').textContent=`${state.index+1} / 15`;$('#progressBar').style.width=`${(state.index+1)/15*100}%`;$('#questionIndex').textContent=String(state.index+1).padStart(2,'0');
- $('#questionEyebrow').textContent=q.mode==='rank'?'ORDEM DE PRIORIDADE':q.mode==='multi'?'ATÉ DUAS ESCOLHAS':'UMA ESCOLHA';$('#questionPrompt').textContent=q.prompt;$('#questionContext').textContent=q.context;
- const list=$('#optionsList');list.innerHTML='';list.className='options-list';list.removeAttribute('role');q.mode==='rank'?renderRank(q,list):renderChoices(q,list);
- $('#prevBtn').disabled=state.index===0;$('#nextBtn').disabled=!answered(q);$('#nextBtn').childNodes[0].nodeValue=state.index===14?'Ver resultado ':'Próxima ';
- const card=$('#questionCard');card.classList.remove('swap');void card.offsetWidth;card.classList.add('swap');
-}
-function renderChoices(q,list){
- const value=state.answers[q.id],selected=Array.isArray(value)?value:[value];list.setAttribute('role',q.mode==='multi'?'group':'radiogroup');
- state.optionOrders[q.id].map(id=>q.options.find(o=>o.id===id)).forEach(o=>{const active=selected.includes(o.id),b=document.createElement('button');b.type='button';b.className='option-card'+(active?' is-selected':'');b.setAttribute('role',q.mode==='multi'?'checkbox':'radio');b.setAttribute('aria-checked',String(active));b.innerHTML=`<span class="radio-ui" aria-hidden="true"></span><span class="option-copy"><strong>${esc(o.label)}</strong></span>`;
- b.onclick=()=>{if(q.mode==='single')state.answers[q.id]=o.id;else{const old=Array.isArray(state.answers[q.id])?state.answers[q.id]:[];state.answers[q.id]=old.includes(o.id)?old.filter(id=>id!==o.id):old.length<2?[...old,o.id]:[old[1],o.id]}renderQuestion()};list.append(b)});list.append(noneButton(q,value==='__none'));
-}
-function renderRank(q,list){
- list.classList.add('rank-list');const order=state.rankOrders[q.id],enabled=state.rankEnabled[q.id],activeOrder=order.filter(id=>enabled.has(id));
- order.forEach(id=>{const o=q.options.find(x=>x.id===id),active=enabled.has(id),i=activeOrder.indexOf(id),row=document.createElement('div');row.className='rank-card'+(active?'':' is-excluded');row.innerHTML=`<span class="rank-position">${active?(i+1)+'º':'—'}</span><div class="rank-copy"><strong>${esc(o.label)}</strong><span>${active?'Incluída na sua ordem':'Desconsiderada'}</span></div><div class="rank-actions"><button type="button" aria-label="Subir">↑</button><button type="button" aria-label="Descer">↓</button><button type="button" class="rank-toggle">${active?'Desconsiderar':'Incluir'}</button></div>`;const bs=$$('button',row);bs[0].disabled=!active||i===0;bs[1].disabled=!active||i===activeOrder.length-1;bs[0].onclick=()=>moveRank(q,id,-1);bs[1].onclick=()=>moveRank(q,id,1);bs[2].onclick=()=>toggleRank(q,id);list.append(row)});
- list.append(noneButton(q,state.answers[q.id]==='__none'));
-}
-function moveRank(q,id,d){const order=state.rankOrders[q.id],active=order.filter(x=>state.rankEnabled[q.id].has(x)),i=active.indexOf(id),other=active[i+d];if(!other)return;const a=order.indexOf(id),b=order.indexOf(other);[order[a],order[b]]=[order[b],order[a]];state.answers[q.id]=null;renderQuestion()}
-function toggleRank(q,id){const enabled=state.rankEnabled[q.id];enabled.has(id)?enabled.delete(id):enabled.add(id);state.answers[q.id]=null;renderQuestion()}
-function next(){const q=current();if(!answered(q))return;if(q.mode==='rank'&&state.answers[q.id]!=='__none')state.answers[q.id]='confirmed';if(state.index<14){state.index++;renderQuestion();scrollTo(0,0)}else renderResults()}
-function previous(){if(state.index){state.index--;renderQuestion();scrollTo(0,0)}}
-function questionScore(q,slug){
- const answer=state.answers[q.id];if(answer==='__none'||!answer)return{kind:'skipped',score:null,documented:false};const documented=q.options.filter(o=>o.positions.some(p=>p.candidate===slug));if(!documented.length)return{kind:'unknown',score:0,documented:false};
- let score=0;if(q.mode==='single'){const selected=q.options.find(o=>o.id===answer);score=selected.positions.some(p=>p.candidate===slug)?1:0}
- else if(q.mode==='multi'){const user=new Set(answer),plan=new Set(documented.map(o=>o.id)),intersection=[...user].filter(id=>plan.has(id)).length,union=new Set([...user,...plan]).size;score=union?intersection/union:0}
- else{const selected=state.rankOrders[q.id].filter(id=>state.rankEnabled[q.id].has(id)),plan=new Set(documented.map(o=>o.id)),weights=selected.map((_,i)=>1-i/(selected.length+1)),hit=selected.reduce((sum,id,i)=>sum+(plan.has(id)?weights[i]:0),0),recall=hit/(weights.reduce((a,b)=>a+b,0)||1),precision=selected.filter(id=>plan.has(id)).length/plan.size;score=recall*precision}
- const positions=documented.flatMap(o=>o.positions.filter(p=>p.candidate===slug).map(p=>({...p,choice:o.label})));return{kind:score===1?'match':score===0?'other':'partial',score,positions,documented:true};
-}
-function compatibility(c){const statuses=D.questions.map(q=>questionScore(q,c.slug));const macroScores=D.macros.map(m=>{const values=statuses.filter((_,i)=>D.questions[i].macro===m).map(s=>s.score).filter(Number.isFinite);return values.length?values.reduce((a,b)=>a+b,0)/values.length:null});const values=macroScores.filter(Number.isFinite),coverage=statuses.filter(s=>s.documented).length;return{statuses,macroScores,score:values.length?values.reduce((a,b)=>a+b,0)/values.length:null,coverage}}
-function answerSummary(q){const a=state.answers[q.id];if(a==='__none')return'Nenhuma destas medidas';if(q.mode==='single')return q.options.find(o=>o.id===a).label;if(q.mode==='multi')return q.options.filter(o=>a.includes(o.id)).map(o=>o.label).join(' + ');return state.rankOrders[q.id].filter(id=>state.rankEnabled[q.id].has(id)).map((id,i)=>`${i+1}º ${q.options.find(o=>o.id===id).label}`).join(' · ')}
-function renderResults(){
- show('result');$('#resultSummary').innerHTML='<span class="summary-pill"><strong>15</strong> decisões respondidas</span><span class="summary-pill"><strong>5</strong> macrotemas com o mesmo peso</span><span class="summary-pill"><strong>13</strong> planos comparados</span><span class="summary-pill">Fonte: planos oficiais · TSE</span>';
- const strip=$('#profileStrip');strip.innerHTML='';D.macros.forEach((m,i)=>{const item=document.createElement('article');item.className='profile-item';item.innerHTML=`<span class="profile-num">0${i+1}</span><div><small>MACROTEMA</small><strong>${esc(m)}</strong></div>`;strip.append(item)});
- const guide=$('#topicGuide');guide.innerHTML='';D.macros.forEach((m,i)=>{const li=document.createElement('li');li.textContent=`${i+1}. ${m}`;guide.append(li)});
- const ranked=D.candidates.map(candidate=>({candidate,comp:compatibility(candidate)})).sort((a,b)=>(b.comp.score??-1)-(a.comp.score??-1)||b.comp.coverage-a.comp.coverage||a.candidate.name.localeCompare(b.candidate.name,'pt-BR'));
- $('#featuredCandidate').replaceChildren(candidateRow(ranked[0],0,true));const matrix=$('#candidateMatrix');matrix.innerHTML='';ranked.slice(1).forEach((e,i)=>matrix.append(candidateRow(e,i+1,false)));
- const lib=$('#libraryGrid');lib.innerHTML='';[...D.candidates].sort((a,b)=>a.name.localeCompare(b.name,'pt-BR')).forEach(c=>{const a=document.createElement('a');a.className='library-card';a.href=c.planUrl;a.target='_blank';a.rel='noopener noreferrer';a.innerHTML=`<div class="lib-person"><img src="assets/candidates/${esc(c.slug)}.jpg" alt="Foto oficial de ${esc(c.name)}"><div><strong>${esc(c.name)}</strong><span>${esc(c.party)} · nº ${c.number} · ${c.pages} páginas</span></div></div><b aria-hidden="true">↗</b>`;lib.append(a)});
-}
-function point(i,r){const a=-Math.PI/2+Math.PI*2*i/5;return[160+Math.cos(a)*r,150+Math.sin(a)*r]}
-function labelLines(m){const out=[],words=m.split(' ');let line='';for(const w of words){if((line+' '+w).trim().length>18){out.push(line);line=w}else line=(line+' '+w).trim()}if(line)out.push(line);return out}
-function radar(scores,name,featured){
- const radius=featured?82:70,poly=r=>D.macros.map((_,i)=>point(i,r).join(',')).join(' '),rings=[.25,.5,.75,1].map(n=>`<polygon points="${poly(radius*n)}"/>`).join(''),axes=D.macros.map((_,i)=>{const[x,y]=point(i,radius);return`<line x1="160" y1="150" x2="${x}" y2="${y}"/>`}).join('');
- const area=scores.map((v,i)=>point(i,Number.isFinite(v)?Math.max(5,v*radius):0).join(',')).join(' '),dots=scores.map((v,i)=>{if(!Number.isFinite(v))return'';const[x,y]=point(i,Math.max(5,v*radius));return`<circle cx="${x}" cy="${y}" r="3"><title>${esc(D.macros[i])}: ${Math.round(v*100)}%</title></circle>`}).join('');
- const labels=D.macros.map((m,i)=>{const[x,y]=point(i,radius+38),lines=labelLines(m);return`<text x="${x}" y="${y-lines.length*5}">${lines.map((l,j)=>`<tspan x="${x}" dy="${j?11:0}">${esc(l)}</tspan>`).join('')}</text>`}).join('');
- const wrap=document.createElement('div');wrap.className='radar-wrap';wrap.setAttribute('role','img');wrap.setAttribute('aria-label',`Radar de cinco macrotemas de ${name}`);wrap.innerHTML=`<svg class="compatibility-radar" viewBox="0 0 320 300" aria-hidden="true"><g class="radar-grid">${rings}${axes}</g><polygon class="radar-area" points="${area}"/><g class="radar-values">${dots}</g><g class="radar-labels">${labels}</g></svg>`;return wrap;
-}
-function candidateRow(entry,rank,featured){
- const c=entry.candidate,comp=entry.comp,el=document.createElement('article');el.className='matrix-candidate'+(featured?' is-featured':'');
- const person=document.createElement('div');person.className='matrix-person';person.innerHTML=`<span class="candidate-rank">${String(rank+1).padStart(2,'0')}</span><img class="candidate-photo" src="assets/candidates/${esc(c.slug)}.jpg" alt="Foto oficial de ${esc(c.name)}"><div class="candidate-id"><strong>${esc(c.name)}</strong><span>${esc(c.party)} · nº ${c.number}</span><a href="${esc(c.planUrl)}" target="_blank" rel="noopener noreferrer">Plano oficial ↗</a></div>`;
- const score=document.createElement('div');score.className='compatibility-score';score.innerHTML=`<strong>${comp.score===null?'—':Math.round(comp.score*100)+'%'}</strong><span>compatibilidade geral</span><small>posição documentada em ${comp.coverage} de 15 perguntas</small>`;
- const detail=document.createElement('div');detail.className='candidate-detail';detail.hidden=true;const trigger=document.createElement('button');trigger.type='button';trigger.className='candidate-expand';trigger.textContent='Ver evidências';trigger.onclick=()=>{detail.hidden=!detail.hidden;trigger.textContent=detail.hidden?'Ver evidências':'Fechar evidências';if(!detail.hidden&&!detail.childElementCount)D.questions.forEach((q,i)=>detail.append(detailCard(q,comp.statuses[i],c)))};
- const main=document.createElement('div');main.className='matrix-row-main';main.append(person,score,radar(comp.macroScores,c.name,featured),trigger);el.append(main,detail);return el;
-}
-function detailCard(q,s,c){
- const el=document.createElement('section');
- const pages=[...new Set(s.positions?.flatMap(p=>p.pages)||[])].sort((a,b)=>a-b);
- const documented=s.positions?.map(p=>p.choice).filter((v,i,a)=>a.indexOf(v)===i).join(' · ')||'O plano não traz posição comparável nesta pergunta.';
- el.className='status-detail '+s.kind;
- el.innerHTML=`<div class="detail-status"><span class="status-icon">${!s.documented?'—':Math.round(s.score*100)+'%'}</span><div><small>${esc(q.macro)}</small><strong>${esc(q.prompt)}</strong></div></div><p class="detail-choice"><b>Sua resposta:</b> ${esc(answerSummary(q))}</p><p class="detail-evidence"><b>No plano:</b> ${esc(documented)}</p><div class="detail-foot"><span>${pages.length?pages.map(p=>'p.'+p).join(' · '):'sem cobertura identificada'}</span><a href="${esc(c.planUrl)}" target="_blank" rel="noopener noreferrer">Conferir no plano ↗</a></div>`;
- return el;
-}
-function info(){state.infoFrom=state.screen;show('info')}function backInfo(){if(state.infoFrom==='quiz'){show('quiz');renderQuestion()}else show(state.infoFrom==='result'?'result':'home')}
-document.addEventListener('click',e=>{const b=e.target.closest('[data-action]');if(!b)return;const a=b.dataset.action;if(a==='start'||a==='restart')start();else if(a==='next')next();else if(a==='previous')previous();else if(a==='methodology'||a==='how')info();else if(a==='back-info')backInfo();else if(a==='exit'||a==='home')show('home')});
-document.addEventListener('keydown',e=>{if(state.screen!=='quiz')return;if(e.altKey&&e.key==='ArrowLeft')previous();if(e.altKey&&e.key==='ArrowRight'&&!$('#nextBtn').disabled)next()});
+(() => {
+  'use strict';
+
+  const BASE = window.QUIZ_DATA;
+  const SOURCE = window.QUESTIONNAIRE_8X13;
+  const DATA = { candidates: BASE.candidates, questions: SOURCE.questions, macros: SOURCE.macros };
+  const WEIGHTS = [
+    { value: 0, label: 'Não considerar' },
+    { value: 1, label: 'Importante' },
+    { value: 2, label: 'Muito importante' },
+    { value: 3, label: 'Essencial' },
+  ];
+  const RADAR_LABELS = [
+    'Economia e trabalho', 'Saúde e assistência', 'Segurança e justiça',
+    'Educação e ambiente', 'Política externa', 'Direitos humanos',
+    'Questão agrária', 'Governança',
+  ];
+  const $ = (selector, parent = document) => parent.querySelector(selector);
+  const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector)];
+  const candidateBySlug = new Map(DATA.candidates.map((candidate) => [candidate.slug, candidate]));
+  const state = { screen: 'home', index: 0, answers: {}, weights: {}, optionOrders: {}, infoFrom: 'home' };
+
+  function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, (character) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+    })[character]);
+  }
+
+  function shuffle(values) {
+    const copy = [...values];
+    for (let index = copy.length - 1; index > 0; index -= 1) {
+      const random = new Uint32Array(1);
+      crypto.getRandomValues(random);
+      const target = random[0] % (index + 1);
+      [copy[index], copy[target]] = [copy[target], copy[index]];
+    }
+    return copy;
+  }
+
+  function show(screen) {
+    $$('.screen').forEach((node) => node.classList.toggle('is-active', node.dataset.screen === screen));
+    state.screen = screen;
+    window.scrollTo({ top: 0, behavior: 'auto' });
+    requestAnimationFrame(() => $('#app').focus({ preventScroll: true }));
+  }
+
+  function start() {
+    state.index = 0;
+    state.answers = {};
+    state.weights = {};
+    state.optionOrders = {};
+    DATA.questions.forEach((question) => {
+      state.weights[question.id] = 1;
+      state.optionOrders[question.id] = shuffle(question.options.map((option) => option.id));
+    });
+    show('quiz');
+    renderQuestion();
+  }
+
+  function currentQuestion() { return DATA.questions[state.index]; }
+  function isAnswered(question) { return state.weights[question.id] === 0 || Boolean(state.answers[question.id]); }
+  function optionLetter(question, optionId) {
+    return String.fromCharCode(65 + state.optionOrders[question.id].indexOf(optionId));
+  }
+  function setQuizStatus(message) {
+    const status = $('#quizStatus');
+    status.textContent = message;
+    status.hidden = !message;
+  }
+
+  function renderWeightControl(question) {
+    const selectedWeight = state.weights[question.id];
+    const control = $('#weightControl');
+    control.innerHTML = `
+      <div class="weight-copy"><strong>Quanto este tema pesa para você?</strong>
+        <span>O peso pertence ao tema. Zero remove esta decisão do resultado.</span></div>
+      <div class="weight-options" role="group" aria-label="Importância deste tema">
+        ${WEIGHTS.map((weight) => `
+          <button type="button" class="weight-button${selectedWeight === weight.value ? ' is-selected' : ''}"
+            data-weight="${weight.value}" aria-pressed="${selectedWeight === weight.value}">
+            <b>${weight.value}</b><span>${weight.label}</span>
+          </button>`).join('')}
+      </div>`;
+    $$('[data-weight]', control).forEach((button) => {
+      button.addEventListener('click', () => {
+        state.weights[question.id] = Number(button.dataset.weight);
+        updateQuestionState(question);
+      });
+    });
+  }
+
+  function renderOption(question, option) {
+    const article = document.createElement('article');
+    const selected = state.answers[question.id] === option.id;
+    const letter = optionLetter(question, option.id);
+    const previewCount = Math.min(3, option.topics.length);
+    article.className = `proposal-card${selected ? ' is-selected' : ''}`;
+    article.dataset.option = option.id;
+    article.innerHTML = `
+      <button type="button" class="proposal-choice" role="radio" aria-checked="${selected}">
+        <span class="proposal-letter" aria-hidden="true">${letter}</span>
+        <span class="proposal-title">Proposta ${letter}</span>
+        <span class="proposal-check">${selected ? 'Selecionada' : 'Selecionar'}</span>
+      </button>
+      <ul class="proposal-preview">
+        ${option.topics.slice(0, previewCount).map((topic) => `<li>${escapeHtml(topic)}</li>`).join('')}
+      </ul>
+      ${option.topics.length > previewCount ? `
+        <details class="proposal-details"><summary>Ver mais ${option.topics.length - previewCount} pontos desta proposta</summary>
+          <ul>${option.topics.slice(previewCount).map((topic) => `<li>${escapeHtml(topic)}</li>`).join('')}</ul>
+        </details>` : ''}`;
+    $('.proposal-choice', article).addEventListener('click', () => {
+      state.answers[question.id] = option.id;
+      updateQuestionState(question);
+    });
+    return article;
+  }
+
+  function updateQuestionState(question) {
+    const weight = state.weights[question.id];
+    const answer = state.answers[question.id];
+    $$('.weight-button', $('#weightControl')).forEach((button) => {
+      const selected = Number(button.dataset.weight) === weight;
+      button.classList.toggle('is-selected', selected);
+      button.setAttribute('aria-pressed', String(selected));
+    });
+    $$('.proposal-card', $('#optionsList')).forEach((card) => {
+      const selected = card.dataset.option === answer;
+      card.classList.toggle('is-selected', selected);
+      $('.proposal-choice', card).setAttribute('aria-checked', String(selected));
+      $('.proposal-check', card).textContent = selected ? 'Selecionada' : 'Selecionar';
+    });
+    $('#questionCard').classList.toggle('is-zero-weight', weight === 0);
+    $('#nextBtn').disabled = !isAnswered(question);
+    $('#questionContext').textContent = weight === 0
+      ? 'Este macrotema será ignorado no cálculo. Você pode escolher uma proposta mesmo assim ou seguir.'
+      : 'Escolha um dos 13 conjuntos. Os nomes das candidaturas só aparecem no resultado.';
+    setQuizStatus('');
+  }
+
+  function renderQuestion() {
+    const question = currentQuestion();
+    const total = DATA.questions.length;
+    $('#progressTheme').textContent = question.macro;
+    $('#progressCount').textContent = `${state.index + 1} / ${total}`;
+    $('#progressBar').style.width = `${((state.index + 1) / total) * 100}%`;
+    $('#questionIndex').textContent = String(state.index + 1).padStart(2, '0');
+    $('#questionEyebrow').textContent = '13 PROPOSTAS DOCUMENTAIS · 1 ESCOLHA';
+    $('#questionPrompt').textContent = question.prompt;
+    $('#prevBtn').disabled = state.index === 0;
+    $('#nextBtn').childNodes[0].nodeValue = state.index === total - 1 ? 'Ver resultado ' : 'Próxima ';
+    setQuizStatus('');
+    renderWeightControl(question);
+    const list = $('#optionsList');
+    list.innerHTML = '';
+    list.setAttribute('role', 'radiogroup');
+    list.setAttribute('aria-label', question.prompt);
+    state.optionOrders[question.id]
+      .map((id) => question.options.find((option) => option.id === id))
+      .forEach((option) => list.append(renderOption(question, option)));
+    updateQuestionState(question);
+    const card = $('#questionCard');
+    card.classList.remove('swap');
+    void card.offsetWidth;
+    card.classList.add('swap');
+  }
+
+  function next() {
+    const question = currentQuestion();
+    if (!isAnswered(question)) return;
+    if (state.index < DATA.questions.length - 1) {
+      state.index += 1;
+      renderQuestion();
+      window.scrollTo(0, 0);
+      return;
+    }
+    const totalWeight = DATA.questions.reduce((sum, item) => sum + state.weights[item.id], 0);
+    if (totalWeight === 0) {
+      setQuizStatus('Para gerar o resultado, atribua peso positivo a pelo menos um macrotema.');
+      $('#weightControl').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    renderResults();
+  }
+
+  function previous() {
+    if (state.index === 0) return;
+    state.index -= 1;
+    renderQuestion();
+    window.scrollTo(0, 0);
+  }
+
+  function calculateResults() {
+    const rawScores = Object.fromEntries(DATA.candidates.map((candidate) => [candidate.slug, 0]));
+    const statuses = Object.fromEntries(DATA.candidates.map((candidate) => [candidate.slug, []]));
+    let totalWeight = 0;
+    let activeThemes = 0;
+    DATA.questions.forEach((question) => {
+      const weight = state.weights[question.id];
+      const selectedSlug = state.answers[question.id] || null;
+      if (weight > 0) {
+        totalWeight += weight;
+        activeThemes += 1;
+        rawScores[selectedSlug] += weight;
+      }
+      DATA.candidates.forEach((candidate) => {
+        statuses[candidate.slug].push({
+          selected: weight > 0 && selectedSlug === candidate.slug,
+          skipped: weight === 0,
+          weight,
+          selectedSlug,
+          option: question.options.find((option) => option.candidate === candidate.slug),
+        });
+      });
+    });
+    const ranked = DATA.candidates.map((candidate) => {
+      const raw = rawScores[candidate.slug];
+      return {
+        candidate, raw, percentage: raw / totalWeight, statuses: statuses[candidate.slug],
+        macroScores: statuses[candidate.slug].map((status) => status.skipped ? null : status.selected ? 1 : 0),
+        selectedThemes: statuses[candidate.slug].filter((status) => status.selected).length,
+      };
+    }).sort((left, right) => right.raw - left.raw || left.candidate.name.localeCompare(right.candidate.name, 'pt-BR'));
+    let rank = 0;
+    let previousRaw = null;
+    ranked.forEach((entry, index) => {
+      if (entry.raw !== previousRaw) rank = index + 1;
+      entry.rank = rank;
+      previousRaw = entry.raw;
+    });
+    return { ranked, totalWeight, activeThemes };
+  }
+
+  function formatPercentage(value) {
+    return `${new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 2 }).format(value * 100)}%`;
+  }
+
+  function renderResults() {
+    const result = calculateResults();
+    show('result');
+    $('#resultSummary').innerHTML = `
+      <span class="summary-pill"><strong>${result.activeThemes}</strong> macrotemas considerados</span>
+      <span class="summary-pill"><strong>${result.totalWeight}</strong> pontos de importância</span>
+      <span class="summary-pill"><strong>13</strong> planos oficiais</span>
+      <span class="summary-pill">Total distribuído: <strong>100%</strong></span>`;
+    const strip = $('#profileStrip');
+    strip.innerHTML = '';
+    DATA.questions.forEach((question, index) => {
+      const selectedSlug = state.answers[question.id];
+      const selected = selectedSlug ? candidateBySlug.get(selectedSlug) : null;
+      const weight = state.weights[question.id];
+      const item = document.createElement('article');
+      item.className = `profile-item${weight === 0 ? ' is-skipped' : ''}`;
+      item.innerHTML = `<span class="profile-num">0${index + 1}</span><div>
+        <small>${weight === 0 ? 'IGNORADO' : `PESO ${weight}`}</small><strong>${escapeHtml(question.macro)}</strong>
+        <span>${weight === 0 ? 'Sem influência no resultado' : escapeHtml(selected?.name || '')}</span></div>`;
+      strip.append(item);
+    });
+    const guide = $('#topicGuide');
+    guide.innerHTML = '';
+    DATA.macros.forEach((macro, index) => {
+      const item = document.createElement('li');
+      item.textContent = `${index + 1}. ${macro}`;
+      guide.append(item);
+    });
+    const topRaw = result.ranked[0].raw;
+    const winners = result.ranked.filter((entry) => entry.raw === topRaw);
+    const others = result.ranked.filter((entry) => entry.raw !== topRaw);
+    $('#featuredHeading').textContent = winners.length > 1 ? 'Empate no topo do resultado' : 'Destaque do seu resultado';
+    $('#featuredNote').textContent = winners.length > 1
+      ? `${winners.length} candidaturas receberam a mesma soma de pesos.`
+      : 'Candidatura que recebeu a maior soma dos pesos definidos por você.';
+    const featured = $('#featuredCandidate');
+    featured.innerHTML = '';
+    winners.forEach((entry) => featured.append(candidateRow(entry, true, result.activeThemes)));
+    const matrix = $('#candidateMatrix');
+    matrix.innerHTML = '';
+    others.forEach((entry) => matrix.append(candidateRow(entry, false, result.activeThemes)));
+    const library = $('#libraryGrid');
+    library.innerHTML = '';
+    [...DATA.candidates].sort((left, right) => left.name.localeCompare(right.name, 'pt-BR')).forEach((candidate) => {
+      const link = document.createElement('a');
+      link.className = 'library-card';
+      link.href = candidate.planUrl;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.innerHTML = `<div class="lib-person"><img src="assets/candidates/${escapeHtml(candidate.slug)}.jpg" alt="Foto oficial de ${escapeHtml(candidate.name)}">
+        <div><strong>${escapeHtml(candidate.name)}</strong><span>${escapeHtml(candidate.party)} · nº ${candidate.number} · ${candidate.pages} páginas</span></div>
+        </div><b aria-hidden="true">↗</b>`;
+      library.append(link);
+    });
+  }
+
+  function radarPoint(index, radius) {
+    const angle = -Math.PI / 2 + (Math.PI * 2 * index) / DATA.macros.length;
+    return [210 + Math.cos(angle) * radius, 180 + Math.sin(angle) * radius];
+  }
+
+  function radar(scores, name, featured) {
+    const radius = featured ? 112 : 98;
+    const polygon = (distance) => DATA.macros.map((_, index) => radarPoint(index, distance).join(',')).join(' ');
+    const rings = [0.25, 0.5, 0.75, 1].map((step) => `<polygon points="${polygon(radius * step)}"/>`).join('');
+    const axes = DATA.macros.map((_, index) => {
+      const [x, y] = radarPoint(index, radius);
+      return `<line x1="210" y1="180" x2="${x}" y2="${y}"/>`;
+    }).join('');
+    const area = scores.map((score, index) => radarPoint(index, score === null ? 0 : score * radius).join(',')).join(' ');
+    const dots = scores.map((score, index) => {
+      if (score !== 1) return '';
+      const [x, y] = radarPoint(index, radius);
+      return `<circle cx="${x}" cy="${y}" r="4"><title>${escapeHtml(DATA.macros[index])}: escolhida</title></circle>`;
+    }).join('');
+    const labels = RADAR_LABELS.map((label, index) => {
+      const [x, y] = radarPoint(index, radius + 37);
+      return `<text x="${x}" y="${y}">${escapeHtml(label)}<title>${escapeHtml(DATA.macros[index])}</title></text>`;
+    }).join('');
+    const wrapper = document.createElement('div');
+    wrapper.className = 'radar-wrap radar-eight';
+    wrapper.setAttribute('role', 'img');
+    wrapper.setAttribute('aria-label', `Radar dos oito macrotemas de ${name}. Os vértices indicam os temas em que esta proposta foi escolhida.`);
+    wrapper.innerHTML = `<svg class="compatibility-radar" viewBox="0 0 420 360" aria-hidden="true">
+      <g class="radar-grid">${rings}${axes}</g><polygon class="radar-area" points="${area}"/>
+      <g class="radar-values">${dots}</g><g class="radar-labels">${labels}</g></svg>`;
+    return wrapper;
+  }
+
+  function candidateRow(entry, featured, activeThemes) {
+    const candidate = entry.candidate;
+    const article = document.createElement('article');
+    article.className = `matrix-candidate${featured ? ' is-featured' : ''}`;
+    const person = document.createElement('div');
+    person.className = 'matrix-person';
+    person.innerHTML = `<span class="candidate-rank">${String(entry.rank).padStart(2, '0')}</span>
+      <img class="candidate-photo" src="assets/candidates/${escapeHtml(candidate.slug)}.jpg" alt="Foto oficial de ${escapeHtml(candidate.name)}">
+      <div class="candidate-id"><strong>${escapeHtml(candidate.name)}</strong><span>${escapeHtml(candidate.party)} · nº ${candidate.number}</span>
+        <a href="${escapeHtml(candidate.planUrl)}" target="_blank" rel="noopener noreferrer">Plano oficial ↗</a></div>`;
+    const score = document.createElement('div');
+    score.className = 'compatibility-score';
+    score.innerHTML = `<strong>${formatPercentage(entry.percentage)}</strong><span>do peso distribuído</span>
+      <small>${entry.raw} ponto${entry.raw === 1 ? '' : 's'} · escolhida em ${entry.selectedThemes} de ${activeThemes} temas ativos</small>`;
+    const details = document.createElement('div');
+    details.className = 'candidate-detail';
+    details.hidden = true;
+    const trigger = document.createElement('button');
+    trigger.type = 'button';
+    trigger.className = 'candidate-expand';
+    trigger.textContent = 'Ver temas e propostas';
+    trigger.setAttribute('aria-expanded', 'false');
+    trigger.addEventListener('click', () => {
+      details.hidden = !details.hidden;
+      trigger.textContent = details.hidden ? 'Ver temas e propostas' : 'Fechar temas e propostas';
+      trigger.setAttribute('aria-expanded', String(!details.hidden));
+      if (!details.hidden && !details.childElementCount) {
+        DATA.questions.forEach((question, index) => details.append(detailCard(question, entry.statuses[index], candidate)));
+      }
+    });
+    const main = document.createElement('div');
+    main.className = 'matrix-row-main';
+    main.append(person, score, radar(entry.macroScores, candidate.name, featured), trigger);
+    article.append(main, details);
+    return article;
+  }
+
+  function detailCard(question, status, candidate) {
+    const section = document.createElement('section');
+    const chosenCandidate = status.selectedSlug ? candidateBySlug.get(status.selectedSlug) : null;
+    section.className = `status-detail ${status.skipped ? 'skipped' : status.selected ? 'match' : 'other'}`;
+    const resultText = status.skipped
+      ? 'desconsiderado pelo peso zero'
+      : status.selected
+        ? `esta foi a proposta escolhida e recebeu peso ${status.weight}`
+        : `a proposta escolhida pertence a ${escapeHtml(chosenCandidate?.name || '')}`;
+    section.innerHTML = `<div class="detail-status"><span class="status-icon">${status.skipped ? '—' : status.selected ? `P${status.weight}` : '0'}</span>
+        <div><small>MACROTEMA ${question.number}</small><strong>${escapeHtml(question.macro)}</strong></div></div>
+      <p class="detail-choice"><b>Resultado neste tema:</b> ${resultText}</p>
+      <details class="evidence-topics"><summary>Ver os ${status.option.topics.length} tópicos desta candidatura</summary>
+        <ul>${status.option.topics.map((topic) => `<li>${escapeHtml(topic)}</li>`).join('')}</ul></details>
+      <div class="detail-foot"><span>Fonte documental: TSE</span>
+        <a href="${escapeHtml(candidate.planUrl)}" target="_blank" rel="noopener noreferrer">Conferir plano ↗</a></div>`;
+    return section;
+  }
+
+  function info() { state.infoFrom = state.screen; show('info'); }
+  function backInfo() {
+    if (state.infoFrom === 'quiz') { show('quiz'); renderQuestion(); }
+    else show(state.infoFrom === 'result' ? 'result' : 'home');
+  }
+
+  document.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-action]');
+    if (!button) return;
+    const action = button.dataset.action;
+    if (action === 'start' || action === 'restart') start();
+    else if (action === 'next') next();
+    else if (action === 'previous') previous();
+    else if (action === 'methodology' || action === 'how') info();
+    else if (action === 'back-info') backInfo();
+    else if (action === 'exit' || action === 'home') show('home');
+  });
+  document.addEventListener('keydown', (event) => {
+    if (state.screen !== 'quiz') return;
+    if (event.altKey && event.key === 'ArrowLeft') previous();
+    if (event.altKey && event.key === 'ArrowRight' && !$('#nextBtn').disabled) next();
+  });
 })();

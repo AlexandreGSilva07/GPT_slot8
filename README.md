@@ -2,7 +2,7 @@
 
 Aplicação estática, mobile-first, para comparar respostas do eleitor com propostas **formalmente registradas no TSE** pelas candidaturas à Presidência da República nas Eleições 2026.
 
-O projeto não recomenda voto. O quiz permanece cego até a conclusão e o resultado ordena as candidaturas pela compatibilidade documentada, calculada apenas nos temas respondidos em que o plano apresenta uma posição comparável. A matriz mostra a correspondência por tema, com evidência e acesso ao documento integral.
+O projeto não recomenda voto. O quiz permanece cego até a conclusão: são oito macrotemas, cada um com uma alternativa documental por candidatura. O usuário escolhe uma proposta e o peso do tema; o resultado distribui 100% dos pesos ativos entre as candidaturas escolhidas.
 
 ## Fonte primária
 
@@ -26,15 +26,16 @@ Snapshot coletado em 26/09/2026:
 - `docs/methodology.md` — regras metodológicas.
 - `docs/analysis/` — fichas por candidatura e cruzamentos.
 - `src/data/` — dataset do quiz e evidências consumidas pela interface.
+- `src/data/questionnaire-8x13.js` — versão navegável das 104 alternativas documentais.
 - `index.html`, `styles.css`, `app.js` — aplicação estática pronta para GitHub Pages.
 
 ## Princípios
 
-- documento integral > resumo;
+- uma alternativa documental por candidatura em cada macrotema;
 - nenhuma posição é inferida por partido ou histórico;
-- ausência de menção ≠ oposição;
-- alternativas preservam diferenças de implementação;
-- resultado por tema, sem score agregado;
+- peso definido exclusivamente pelo usuário;
+- fórmula idêntica para as 13 candidaturas;
+- empates reais permanecem empates;
 - acesso ao PDF oficial na revelação.
 
 Veja [docs/methodology.md](docs/methodology.md) para a metodologia completa.
@@ -43,7 +44,7 @@ Veja [docs/methodology.md](docs/methodology.md) para a metodologia completa.
 
 A aplicação é estática e foi construída para servir diretamente da raiz do repositório no GitHub Pages, sem etapa de build. O arquivo `.nojekyll` evita processamento desnecessário.
 
-No estado atual, o repositório é privado. A tentativa de habilitar GitHub Pages em 26/09/2026 retornou que o plano atual da conta não oferece Pages para este repositório privado. Nenhuma mudança de visibilidade foi feita. Se o repositório for tornado público posteriormente (ou o plano passar a aceitar Pages privados), basta configurar Pages para publicar a branch `main` a partir de `/`.
+O GitHub Pages publica automaticamente a branch `main` em `https://alexandregsilva07.github.io/GPT_slot8/`.
 
 ### Verificação local
 

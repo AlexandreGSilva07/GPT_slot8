@@ -2,32 +2,64 @@
 
 ## Escopo
 
-Este projeto compara **exclusivamente** propostas formalmente registradas nos planos de governo das candidaturas à Presidência da República nas Eleições 2026, conforme disponibilizadas pelo Tribunal Superior Eleitoral (TSE).
+O questionário usa exclusivamente os tópicos publicados pelo Tribunal Superior Eleitoral nas páginas individuais das 13 candidaturas à Presidência da República nas Eleições 2026.
 
-Fonte primária: página oficial do TSE e os PDFs nela vinculados.
+O corpus possui:
 
-## Regras de integridade
+- 13 candidaturas;
+- 8 macrotemas por candidatura;
+- 104 alternativas documentais;
+- 723 tópicos oficiais.
 
-1. O documento integral é a fonte de verdade. A organização temática do TSE pode auxiliar navegação, mas não substitui a leitura do PDF.
-2. Toda associação entre alternativa e candidatura precisa apontar para evidência identificável no plano: página, trecho/paráfrase fiel e arquivo-fonte.
-3. Ausência de proposta é exibida como `não identificado no plano`. Como o resultado mede aderência documental, uma pergunta respondida sem posição identificada recebe zero; ela continua visualmente distinta de uma oposição expressa.
-4. Posições semelhantes só serão agrupadas quando o mecanismo proposto e o sentido da política forem materialmente compatíveis.
-5. Diferenças de implementação serão preservadas. Duas candidaturas podem concordar no objetivo e divergir no instrumento.
-6. O quiz não utiliza partido, personalidade, histórico, entrevistas, redes sociais ou declarações externas ao plano para determinar a correspondência.
-7. Durante o quiz, nomes e siglas das candidaturas permanecem ocultos.
-8. As alternativas são embaralhadas a cada novo teste e mantêm a mesma ordem quando o usuário volta à pergunta. “Nenhuma destas medidas” permanece por último.
-9. As 15 perguntas são distribuídas igualmente em cinco macrotemas. Cada macrotema recebe a média das perguntas respondidas; a porcentagem geral é a média dos cinco macrotemas, todos com o mesmo peso.
-10. Escolha única vale 100% para a alternativa documentada e 0% nas demais. Múltipla escolha usa a interseção dividida pela união entre escolhas do usuário e posições do plano. Na ordenação, a sobreposição ponderada pela prioridade também é reduzida quando o plano registra alternativas que o usuário não selecionou.
-11. O usuário pode abrir o plano oficial integral de cada candidatura diretamente a partir do resultado.
+## Estrutura do questionário
 
-## Pipeline
+1. Existem oito perguntas independentes, uma para cada macrotema do TSE.
+2. Cada pergunta apresenta exatamente 13 alternativas: uma por candidatura.
+3. Cada alternativa preserva os tópicos da candidatura naquele macrotema. Somente as citações de página foram retiradas da tela.
+4. Os nomes e partidos ficam ocultos durante o questionário.
+5. As alternativas são embaralhadas a cada novo teste e preservam a ordem sorteada quando o usuário retorna à pergunta.
+6. O usuário escolhe no máximo uma alternativa por macrotema.
+7. O usuário atribui ao macrotema um peso de 0 a 3.
 
-`PDF oficial → hash → extração integral → índice temático oficial do TSE → conferência por página → perguntas/opções → matriz de evidências → interface`
+## Cálculo
+
+O peso pertence à decisão, não à candidatura. Uma candidatura recebe o peso de um macrotema somente quando sua alternativa é escolhida naquele tema.
+
+Para cada decisão com peso positivo:
+
+`pontos[candidatura escolhida] += peso do macrotema`
+
+O peso total ativo é a soma dos pesos das oito decisões. Para cada candidatura:
+
+`percentual = pontos da candidatura / peso total ativo × 100`
+
+Os valores internos usam precisão completa. O arredondamento ocorre somente na exibição. A ordenação utiliza os pontos sem arredondamento.
+
+Não existem bônus, penalidades, multiplicadores, similaridade parcial, correções de cobertura ou regras específicas por candidatura.
+
+## Peso zero
+
+Peso zero significa que o macrotema não deve influenciar o resultado. A decisão não entrega pontos, não aumenta o total ativo e não altera o denominador.
+
+Se todos os oito pesos forem zero, o sistema não calcula percentuais e solicita que pelo menos um macrotema receba peso positivo.
+
+## Empates e simetria
+
+Empates reais permanecem empates. Todas as candidaturas com a maior soma de pesos são exibidas juntas no destaque. A identidade da candidatura não interfere no cálculo.
+
+A ordem das decisões também não interfere no resultado: somente a candidatura escolhida e o peso de cada macrotema entram na soma.
 
 ## Reprodutibilidade
 
-Os PDFs originais são preservados em `data/raw-pdfs/`. A extração textual fica em `data/text/`; os hashes SHA-256 em `data/SHA256SUMS`; os índices oficiais capturados ficam em `data/tse-indexes/`. A matriz completa do questionário está em `docs/analysis/questionnaire-v4.md` e sua fonte executável em `src/data/questionnaire-v4.js`.
+O coletor `scripts/scrape_tse_macrothemes.py` descobre as 13 páginas a partir da tabela oficial do TSE e gera `data/tse-presidential-macrothemes.json`. A execução falha se não encontrar 13 links únicos, oito macrotemas não vazios por candidatura ou referências válidas.
 
-## Limitação metodológica
+O gerador `scripts/generate_8x13_questionnaire.py` transforma esse consolidado em:
 
-Um plano de governo não é necessariamente exaustivo. Quando uma candidatura não se pronuncia sobre uma questão com clareza suficiente, o projeto não infere sua posição a partir de ideologia, partido, histórico ou declarações externas.
+- `docs/questionnaire-8x13-tse.md`, para auditoria editorial;
+- `src/data/questionnaire-8x13.js`, consumido pela interface.
+
+Os PDFs oficiais também permanecem preservados em `data/raw-pdfs/`, com hashes em `data/SHA256SUMS`.
+
+## Limitação
+
+O percentual final representa a distribuição das escolhas documentais ponderadas pelo usuário. Ele não mede concordância parcial, viabilidade, qualidade, cumprimento futuro ou proximidade ideológica fora dos tópicos publicados pelo TSE.

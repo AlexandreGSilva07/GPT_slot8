@@ -4,8 +4,8 @@ window.QUIZ_DATA = {
     "subtitle": "Comparador cego de propostas presidenciais",
     "sourceName": "Tribunal Superior Eleitoral (TSE)",
     "retrieved": "2026-09-26",
-    "methodology": "Comparação exclusivamente pelos planos de governo oficiais. A porcentagem usa temas respondidos com posição comparável no plano e não constitui recomendação de voto.",
-    "questionCount": 15,
+    "methodology": "Oito decisões independentes baseadas nas páginas oficiais do TSE. Cada peso positivo é atribuído integralmente à candidatura escolhida no macrotema; peso zero exclui a decisão.",
+    "questionCount": 8,
     "candidateCount": 13
   },
   "candidates": [

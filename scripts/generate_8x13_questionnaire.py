@@ -11,6 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "data/tse-presidential-macrothemes.json"
 OUTPUT = ROOT / "docs/questionnaire-8x13-tse.md"
+BROWSER_OUTPUT = ROOT / "src/data/questionnaire-8x13.js"
 
 QUESTION_TITLES = [
     "Economia, Trabalho e Responsabilidade Fiscal",
@@ -35,6 +36,9 @@ QUESTIONS = [
 ]
 
 PAGE_SUFFIX = re.compile(r"\s*[:–—]\s*páginas?\s+.*$", re.IGNORECASE)
+BROWSER_ID_ALIASES = {
+    "escritor-augusto-cury": "augusto-cury",
+}
 
 
 def without_page_citation(text: str) -> str:
@@ -68,6 +72,7 @@ def main() -> None:
 
     alternative_count = 0
     topic_count = 0
+    browser_questions = []
     for macro_index, (title, question) in enumerate(zip(QUESTION_TITLES, QUESTIONS), 1):
         lines.extend([
             f"## Pergunta {macro_index} — {title}",
@@ -75,6 +80,7 @@ def main() -> None:
             f"**Pergunta:** {question}",
             "",
         ])
+        browser_options = []
         for alternative_index, candidate in enumerate(candidates, 1):
             macrotheme = candidate["macrothemes"][macro_index - 1]
             if macrotheme["number"] != macro_index or not macrotheme["topics"]:
@@ -85,14 +91,30 @@ def main() -> None:
                 f"### Alternativa {alternative_index:02d} — {candidate['name']} ({candidate['party']})",
                 "",
             ])
+            cleaned_topics = []
             for topic in macrotheme["topics"]:
                 cleaned = without_page_citation(topic["text"])
                 if re.search(r"\bpáginas?\b", cleaned, re.IGNORECASE):
                     raise ValueError(f"citação de página restante em {cleaned!r}")
                 lines.append(f"- {cleaned}")
+                cleaned_topics.append(cleaned)
                 topic_count += 1
             lines.append("")
             alternative_count += 1
+            browser_id = BROWSER_ID_ALIASES.get(candidate["slug"], candidate["slug"])
+            browser_options.append({
+                "id": browser_id,
+                "candidate": browser_id,
+                "topics": cleaned_topics,
+            })
+        browser_questions.append({
+            "id": f"macro-{macro_index}",
+            "number": macro_index,
+            "macro": title,
+            "sourceTitle": candidates[0]["macrothemes"][macro_index - 1]["title"],
+            "prompt": question,
+            "options": browser_options,
+        })
 
     if alternative_count != 8 * 13:
         raise ValueError(f"esperadas 104 alternativas; geradas {alternative_count}")
@@ -102,9 +124,23 @@ def main() -> None:
         )
 
     OUTPUT.write_text("\n".join(lines), encoding="utf-8")
+    browser_data = {
+        "version": 1,
+        "source": source["source"],
+        "retrievedAt": source["retrievedAt"],
+        "macros": QUESTION_TITLES,
+        "questions": browser_questions,
+    }
+    BROWSER_OUTPUT.write_text(
+        "window.QUESTIONNAIRE_8X13 = "
+        + json.dumps(browser_data, ensure_ascii=False, separators=(",", ":"))
+        + ";\n",
+        encoding="utf-8",
+    )
     print(
         f"OK: 8 perguntas, {alternative_count} alternativas e "
-        f"{topic_count} tópicos -> {OUTPUT.relative_to(ROOT)}"
+        f"{topic_count} tópicos -> {OUTPUT.relative_to(ROOT)} + "
+        f"{BROWSER_OUTPUT.relative_to(ROOT)}"
     )
 
 

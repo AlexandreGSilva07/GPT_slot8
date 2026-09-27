@@ -7,7 +7,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%2307101d%22/%3E%3Cpath d=%22M7 10h18M7 16h12M7 22h18%22 stroke=%22%23a8f5cf%22 stroke-width=%222%22 stroke-linecap=%22round%22/%3E%3C/svg%3E">
   <meta name="description" content="Comparador cego e auditável dos planos de governo presidenciais de 2026, baseado exclusivamente nos documentos oficiais do TSE.">
   <title>Plano Aberto 2026 — comparador cego de propostas</title>
-  <link rel="stylesheet" href="styles.css?v=20260926-v7">
+  <link rel="stylesheet" href="styles.css?v=20260927-v8">
 </head>
 <body>
   <div class="ambient ambient-a" aria-hidden="true"></div>
@@ -28,7 +28,7 @@
       <div class="hero-wrap">
         <div class="eyebrow-pill"><span class="live-dot"></span> Eleições 2026 · fonte oficial TSE</div>
         <h1>Escolha as ideias.<br><span>Os nomes vêm depois.</span></h1>
-        <p class="hero-copy">Um teste cego com 15 decisões rápidas: escolha única, até duas medidas e ordem de prioridade. No final, cada resposta é comparada com o que está escrito nos planos oficiais.</p>
+        <p class="hero-copy">Oito decisões, uma por macrotema oficial. Em cada uma, escolha entre 13 conjuntos de propostas sem saber a candidatura e defina quanto aquele tema pesa para você.</p>
         <div class="hero-actions">
           <button class="primary-btn" data-action="start">
             Começar teste
@@ -44,13 +44,13 @@
       </div>
       <aside class="hero-card" aria-label="Como o teste funciona">
         <div class="card-topline">
-          <span>TESTE CEGO</span><span>15 DECISÕES</span>
+          <span>TESTE CEGO</span><span>8 MACROTEMAS</span>
         </div>
         <div class="mini-question">
           <span class="mini-number">04</span>
           <div>
-            <small>Exemplo de tema</small>
-            <strong>Qual direção deveria orientar a política pública?</strong>
+            <small>Uma decisão por macrotema</small>
+            <strong>Qual conjunto de propostas mais representa suas prioridades?</strong>
           </div>
         </div>
         <div class="mini-options" aria-hidden="true">
@@ -70,7 +70,7 @@
             <svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
           </button>
           <div class="progress-wrap">
-            <div class="progress-label"><span id="progressTheme">Tema</span><strong id="progressCount">1 / 15</strong></div>
+            <div class="progress-label"><span id="progressTheme">Tema</span><strong id="progressCount">1 / 8</strong></div>
             <div class="progress-track"><i id="progressBar"></i></div>
           </div>
         </div>
@@ -84,7 +84,7 @@
         </div>
 
         <article class="question-card" id="questionCard">
-          <p class="source-note">As alternativas são sínteses dos planos oficiais. Páginas e evidências aparecem no resultado.</p>
+          <p class="source-note">As alternativas reproduzem os tópicos publicados nas páginas individuais do TSE. A ordem é embaralhada e os nomes só aparecem no resultado.</p>
           <div class="question-heading">
             <span class="question-index" id="questionIndex">01</span>
             <div>
@@ -93,7 +93,9 @@
               <p class="question-context" id="questionContext"></p>
             </div>
           </div>
+          <section class="weight-control" id="weightControl" aria-label="Peso do macrotema"></section>
           <div class="options-list" id="optionsList" role="radiogroup" aria-labelledby="questionPrompt"></div>
+          <p class="quiz-status" id="quizStatus" role="status" hidden></p>
         </article>
 
         <p class="blind-footer"><span></span>Nenhum nome de candidato é usado para ordenar ou formular suas respostas.</p>
@@ -104,12 +106,12 @@
       <div class="result-shell">
         <div class="result-hero dashboard-hero">
           <div>
-            <p class="section-kicker">RADAR DOCUMENTAL</p>
-            <h2>Compatibilidade com<br>13 planos oficiais</h2>
+            <p class="section-kicker">DISTRIBUIÇÃO DOCUMENTAL</p>
+            <h2>Suas escolhas entre<br>13 planos oficiais</h2>
           </div>
           <div class="result-explainer">
-            <strong>Ordenado pela compatibilidade documentada.</strong>
-            <p>Cada macrotema tem o mesmo peso. A nota exige correspondência com o conjunto das suas escolhas; ausência documental reduz a aderência e continua marcada separadamente de oposição.</p>
+            <strong>Ordenado pela soma dos pesos definidos por você.</strong>
+            <p>Cada escolha entrega o peso daquele macrotema a uma única candidatura. Temas com peso zero não entram no cálculo, e os percentuais finais dividem exatamente todo o peso ativo.</p>
           </div>
         </div>
         <div class="result-summary" id="resultSummary"></div>
@@ -117,18 +119,18 @@
 
         <section class="featured-section" aria-labelledby="featuredHeading">
           <div class="section-head featured-head">
-            <div><p class="section-kicker">MAIOR COMPATIBILIDADE</p><h3 id="featuredHeading">Destaque do seu resultado</h3></div>
-            <p>Primeira candidatura na ordenação documental.</p>
+            <div><p class="section-kicker">MAIOR SOMA DE PESOS</p><h3 id="featuredHeading">Destaque do seu resultado</h3></div>
+            <p id="featuredNote">Candidatura que recebeu a maior soma dos pesos definidos por você.</p>
           </div>
           <div id="featuredCandidate"></div>
         </section>
 
         <section class="matrix-section">
           <div class="section-head matrix-head">
-            <div><p class="section-kicker">DEMAIS CANDIDATURAS</p><h3>Radar por tópico</h3></div>
+            <div><p class="section-kicker">DEMAIS CANDIDATURAS</p><h3>Radar por macrotema</h3></div>
             <div class="matrix-meta">
-              <div class="matrix-legend"><span><i class="status-dot match"></i> maior compatibilidade</span><span><i class="status-dot other"></i> compatibilidade parcial</span><span><i class="status-dot unknown"></i> — sem posição identificada</span></div>
-              <details class="topic-guide"><summary>Ver os 5 macrotemas do radar</summary><ol id="topicGuide"></ol></details>
+              <div class="matrix-legend"><span><i class="status-dot match"></i> proposta escolhida</span><span><i class="status-dot other"></i> proposta não escolhida</span><span><i class="status-dot unknown"></i> tema ignorado</span></div>
+              <details class="topic-guide"><summary>Ver os 8 macrotemas do radar</summary><ol id="topicGuide"></ol></details>
             </div>
           </div>
           <div class="candidate-matrix" id="candidateMatrix"></div>
@@ -156,17 +158,17 @@
         </button>
         <p class="section-kicker">COMO FUNCIONA</p>
         <h2>Comparar sem adivinhar.</h2>
-        <p class="info-lead">O comparador usa exclusivamente os planos de governo oficiais disponibilizados pelo Tribunal Superior Eleitoral. A análise preserva diferenças de instrumento, não apenas de objetivo.</p>
+        <p class="info-lead">O comparador usa os tópicos publicados nas páginas individuais das candidaturas no Tribunal Superior Eleitoral. Cada alternativa corresponde integralmente a uma candidatura dentro de um macrotema.</p>
         <div class="principles">
-          <article><span>01</span><h3>Documento integral</h3><p>Os 13 PDFs foram preservados, extraídos e indexados página a página. O resumo do TSE não substitui o texto original.</p></article>
-          <article><span>02</span><h3>Correspondência conservadora</h3><p>Uma candidatura só aparece numa alternativa quando o plano sustenta claramente aquela direção. Silêncio não vira oposição.</p></article>
-          <article><span>03</span><h3>Peso igual por macrotema</h3><p>As três perguntas formam a nota de cada macrotema. A média geral dá o mesmo peso aos cinco macrotemas.</p></article>
-          <article><span>04</span><h3>Auditável</h3><p>Cada correspondência mostra páginas e uma paráfrase verificável. O botão abre o plano oficial completo no TSE.</p></article>
+          <article><span>01</span><h3>Oito decisões independentes</h3><p>Cada pergunta cobre um dos oito macrotemas usados pelo TSE e oferece exatamente uma proposta por candidatura.</p></article>
+          <article><span>02</span><h3>Comparação cega</h3><p>Os nomes ficam ocultos durante o questionário e as 13 alternativas são embaralhadas a cada novo teste.</p></article>
+          <article><span>03</span><h3>Peso escolhido pelo usuário</h3><p>O peso de 0 a 3 pertence ao macrotema. Peso zero remove a decisão; um peso positivo vai integralmente para a proposta escolhida.</p></article>
+          <article><span>04</span><h3>Distribuição transparente</h3><p>A pontuação de cada candidatura é dividida pela soma de todos os pesos ativos. Não há bônus, penalidade ou correção específica por candidatura.</p></article>
         </div>
         <div class="source-panel">
           <div>
             <small>SNAPSHOT DA ANÁLISE</small>
-            <strong>26 de setembro de 2026</strong>
+            <strong>27 de setembro de 2026</strong>
           </div>
           <div><small>CORPUS</small><strong>13 PDFs · 836 páginas</strong></div>
           <a href="https://www.tse.jus.br/eleicoes/eleicoes-2026-content/propostas-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026/planos-de-governo-dos-candidatos-ao-cargo-de-presidente-da-republica-eleicoes-2026" target="_blank" rel="noopener noreferrer">Abrir página do TSE ↗</a>
@@ -181,7 +183,7 @@
   </footer>
 
   <script src="src/data/quiz-data.js?v=20260926-v4"></script>
-  <script src="src/data/questionnaire-v4.js?v=20260926-v5"></script>
-  <script src="app.js?v=20260926-v7"></script>
+  <script src="src/data/questionnaire-8x13.js?v=20260927-v1"></script>
+  <script src="app.js?v=20260927-v8"></script>
 </body>
 </html>
