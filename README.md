@@ -21,6 +21,7 @@ Snapshot coletado em 26/09/2026:
 - `data/raw-pdfs/` — PDFs oficiais baixados do TSE.
 - `data/text/` — extração integral dos PDFs.
 - `data/manifest.json` — metadados, links oficiais, páginas e hashes.
+- `data/tse-presidential-macrothemes.json` — coleta consolidada dos 8 macrotemas nas 13 páginas individuais do TSE.
 - `data/SHA256SUMS` — integridade dos arquivos.
 - `docs/methodology.md` — regras metodológicas.
 - `docs/analysis/` — fichas por candidatura e cruzamentos.
@@ -51,3 +52,12 @@ python3 -m http.server 8765
 ```
 
 Abra `http://127.0.0.1:8765`.
+
+### Atualizar os macrotemas do TSE
+
+```bash
+python3 scripts/scrape_tse_macrothemes.py
+```
+
+O coletor descobre as 13 páginas pela tabela oficial e só substitui o JSON
+consolidado quando encontra oito macrotemas não vazios em cada candidatura.
