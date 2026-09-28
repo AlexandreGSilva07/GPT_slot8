@@ -202,8 +202,10 @@
     list.removeAttribute('role');
     list.removeAttribute('tabindex');
     if (weight === 0) {
+      const nextLabel = state.index === DATA.questions.length - 1 ? 'Ver resultado' : 'Próxima';
       $('#questionContext').textContent = 'Você definiu peso 0: este macrotema e seus duelos não entram no cálculo.';
-      list.innerHTML = '<div class="tournament-skipped"><strong>Macrotema anulado</strong><span>Não é necessário comparar as 13 propostas. Você pode seguir para o próximo tema.</span></div>';
+      list.innerHTML = `<div class="tournament-skipped"><strong>Macrotema anulado</strong><span>Não é necessário comparar as 13 propostas. Você pode seguir para o próximo tema.</span></div>
+        <div class="tournament-actions"><button type="button" data-action="previous">Anterior</button><button type="button" data-action="next">${nextLabel}</button></div>`;
       $('#nextBtn').disabled = false;
       return;
     }
