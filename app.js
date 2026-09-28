@@ -212,12 +212,11 @@
       $('#questionContext').textContent = `Torneio concluído em ${totalDuels} duelos. A proposta campeã receberá o peso ${weight}.`;
       const result = document.createElement('div');
       result.className = 'tournament-result';
+      const nextLabel = state.index === DATA.questions.length - 1 ? 'Ver resultado' : 'Próxima';
       result.innerHTML = `<div class="tournament-result-head"><span>CAMPEÃ DO MACROTEMA</span><strong>Proposta ${letter}</strong></div>
         <div class="proposal-topics">${champion.topics.map((topic) => `<span>${escapeHtml(topic)}</span>`).join('')}</div>
-        <div class="tournament-actions"><button type="button" data-undo-duel>Desfazer último duelo</button><button type="button" data-restart-duel>Refazer torneio</button></div>`;
+        <div class="tournament-actions"><button type="button" data-action="previous">Anterior</button><button type="button" data-action="next">${nextLabel}</button></div>`;
       list.append(result);
-      $('[data-undo-duel]', result).addEventListener('click', () => undoDuel(question));
-      $('[data-restart-duel]', result).addEventListener('click', () => restartTournament(question));
       $('#nextBtn').disabled = false;
       return;
     }
