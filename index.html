@@ -7,7 +7,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%2307101d%22/%3E%3Cpath d=%22M7 10h18M7 16h12M7 22h18%22 stroke=%22%23a8f5cf%22 stroke-width=%222%22 stroke-linecap=%22round%22/%3E%3C/svg%3E">
   <meta name="description" content="Comparador cego e auditável dos planos de governo presidenciais de 2026, baseado exclusivamente nos documentos oficiais do TSE.">
   <title>Plano Aberto 2026 — comparador cego de propostas</title>
-  <link rel="stylesheet" href="styles.css?v=refc2-2">
+  <link rel="stylesheet" href="styles.css?v=refc2-3">
 </head>
 <body>
   <div class="ambient ambient-a" aria-hidden="true"></div>
@@ -28,7 +28,7 @@
       <div class="hero-wrap">
         <div class="eyebrow-pill"><span class="live-dot"></span> Eleições 2026 · fonte oficial TSE</div>
         <h1>Escolha as ideias.<br><span>Os nomes vêm depois.</span></h1>
-        <p class="hero-copy">Primeiro, distribua até oito pontos entre os macrotemas. Depois, escolha propostas em duelos rápidos e cegos até encontrar a campeã de cada tema.</p>
+        <p class="hero-copy">Escolha os macrotemas, ajuste os pesos e avalie cada proposta individualmente: arraste para a esquerda para recusar ou para a direita para aprovar.</p>
         <div class="hero-actions">
           <button class="primary-btn" data-action="start">
             Começar teste
@@ -49,8 +49,8 @@
         <div class="mini-question">
           <span class="mini-number">04</span>
           <div>
-            <small>Uma decisão por macrotema</small>
-            <strong>Qual proposta deve avançar neste duelo?</strong>
+            <small>Uma decisão por proposta</small>
+            <strong>← Recusar · Aprovar →</strong>
           </div>
         </div>
         <div class="mini-options" aria-hidden="true">
@@ -106,30 +106,24 @@
       <div class="result-shell">
         <div class="result-hero dashboard-hero">
           <div>
-            <p class="section-kicker">DISTRIBUIÇÃO DOCUMENTAL</p>
-            <h2>Suas escolhas entre<br>13 planos oficiais</h2>
+            <p class="section-kicker">MAPA DE DECISÕES</p>
+            <h2>Suas aprovações e recusas<br>por proposta</h2>
           </div>
           <div class="result-explainer">
-            <strong>Ordenado pela soma dos pesos definidos por você.</strong>
-            <p>Cada escolha entrega o peso daquele macrotema a uma única candidatura. Temas com peso zero não entram no cálculo, e os percentuais finais dividem exatamente todo o peso ativo.</p>
+            <strong>Cada proposta é registrada de forma independente.</strong>
+            <p>Um mesmo macrotema pode ter de zero a 13 propostas aprovadas. O peso do tema permanece associado a cada decisão, sem forçar uma única proposta vencedora.</p>
           </div>
         </div>
         <div class="result-summary" id="resultSummary"></div>
         <section class="profile-strip" id="profileStrip" aria-label="Suas escolhas por tema"></section>
 
-        <section class="featured-section" aria-labelledby="featuredHeading">
-          <div class="section-head featured-head">
-            <div><p class="section-kicker">MAIOR SOMA DE PESOS</p><h3 id="featuredHeading">Destaque do seu resultado</h3></div>
-            <p id="featuredNote">Candidatura que recebeu a maior soma dos pesos definidos por você.</p>
-          </div>
-          <div id="featuredCandidate"></div>
-        </section>
+        <div id="featuredCandidate" hidden></div>
 
         <section class="matrix-section">
           <div class="section-head matrix-head">
-            <div><p class="section-kicker">DEMAIS CANDIDATURAS</p><h3>Radar por macrotema</h3></div>
+            <div><p class="section-kicker">13 PLANOS OFICIAIS</p><h3>Decisões por candidatura</h3></div>
             <div class="matrix-meta">
-              <div class="matrix-legend"><span><i class="status-dot match"></i> proposta escolhida</span><span><i class="status-dot other"></i> proposta não escolhida</span><span><i class="status-dot unknown"></i> tema ignorado</span></div>
+              <div class="matrix-legend"><span><i class="status-dot match"></i> aprovada</span><span><i class="status-dot other"></i> recusada</span><span><i class="status-dot unknown"></i> tema ignorado</span></div>
               <details class="topic-guide"><summary>Ver os 8 macrotemas do radar</summary><ol id="topicGuide"></ol></details>
             </div>
           </div>
@@ -160,10 +154,10 @@
         <h2>Comparar sem adivinhar.</h2>
         <p class="info-lead">O comparador usa os tópicos publicados nas páginas individuais das candidaturas no Tribunal Superior Eleitoral. Cada alternativa corresponde integralmente a uma candidatura dentro de um macrotema.</p>
         <div class="principles">
-          <article><span>01</span><h3>Oito torneios independentes</h3><p>Cada macrotema reúne 13 propostas em duelos sucessivos até restar uma campeã.</p></article>
-          <article><span>02</span><h3>Comparação cega</h3><p>Os nomes ficam ocultos e a ordem das 13 propostas é embaralhada. A vencedora permanece no mesmo lado no duelo seguinte.</p></article>
-          <article><span>03</span><h3>Oito pontos de prioridade</h3><p>Antes das propostas, você distribui no máximo oito pontos entre os temas. Peso zero anula a pergunta; aumentar um peso amplia sua influência no resultado.</p></article>
-          <article><span>04</span><h3>Distribuição transparente</h3><p>A pontuação de cada candidatura é dividida pela soma de todos os pesos ativos. Não há bônus, penalidade ou correção específica por candidatura.</p></article>
+          <article><span>01</span><h3>Treze decisões por macrotema</h3><p>Cada proposta aparece uma vez. Você pode aprovar ou recusar qualquer quantidade delas.</p></article>
+          <article><span>02</span><h3>Avaliação cega</h3><p>Os nomes ficam ocultos e a ordem das 13 propostas é embaralhada. Cada decisão é independente das anteriores.</p></article>
+          <article><span>03</span><h3>Peso proporcional à seleção</h3><p>O limite de pontos é igual à quantidade de macrotemas escolhidos. Peso zero retira aquele tema dos cartões.</p></article>
+          <article><span>04</span><h3>Registro completo</h3><p>O resultado preserva, para cada candidatura e macrotema, se a proposta foi aprovada, recusada ou ignorada e qual era o peso do tema.</p></article>
         </div>
         <div class="source-panel">
           <div>
@@ -184,6 +178,6 @@
 
   <script src="src/data/quiz-data.js?v=20260926-v4"></script>
   <script src="src/data/questionnaire-8x13.js?v=20260927-v1"></script>
-  <script src="app.js?v=refc2-3"></script>
+  <script src="app.js?v=refc2-4"></script>
 </body>
 </html>

@@ -12,7 +12,7 @@
   const $ = (selector, parent = document) => parent.querySelector(selector);
   const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector)];
   const candidateBySlug = new Map(DATA.candidates.map((candidate) => [candidate.slug, candidate]));
-  const state = { screen: 'home', index: -2, answers: {}, weights: {}, optionOrders: {}, tournaments: {}, selectedThemes: new Set(), infoFrom: 'home' };
+  const state = { screen: 'home', index: -2, answers: {}, weights: {}, optionOrders: {}, swipes: {}, selectedThemes: new Set(), infoFrom: 'home' };
 
   function escapeHtml(value) {
     return String(value).replace(/[&<>"']/g, (character) => ({
@@ -31,12 +31,6 @@
     return copy;
   }
 
-  function randomSide() {
-    const random = new Uint32Array(1);
-    crypto.getRandomValues(random);
-    return random[0] % 2 === 0;
-  }
-
   function show(screen) {
     $$('.screen').forEach((node) => node.classList.toggle('is-active', node.dataset.screen === screen));
     state.screen = screen;
@@ -49,22 +43,20 @@
     state.answers = {};
     state.weights = {};
     state.optionOrders = {};
-    state.tournaments = {};
+    state.swipes = {};
     state.selectedThemes = new Set();
     DATA.questions.forEach((question) => {
       state.weights[question.id] = 0;
+      state.answers[question.id] = {};
       state.optionOrders[question.id] = shuffle(question.options.map((option) => option.id));
-      state.tournaments[question.id] = {
-        championId: state.optionOrders[question.id][0], nextIndex: 1,
-        championSide: randomSide() ? 'left' : 'right', history: [], complete: false,
-      };
+      state.swipes[question.id] = { index: 0, complete: false };
     });
     show('quiz');
     renderStep();
   }
 
   function currentQuestion() { return DATA.questions[state.index]; }
-  function isAnswered(question) { return state.weights[question.id] === 0 || Boolean(state.answers[question.id]); }
+  function isAnswered(question) { return state.weights[question.id] === 0 || Boolean(state.swipes[question.id]?.complete); }
   function optionLetter(question, optionId) {
     return String.fromCharCode(65 + state.optionOrders[question.id].indexOf(optionId));
   }
@@ -265,131 +257,196 @@
     return question.options.find((option) => option.id === optionId);
   }
 
-  function renderDuelOption(question, option, side) {
-    const button = document.createElement('button');
-    const letter = optionLetter(question, option.id);
-    button.type = 'button';
-    button.className = 'duel-option proposal-card';
-    button.dataset.option = option.id;
-    button.setAttribute('aria-label', `Escolher proposta ${letter} neste duelo`);
-    button.innerHTML = `
-      <span class="proposal-choice">
-        <span class="proposal-letter" aria-hidden="true">${letter}</span>
-        <span class="proposal-title">Proposta ${letter}</span>
-      </span>
-      <span class="proposal-topics">
-        ${option.topics.map((topic) => `<span>${escapeHtml(topic)}</span>`).join('')}
-      </span>
-      <span class="proposal-action">Escolher proposta ${letter}</span>`;
-    button.addEventListener('click', () => {
-      chooseDuelWinner(question, option.id, side);
-    });
-    return button;
+  function currentSwipeOption(question) {
+    const swipe = state.swipes[question.id];
+    const optionId = state.optionOrders[question.id][swipe.index];
+    return optionById(question, optionId);
   }
 
-  function chooseDuelWinner(question, winnerId, winnerSide) {
-    const tournament = state.tournaments[question.id];
-    tournament.history.push({
-      championId: tournament.championId,
-      nextIndex: tournament.nextIndex,
-      championSide: tournament.championSide,
-    });
-    tournament.championId = winnerId;
-    tournament.championSide = winnerSide;
-    tournament.nextIndex += 1;
-    if (tournament.nextIndex >= state.optionOrders[question.id].length) {
-      tournament.complete = true;
-      state.answers[question.id] = winnerId;
+  function recordSwipe(question, decision) {
+    const swipe = state.swipes[question.id];
+    if (swipe.complete) return;
+    const optionId = state.optionOrders[question.id][swipe.index];
+    state.answers[question.id][optionId] = decision;
+    swipe.index += 1;
+    swipe.complete = swipe.index >= state.optionOrders[question.id].length;
+    renderSwipe(question);
+  }
+
+  function undoSwipe(question) {
+    const swipe = state.swipes[question.id];
+    if (swipe.index <= 0) return;
+    swipe.index -= 1;
+    const optionId = state.optionOrders[question.id][swipe.index];
+    delete state.answers[question.id][optionId];
+    swipe.complete = false;
+    renderSwipe(question);
+  }
+
+  function animateSwipe(question, decision, card) {
+    if (!card || card.dataset.locked === 'true') return;
+    card.dataset.locked = 'true';
+    const direction = decision === 'approved' ? 1 : -1;
+    card.classList.add(decision === 'approved' ? 'swipe-approved' : 'swipe-rejected');
+    card.style.transition = 'transform .2s ease, opacity .2s ease';
+    card.style.transform = `translateX(${direction * 125}%) rotate(${direction * 12}deg)`;
+    card.style.opacity = '0';
+    window.setTimeout(() => recordSwipe(question, decision), 190);
+  }
+
+  function bindSwipeGestures(card, question) {
+    let pointerId = null;
+    let startX = 0;
+    let startY = 0;
+    let dx = 0;
+    let active = false;
+
+    function resetCard() {
+      card.style.transition = 'transform .18s ease';
+      card.style.transform = '';
+      card.style.setProperty('--approve-opacity', '0');
+      card.style.setProperty('--reject-opacity', '0');
+      window.setTimeout(() => { card.style.transition = ''; }, 190);
     }
-    renderTournament(question);
+
+    card.addEventListener('pointerdown', (event) => {
+      if (event.target.closest('button')) return;
+      pointerId = event.pointerId;
+      startX = event.clientX;
+      startY = event.clientY;
+      dx = 0;
+      active = true;
+      card.setPointerCapture?.(pointerId);
+      card.style.transition = 'none';
+    });
+
+    card.addEventListener('pointermove', (event) => {
+      if (!active || event.pointerId !== pointerId) return;
+      dx = event.clientX - startX;
+      const dy = event.clientY - startY;
+      if (Math.abs(dy) > Math.abs(dx) && Math.abs(dx) < 18) return;
+      const rotation = Math.max(-10, Math.min(10, dx / 18));
+      const opacity = Math.min(1, Math.abs(dx) / 90);
+      card.style.transform = `translateX(${dx}px) rotate(${rotation}deg)`;
+      card.style.setProperty('--approve-opacity', dx > 0 ? String(opacity) : '0');
+      card.style.setProperty('--reject-opacity', dx < 0 ? String(opacity) : '0');
+    });
+
+    function finish(event) {
+      if (!active || event.pointerId !== pointerId) return;
+      active = false;
+      card.releasePointerCapture?.(pointerId);
+      const threshold = Math.min(95, card.getBoundingClientRect().width * 0.28);
+      if (dx >= threshold) animateSwipe(question, 'approved', card);
+      else if (dx <= -threshold) animateSwipe(question, 'rejected', card);
+      else resetCard();
+    }
+
+    card.addEventListener('pointerup', finish);
+    card.addEventListener('pointercancel', (event) => {
+      if (event.pointerId !== pointerId) return;
+      active = false;
+      resetCard();
+    });
   }
 
-  function undoDuel(question) {
-    const tournament = state.tournaments[question.id];
-    const previousState = tournament.history.pop();
-    if (!previousState) return;
-    Object.assign(tournament, previousState, { complete: false });
-    delete state.answers[question.id];
-    renderTournament(question);
+  function renderSwipeCard(question, option, swipeIndex, totalCards) {
+    const letter = optionLetter(question, option.id);
+    const card = document.createElement('article');
+    card.className = 'swipe-card';
+    card.setAttribute('aria-label', `Proposta ${swipeIndex + 1} de ${totalCards}. Arraste para a esquerda para recusar ou para a direita para aprovar.`);
+    card.innerHTML = `
+      <span class="swipe-stamp swipe-stamp-reject" aria-hidden="true">RECUSAR</span>
+      <span class="swipe-stamp swipe-stamp-approve" aria-hidden="true">APROVAR</span>
+      <div class="swipe-card-head">
+        <span class="proposal-letter" aria-hidden="true">${letter}</span>
+        <div><small>PROPOSTA ${swipeIndex + 1} DE ${totalCards}</small><strong>Proposta ${letter}</strong></div>
+      </div>
+      <div class="swipe-card-topics">
+        ${option.topics.map((topic) => `<span>${escapeHtml(topic)}</span>`).join('')}
+      </div>
+      <div class="swipe-card-hint"><span>← Recusar</span><span>Aprovar →</span></div>`;
+    bindSwipeGestures(card, question);
+    return card;
   }
 
-  function restartTournament(question) {
-    state.optionOrders[question.id] = shuffle(question.options.map((option) => option.id));
-    state.tournaments[question.id] = {
-      championId: state.optionOrders[question.id][0], nextIndex: 1,
-      championSide: randomSide() ? 'left' : 'right', history: [], complete: false,
-    };
-    delete state.answers[question.id];
-    renderTournament(question);
-  }
-
-  function renderTournament(question) {
+  function renderSwipe(question) {
     const list = $('#optionsList');
     const weight = state.weights[question.id];
-    const tournament = state.tournaments[question.id];
-    const totalDuels = state.optionOrders[question.id].length - 1;
-    $('#questionCard').classList.toggle('is-zero-weight', weight === 0);
+    const swipe = state.swipes[question.id];
+    const order = state.optionOrders[question.id];
+    const totalCards = order.length;
+    const decisions = state.answers[question.id] || {};
+    const approvedCount = Object.values(decisions).filter((decision) => decision === 'approved').length;
+    const rejectedCount = Object.values(decisions).filter((decision) => decision === 'rejected').length;
+
     list.innerHTML = '';
-    list.className = 'options-list tournament-stage';
+    list.className = 'options-list swipe-stage';
     list.removeAttribute('role');
     list.removeAttribute('tabindex');
-    if (weight === 0) {
+
+    if (swipe.complete) {
       const active = activeQuestionIndices();
-      const nextLabel = active.indexOf(state.index) === active.length - 1 ? 'Ver resultado' : 'Próxima';
-      $('#questionContext').textContent = 'Você definiu peso 0: este macrotema e seus duelos não entram no cálculo.';
-      list.innerHTML = `<div class="tournament-skipped"><strong>Macrotema anulado</strong><span>Não é necessário comparar as 13 propostas. Você pode seguir para o próximo tema.</span></div>
-        <div class="tournament-actions"><button type="button" data-action="previous">Anterior</button><button type="button" data-action="next">${nextLabel}</button></div>`;
+      const nextLabel = active.indexOf(state.index) === active.length - 1 ? 'Ver resultado' : 'Próximo tema';
+      list.innerHTML = `
+        <div class="swipe-complete">
+          <span class="swipe-complete-kicker">MACROTEMA CONCLUÍDO</span>
+          <strong>${approvedCount} aprovada${approvedCount === 1 ? '' : 's'} · ${rejectedCount} recusada${rejectedCount === 1 ? '' : 's'}</strong>
+          <p>As 13 propostas deste tema foram avaliadas individualmente.</p>
+          <div class="swipe-complete-actions">
+            <button type="button" data-undo-swipe>Desfazer última</button>
+            <button type="button" class="swipe-next-theme" data-action="next">${nextLabel}</button>
+          </div>
+        </div>`;
+      $('[data-undo-swipe]', list)?.addEventListener('click', () => undoSwipe(question));
       $('#nextBtn').disabled = false;
       return;
     }
-    if (tournament.complete) {
-      const champion = optionById(question, tournament.championId);
-      const letter = optionLetter(question, champion.id);
-      $('#questionContext').textContent = `Torneio concluído em ${totalDuels} duelos. A proposta campeã receberá o peso ${weight}.`;
-      const result = document.createElement('div');
-      result.className = 'tournament-result';
-      const active = activeQuestionIndices();
-      const nextLabel = active.indexOf(state.index) === active.length - 1 ? 'Ver resultado' : 'Próxima';
-      result.innerHTML = `<div class="tournament-result-head"><span>CAMPEÃ DO MACROTEMA</span><strong>Proposta ${letter}</strong></div>
-        <div class="proposal-topics">${champion.topics.map((topic) => `<span>${escapeHtml(topic)}</span>`).join('')}</div>
-        <div class="tournament-actions"><button type="button" data-action="previous">Anterior</button><button type="button" data-action="next">${nextLabel}</button></div>`;
-      list.append(result);
-      $('#nextBtn').disabled = false;
-      return;
-    }
-    const challengerId = state.optionOrders[question.id][tournament.nextIndex];
-    const champion = optionById(question, tournament.championId);
-    const challenger = optionById(question, challengerId);
-    const choices = tournament.championSide === 'left' ? [champion, challenger] : [challenger, champion];
-    const header = document.createElement('div');
-    header.className = 'duel-progress';
-    header.innerHTML = `<div><span>DUELO ${tournament.nextIndex} DE ${totalDuels} · PESO ${weight}</span><strong>Qual proposta avança?</strong></div>
-      <div class="duel-progress-track"><i style="width:${(tournament.nextIndex / totalDuels) * 100}%"></i></div>`;
-    const arena = document.createElement('div');
-    arena.className = 'duel-arena';
-    arena.setAttribute('role', 'group');
-    arena.setAttribute('aria-label', `Duelo ${tournament.nextIndex} de ${totalDuels}`);
-    arena.append(renderDuelOption(question, choices[0], 'left'));
-    const versus = document.createElement('span');
-    versus.className = 'duel-versus';
-    versus.textContent = 'VS';
-    arena.append(versus, renderDuelOption(question, choices[1], 'right'));
-    list.append(header, arena);
-    if (tournament.history.length) {
+
+    const option = currentSwipeOption(question);
+    const stage = document.createElement('div');
+    stage.className = 'swipe-deck';
+
+    const ghost = document.createElement('div');
+    ghost.className = 'swipe-card swipe-card-ghost';
+    ghost.setAttribute('aria-hidden', 'true');
+
+    const card = renderSwipeCard(question, option, swipe.index, totalCards);
+    stage.append(ghost, card);
+
+    const progress = document.createElement('div');
+    progress.className = 'swipe-progress';
+    progress.innerHTML = `
+      <div><span>PROPOSTA ${swipe.index + 1} DE ${totalCards} · PESO ${weight}</span><strong>${approvedCount} aprovadas · ${rejectedCount} recusadas</strong></div>
+      <div class="swipe-progress-track"><i style="width:${(swipe.index / totalCards) * 100}%"></i></div>`;
+
+    const controls = document.createElement('div');
+    controls.className = 'swipe-controls';
+    controls.innerHTML = `
+      <button type="button" class="swipe-control reject" data-swipe-decision="rejected" aria-label="Recusar proposta">×<span>Recusar</span></button>
+      <button type="button" class="swipe-control approve" data-swipe-decision="approved" aria-label="Aprovar proposta">✓<span>Aprovar</span></button>`;
+
+    controls.querySelector('[data-swipe-decision="rejected"]').addEventListener('click', () => animateSwipe(question, 'rejected', card));
+    controls.querySelector('[data-swipe-decision="approved"]').addEventListener('click', () => animateSwipe(question, 'approved', card));
+
+    list.append(progress, stage, controls);
+
+    if (swipe.index > 0) {
       const undo = document.createElement('button');
       undo.type = 'button';
       undo.className = 'duel-undo';
-      undo.textContent = '↶ Desfazer último duelo';
-      undo.addEventListener('click', () => undoDuel(question));
+      undo.textContent = '↶ Desfazer última decisão';
+      undo.addEventListener('click', () => undoSwipe(question));
       list.append(undo);
     }
-    $('#questionContext').textContent = `Peso ${weight}. Compare apenas estas duas propostas e toque na que deve avançar.`;
+
     $('#nextBtn').disabled = true;
   }
 
   function renderQuestion() {
     $('.quiz-nav').hidden = true;
-    $('#questionCard').classList.add('is-tournament');
+    $('#questionCard').classList.remove('is-tournament');
+    $('#questionCard').classList.add('is-swipe');
     const question = currentQuestion();
     const active = activeQuestionIndices();
     const position = active.indexOf(state.index);
@@ -398,16 +455,16 @@
     $('#progressCount').textContent = `${position + 1} / ${total}`;
     $('#progressBar').style.width = `${((position + 1) / total) * 100}%`;
     $('#questionIndex').textContent = String(state.index + 1).padStart(2, '0');
-    $('#questionEyebrow').textContent = 'TORNEIO CEGO · 13 PROPOSTAS';
-    $('#questionPrompt').textContent = question.prompt;
-    $('#sourceNote').innerHTML = '13 propostas embaralhadas. Escolha uma por duelo; a vencedora segue até restar uma campeã.';
+    $('#questionEyebrow').textContent = 'AVALIAÇÃO CEGA · 13 PROPOSTAS';
+    $('#questionPrompt').textContent = `Avalie as propostas de ${question.macro}`;
+    $('#sourceNote').innerHTML = 'Uma proposta por vez. Arraste para a <strong>esquerda para recusar</strong> ou para a <strong>direita para aprovar</strong>.';
     $('#prevBtn').disabled = false;
     $('#nextBtn').childNodes[0].nodeValue = position === total - 1 ? 'Ver resultado ' : 'Próxima ';
     setQuizStatus('');
     $('#weightControl').hidden = true;
     const list = $('#optionsList');
     list.hidden = false;
-    renderTournament(question);
+    renderSwipe(question);
     const card = $('#questionCard');
     card.classList.remove('swap');
     void card.offsetWidth;
@@ -460,71 +517,81 @@
   }
 
   function calculateResults() {
-    const rawScores = Object.fromEntries(DATA.candidates.map((candidate) => [candidate.slug, 0]));
     const statuses = Object.fromEntries(DATA.candidates.map((candidate) => [candidate.slug, []]));
     let totalWeight = 0;
     let activeThemes = 0;
+    let totalDecisions = 0;
+    let approvedDecisions = 0;
+    let rejectedDecisions = 0;
+
     DATA.questions.forEach((question) => {
       const weight = state.weights[question.id];
-      const selectedSlug = state.answers[question.id] || null;
-      if (weight > 0) {
+      const decisions = state.answers[question.id] || {};
+      const active = weight > 0;
+      if (active) {
         totalWeight += weight;
         activeThemes += 1;
-        rawScores[selectedSlug] += weight;
+        totalDecisions += question.options.length;
       }
+
       DATA.candidates.forEach((candidate) => {
+        const option = question.options.find((item) => item.candidate === candidate.slug);
+        const decision = active ? (decisions[option.id] || null) : null;
+        const approved = decision === 'approved';
+        const rejected = decision === 'rejected';
+        if (approved) approvedDecisions += 1;
+        if (rejected) rejectedDecisions += 1;
         statuses[candidate.slug].push({
-          selected: weight > 0 && selectedSlug === candidate.slug,
-          skipped: weight === 0,
+          approved,
+          rejected,
+          skipped: !active,
+          decision,
           weight,
-          selectedSlug,
-          option: question.options.find((option) => option.candidate === candidate.slug),
+          option,
         });
       });
     });
-    const ranked = DATA.candidates.map((candidate) => {
-      const raw = rawScores[candidate.slug];
-      return {
-        candidate, raw, percentage: raw / totalWeight, statuses: statuses[candidate.slug],
-        macroScores: statuses[candidate.slug].map((status) => status.skipped ? null : status.selected ? 1 : 0),
-        selectedThemes: statuses[candidate.slug].filter((status) => status.selected).length,
-      };
-    }).sort((left, right) => right.raw - left.raw || left.candidate.name.localeCompare(right.candidate.name, 'pt-BR'));
-    let rank = 0;
-    let previousRaw = null;
-    ranked.forEach((entry, index) => {
-      if (entry.raw !== previousRaw) rank = index + 1;
-      entry.rank = rank;
-      previousRaw = entry.raw;
-    });
-    return { ranked, totalWeight, activeThemes };
-  }
 
-  function formatPercentage(value) {
-    return `${new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 2 }).format(value * 100)}%`;
+    const candidates = [...DATA.candidates]
+      .sort((left, right) => left.name.localeCompare(right.name, 'pt-BR'))
+      .map((candidate) => {
+        const candidateStatuses = statuses[candidate.slug];
+        return {
+          candidate,
+          statuses: candidateStatuses,
+          macroScores: candidateStatuses.map((status) => status.skipped ? null : status.approved ? 1 : 0),
+          approvedThemes: candidateStatuses.filter((status) => status.approved).length,
+          rejectedThemes: candidateStatuses.filter((status) => status.rejected).length,
+        };
+      });
+
+    return { candidates, totalWeight, activeThemes, totalDecisions, approvedDecisions, rejectedDecisions };
   }
 
   function renderResults() {
     const result = calculateResults();
     show('result');
     $('#resultSummary').innerHTML = `
-      <span class="summary-pill"><strong>${result.activeThemes}</strong> macrotemas considerados</span>
-      <span class="summary-pill"><strong>${result.totalWeight}</strong> pontos de importância</span>
-      <span class="summary-pill"><strong>13</strong> planos oficiais</span>
-      <span class="summary-pill">Total distribuído: <strong>100%</strong></span>`;
+      <span class="summary-pill"><strong>${result.activeThemes}</strong> macrotemas avaliados</span>
+      <span class="summary-pill"><strong>${result.totalDecisions}</strong> decisões registradas</span>
+      <span class="summary-pill"><strong>${result.approvedDecisions}</strong> aprovações</span>
+      <span class="summary-pill"><strong>${result.rejectedDecisions}</strong> recusas</span>`;
+
     const strip = $('#profileStrip');
     strip.innerHTML = '';
     DATA.questions.forEach((question, index) => {
-      const selectedSlug = state.answers[question.id];
-      const selected = selectedSlug ? candidateBySlug.get(selectedSlug) : null;
       const weight = state.weights[question.id];
+      const decisions = state.answers[question.id] || {};
+      const approved = Object.values(decisions).filter((decision) => decision === 'approved').length;
+      const rejected = Object.values(decisions).filter((decision) => decision === 'rejected').length;
       const item = document.createElement('article');
       item.className = `profile-item${weight === 0 ? ' is-skipped' : ''}`;
       item.innerHTML = `<span class="profile-num">0${index + 1}</span><div>
         <small>${weight === 0 ? 'IGNORADO' : `PESO ${weight}`}</small><strong>${escapeHtml(question.macro)}</strong>
-        <span>${weight === 0 ? 'Sem influência no resultado' : escapeHtml(selected?.name || '')}</span></div>`;
+        <span>${weight === 0 ? 'Sem decisões neste tema' : `${approved} aprovadas · ${rejected} recusadas`}</span></div>`;
       strip.append(item);
     });
+
     const guide = $('#topicGuide');
     guide.innerHTML = '';
     DATA.macros.forEach((macro, index) => {
@@ -532,19 +599,14 @@
       item.textContent = `${index + 1}. ${macro}`;
       guide.append(item);
     });
-    const topRaw = result.ranked[0].raw;
-    const winners = result.ranked.filter((entry) => entry.raw === topRaw);
-    const others = result.ranked.filter((entry) => entry.raw !== topRaw);
-    $('#featuredHeading').textContent = winners.length > 1 ? 'Empate no topo do resultado' : 'Destaque do seu resultado';
-    $('#featuredNote').textContent = winners.length > 1
-      ? `${winners.length} candidaturas receberam a mesma soma de pesos.`
-      : 'Candidatura que recebeu a maior soma dos pesos definidos por você.';
+
     const featured = $('#featuredCandidate');
-    featured.innerHTML = '';
-    winners.forEach((entry) => featured.append(candidateRow(entry, true, result.activeThemes)));
+    if (featured) featured.innerHTML = '';
+
     const matrix = $('#candidateMatrix');
     matrix.innerHTML = '';
-    others.forEach((entry) => matrix.append(candidateRow(entry, false, result.activeThemes)));
+    result.candidates.forEach((entry) => matrix.append(candidateRow(entry, result.activeThemes)));
+
     const library = $('#libraryGrid');
     library.innerHTML = '';
     [...DATA.candidates].sort((left, right) => left.name.localeCompare(right.name, 'pt-BR')).forEach((candidate) => {
@@ -565,8 +627,8 @@
     return [210 + Math.cos(angle) * radius, 180 + Math.sin(angle) * radius];
   }
 
-  function radar(scores, name, featured) {
-    const radius = featured ? 112 : 98;
+  function radar(scores, name) {
+    const radius = 98;
     const polygon = (distance) => DATA.macros.map((_, index) => radarPoint(index, distance).join(',')).join(' ');
     const rings = [0.25, 0.5, 0.75, 1].map((step) => `<polygon points="${polygon(radius * step)}"/>`).join('');
     const axes = DATA.macros.map((_, index) => {
@@ -577,7 +639,7 @@
     const dots = scores.map((score, index) => {
       if (score !== 1) return '';
       const [x, y] = radarPoint(index, radius);
-      return `<circle cx="${x}" cy="${y}" r="4"><title>${escapeHtml(DATA.macros[index])}: escolhida</title></circle>`;
+      return `<circle cx="${x}" cy="${y}" r="4"><title>${escapeHtml(DATA.macros[index])}: proposta aprovada</title></circle>`;
     }).join('');
     const labels = RADAR_LABELS.map((label, index) => {
       const [x, y] = radarPoint(index, radius + 37);
@@ -586,62 +648,66 @@
     const wrapper = document.createElement('div');
     wrapper.className = 'radar-wrap radar-eight';
     wrapper.setAttribute('role', 'img');
-    wrapper.setAttribute('aria-label', `Radar dos oito macrotemas de ${name}. Os vértices indicam os temas em que esta proposta foi escolhida.`);
+    wrapper.setAttribute('aria-label', `Mapa dos macrotemas de ${name}. Os vértices marcados indicam propostas que você aprovou.`);
     wrapper.innerHTML = `<svg class="compatibility-radar" viewBox="0 0 420 360" aria-hidden="true">
       <g class="radar-grid">${rings}${axes}</g><polygon class="radar-area" points="${area}"/>
       <g class="radar-values">${dots}</g><g class="radar-labels">${labels}</g></svg>`;
     return wrapper;
   }
 
-  function candidateRow(entry, featured, activeThemes) {
+  function candidateRow(entry, activeThemes) {
     const candidate = entry.candidate;
     const article = document.createElement('article');
-    article.className = `matrix-candidate${featured ? ' is-featured' : ''}`;
+    article.className = 'matrix-candidate';
+
     const person = document.createElement('div');
     person.className = 'matrix-person';
-    person.innerHTML = `<span class="candidate-rank">${String(entry.rank).padStart(2, '0')}</span>
+    person.innerHTML = `<span class="candidate-rank" aria-hidden="true">•</span>
       <img class="candidate-photo" src="assets/candidates/${escapeHtml(candidate.slug)}.jpg" alt="Foto oficial de ${escapeHtml(candidate.name)}">
       <div class="candidate-id"><strong>${escapeHtml(candidate.name)}</strong><span>${escapeHtml(candidate.party)} · nº ${candidate.number}</span>
         <a href="${escapeHtml(candidate.planUrl)}" target="_blank" rel="noopener noreferrer">Plano oficial ↗</a></div>`;
-    const score = document.createElement('div');
-    score.className = 'compatibility-score';
-    score.innerHTML = `<strong>${formatPercentage(entry.percentage)}</strong><span>do peso distribuído</span>
-      <small>${entry.raw} ponto${entry.raw === 1 ? '' : 's'} · escolhida em ${entry.selectedThemes} de ${activeThemes} temas ativos</small>`;
+
+    const summary = document.createElement('div');
+    summary.className = 'compatibility-score';
+    summary.innerHTML = `<strong>${entry.approvedThemes}</strong><span>propostas aprovadas</span>
+      <small>${entry.rejectedThemes} recusadas · ${activeThemes} temas avaliados</small>`;
+
     const details = document.createElement('div');
     details.className = 'candidate-detail';
     details.hidden = true;
+
     const trigger = document.createElement('button');
     trigger.type = 'button';
     trigger.className = 'candidate-expand';
-    trigger.textContent = 'Ver temas e propostas';
+    trigger.textContent = 'Ver decisões por tema';
     trigger.setAttribute('aria-expanded', 'false');
     trigger.addEventListener('click', () => {
       details.hidden = !details.hidden;
-      trigger.textContent = details.hidden ? 'Ver temas e propostas' : 'Fechar temas e propostas';
+      trigger.textContent = details.hidden ? 'Ver decisões por tema' : 'Fechar decisões por tema';
       trigger.setAttribute('aria-expanded', String(!details.hidden));
       if (!details.hidden && !details.childElementCount) {
         DATA.questions.forEach((question, index) => details.append(detailCard(question, entry.statuses[index], candidate)));
       }
     });
+
     const main = document.createElement('div');
     main.className = 'matrix-row-main';
-    main.append(person, score, radar(entry.macroScores, candidate.name, featured), trigger);
+    main.append(person, summary, radar(entry.macroScores, candidate.name), trigger);
     article.append(main, details);
     return article;
   }
 
   function detailCard(question, status, candidate) {
     const section = document.createElement('section');
-    const chosenCandidate = status.selectedSlug ? candidateBySlug.get(status.selectedSlug) : null;
-    section.className = `status-detail ${status.skipped ? 'skipped' : status.selected ? 'match' : 'other'}`;
+    section.className = `status-detail ${status.skipped ? 'skipped' : status.approved ? 'match' : 'other'}`;
     const resultText = status.skipped
-      ? 'desconsiderado pelo peso zero'
-      : status.selected
-        ? `esta foi a proposta escolhida e recebeu peso ${status.weight}`
-        : `a proposta escolhida pertence a ${escapeHtml(chosenCandidate?.name || '')}`;
-    section.innerHTML = `<div class="detail-status"><span class="status-icon">${status.skipped ? '—' : status.selected ? `P${status.weight}` : '0'}</span>
+      ? 'tema fora da avaliação'
+      : status.approved
+        ? `você aprovou esta proposta; peso do tema: ${status.weight}`
+        : `você recusou esta proposta; peso do tema: ${status.weight}`;
+    section.innerHTML = `<div class="detail-status"><span class="status-icon">${status.skipped ? '—' : status.approved ? '✓' : '×'}</span>
         <div><small>MACROTEMA ${question.number}</small><strong>${escapeHtml(question.macro)}</strong></div></div>
-      <p class="detail-choice"><b>Resultado neste tema:</b> ${resultText}</p>
+      <p class="detail-choice"><b>Sua decisão:</b> ${resultText}</p>
       <details class="evidence-topics"><summary>Ver os ${status.option.topics.length} tópicos desta candidatura</summary>
         <ul>${status.option.topics.map((topic) => `<li>${escapeHtml(topic)}</li>`).join('')}</ul></details>
       <div class="detail-foot"><span>Fonte documental: TSE</span>

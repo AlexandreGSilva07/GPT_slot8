@@ -370,3 +370,79 @@ body.modal-open{overflow:hidden}
   .weight-modal-foot{padding:10px 14px 14px}
   .weight-modal-foot .primary-btn{min-height:44px}
 }
+
+/* Tinder swipe mode refc2 v3 */
+.question-card.is-swipe{overflow:visible}
+.swipe-stage{display:grid;grid-template-columns:1fr;gap:12px;margin-top:16px}
+.swipe-progress{display:grid;grid-template-columns:minmax(0,1fr) minmax(130px,1fr);gap:18px;align-items:center}
+.swipe-progress span{display:block;font:500 9px DM Mono,monospace;letter-spacing:.09em;color:var(--muted)}
+.swipe-progress strong{display:block;margin-top:3px;font-size:12px}
+.swipe-progress-track{height:4px;border-radius:99px;background:#192b40;overflow:hidden}
+.swipe-progress-track i{display:block;height:100%;background:var(--accent);border-radius:inherit;transition:width .2s ease}
+
+.swipe-deck{position:relative;width:min(620px,100%);height:min(520px,58svh);min-height:360px;margin:0 auto;perspective:1200px}
+.swipe-card{--approve-opacity:0;--reject-opacity:0;position:absolute;inset:0;display:flex;flex-direction:column;border:1px solid rgba(166,190,214,.2);border-radius:22px;background:linear-gradient(160deg,#102033,#0b1726);box-shadow:0 22px 60px rgba(0,0,0,.28);overflow:hidden;user-select:none;touch-action:pan-y;will-change:transform}
+.swipe-card-ghost{transform:translateY(8px) scale(.975);opacity:.35;pointer-events:none}
+.swipe-card-head{display:flex;align-items:center;gap:11px;padding:15px 16px;border-bottom:1px solid var(--line)}
+.swipe-card-head small{display:block;margin-bottom:3px;font:500 8px DM Mono,monospace;letter-spacing:.08em;color:var(--muted)}
+.swipe-card-head strong{font-size:14px}
+.swipe-card-topics{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:16px 22px 18px 38px;scrollbar-width:thin}
+.swipe-card-topics>span{position:relative;display:block;font-size:12px;line-height:1.5;color:#d0dbe5}
+.swipe-card-topics>span:before{content:'•';position:absolute;left:-16px;color:var(--muted)}
+.swipe-card-topics>span+span{margin-top:8px}
+.swipe-card-hint{display:flex;justify-content:space-between;gap:14px;padding:11px 16px;border-top:1px solid var(--line);color:var(--muted);font-size:9px;font-weight:700}
+.swipe-stamp{position:absolute;z-index:4;top:25px;padding:7px 10px;border:2px solid;border-radius:9px;font:800 14px DM Mono,monospace;letter-spacing:.08em;pointer-events:none}
+.swipe-stamp-reject{left:22px;color:#ff9d9d;border-color:#ff9d9d;opacity:var(--reject-opacity);transform:rotate(-9deg)}
+.swipe-stamp-approve{right:22px;color:var(--accent);border-color:var(--accent);opacity:var(--approve-opacity);transform:rotate(9deg)}
+
+.swipe-controls{display:flex;justify-content:center;gap:22px}
+.swipe-control{width:66px;height:66px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;align-content:center;gap:0;background:#0d1b2b;font-size:25px;cursor:pointer;box-shadow:0 10px 24px rgba(0,0,0,.22)}
+.swipe-control span{display:block;margin-top:-2px;font-size:8px;font-weight:800}
+.swipe-control.reject{color:#ff9d9d}.swipe-control.reject:hover{border-color:#ff9d9d;background:rgba(255,100,100,.06)}
+.swipe-control.approve{color:var(--accent)}.swipe-control.approve:hover{border-color:var(--accent);background:rgba(168,245,207,.07)}
+
+.swipe-complete{max-width:620px;margin:0 auto;padding:28px;border:1px solid rgba(168,245,207,.3);border-radius:20px;background:rgba(168,245,207,.045);text-align:center}
+.swipe-complete-kicker{display:block;font:500 9px DM Mono,monospace;letter-spacing:.1em;color:var(--accent)}
+.swipe-complete>strong{display:block;margin-top:8px;font-size:20px}.swipe-complete>p{margin:7px 0 0;color:var(--muted);font-size:11px}
+.swipe-complete-actions{display:flex;justify-content:center;gap:8px;margin-top:18px}
+.swipe-complete-actions button{min-height:42px;padding:0 14px;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.025);color:var(--muted);font-size:10px;font-weight:800;cursor:pointer}
+.swipe-complete-actions .swipe-next-theme{background:var(--accent);border-color:transparent;color:var(--ink)}
+
+@media(max-width:800px){
+  .question-card.is-swipe{padding:10px}
+  .question-card.is-swipe .source-note{margin:0 0 8px;padding:7px 9px;font-size:9px}
+  .question-card.is-swipe .question-heading{display:block}
+  .question-card.is-swipe .question-index{display:none}
+  .question-card.is-swipe .question-eyebrow{margin:0 0 3px;font-size:8px}
+  .question-card.is-swipe .question-heading h2{font-size:16px;line-height:1.12}
+  .question-card.is-swipe .question-context{display:none}
+  .swipe-stage{gap:8px;margin-top:9px}
+  .swipe-progress{grid-template-columns:minmax(0,1fr) 82px;gap:8px}
+  .swipe-progress span{font-size:7.5px}.swipe-progress strong{font-size:10px}
+  .swipe-progress-track{height:3px}
+  .swipe-deck{width:100%;height:min(500px,calc(100svh - 285px));min-height:330px}
+  .swipe-card{border-radius:17px}
+  .swipe-card-head{padding:10px 11px;gap:8px}
+  .swipe-card-head .proposal-letter{width:27px;height:27px;font-size:10px}
+  .swipe-card-head small{font-size:7px}.swipe-card-head strong{font-size:12px}
+  .swipe-card-topics{padding:11px 13px 13px 27px}
+  .swipe-card-topics>span{font-size:10px;line-height:1.38}
+  .swipe-card-topics>span:before{left:-11px}
+  .swipe-card-topics>span+span{margin-top:5px}
+  .swipe-card-hint{padding:8px 11px;font-size:8px}
+  .swipe-stamp{top:17px;font-size:11px;padding:5px 7px}
+  .swipe-controls{gap:28px}
+  .swipe-control{width:58px;height:58px;font-size:22px}
+  .swipe-complete{padding:22px 14px}.swipe-complete>strong{font-size:17px}
+}
+@media(max-width:390px){
+  .swipe-deck{height:min(470px,calc(100svh - 270px));min-height:310px}
+  .swipe-card-topics>span{font-size:9.5px}
+}
+
+/* Results now show a neutral decision matrix rather than a single-winner distribution. */
+.featured-section{display:none}
+.matrix-section{margin-top:56px}
+.compatibility-score strong{font-size:34px}
+.status-detail.match .status-icon{background:var(--accent);color:var(--ink)}
+.status-detail.other .status-icon{background:rgba(255,120,120,.1);color:#ffb1b1;border-color:rgba(255,120,120,.25)}
