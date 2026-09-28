@@ -79,6 +79,7 @@
   }
 
   function renderWeightSetup() {
+    $('.quiz-nav').hidden = false;
     const total = totalAssignedWeight();
     const control = $('#weightControl');
     $('#progressTheme').textContent = 'Prioridade dos macrotemas';
@@ -251,6 +252,7 @@
   }
 
   function renderQuestion() {
+    $('.quiz-nav').hidden = true;
     const question = currentQuestion();
     const total = DATA.questions.length;
     $('#progressTheme').textContent = question.macro;
