@@ -4,7 +4,6 @@
   const BASE = window.QUIZ_DATA;
   const SOURCE = window.QUESTIONNAIRE_8X13;
   const DATA = { candidates: BASE.candidates, questions: SOURCE.questions, macros: SOURCE.macros };
-  const MAX_TOTAL_WEIGHT = 8;
   const RADAR_LABELS = [
     'Economia e trabalho', 'Saúde e assistência', 'Segurança e justiça',
     'Educação e ambiente', 'Política externa', 'Direitos humanos',
@@ -99,8 +98,8 @@
     $('#questionIndex').textContent = '00';
     $('#questionEyebrow').textContent = 'ESCOLHA O QUE ENTRA NO TESTE';
     $('#questionPrompt').textContent = 'Quais macrotemas você quer comparar?';
-    $('#questionContext').textContent = 'Escolha pelo menos um. Você poderá distribuir os pesos apenas entre os temas selecionados.';
-    $('#sourceNote').innerHTML = '<strong>Antes dos pesos:</strong> selecione os macrotemas que fazem sentido para você. Os demais ficam fora dos duelos e do cálculo.';
+    $('#questionContext').textContent = 'Escolha pelo menos um. Depois, ajuste a importância dos escolhidos em uma janela rápida.';
+    $('#sourceNote').innerHTML = '<strong>Escolha livre:</strong> os temas não selecionados ficam fora dos duelos e do cálculo.';
     $('#optionsList').hidden = true;
     const control = $('#weightControl');
     control.hidden = false;
@@ -122,7 +121,7 @@
       </div>
       <div class="theme-select-actions">
         <button type="button" class="primary-btn compact" data-action="next" ${selectedCount === 0 ? 'disabled' : ''}>
-          Continuar para os pesos
+          Continuar
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>
         </button>
       </div>`;
@@ -130,13 +129,21 @@
     Array.from(control.querySelectorAll('[data-theme-id]')).forEach((button) => {
       button.addEventListener('click', () => {
         const id = button.dataset.themeId;
-        if (state.selectedThemes.has(id)) state.selectedThemes.delete(id);
-        else state.selectedThemes.add(id);
+        if (state.selectedThemes.has(id)) {
+          state.selectedThemes.delete(id);
+          state.weights[id] = 0;
+        } else {
+          state.selectedThemes.add(id);
+          state.weights[id] = 1;
+        }
         renderThemeSelection();
       });
     });
     $('[data-select-all-themes]', control).addEventListener('click', () => {
-      DATA.questions.forEach((question) => state.selectedThemes.add(question.id));
+      DATA.questions.forEach((question) => {
+        if (!state.selectedThemes.has(question.id)) state.weights[question.id] = 1;
+        state.selectedThemes.add(question.id);
+      });
       renderThemeSelection();
     });
     setQuizStatus(selectedCount === 0 ? 'Escolha pelo menos um macrotema para continuar.' : '');
@@ -146,63 +153,112 @@
     return DATA.questions.reduce((sum, question) => sum + state.weights[question.id], 0);
   }
 
-  function renderWeightSetup() {
-    $('.quiz-nav').hidden = true;
-    $('#questionCard').classList.remove('is-tournament');
+  function weightBudgetLimit() {
+    return state.selectedThemes.size;
+  }
+
+  function closeWeightModal() {
+    $('#weightModal')?.remove();
+    document.body.classList.remove('modal-open');
+  }
+
+  function openWeightModal() {
+    closeWeightModal();
+    const limit = weightBudgetLimit();
+    if (!limit) return;
+
+    DATA.questions.forEach((question) => {
+      if (!state.selectedThemes.has(question.id)) state.weights[question.id] = 0;
+    });
+
+    if (totalAssignedWeight() > limit) {
+      selectedQuestions().forEach((question) => { state.weights[question.id] = 1; });
+    }
+
     const total = totalAssignedWeight();
-    const control = $('#weightControl');
-    $('#progressTheme').textContent = 'Prioridade dos macrotemas';
-    $('#progressCount').textContent = 'Configuração inicial';
-    $('#progressBar').style.width = '0%';
-    $('#questionIndex').textContent = '00';
-    $('#questionEyebrow').textContent = 'DISTRIBUA NO MÁXIMO 8 PONTOS';
-    $('#questionPrompt').textContent = 'Quanto cada macrotema pesa para você?';
-    $('#questionContext').textContent = 'Todos começam com peso 1. Para aumentar um tema, primeiro reduza outro.';
-    $('#sourceNote').innerHTML = '<strong>Como os pesos funcionam:</strong> peso 0 anula a pergunta daquele macrotema e a retira completamente do cálculo. Aumentar um peso faz a proposta escolhida naquele tema influenciar mais o resultado final.';
-    $('#prevBtn').disabled = true;
-    $('#nextBtn').childNodes[0].nodeValue = 'Ver propostas ';
-    $('#nextBtn').disabled = total === 0;
-    $('#optionsList').hidden = true;
-    control.hidden = false;
-    control.innerHTML = `
-      <div class="weight-budget"><div><strong>${total} de ${MAX_TOTAL_WEIGHT} pontos usados</strong>
-        <span>${total === MAX_TOTAL_WEIGHT ? 'Para aumentar um tema, reduza outro.' : `${MAX_TOTAL_WEIGHT - total} ponto${MAX_TOTAL_WEIGHT - total === 1 ? '' : 's'} disponível${MAX_TOTAL_WEIGHT - total === 1 ? '' : 'is'}.`}</span></div>
-        <button type="button" class="weight-reset" data-reset-weights>↻ Restaurar 1 por tema</button></div>
-      <div class="weight-grid">
-        ${selectedQuestions().map((question) => {
-          const index = DATA.questions.findIndex((item) => item.id === question.id);
-          const weight = state.weights[question.id];
-          return `<article class="weight-row${weight === 0 ? ' is-zero' : ''}">
-            <div><small>0${index + 1}</small><strong>${escapeHtml(question.macro)}</strong></div>
-            <div class="weight-stepper" aria-label="Peso de ${escapeHtml(question.macro)}">
-              <button type="button" data-weight-change="-1" data-question-id="${question.id}" ${weight === 0 ? 'disabled' : ''} aria-label="Diminuir peso de ${escapeHtml(question.macro)}">−</button>
-              <output aria-label="Peso atual">${weight}</output>
-              <button type="button" data-weight-change="1" data-question-id="${question.id}" ${total >= MAX_TOTAL_WEIGHT ? 'disabled' : ''} aria-label="Aumentar peso de ${escapeHtml(question.macro)}">+</button>
-            </div>
-          </article>`;
-        }).join('')}
-      </div>
-      <div class="weight-actions">
-        <button type="button" class="primary-btn compact" data-action="next" ${total === 0 ? 'disabled' : ''}>
-          Ver propostas
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>
-        </button>
-      </div>`;
-    $$('[data-weight-change]', control).forEach((button) => {
-      button.addEventListener('click', () => {
-        const change = Number(button.dataset.weightChange);
-        const questionId = button.dataset.questionId;
+    const activeCount = selectedQuestions().filter((question) => state.weights[question.id] > 0).length;
+    const overlay = document.createElement('div');
+    overlay.id = 'weightModal';
+    overlay.className = 'weight-modal-backdrop';
+    overlay.setAttribute('role', 'presentation');
+    overlay.innerHTML = `
+      <section class="weight-modal" role="dialog" aria-modal="true" aria-labelledby="weightModalTitle">
+        <div class="weight-modal-head">
+          <div>
+            <span class="weight-modal-kicker">IMPORTÂNCIA DOS TEMAS</span>
+            <h3 id="weightModalTitle">Distribua até ${limit} ponto${limit === 1 ? '' : 's'}</h3>
+            <p>${limit} tema${limit === 1 ? '' : 's'} escolhido${limit === 1 ? '' : 's'} = limite de ${limit} ponto${limit === 1 ? '' : 's'}. Para aumentar um, reduza outro.</p>
+          </div>
+          <button type="button" class="weight-modal-close" data-weight-modal-close aria-label="Fechar">×</button>
+        </div>
+
+        <div class="weight-modal-budget">
+          <strong>${total} / ${limit}</strong>
+          <span>pontos usados</span>
+          <button type="button" data-weight-modal-reset>↻ 1 por tema</button>
+        </div>
+
+        <div class="weight-modal-list">
+          ${selectedQuestions().map((question) => {
+            const index = DATA.questions.findIndex((item) => item.id === question.id);
+            const weight = state.weights[question.id];
+            return `<div class="weight-modal-row${weight === 0 ? ' is-zero' : ''}">
+              <div class="weight-modal-topic"><small>0${index + 1}</small><strong>${escapeHtml(question.macro)}</strong></div>
+              <div class="weight-modal-stepper" aria-label="Peso de ${escapeHtml(question.macro)}">
+                <button type="button" data-modal-weight="-1" data-question-id="${question.id}" ${weight === 0 ? 'disabled' : ''} aria-label="Diminuir peso">−</button>
+                <output>${weight}</output>
+                <button type="button" data-modal-weight="1" data-question-id="${question.id}" ${total >= limit ? 'disabled' : ''} aria-label="Aumentar peso">+</button>
+              </div>
+            </div>`;
+          }).join('')}
+        </div>
+
+        <div class="weight-modal-foot">
+          <button type="button" class="weight-modal-back" data-weight-modal-close>Voltar</button>
+          <button type="button" class="primary-btn compact" data-weight-modal-confirm ${activeCount === 0 ? 'disabled' : ''}>
+            Começar duelos
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>
+          </button>
+        </div>
+      </section>`;
+
+    document.body.append(overlay);
+    document.body.classList.add('modal-open');
+
+    overlay.addEventListener('click', (event) => {
+      if (event.target === overlay || event.target.closest('[data-weight-modal-close]')) {
+        closeWeightModal();
+        return;
+      }
+
+      const step = event.target.closest('[data-modal-weight]');
+      if (step) {
+        const change = Number(step.dataset.modalWeight);
+        const questionId = step.dataset.questionId;
         const nextWeight = state.weights[questionId] + change;
-        if (nextWeight < 0 || (change > 0 && totalAssignedWeight() >= MAX_TOTAL_WEIGHT)) return;
+        if (nextWeight < 0 || (change > 0 && totalAssignedWeight() >= weightBudgetLimit())) return;
         state.weights[questionId] = nextWeight;
-        renderWeightSetup();
-      });
+        openWeightModal();
+        return;
+      }
+
+      if (event.target.closest('[data-weight-modal-reset]')) {
+        selectedQuestions().forEach((question) => { state.weights[question.id] = 1; });
+        openWeightModal();
+        return;
+      }
+
+      if (event.target.closest('[data-weight-modal-confirm]')) {
+        const active = activeQuestionIndices();
+        if (!active.length) return;
+        closeWeightModal();
+        state.index = active[0];
+        renderQuestion();
+        window.scrollTo(0, 0);
+      }
     });
-    $('[data-reset-weights]', control).addEventListener('click', () => {
-      DATA.questions.forEach((question) => { state.weights[question.id] = state.selectedThemes.has(question.id) ? 1 : 0; });
-      renderWeightSetup();
-    });
-    setQuizStatus(total === 0 ? 'Defina peso positivo para pelo menos um macrotema.' : '');
+
+    requestAnimationFrame(() => $('[data-weight-modal-confirm]', overlay)?.focus({ preventScroll: true }));
   }
 
   function optionById(question, optionId) {
@@ -360,33 +416,13 @@
 
   function renderStep() {
     if (state.index === -2) renderThemeSelection();
-    else if (state.index === -1) renderWeightSetup();
     else renderQuestion();
   }
 
   function next() {
     if (state.index === -2) {
       if (state.selectedThemes.size === 0) return;
-      DATA.questions.forEach((question) => {
-        if (!state.selectedThemes.has(question.id)) state.weights[question.id] = 0;
-        else if (state.weights[question.id] === 0) state.weights[question.id] = 1;
-      });
-      if (totalAssignedWeight() > MAX_TOTAL_WEIGHT) {
-        DATA.questions.forEach((question) => {
-          state.weights[question.id] = state.selectedThemes.has(question.id) ? 1 : 0;
-        });
-      }
-      state.index = -1;
-      renderWeightSetup();
-      window.scrollTo(0, 0);
-      return;
-    }
-    if (state.index === -1) {
-      const active = activeQuestionIndices();
-      if (!active.length) return;
-      state.index = active[0];
-      renderQuestion();
-      window.scrollTo(0, 0);
+      openWeightModal();
       return;
     }
     const question = currentQuestion();
@@ -410,17 +446,11 @@
 
   function previous() {
     if (state.index === -2) return;
-    if (state.index === -1) {
-      state.index = -2;
-      renderThemeSelection();
-      window.scrollTo(0, 0);
-      return;
-    }
     const active = activeQuestionIndices();
     const position = active.indexOf(state.index);
     if (position <= 0) {
-      state.index = -1;
-      renderWeightSetup();
+      state.index = -2;
+      renderThemeSelection();
       window.scrollTo(0, 0);
       return;
     }
@@ -637,6 +667,10 @@
     else if (action === 'exit' || action === 'home') show('home');
   });
   document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && $('#weightModal')) {
+      closeWeightModal();
+      return;
+    }
     if (state.screen !== 'quiz') return;
     if (event.altKey && event.key === 'ArrowLeft') previous();
     if (event.altKey && event.key === 'ArrowRight' && !$('#nextBtn').disabled) next();

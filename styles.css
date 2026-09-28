@@ -326,3 +326,47 @@ main{min-height:calc(100vh - 150px)}.screen{display:none;animation:screenIn .5s 
   .theme-select-actions{margin-top:10px}
   .theme-select-actions .primary-btn{width:100%;min-height:46px}
 }
+
+/* Weight popup refc2 v2 */
+body.modal-open{overflow:hidden}
+.weight-modal-backdrop{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:18px;background:rgba(2,8,16,.72);backdrop-filter:blur(10px)}
+.weight-modal{width:min(620px,100%);max-height:min(760px,calc(100svh - 36px));display:flex;flex-direction:column;border:1px solid rgba(168,245,207,.22);border-radius:22px;background:#0b1726;box-shadow:0 30px 80px rgba(0,0,0,.5);overflow:hidden}
+.weight-modal-head{display:flex;justify-content:space-between;gap:18px;padding:20px 20px 14px}
+.weight-modal-kicker{display:block;margin-bottom:5px;font:500 9px DM Mono,monospace;letter-spacing:.1em;color:var(--accent)}
+.weight-modal-head h3{margin:0;font-size:24px;letter-spacing:-.035em}
+.weight-modal-head p{max-width:500px;margin:7px 0 0;color:var(--muted);font-size:11px;line-height:1.45}
+.weight-modal-close{flex:none;width:36px;height:36px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.025);color:var(--muted);font-size:22px;cursor:pointer}
+.weight-modal-budget{display:flex;align-items:center;gap:8px;margin:0 20px 10px;padding:10px 12px;border:1px solid rgba(168,245,207,.18);border-radius:12px;background:rgba(168,245,207,.035)}
+.weight-modal-budget strong{font:600 15px DM Mono,monospace;color:var(--accent)}
+.weight-modal-budget span{color:var(--muted);font-size:10px}
+.weight-modal-budget button{margin-left:auto;min-height:36px;padding:0 10px;border:1px solid var(--line);border-radius:9px;background:transparent;color:var(--muted);font-size:9px;font-weight:700;cursor:pointer}
+.weight-modal-list{min-height:0;overflow-y:auto;padding:0 20px 10px;display:grid;gap:7px}
+.weight-modal-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;min-height:56px;padding:8px 10px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.018)}
+.weight-modal-row.is-zero{opacity:.62;border-style:dashed}
+.weight-modal-topic{display:grid;grid-template-columns:25px minmax(0,1fr);gap:7px;align-items:center;min-width:0}
+.weight-modal-topic small{font:500 9px DM Mono,monospace;color:var(--muted)}
+.weight-modal-topic strong{font-size:11px;line-height:1.25}
+.weight-modal-stepper{display:grid;grid-template-columns:42px 34px 42px;align-items:center}
+.weight-modal-stepper button{width:42px;height:42px;border:1px solid var(--line);background:rgba(255,255,255,.025);color:var(--text);font-size:19px;cursor:pointer}
+.weight-modal-stepper button:first-child{border-radius:10px 0 0 10px}.weight-modal-stepper button:last-child{border-radius:0 10px 10px 0}
+.weight-modal-stepper button:disabled{opacity:.25;cursor:not-allowed}
+.weight-modal-stepper output{height:42px;display:grid;place-items:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font:500 12px DM Mono,monospace;color:var(--accent)}
+.weight-modal-foot{display:flex;justify-content:flex-end;gap:9px;padding:12px 20px 18px;border-top:1px solid var(--line)}
+.weight-modal-back{min-height:44px;padding:0 15px;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.025);color:var(--muted);font-size:11px;font-weight:700;cursor:pointer}
+
+@media(max-width:800px){
+  .weight-modal-backdrop{place-items:end center;padding:10px}
+  .weight-modal{max-height:calc(100svh - 20px);border-radius:18px}
+  .weight-modal-head{padding:15px 14px 10px}
+  .weight-modal-head h3{font-size:20px}
+  .weight-modal-head p{font-size:10px}
+  .weight-modal-budget{margin:0 14px 8px;padding:8px 10px}
+  .weight-modal-list{padding:0 14px 8px;gap:6px}
+  .weight-modal-row{min-height:52px;padding:6px 8px}
+  .weight-modal-topic strong{font-size:10px}
+  .weight-modal-stepper{grid-template-columns:40px 30px 40px}
+  .weight-modal-stepper button{width:40px;height:40px}
+  .weight-modal-stepper output{height:40px}
+  .weight-modal-foot{padding:10px 14px 14px}
+  .weight-modal-foot .primary-btn{min-height:44px}
+}
