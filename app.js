@@ -111,8 +111,7 @@
         <button type="button" class="theme-select-all" data-select-all-themes>Selecionar todos</button>
       </div>
       <div class="theme-select-grid">
-        ${selectedQuestions().map((question) => {
-          const index = DATA.questions.findIndex((item) => item.id === question.id);
+        ${DATA.questions.map((question, index) => {
           const selected = state.selectedThemes.has(question.id);
           return `<button type="button" class="theme-select-card${selected ? ' is-selected' : ''}" data-theme-id="${question.id}" aria-pressed="${selected}">
             <span class="theme-select-num">0${index + 1}</span>
@@ -170,7 +169,8 @@
         <span>${total === MAX_TOTAL_WEIGHT ? 'Para aumentar um tema, reduza outro.' : `${MAX_TOTAL_WEIGHT - total} ponto${MAX_TOTAL_WEIGHT - total === 1 ? '' : 's'} disponível${MAX_TOTAL_WEIGHT - total === 1 ? '' : 'is'}.`}</span></div>
         <button type="button" class="weight-reset" data-reset-weights>↻ Restaurar 1 por tema</button></div>
       <div class="weight-grid">
-        ${DATA.questions.map((question, index) => {
+        ${selectedQuestions().map((question) => {
+          const index = DATA.questions.findIndex((item) => item.id === question.id);
           const weight = state.weights[question.id];
           return `<article class="weight-row${weight === 0 ? ' is-zero' : ''}">
             <div><small>0${index + 1}</small><strong>${escapeHtml(question.macro)}</strong></div>
