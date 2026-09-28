@@ -298,3 +298,31 @@ main{min-height:calc(100vh - 150px)}.screen{display:none;animation:screenIn .5s 
   .duel-option{height:min(370px,calc(100svh - 285px));min-height:285px}
   .duel-option .proposal-topics>span{font-size:9px}
 }
+
+/* Theme selection refc2 v1 */
+.theme-select-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px;padding:14px 16px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.02)}
+.theme-select-head strong{display:block;font-size:14px}.theme-select-head span{display:block;margin-top:3px;color:var(--muted);font-size:10px}
+.theme-select-all{min-height:42px;padding:0 14px;border:1px solid rgba(168,245,207,.34);border-radius:11px;background:rgba(168,245,207,.06);color:var(--accent);font-size:10px;font-weight:800;cursor:pointer}
+.theme-select-all:hover{background:rgba(168,245,207,.11)}
+.theme-select-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.theme-select-card{min-height:72px;padding:12px 13px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.02);color:var(--text);display:grid;grid-template-columns:30px minmax(0,1fr) 28px;gap:8px;align-items:center;text-align:left;cursor:pointer}
+.theme-select-card:hover{border-color:rgba(168,245,207,.35);background:rgba(168,245,207,.035)}
+.theme-select-card.is-selected{border-color:rgba(168,245,207,.68);background:rgba(168,245,207,.075);box-shadow:inset 0 0 0 1px rgba(168,245,207,.06)}
+.theme-select-num{font:500 10px DM Mono,monospace;color:var(--muted)}
+.theme-select-name{font-size:11px;font-weight:750;line-height:1.35}
+.theme-select-check{width:28px;height:28px;border:1px solid var(--line);border-radius:9px;display:grid;place-items:center;color:var(--muted);font:600 13px DM Mono,monospace}
+.theme-select-card.is-selected .theme-select-check{background:var(--accent);border-color:var(--accent);color:var(--ink)}
+.theme-select-actions{display:flex;justify-content:flex-end;margin-top:14px}
+.theme-select-actions .primary-btn{min-width:210px}
+@media(max-width:800px){
+  .theme-select-head{padding:10px 11px;margin-bottom:9px;gap:10px}
+  .theme-select-head strong{font-size:12px}.theme-select-head span{font-size:9px}
+  .theme-select-all{min-height:40px;padding:0 10px}
+  .theme-select-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  .theme-select-card{min-height:66px;padding:9px 8px;grid-template-columns:22px minmax(0,1fr) 25px;gap:5px}
+  .theme-select-num{font-size:8px}
+  .theme-select-name{font-size:9.5px;line-height:1.25}
+  .theme-select-check{width:25px;height:25px;border-radius:8px;font-size:11px}
+  .theme-select-actions{margin-top:10px}
+  .theme-select-actions .primary-btn{width:100%;min-height:46px}
+}

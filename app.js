@@ -13,7 +13,7 @@
   const $ = (selector, parent = document) => parent.querySelector(selector);
   const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector)];
   const candidateBySlug = new Map(DATA.candidates.map((candidate) => [candidate.slug, candidate]));
-  const state = { screen: 'home', index: -1, answers: {}, weights: {}, optionOrders: {}, tournaments: {}, infoFrom: 'home' };
+  const state = { screen: 'home', index: -2, answers: {}, weights: {}, optionOrders: {}, tournaments: {}, selectedThemes: new Set(), infoFrom: 'home' };
 
   function escapeHtml(value) {
     return String(value).replace(/[&<>"']/g, (character) => ({
@@ -46,13 +46,14 @@
   }
 
   function start() {
-    state.index = -1;
+    state.index = -2;
     state.answers = {};
     state.weights = {};
     state.optionOrders = {};
     state.tournaments = {};
+    state.selectedThemes = new Set();
     DATA.questions.forEach((question) => {
-      state.weights[question.id] = 1;
+      state.weights[question.id] = 0;
       state.optionOrders[question.id] = shuffle(question.options.map((option) => option.id));
       state.tournaments[question.id] = {
         championId: state.optionOrders[question.id][0], nextIndex: 1,
@@ -72,6 +73,74 @@
     const status = $('#quizStatus');
     status.textContent = message;
     status.hidden = !message;
+  }
+
+  function selectedQuestions() {
+    return DATA.questions.filter((question) => state.selectedThemes.has(question.id));
+  }
+
+  function activeQuestionIndices() {
+    return DATA.questions
+      .map((question, index) => ({ question, index }))
+      .filter(({ question }) => state.selectedThemes.has(question.id) && state.weights[question.id] > 0)
+      .map(({ index }) => index);
+  }
+
+  function activePosition(index) {
+    return activeQuestionIndices().indexOf(index);
+  }
+
+  function renderThemeSelection() {
+    $('.quiz-nav').hidden = true;
+    $('#questionCard').classList.remove('is-tournament');
+    $('#progressTheme').textContent = 'Escolha dos macrotemas';
+    $('#progressCount').textContent = 'Etapa 1';
+    $('#progressBar').style.width = '0%';
+    $('#questionIndex').textContent = '00';
+    $('#questionEyebrow').textContent = 'ESCOLHA O QUE ENTRA NO TESTE';
+    $('#questionPrompt').textContent = 'Quais macrotemas você quer comparar?';
+    $('#questionContext').textContent = 'Escolha pelo menos um. Você poderá distribuir os pesos apenas entre os temas selecionados.';
+    $('#sourceNote').innerHTML = '<strong>Antes dos pesos:</strong> selecione os macrotemas que fazem sentido para você. Os demais ficam fora dos duelos e do cálculo.';
+    $('#optionsList').hidden = true;
+    const control = $('#weightControl');
+    control.hidden = false;
+    const selectedCount = state.selectedThemes.size;
+    control.innerHTML = `
+      <div class="theme-select-head">
+        <div><strong>${selectedCount} de ${DATA.questions.length} selecionados</strong><span>Você pode escolher qualquer combinação.</span></div>
+        <button type="button" class="theme-select-all" data-select-all-themes>Selecionar todos</button>
+      </div>
+      <div class="theme-select-grid">
+        ${selectedQuestions().map((question) => {
+          const index = DATA.questions.findIndex((item) => item.id === question.id);
+          const selected = state.selectedThemes.has(question.id);
+          return `<button type="button" class="theme-select-card${selected ? ' is-selected' : ''}" data-theme-id="${question.id}" aria-pressed="${selected}">
+            <span class="theme-select-num">0${index + 1}</span>
+            <span class="theme-select-name">${escapeHtml(question.macro)}</span>
+            <span class="theme-select-check" aria-hidden="true">${selected ? '✓' : '+'}</span>
+          </button>`;
+        }).join('')}
+      </div>
+      <div class="theme-select-actions">
+        <button type="button" class="primary-btn compact" data-action="next" ${selectedCount === 0 ? 'disabled' : ''}>
+          Continuar para os pesos
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>
+        </button>
+      </div>`;
+
+    $('[data-theme-id]', control).forEach((button) => {
+      button.addEventListener('click', () => {
+        const id = button.dataset.themeId;
+        if (state.selectedThemes.has(id)) state.selectedThemes.delete(id);
+        else state.selectedThemes.add(id);
+        renderThemeSelection();
+      });
+    });
+    $('[data-select-all-themes]', control).addEventListener('click', () => {
+      DATA.questions.forEach((question) => state.selectedThemes.add(question.id));
+      renderThemeSelection();
+    });
+    setQuizStatus(selectedCount === 0 ? 'Escolha pelo menos um macrotema para continuar.' : '');
   }
 
   function totalAssignedWeight() {
@@ -130,7 +199,7 @@
       });
     });
     $('[data-reset-weights]', control).addEventListener('click', () => {
-      DATA.questions.forEach((question) => { state.weights[question.id] = 1; });
+      DATA.questions.forEach((question) => { state.weights[question.id] = state.selectedThemes.has(question.id) ? 1 : 0; });
       renderWeightSetup();
     });
     setQuizStatus(total === 0 ? 'Defina peso positivo para pelo menos um macrotema.' : '');
@@ -209,7 +278,8 @@
     list.removeAttribute('role');
     list.removeAttribute('tabindex');
     if (weight === 0) {
-      const nextLabel = state.index === DATA.questions.length - 1 ? 'Ver resultado' : 'Próxima';
+      const active = activeQuestionIndices();
+      const nextLabel = active.indexOf(state.index) === active.length - 1 ? 'Ver resultado' : 'Próxima';
       $('#questionContext').textContent = 'Você definiu peso 0: este macrotema e seus duelos não entram no cálculo.';
       list.innerHTML = `<div class="tournament-skipped"><strong>Macrotema anulado</strong><span>Não é necessário comparar as 13 propostas. Você pode seguir para o próximo tema.</span></div>
         <div class="tournament-actions"><button type="button" data-action="previous">Anterior</button><button type="button" data-action="next">${nextLabel}</button></div>`;
@@ -222,7 +292,8 @@
       $('#questionContext').textContent = `Torneio concluído em ${totalDuels} duelos. A proposta campeã receberá o peso ${weight}.`;
       const result = document.createElement('div');
       result.className = 'tournament-result';
-      const nextLabel = state.index === DATA.questions.length - 1 ? 'Ver resultado' : 'Próxima';
+      const active = activeQuestionIndices();
+      const nextLabel = active.indexOf(state.index) === active.length - 1 ? 'Ver resultado' : 'Próxima';
       result.innerHTML = `<div class="tournament-result-head"><span>CAMPEÃ DO MACROTEMA</span><strong>Proposta ${letter}</strong></div>
         <div class="proposal-topics">${champion.topics.map((topic) => `<span>${escapeHtml(topic)}</span>`).join('')}</div>
         <div class="tournament-actions"><button type="button" data-action="previous">Anterior</button><button type="button" data-action="next">${nextLabel}</button></div>`;
@@ -264,16 +335,18 @@
     $('.quiz-nav').hidden = true;
     $('#questionCard').classList.add('is-tournament');
     const question = currentQuestion();
-    const total = DATA.questions.length;
+    const active = activeQuestionIndices();
+    const position = active.indexOf(state.index);
+    const total = active.length;
     $('#progressTheme').textContent = question.macro;
-    $('#progressCount').textContent = `${state.index + 1} / ${total}`;
-    $('#progressBar').style.width = `${((state.index + 1) / total) * 100}%`;
+    $('#progressCount').textContent = `${position + 1} / ${total}`;
+    $('#progressBar').style.width = `${((position + 1) / total) * 100}%`;
     $('#questionIndex').textContent = String(state.index + 1).padStart(2, '0');
     $('#questionEyebrow').textContent = 'TORNEIO CEGO · 13 PROPOSTAS';
     $('#questionPrompt').textContent = question.prompt;
     $('#sourceNote').innerHTML = '13 propostas embaralhadas. Escolha uma por duelo; a vencedora segue até restar uma campeã.';
     $('#prevBtn').disabled = false;
-    $('#nextBtn').childNodes[0].nodeValue = state.index === total - 1 ? 'Ver resultado ' : 'Próxima ';
+    $('#nextBtn').childNodes[0].nodeValue = position === total - 1 ? 'Ver resultado ' : 'Próxima ';
     setQuizStatus('');
     $('#weightControl').hidden = true;
     const list = $('#optionsList');
@@ -286,22 +359,42 @@
   }
 
   function renderStep() {
-    if (state.index === -1) renderWeightSetup();
+    if (state.index === -2) renderThemeSelection();
+    else if (state.index === -1) renderWeightSetup();
     else renderQuestion();
   }
 
   function next() {
+    if (state.index === -2) {
+      if (state.selectedThemes.size === 0) return;
+      DATA.questions.forEach((question) => {
+        if (!state.selectedThemes.has(question.id)) state.weights[question.id] = 0;
+        else if (state.weights[question.id] === 0) state.weights[question.id] = 1;
+      });
+      if (totalAssignedWeight() > MAX_TOTAL_WEIGHT) {
+        DATA.questions.forEach((question) => {
+          state.weights[question.id] = state.selectedThemes.has(question.id) ? 1 : 0;
+        });
+      }
+      state.index = -1;
+      renderWeightSetup();
+      window.scrollTo(0, 0);
+      return;
+    }
     if (state.index === -1) {
-      if (totalAssignedWeight() === 0) return;
-      state.index = 0;
+      const active = activeQuestionIndices();
+      if (!active.length) return;
+      state.index = active[0];
       renderQuestion();
       window.scrollTo(0, 0);
       return;
     }
     const question = currentQuestion();
     if (!isAnswered(question)) return;
-    if (state.index < DATA.questions.length - 1) {
-      state.index += 1;
+    const active = activeQuestionIndices();
+    const position = active.indexOf(state.index);
+    if (position >= 0 && position < active.length - 1) {
+      state.index = active[position + 1];
       renderQuestion();
       window.scrollTo(0, 0);
       return;
@@ -316,14 +409,22 @@
   }
 
   function previous() {
-    if (state.index === -1) return;
-    if (state.index === 0) {
+    if (state.index === -2) return;
+    if (state.index === -1) {
+      state.index = -2;
+      renderThemeSelection();
+      window.scrollTo(0, 0);
+      return;
+    }
+    const active = activeQuestionIndices();
+    const position = active.indexOf(state.index);
+    if (position <= 0) {
       state.index = -1;
       renderWeightSetup();
       window.scrollTo(0, 0);
       return;
     }
-    state.index -= 1;
+    state.index = active[position - 1];
     renderQuestion();
     window.scrollTo(0, 0);
   }
