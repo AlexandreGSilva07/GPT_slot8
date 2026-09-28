@@ -80,6 +80,7 @@
 
   function renderWeightSetup() {
     $('.quiz-nav').hidden = true;
+    $('#questionCard').classList.remove('is-tournament');
     const total = totalAssignedWeight();
     const control = $('#weightControl');
     $('#progressTheme').textContent = 'Prioridade dos macrotemas';
@@ -98,7 +99,7 @@
     control.innerHTML = `
       <div class="weight-budget"><div><strong>${total} de ${MAX_TOTAL_WEIGHT} pontos usados</strong>
         <span>${total === MAX_TOTAL_WEIGHT ? 'Para aumentar um tema, reduza outro.' : `${MAX_TOTAL_WEIGHT - total} ponto${MAX_TOTAL_WEIGHT - total === 1 ? '' : 's'} disponível${MAX_TOTAL_WEIGHT - total === 1 ? '' : 'is'}.`}</span></div>
-        <button type="button" class="weight-reset" data-reset-weights>Restaurar 1 por tema</button></div>
+        <button type="button" class="weight-reset" data-reset-weights>↻ Restaurar 1 por tema</button></div>
       <div class="weight-grid">
         ${DATA.questions.map((question, index) => {
           const weight = state.weights[question.id];
@@ -150,11 +151,11 @@
       <span class="proposal-choice">
         <span class="proposal-letter" aria-hidden="true">${letter}</span>
         <span class="proposal-title">Proposta ${letter}</span>
-        <span class="proposal-check">Escolher esta</span>
       </span>
       <span class="proposal-topics">
         ${option.topics.map((topic) => `<span>${escapeHtml(topic)}</span>`).join('')}
-      </span>`;
+      </span>
+      <span class="proposal-action">Escolher proposta ${letter}</span>`;
     button.addEventListener('click', () => {
       chooseDuelWinner(question, option.id, side);
     });
@@ -235,7 +236,7 @@
     const choices = tournament.championSide === 'left' ? [champion, challenger] : [challenger, champion];
     const header = document.createElement('div');
     header.className = 'duel-progress';
-    header.innerHTML = `<div><span>DUELO ${tournament.nextIndex} DE ${totalDuels}</span><strong>Qual proposta avança?</strong></div>
+    header.innerHTML = `<div><span>DUELO ${tournament.nextIndex} DE ${totalDuels} · PESO ${weight}</span><strong>Qual proposta avança?</strong></div>
       <div class="duel-progress-track"><i style="width:${(tournament.nextIndex / totalDuels) * 100}%"></i></div>`;
     const arena = document.createElement('div');
     arena.className = 'duel-arena';
@@ -261,6 +262,7 @@
 
   function renderQuestion() {
     $('.quiz-nav').hidden = true;
+    $('#questionCard').classList.add('is-tournament');
     const question = currentQuestion();
     const total = DATA.questions.length;
     $('#progressTheme').textContent = question.macro;
@@ -269,7 +271,7 @@
     $('#questionIndex').textContent = String(state.index + 1).padStart(2, '0');
     $('#questionEyebrow').textContent = 'TORNEIO CEGO · 13 PROPOSTAS';
     $('#questionPrompt').textContent = question.prompt;
-    $('#sourceNote').innerHTML = 'As 13 propostas foram embaralhadas. Em cada duelo, escolha a que mais representa você; a vencedora enfrenta a próxima até restar uma campeã.';
+    $('#sourceNote').innerHTML = '13 propostas embaralhadas. Escolha uma por duelo; a vencedora segue até restar uma campeã.';
     $('#prevBtn').disabled = false;
     $('#nextBtn').childNodes[0].nodeValue = state.index === total - 1 ? 'Ver resultado ' : 'Próxima ';
     setQuizStatus('');

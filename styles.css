@@ -228,3 +228,73 @@ main{min-height:calc(100vh - 150px)}.screen{display:none;animation:screenIn .5s 
 @media(max-width:390px){
   .hero-wrap h1{font-size:38px}
 }
+
+/* Mobile UI audit pass v15 */
+:root{--faint:#94a3b8}
+.question-index{color:#dce6ef}
+.weight-row small,.duel-progress span{color:var(--muted)}
+.proposal-action{margin-top:auto;min-height:42px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:center;padding:9px 12px;background:rgba(168,245,207,.035);color:var(--accent);font-size:10px;font-weight:800;letter-spacing:.01em}
+.duel-option:hover .proposal-action{background:rgba(168,245,207,.09)}
+.hero-actions .ghost-btn{border-color:rgba(190,207,224,.32)}
+.evidence-topics summary,.proposal-details summary{color:#c8d5e1}
+
+@media(max-width:800px){
+  /* Tournament header: only the information needed to compare now. */
+  .quiz-screen{padding:8px 8px 28px}
+  .quiz-top{grid-template-columns:38px 1fr;gap:10px;margin-bottom:8px}
+  .quiz-top .icon-btn{width:38px;height:38px}
+  .progress-label{margin-bottom:5px;font-size:8px}
+  .progress-track{height:2px}
+
+  .question-card{padding:10px;border-radius:16px}
+  .question-card.is-tournament .source-note{display:none}
+  .question-card.is-tournament .question-heading{display:block}
+  .question-card.is-tournament .question-index{display:none}
+  .question-card.is-tournament .question-eyebrow{margin:0 0 4px;font-size:8px;letter-spacing:.08em}
+  .question-card.is-tournament .question-heading h2{font-size:17px;line-height:1.12;letter-spacing:-.025em}
+  .question-card.is-tournament .question-context{display:none}
+
+  .tournament-stage{gap:9px;margin-top:10px}
+  .duel-progress{grid-template-columns:minmax(0,1fr) 88px;gap:8px;padding:0}
+  .duel-progress span{font-size:8px;letter-spacing:.07em}
+  .duel-progress strong{font-size:12px;margin-top:2px}
+  .duel-progress-track{height:3px}
+
+  /* Core mobile comparison: A and B always side by side. */
+  .duel-arena{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;align-items:stretch}
+  .duel-versus{display:none}
+  .duel-option{height:min(390px,calc(100svh - 300px));min-height:300px;border-radius:13px;overflow:hidden}
+  .duel-option:hover{transform:none;box-shadow:none}
+  .duel-option .proposal-choice{min-height:42px;padding:7px 8px;grid-template-columns:27px minmax(0,1fr);gap:6px}
+  .duel-option .proposal-letter{width:27px;height:27px;border-radius:8px;font-size:10px}
+  .duel-option .proposal-title{font-size:11px;line-height:1.15}
+  .duel-option .proposal-topics{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:9px 8px 8px 19px;scrollbar-width:thin}
+  .duel-option .proposal-topics>span{font-size:9.5px;line-height:1.35}
+  .duel-option .proposal-topics>span:before{left:-10px}
+  .duel-option .proposal-topics>span+span{margin-top:5px}
+  .proposal-action{min-height:40px;padding:7px 5px;font-size:9px;text-align:center}
+
+  .duel-undo{min-height:36px;padding:0 10px;font-size:9px}
+
+  /* Keep weight controls compact but touch-safe. */
+  .weight-row{min-height:64px}
+  .weight-stepper{grid-template-columns:44px 34px 44px}
+  .weight-stepper button{width:44px;height:44px}
+  .weight-stepper output{height:44px}
+  .weight-stepper button:disabled{opacity:.28}
+  .weight-reset{min-height:44px}
+
+  /* Result/readability refinements from the audit. */
+  .radar-eight,.is-featured .radar-eight{width:min(300px,100%);margin-inline:auto}
+  .radar-eight .radar-labels text{font-size:8.5px}
+  .candidate-id span,.compatibility-score small,.detail-foot,.question-context{color:#aab8c7}
+
+  /* Make the home preview feel intentionally continued rather than accidentally cut. */
+  .hero-card{position:relative}
+  .hero-card:after{content:"";position:absolute;left:0;right:0;bottom:0;height:42px;pointer-events:none;background:linear-gradient(180deg,rgba(10,24,39,0),rgba(10,24,39,.96))}
+}
+@media(max-width:390px){
+  .question-card.is-tournament .question-heading h2{font-size:16px}
+  .duel-option{height:min(370px,calc(100svh - 285px));min-height:285px}
+  .duel-option .proposal-topics>span{font-size:9px}
+}
