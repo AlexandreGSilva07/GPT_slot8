@@ -156,3 +156,38 @@ main{min-height:calc(100vh - 150px)}.screen{display:none;animation:screenIn .5s 
 .tournament-actions button[data-action="next"]{background:var(--accent);border-color:transparent;color:var(--ink)}
 .tournament-actions button[data-action="next"]:hover{background:#c0f9dd;color:var(--ink);border-color:transparent}
 @media(max-width:800px){.tournament-actions{align-items:center;flex-direction:row;justify-content:flex-end}.tournament-actions button{width:auto}}
+
+/* Mobile weight setup compact v13 */
+.weight-actions{display:flex;justify-content:flex-end;margin-top:14px}
+.weight-actions .primary-btn{min-width:168px}
+
+@media(max-width:800px){
+  .quiz-screen{padding:10px 10px 38px}
+  .quiz-shell{max-width:100%}
+  .quiz-top{grid-template-columns:40px 1fr;gap:12px;margin-bottom:12px}
+  .quiz-top .icon-btn{width:40px;height:40px}
+  .progress-label{margin-bottom:6px;font-size:9px}
+  .question-card{padding:16px 12px;border-radius:18px}
+  .source-note{margin:0 0 12px;padding:8px 10px;font-size:10px;line-height:1.35}
+  .question-heading{gap:6px}
+  .question-index{font-size:21px}
+  .question-eyebrow{margin-bottom:5px;font-size:9px}
+  .question-heading h2{font-size:23px;line-height:1.08}
+  .question-context{margin-top:9px;font-size:12px;line-height:1.45}
+  .weight-control{margin-top:16px}
+  .weight-budget{margin-bottom:9px;padding:10px 11px;gap:10px}
+  .weight-budget strong{font-size:13px}
+  .weight-budget span{margin-top:2px;font-size:9px}
+  .weight-reset{min-height:36px;padding:0 10px}
+  .weight-grid{gap:6px}
+  .weight-row{min-height:58px;padding:8px 10px;gap:8px}
+  .weight-row>div:first-child{grid-template-columns:22px minmax(0,1fr);gap:5px}
+  .weight-row strong{font-size:10px;line-height:1.25}
+  .weight-row small{font-size:9px}
+  .weight-stepper{grid-template-columns:34px 30px 34px}
+  .weight-stepper button{width:34px;height:34px;font-size:18px}
+  .weight-stepper output{height:34px;font-size:12px}
+  .weight-actions{margin-top:10px}
+  .weight-actions .primary-btn{width:100%;min-height:46px}
+  .blind-footer{margin-top:14px;font-size:9px}
+}

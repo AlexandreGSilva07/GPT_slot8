@@ -79,7 +79,7 @@
   }
 
   function renderWeightSetup() {
-    $('.quiz-nav').hidden = false;
+    $('.quiz-nav').hidden = true;
     const total = totalAssignedWeight();
     const control = $('#weightControl');
     $('#progressTheme').textContent = 'Prioridade dos macrotemas';
@@ -111,6 +111,12 @@
             </div>
           </article>`;
         }).join('')}
+      </div>
+      <div class="weight-actions">
+        <button type="button" class="primary-btn compact" data-action="next" ${total === 0 ? 'disabled' : ''}>
+          Ver propostas
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>
+        </button>
       </div>`;
     $$('[data-weight-change]', control).forEach((button) => {
       button.addEventListener('click', () => {
