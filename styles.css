@@ -87,7 +87,7 @@ main{min-height:calc(100vh - 150px)}.screen{display:none;animation:screenIn .5s 
 @media(max-width:800px){.quiz-screen{padding-bottom:110px}.rank-actions{grid-column:2;flex-wrap:wrap}.rank-actions .rank-toggle{min-width:110px}.quiz-nav{bottom:8px}.source-note{margin-bottom:18px}}
 
 /* Top navigation v7 */
-.quiz-screen{padding-bottom:80px}.quiz-nav{position:static;left:auto;bottom:auto;transform:none;width:100%;margin:0 0 18px;padding:8px 12px;background:rgba(11,26,43,.72);box-shadow:none}.rank-list>.none-option{margin-top:7px}
+.quiz-screen{padding-bottom:80px}.quiz-nav{position:static;left:auto;bottom:auto;transform:none;width:100%;margin:52px 0 18px;padding:8px 12px;background:rgba(11,26,43,.72);box-shadow:none}.rank-list>.none-option{margin-top:7px}
 @media(max-width:800px){.quiz-screen{padding-bottom:60px}.quiz-nav{margin-bottom:12px}}
 
 /* Questionnaire and five-axis radar v4 */
