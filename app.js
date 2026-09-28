@@ -127,7 +127,7 @@
         </button>
       </div>`;
 
-    $('[data-theme-id]', control).forEach((button) => {
+    Array.from(control.querySelectorAll('[data-theme-id]')).forEach((button) => {
       button.addEventListener('click', () => {
         const id = button.dataset.themeId;
         if (state.selectedThemes.has(id)) state.selectedThemes.delete(id);
